@@ -1,0 +1,108 @@
+\documentclass[12pt,a4paper]{report}
+
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{amsthm}
+\usepackage{natbib}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{framed}
+
+\usepackage{hyperref}
+\AtBeginDocument{\let\textlabel\label}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    citecolor=black,
+    filecolor=black,
+    urlcolor=black,
+}
+
+
+\usepackage{marginnote}
+\renewcommand*{\marginfont}{\scriptsize }
+
+\usepackage{thmtools} % for lists of theorems
+
+
+\input{commands}
+
+
+\author{Jonathan Rosenblatt}
+\title{Class Notes (experimental)}
+
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+
+
+
+
+
+%%%%%%%%% Algorithms %%%%%%%%%%%
+\newpage
+\listofalgorithms
+\addcontentsline{toc}{chapter}{List of Algorithms}
+
+\renewcommand{\listtheoremname}{List of Definitions}
+\listoftheorems[ignoreall,show={definition}]
+
+
+\renewcommand{\listtheoremname}{List of Examples}
+\listoftheorems[ignoreall,show={example}]
+
+
+
+% % % Introduction % % % %
+\input{introduction}
+
+
+
+% % % % % Estimation % % % % %
+\input{estimation}
+
+
+% % % % % % Supervised Learning % % % % % %
+\input{supervised}
+
+
+% % % % % % Statistical Descision Theory % % % % % 
+\input{statistical_decision}
+
+
+% % % % % % Unsupervised % % % % %
+\input{unsupervised}
+
+
+% % % % % % Collaborative Filtering % % % % %
+\input{collaborative}
+
+
+
+
+% % % % % % Appendices % % % % % %
+\newpage
+
+\appendix
+
+\input{appendices}
+
+
+
+
+%%%%%%%%% Bibliography %%%%%%%%%%%
+\newpage
+\addcontentsline{toc}{chapter}{Bibliography}
+\bibliographystyle{abbrvnat}
+\bibliography{Intro2MachineLearning}
+\label{sec:bibliography}
+
+
+\end{document}
