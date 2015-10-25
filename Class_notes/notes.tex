@@ -11,6 +11,10 @@
 \usepackage{algorithm}
 \usepackage{algpseudocode}
 \usepackage{framed}
+\usepackage{todonotes}
+
+
+
 
 \usepackage{hyperref}
 \AtBeginDocument{\let\textlabel\label}
@@ -33,7 +37,9 @@
 
 
 \author{Jonathan Rosenblatt}
-\title{Class Notes (experimental)}
+\title{Quality Engineering Class Notes (experimental)}
+
+% % % % % % % % % % % % %
 
 
 \begin{document}
@@ -43,46 +49,61 @@
 \tableofcontents
 
 
-
-
-
 %%%%%%%%% Algorithms %%%%%%%%%%%
-\newpage
-\listofalgorithms
-\addcontentsline{toc}{chapter}{List of Algorithms}
+%\newpage
+%\listofalgorithms
+%\addcontentsline{toc}{chapter}{List of Algorithms}
 
-\renewcommand{\listtheoremname}{List of Definitions}
-\listoftheorems[ignoreall,show={definition}]
+%\renewcommand{\listtheoremname}{List of Definitions}
+%\listoftheorems[ignoreall,show={definition}]
 
-
-\renewcommand{\listtheoremname}{List of Examples}
-\listoftheorems[ignoreall,show={example}]
+%\renewcommand{\listtheoremname}{List of Examples}
+%\listoftheorems[ignoreall,show={example}]
 
 
 
 % % % Introduction % % % %
-\input{introduction}
+
+\chapter{Introduction}
 
 
 
-% % % % % Estimation % % % % %
-\input{estimation}
+
+% % % % Descriptive Statistics % % % % 
+\chapter{Descriptive Statistics}
 
 
-% % % % % % Supervised Learning % % % % % %
-\input{supervised}
+\section{Summary Statistics}
+
+\subsection{Location measures}
+% mean, median, alpha-trimmed
 
 
-% % % % % % Statistical Descision Theory % % % % % 
-\input{statistical_decision}
+\subsection{Scale measures}
+% sd, mad, IQR, range
+
+\subsection{Asymmetry measures}
+% pearson, yule, wilcoxon
 
 
-% % % % % % Unsupervised % % % % %
-\input{unsupervised}
+
+\section{Visualization}
+
+\subsection{Univariate Plots}
+% categorical data
+% continous data
+
+\subsection{Bivariate Data}
+% scatter plot
+% hexbinplot
+% heatmap
 
 
-% % % % % % Collaborative Filtering % % % % %
-\input{collaborative}
+
+
+
+% % % % Statistical inference % % % %
+\chapter{Statistical Inference} 
 
 
 
@@ -92,7 +113,6 @@
 
 \appendix
 
-\input{appendices}
 
 
 
@@ -101,7 +121,7 @@
 \newpage
 \addcontentsline{toc}{chapter}{Bibliography}
 \bibliographystyle{abbrvnat}
-\bibliography{Intro2MachineLearning}
+\bibliography{QualityEngineering}
 \label{sec:bibliography}
 
 
