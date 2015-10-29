@@ -513,26 +513,29 @@ Note that the MAD may be sometimes scaled by some constant. Particularly in the 
 After summaries of scale, we move to summaries of \emph{skewness}, or \emph{asymmetry}.
 
 \begin{definition}[Yule Skewness Measure]
+[TODO: verify]
 \begin{align}
-	YULE(x):= 
+	YULE(x):= \frac{(x_{0.75}+x_{0.25})-x_{0.5}}{2 IQR(x)}
 \end{align}
 \end{definition}
 
  
 
 
-
-%\item[Asymmetry measures]
-% pearson, yule, wilcoxon
-
-
-
 \subsubsection{Bivariate}
-\begin{enumerate}
-\item[Correlation]
-% mean, median, alpha-trimmed
-\end{enumerate}
+From univariate data $x$, we move to bivariate $x,y$.
+Clearly we can apply univariate summaries component-wise. 
+We want, however, to summarize the \emph{joint} behaviour of the data. 
+For this purpose, we assume that data comes in pairs, implying that $x$ and $y$ are of same length.
+The first measure, is naturally the celebrated (Pearson) correlation coefficient, that captures the level of linear association.
 
+\begin{definition}[Pearson's Correlation Coefficient]
+\begin{align}
+	r(x,y):= \frac{\sum_{i=1}^{n} (x_i-\bar{x})(y_i-\bar{y})}{S(x) S(y)}
+\end{align}
+\end{definition}
+We can dwell into the meaning and intuition underlying Pearson's correlation coefficient, but we will not. 
+The curious reader is reffered to \cite{rodgers_thirteen_1988}.
 
 
 
