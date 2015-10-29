@@ -14,6 +14,7 @@
 \usepackage{todonotes}
 \usepackage{tcolorbox}
 \tcbuselibrary{breakable}
+\usepackage{sidecap}
 
 
 
@@ -291,11 +292,35 @@ Time for some math!
 Assume a device has $m$ components. 
 The failure probability of component $j \in 1,\dots,m$ is $\alpha_j$.
 What is the probability of the device failing, when assuming independent failures?
-\begin{align*}
-	P(\text{failure}) &= P(\text{at least one failure}) \\
-	&= 1-P(\text{no failure}) \\
+\begin{align}
+\label{eq:failure_rate}
+	P(\text{failure}) &= P(\text{at least one failure}) \\ \nonumber
+	&= 1-P(\text{no failure}) \\ \nonumber
 	&= 1-\prod_{j=1}^{m}(1-\alpha_j) 
+\end{align}
+The failure rates $\set{\alpha_j}_{j=1^m}$ are implied by the quality performance. 
+Assuming the classical \emph{3-sigma} quality performance, and for $Z \sim \gauss{0,\sigma}$:
+\begin{align*}
+	\alpha_j &< P(|Z|>3 \sigma) = 0.0027, \quad \forall j=1,\dots,m
 \end{align*}
+This is known as the \emph{2700 parts per million (ppm) defective} performance. \marginnote{PPM}
+Plugging the 3-sigma performance in Eq.(\ref{eq:failure_rate}) thus returns
+\begin{align*}
+	P(\text{3-sigma failure}) &< 1-(1-0.0027)^m
+\end{align*}
+When viewed as a function of components:
+\begin{SCfigure}
+\centering
+\includegraphics[width=0.3\linewidth]{art/faillure_probability}
+\caption{sss}
+\label{fig:faillure_probability}
+\end{SCfigure}
+
+
+
+
+
+
 
 
 
