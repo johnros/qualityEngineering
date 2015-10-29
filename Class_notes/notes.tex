@@ -41,7 +41,7 @@
 
 
 \author{Jonathan Rosenblatt}
-\title{Quality Engineering Class Notes (experimental)}
+\title{Quality Engineering - Class Notes (experimental)}
 
 % % % % % % % % % % % % %
 
@@ -49,6 +49,26 @@
 \begin{document}
 
 \maketitle
+
+
+
+
+\chapter*{Preface}
+The purpose of this text is to accompany my Quality Engineering course at the Dept. of Industrial Engineering at the Ben-Gurion University of the Negev.
+It has several purposes:
+\begin{itemize}
+\item Help me organize and document the course material.
+\item Help students during class so that they may focus on listening and not writing.
+\item Help students after class, so that they may self-study.
+\end{itemize}
+
+At it's current state it is experimental. It can thus be expected to change from time to time, and include mistakes.
+I will thus be enormously grateful to whoever decides to share with me the mistakes found.
+
+I hope the reader will find this text interesting and useful. 
+
+
+
 
 \tableofcontents
 
@@ -63,7 +83,6 @@
 
 %\renewcommand{\listtheoremname}{List of Examples}
 %\listoftheorems[ignoreall,show={example}]
-
 
 
 % % % Introduction % % % %
@@ -137,7 +156,7 @@ Almost all of the above definitions, may apply to different characteristics, we 
 
 \subsection{Basic Terminology}
 
-\begin{enumerate}
+\begin{description}
 \item [Quality Characteristics] A.k.a. \emph{Critical to Quality Characteristics} (CTQs). May be physical, sensory, or temporal properties of a process/product. Obviously related to the dimensions of quality. 
 
 \item [Quality Engineering] ``The set of operational, managerial, and engineering activities
@@ -157,31 +176,30 @@ or required levels and that the variability around these desired levels is minim
 \item [Non-conformity] A non conforming product is one that fails to meet the specification.
 
 \item [Defect] A non-conformity that is serious enough to affect the use of the product.
-\end{enumerate}
+\end{description}
 
 
 
 
 \subsection{Statistical Terminology}
 
-\begin{enumerate}
-\item [Exploratory Statistics]
-\item [Causal Inference]
-\item [Predictive Analytics]
-\item [SPC] Statistical Process Control
-\item [DOE] Design of experiments
-\item [Acceptance Sampling] 
-\item [Computer Simulation]
-\item [Control Chart]
-\item [Controllable Inputs]
-\item [Uncontrollable Inputs]
-\item [Factorial Design]
-\item [Off-line quality control]
+\begin{description}
+\item [Exploratory Statistics] An assumption free quantitative inspection of data; ``Story telling''; no inference.
+\item [Inference] Data analysis with the intention of generalizing from a sample to a population.
+\item [Causal Inference] Inference, with the intention of claiming causal relations between quantities under study.
+\item [Predictive Analytics] Data analysis with the intention of making predictions with future data. Can be seen as inference, without aiming at causality.
+\item [Design of experiments (DOE)]  By far the best and most established way for causal inference. The \emph{random assignment} of units to groups allows to interpret statistical correlations as causal.
+\item [Statistical Process Control (SPC)] Data analysis with the intention of identifying anomalous behaviour with respect to history\footnote{Akin to \emph{anomaly detection}, or \emph{novelty detection}, in the machine learning literature.}. 
+\item [Computer Simulation] Well, just what the name implies. 
+\item [Control Chart] A graphic visualization of one (or several) CTQs, along with specification limits. 
+\item [(Un)Controllable Inputs] Each process has inputs that affect the behaviour of the CTQ. Some are controllable, and some are not.
+\item [Factorial Design] In the language of DOE, inputs are \emph{factors}. A factorial design, is an experiment where factors are varied in order to study their effect on the CTQ.
+\item [Off/On-line process control] SPC can be performed on or off line. 
+On-line, a.k.a. \emph{in-process control},  meaning control happens as the process evolves, and off-line meaning before it starts or after it has finished.
 \item [On-line quality control] A.k.a. \emph{in-process} procedure. 
-\item [Engineering control] A.k.a. \emph{automatic control}, or \emph{feedback control}.
-\item [Ingoing Inspection]
-\item [Outgoing Inspection]
-\end{enumerate}
+\item [Engineering control] A.k.a. \emph{automatic control}, or \emph{feedback control}. SPC that triggers an intervention that keeps the process in control
+\item [Outgoing/Ingoing Inspection] Refers to the stage at which SPC is performed. As inputs come in (ingoing), or as outputs come out (outgoing). 
+\end{description}
 
 
 
@@ -299,18 +317,29 @@ What is the probability of the device failing, when assuming independent failure
 	&= 1-P(\text{no failure}) \\ \nonumber
 	&= 1-\prod_{j=1}^{m}(1-\alpha_j) 
 \end{align}
-The failure rates $\set{\alpha_j}_{j=1^m}$ are implied by the quality performance. 
-Assuming the classical \emph{3-sigma} quality performance, and for $Z \sim \gauss{0,\sigma}$:
-\begin{align*}
-	\alpha_j &< P(|Z|>3 \sigma) = 0.0027, \quad \forall j=1,\dots,m
-\end{align*}
-This is known as the \emph{2700 parts per million (ppm) defective} performance. \marginnote{PPM}
-Plugging the 3-sigma performance in Eq.(\ref{eq:failure_rate}) thus returns
+Assuming all components have the same quality guarantees, we omit the index $j$ in $\alpha_j$. 
+
+The failure probability $\alpha$ is implied by the CTQs, and its specification limits (USL, LSL). 
+Denoting the target value of the CTQ by $TV$, 3-sigma means that the production variability, $\sigma$, is small enough so that $$3 \sigma < TV-LSL= USL- TV.$$
+Denoting the CTQ by $Z$, and assuming $$Z-TV \sim \gauss{0,\sigma}$$, we can compute:
+\begin{align}
+\label{eq:3_sigma}
+	1-\alpha &= P(LSL<Z<USL) \\ \nonumber
+	& = P(|Z| < USL-TV) \\ \nonumber
+	&< P(|Z| < 3 \sigma )= 0.0027.
+\end{align}
+The 3-sigma quality guarantee is also known as $2,700$ defective parts per million (ppm) for now obvious reasons.\marginnote{PPM}
+Plugging the 3-sigma performance in Eq.(\ref{eq:failure_rate}) returns
 \begin{align*}
 	P(\text{3-sigma failure}) &< 1-(1-0.0027)^m
 \end{align*}
 Figure~\ref{fig:failure_proability} illustrates the probability of failure against the number of components. 
-Clearly, for simple devices, the 3-sigma criterion may suffice. But now imagine the number of components in a car, a cellular phone, \dots. Clearly , the 3-sigma rule is too lenient.
+For simple devices, the 3-sigma criterion may suffice. 
+But now imagine the number of components in a car, a cellular phone, \dots. The 3-sigma rule is just not good enough. 
+This is where 6-sigma requirement comes along. It implies that the production is process is so accurate, that $$6 \sigma < TV-LSL= USL- TV.$$
+Updating Eq.(\ref{eq:3_sigma}) we get that the defective \emph{ppm} of 6-sigma is $0.002$. 
+This is obviously excellent news, except for the typically tremendous effort involved in achieving this level of quality.
+
 \begin{figure}[t]
 \centering
 \begin{minipage}{0.45\textwidth}
@@ -327,10 +356,8 @@ Clearly, for simple devices, the 3-sigma criterion may suffice. But now imagine 
 \label{fig:failure_proability}
 \end{minipage}
 \end{figure}
-The defective ppm under the 6-sigma rule is $0.002$. Clearly, this criterion is much much harder to attain.
 
-
-Quoting \cite{montgomery_introduction_2007}: 
+According to \cite{montgomery_introduction_2007}, the 6-sigma methodology has gained more success than it predecessors:
 \begin{quote}
 The reason for the success of six-sigma in organizations outside the traditional manufacturing sphere is that variability is everywhere, and where there is variability, there is an opportunity to improve business results. 
 \end{quote}
@@ -338,30 +365,32 @@ The reason for the success of six-sigma in organizations outside the traditional
 
 
 \subsection{Lean Systems}
-Quoting \cite{wikipedia_lean_2015}:
+Quoting \cite{wikipedia_lean_2015} (my own emphasis in bold):
 \begin{quote}
-Essentially, lean is centered on making obvious what adds value by reducing everything else. Lean manufacturing is a management philosophy derived mostly from the Toyota Production System (TPS) (hence the term Toyotism is also prevalent) and identified as ``lean'' only in the 1990s.
+Essentially, lean is centered on making obvious what \textbf{adds value} by \textbf{reducing everything else}. Lean manufacturing is a management philosophy derived mostly from the Toyota Production System (TPS) (hence the term Toyotism is also prevalent) and identified as ``lean'' only in the 1990s.
 \end{quote}
 
 \subsection{Design for Six-Sigma (DFSS)}
-Quoting \cite{wikipedia_design_2015}:
+Quoting \cite{wikipedia_design_2015} (my own emphasis in bold):
 \begin{quote}
-It is based on the use of statistical tools like linear regression and enables empirical research similar to that performed in other fields, such as social science. While the tools and order used in Six Sigma require a process to be in place and functioning, DFSS has the objective of determining the needs of customers and the business, and driving those needs into the product solution so created. DFSS is relevant for relatively simple items / systems. It is used for product or process design in contrast with process improvement.
+It is based on the use of \textbf{statistical tools} like linear regression and enables empirical research similar to that performed in other fields, such as social science. While the tools and order used in Six Sigma require a process to be in place and functioning, DFSS has the objective of \textbf{determining the needs of customers} and the business, and driving those needs into the product solution so created. DFSS is relevant for relatively simple items / systems. It is used for product or process design in contrast with process improvement.
 \end{quote}
+
+
 
 
 \subsection{Quality Systems and Standards}
 The first quality standard issued by the International Standards Organization (ISO) in $1987$.\marginnote{ISO9000}
-Current quality standards are known as \emph{ISO9000 series}. These include:
-\begin{enumerate}
-\item [ISO9000:2000] Quality Management System—Fundamentals and Vocabulary
-\item [ISO9001:2000] Quality Management System—Requirements
-\item [ISO9004:2000] Quality Management System—Guidelines for Performance Improvement
-\end{enumerate}
+Current quality standards are known as the \emph{ISO9000 series}. These include:
+\begin{description}
+\item ISO9000:2000 Quality Management System—Fundamentals and Vocabulary
+\item ISO9001:2000 Quality Management System—Requirements
+\item ISO9004:2000 Quality Management System—Guidelines for Performance Improvement
+\end{description}
 In Israel, it is the Standards Institute of Israel\footnote{\url{https://portal.sii.org.il/heb/qualityauth/certificationtypes/qualitylinks/iso9001/}} that may give ISO9000 (like any ISO) certifications upon inspecting the candidate organization.
-As emphasized by \citet[p.24]{montgomery_introduction_2007}, ISO9000 is mostly a knowledge management oriented set of rules and best practices. 
-It may help to preserve quality, but it does not, nor does it aim to, \emph{improve} quality.
-As such, it will not be the focus of our course, which will focus on the statistical tools to query the state of a process.
+As emphasized by \citet[p.24]{montgomery_introduction_2007}, ISO9000 is a set of rules and best practices, mostly oriented at \emph{knowledge management}. 
+It may help to \emph{preserve} quality, but it does not, nor does it aim to, \emph{improve} quality.
+As such, it will not be the focus of our course, which will focus on \emph{statistical tools}.
 
 
 
@@ -376,7 +405,7 @@ As such, it will not be the focus of our course, which will focus on the statist
 
 
 \section{DMAIC}
-There are many names to the idea of the process of quantitative re-evaluations of performance against a given target: \emph{data driven decision making}, \emph{Shewart cycle}, etc.
+There are many names for the process of quantitative re-evaluations of performance against a given target: \emph{data driven decision making} (DDD), \emph{Shewart cycle}, etc.
 We will focus on one such framework, illustrated in Figure~\ref{fig:DMAIC} known as DMAIC: Define, Measure, Analyze, Improve, Control.
 
 
@@ -389,19 +418,18 @@ We will focus on one such framework, illustrated in Figure~\ref{fig:DMAIC} known
 
 Here are some general observations on DMAIC:
 \begin{enumerate}
-\item Is is aimed at promoting improvement and creative thinking.
+\item It is aimed at promoting improvement and creative thinking.
 \item It is not part of the six-sigma methodology, but will typically take part in its implementation.
-\item 
 \end{enumerate}
 
 What do the stages of DMAIC mean?
-\begin{enumerate}
+\begin{description}
 \item [Define] ...
 \item [Measure] ...
 \item [Analyze]...
 \item [Improve] ...
 \item [Control] ...
-\end{enumerate}
+\end{description}
 
 
 
