@@ -15,6 +15,7 @@
 \usepackage{tcolorbox}
 \tcbuselibrary{breakable}
 \usepackage{sidecap}
+\usepackage{listings}
 
 
 
@@ -506,14 +507,20 @@ The empirical maximum and minimum are then $x_{1.}$ and $x_{0.}$, respectively.
 	MAD(x):= \set{|x_i-x_{0.5}|}_{0.5}
 \end{align}
 \end{definition}
+Note that the MAD may be sometimes scaled by some constant. Particularly in the \R function \texttt{mad()}. 
 
 
+After summaries of scale, we move to summaries of \emph{skewness}, or \emph{asymmetry}.
+
+\begin{definition}[Yule Skewness Measure]
+\begin{align}
+	YULE(x):= 
+\end{align}
+\end{definition}
+
+ 
 
 
-
-
-%\item[Scale measures]
-% sd, mad, IQR, ranges
 
 %\item[Asymmetry measures]
 % pearson, yule, wilcoxon
