@@ -282,7 +282,20 @@ have regarded it as just another “program” to improve quality. During the 19
 
 
 \subsection{Six-Sigma}
+Quoting \cite{montgomery_introduction_2007}:
+\begin{quote}
+Products with many components typically have many opportunities for failure or defects to occur. Motorola developed the Six-Sigma program in the late 1980s as a response to the demand for their products. The focus of six-sigma is reducing variability in key product quality characteristics to the level at which failure or defects are extremely unlikely.
+\end{quote}
 
+Time for some math!
+Assume a device has $m$ components. 
+The failure probability of component $j \in 1,\dots,m$ is $\alpha_j$.
+What is the probability of the device failing, when assuming independent failures?
+\begin{align*}
+	P(\text{failure}) &= P(\text{at least one failure}) \\
+	&= 1-P(\text{no failure}) \\
+	&= 1-\prod_{j=1}^{m}(1-\alpha_j) 
+\end{align*}
 
 
 
