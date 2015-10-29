@@ -162,19 +162,12 @@ Almost all of the above definitions, may apply to different characteristics, we 
 \item [Quality Engineering] ``The set of operational, managerial, and engineering activities
 that a company uses to ensure that the quality characteristics of a product are at the nominal
 or required levels and that the variability around these desired levels is minimum.'' \citep{montgomery_introduction_2007}
-
 \item [Variables] Continuous measurements of some CTQ.
-
 \item [Attributes] Discrete measurements of some CTQ.
-
 \item [Target Value] The desired level of a particular CTQ. A.k.a. \emph{nominal} value. 
-
 \item [Specifications] The set of target values of a process. 
-
 \item [USL \& LSL] Largest and smallest allowable values of a CTQ.
-
 \item [Non-conformity] A non conforming product is one that fails to meet the specification.
-
 \item [Defect] A non-conformity that is serious enough to affect the use of the product.
 \end{description}
 
@@ -184,7 +177,7 @@ or required levels and that the variability around these desired levels is minim
 \subsection{Statistical Terminology}
 
 \begin{description}
-\item [Exploratory Statistics] An assumption free quantitative inspection of data; ``Story telling''; no inference.
+\item [Exploratory Data Analysis (EDA)] An assumption free quantitative inspection of data; ``Story telling''; no inference.
 \item [Inference] Data analysis with the intention of generalizing from a sample to a population.
 \item [Causal Inference] Inference, with the intention of claiming causal relations between quantities under study.
 \item [Predictive Analytics] Data analysis with the intention of making predictions with future data. Can be seen as inference, without aiming at causality.
@@ -434,20 +427,31 @@ What do the stages of DMAIC mean?
 
 
 % % % % Descriptive Statistics % % % % 
-\chapter{Descriptive Statistics}
+\chapter{Exploratory Data Analysis (EDA)}
+In this chapter, we give a short review of methods for exploratory data analysis, a.k.a.\ \emph{descriptive statistics}.\marginnote{descriptive statistics}
+Recall that our goal is an assumptions-free description of our data. 
+EDA thus consist of computing interpretable summaries of the data, called \emph{summary statistics}, and visualizations. 
+
 
 \section{Summary Statistics}
+We now distinguish between summary statistics that apply to attributes, categorical by definition, and variables, continuous by definition. 
+
 
 \subsection{Categorical Data}
 
 \subsubsection{Univariate}
-% counts/table
-% entropy
+Summarizing a vector of categorical data can naturally be done by tabulating it, i.e., computing the frequency and relative frequency of each category.
+Clearly averages, medians, and the likes are incomputable, since categorical data has no ordering, nor does it admit simple operations such as summation.
+
+\begin{extra}
+Variability of categorical data can clearly not be measured by its variance, since it does not admit a summation operation.
+It is, however, possible to define different measures of variability that do apply.
+The \emph{entropy} is such an example.\marginnote{Entropy}
+\end{extra}
 
 
 \subsubsection{Bivariate}
-% cross table
-% cross entropy
+Generalizing the univariate case to bivariate, or multivariate, one can keep tabulating. I.e., compute the frequency, and relative frequency, of combinations of categories.
 
 
 
@@ -510,6 +514,8 @@ What do the stages of DMAIC mean?
 \subsubsection{Multivariate Data}
 
 
+\subsection{On-Line Visualization}
+%dashboards
 
 
 
