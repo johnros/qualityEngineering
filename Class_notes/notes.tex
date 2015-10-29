@@ -537,6 +537,12 @@ The first measure, is naturally the celebrated (Pearson) correlation coefficient
 We can dwell into the meaning and intuition underlying Pearson's correlation coefficient, but we will not. 
 The curious reader is reffered to \cite{rodgers_thirteen_1988}.
 
+The next measure of association captures a more general association.
+\begin{definition}[Spearman's Correlation Coefficient]
+Spearman's correlation coefficient is merely Pearson's correlation coefficient computed on the \emph{ranks} of $x$ and $y$. 
+\end{definition}
+
+We conclude by noting that \emph{regression coefficients} are also a measure of association. 
 
 
 
@@ -550,7 +556,17 @@ The curious reader is reffered to \cite{rodgers_thirteen_1988}.
 \subsection{Categorical Data}
 
 \subsubsection{Univariate}
-% barplot
+Much like computing summaries, there is not much to be said about visualizing univariate categorical variables. 
+The most natural, and perhaps only visualization, is the \emph{bar plot}, illustrated in Figure~\ref{fig:barplot}.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.7\linewidth]{art/categorical-data1x}
+\caption{The Bar-Plot. Source: \url{http://www.r-tutor.com/elementary-statistics/qualitative-data/bar-graph}}
+\label{fig:barplot}
+\end{figure}
+
+
 
 \subsubsection{Bivariate}
 % mosaicplot
