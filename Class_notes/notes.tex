@@ -77,18 +77,6 @@ I hope the reader will find this text interesting and useful.
 \tableofcontents
 
 
-%%%%%%%%% Algorithms %%%%%%%%%%%
-%\newpage
-%\listofalgorithms
-%\addcontentsline{toc}{chapter}{List of Algorithms}
-
-%\renewcommand{\listtheoremname}{List of Definitions}
-%\listoftheorems[ignoreall,show={definition}]
-
-%\renewcommand{\listtheoremname}{List of Examples}
-%\listoftheorems[ignoreall,show={example}]
-
-
 % % % Introduction % % % %
 
 \chapter{Introduction}
@@ -460,20 +448,70 @@ Generalizing the univariate case to bivariate, or multivariate, one can keep tab
 
 
 \subsection{Continuous Data}
+Continuous variables admit many more mathematical manipulations than categorical attributes. 
+
 
 \subsubsection{Univariate}
 
-\begin{enumerate}
-\item[Location measures]
-% mean, median, alpha-trimmed
+We start by presenting the most natural summaries of the data. Without going into the formal definition, we refer to them as \emph{summary of location}.\marginnote{Location Summaries}
+These include:
 
-\item[Scale measures]
+\begin{definition}[The Mean (Average)]
+\begin{align}
+	\bar{x}:= \frac{1}{n}\sum_{i=1}^{n} x_i
+\end{align}
+\end{definition}
+
+\begin{definition}[The Median]
+The median is the observation that is smaller than half of the sample and larger than half of the sample.
+\end{definition}
+
+\begin{definition}[$\alpha$-trimmed mean]
+The $\alpha$-trimmed mean is the average of the observations left after ignoring the largest and the smallest $(100\alpha) \%$ of them.
+\end{definition}
+The \naive average is the $0$-trimmed mean, and the median is the $0.5$-trimmed mean.
+
+From summaries of location, we move to summaries of \emph{scale}. \marginnote{Summary of Scale}
+
+\begin{definition}[The Standard Deviation]
+\begin{align}
+	S^2(x):= \frac{1}{n-1} \sum_{i=1}^{n} (x_i-\bar{x})^2
+\end{align}
+\end{definition}
+
+For the following, we require the definition of the sample quantiles, themselves \textbf{not} a scale summary.
+
+\begin{definition}[$\alpha$ Quantile]
+The $\alpha$-quantile of the sample is the observation that is larger than $(100\alpha)\%$, and smaller then  $(100(1-\alpha))\%$ of the sample. 
+\begin{align}
+	Range(x):= 
+\end{align}
+\end{definition}
+
+
+\begin{definition}[The Range]
+\begin{align}
+	Range(x):= 
+\end{align}
+\end{definition}
+
+\begin{definition}[The Inter Quantile Range (IQR)]
+\end{definition}
+
+\begin{definition}[The Median Absolute Deviation (MAD)]
+\end{definition}
+
+
+
+
+
+
+%\item[Scale measures]
 % sd, mad, IQR, ranges
 
-\item[Asymmetry measures]
+%\item[Asymmetry measures]
 % pearson, yule, wilcoxon
 
-\end{enumerate}
 
 
 \subsubsection{Bivariate}
@@ -556,9 +594,13 @@ Generalizing the univariate case to bivariate, or multivariate, one can keep tab
 \chapter{Reliability}
 
 % % % % % % Appendices % % % % % %
+
+% % % % % % Appendices % % % % % %
 \newpage
 
 \appendix
+
+\input{notation}
 
 
 
