@@ -12,6 +12,8 @@
 \usepackage{algpseudocode}
 \usepackage{framed}
 \usepackage{todonotes}
+\usepackage{tcolorbox}
+\tcbuselibrary{breakable}
 
 
 
@@ -65,6 +67,94 @@
 % % % Introduction % % % %
 
 \chapter{Introduction}
+
+Quality Engineering is the study and design of practices aimed improving the ``quality'' of production. 
+Production is understood in a wide sense, and includes services as well.
+Quality is understood in many senses. Here are several definitions compiled verbatim from \cite{montgomery_introduction_2007}  and \cite{wikipedia_quality_2015}:
+\begin{enumerate}
+\item Montgomery: ``Fitness to use''.
+\item Montgomery: ``The reciprocal of variability'' (stability?) .
+\item American Society for Quality:
+A combination of quantitative and qualitative perspectives for which each person has his or her own definition; examples of which include, ``Meeting the requirements and expectations in service or product that were committed to'' and ``Pursuit of optimal solutions contributing to confirmed successes, fulfilling accountabilities.
+ In technical usage, quality can have two meanings: 
+ (a) The characteristics of a product or service that bear on its ability to satisfy stated or implied needs. 
+ (b) A product or service free of deficiencies.''
+\item Subir Chowdhury: 
+``Quality combines people power and process power''.
+\item Philip B. Crosby: 
+``Conformance to requirements.''
+\item  W. Edwards Deming:
+``The efficient production of the quality that the market expects''.
+\item W. Edwards Deming: 
+``Costs go down and productivity goes up as improvement of quality is accomplished by better management of design, engineering, testing and by improvement of processes.''
+\item Peter Drucker: 
+``Quality in a product or service is not what the supplier puts in. It is what the customer gets out and is willing to pay for.''
+\item Victor A. Elias: 
+``Quality is the ability of performance, in each Theme of Performance, to enact a strategy.''
+\item ISO 9000: 
+``Degree to which a set of inherent characteristics fulfills requirements.'' 
+\item Joseph M. Juran: 
+``Fitness for use.''. 
+\item Noriaki Kano and others, present a two-dimensional model of quality: ``must-be quality'' and ``attractive quality.'' The former is near to ``fitness for use'' and the latter is what the customer would love, but has not yet thought about. Supporters characterize this model more succinctly as: ``Products and services that meet or exceed customers' expectations.''
+\item Robert Pirsig: ``The result of care.''
+\item Six Sigma: ``Number of defects per million opportunities.''
+\item Genichi Taguchi:
+``Uniformity around a target value.''
+\item Genichi Taguchi:
+``The loss a product imposes on society after it is shipped.''
+\item Gerald M. Weinberg: ``Value to some person''.
+\end{enumerate}
+
+
+
+\begin{tcolorbox}[breakable]
+\paragraph{Collecting ideas}
+\begin{enumerate}
+\item Quality is not only about production. 
+\item Quality is the means, not the end.
+\item Quality may deal with the \textbf{design} or with \textbf{conformance} to a given design. 
+\end{enumerate}
+\end{tcolorbox}
+
+
+Almost all of the above definitions, may apply to different characteristics, we call \emph{dimensions of quality}. Following \cite{wikipedia_eight_2015} \marginnote{Dimensions of Quality}:
+\begin{enumerate}
+\item [Performance] Performance refers to a product's primary operating characteristics. This dimension of quality involves measurable attributes; brands can usually be ranked objectively on individual aspects of performance.
+\item [{Features}] Features are additional characteristics that enhance the appeal of the product or service to the user.
+\item [{Reliability}] Reliability is the likelihood that a product will not fail within a specific time period. This is a key element for users who need the product to work without fail.
+\item [{Conformance}] Conformance is the precision with which the product or service meets the specified standards.
+\item [{Durability}] Durability measures the length of a product’s life. When the product can be repaired, estimating durability is more complicated. The item will be used until it is no longer economical to operate it. This happens when the repair rate and the associated costs increase significantly.
+\item [{Serviceability}] Serviceability is the speed with which the product can be put into service when it breaks down, as well as the competence and the behavior of the service person.
+\item [{Aesthetics}] Aesthetics is the subjective dimension indicating the kind of response a user has to a product. It represents the individual’s personal preference.
+\item [{Perceived Quality}] Perceived Quality is the quality attributed to a good or service based on indirect measures.
+\end{enumerate}
+
+
+\subsection{Basic Terminology}
+
+\begin{enumerate}
+\item [Quality Characteristics] A.k.a. Critical to quality characteristics (CTQ). May be physical, sensory, or temporal properties of a process/product. Obviously related to the dimensions of quality. 
+
+\item [Quality Engineering] ``The set of operational, managerial, and engineering activities
+that a company uses to ensure that the quality characteristics of a product are at the nominal
+or required levels and that the variability around these desired levels is minimum.'' \citep{montgomery_introduction_2007}
+
+\item [Attributes]
+
+\item [Variables]
+
+\item [Specifications]
+
+\item [Target Value]
+
+\item [USL \& LSL]
+
+\item [Non-conformity]
+
+\item [Defect]
+
+\end{enumerate}
+
 
 
 
@@ -168,7 +258,8 @@
 \newpage
 \addcontentsline{toc}{chapter}{Bibliography}
 \bibliographystyle{abbrvnat}
-\bibliography{QualityEngineering}
+%\bibliography{QualityEngineering}
+\bibliography{quality_clean}
 \label{sec:bibliography}
 
 
