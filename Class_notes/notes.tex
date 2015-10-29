@@ -288,7 +288,6 @@ Quoting \cite{montgomery_introduction_2007}:
 Products with many components typically have many opportunities for failure or defects to occur. Motorola developed the Six-Sigma program in the late 1980s as a response to the demand for their products. The focus of six-sigma is reducing variability in key product quality characteristics to the level at which failure or defects are extremely unlikely.
 \end{quote}
 
-Time for some math!
 Assume a device has $m$ components. 
 The failure probability of component $j \in 1,\dots,m$ is $\alpha_j$.
 What is the probability of the device failing, when assuming independent failures?
@@ -308,15 +307,31 @@ Plugging the 3-sigma performance in Eq.(\ref{eq:failure_rate}) thus returns
 \begin{align*}
 	P(\text{3-sigma failure}) &< 1-(1-0.0027)^m
 \end{align*}
-When viewed as a function of components:
-\begin{SCfigure}
+Figure~\ref{fig:failure_proability} illustrates the probability of failure against the number of components. 
+Clearly, for simple devices, the 3-sigma criterion may suffice. But now imagine the number of components in a car, a cellular phone, \dots. Clearly , the 3-sigma rule is too lenient.
+\begin{figure}[t]
 \centering
-\includegraphics[width=0.3\linewidth]{art/faillure_probability}
-\caption{sss}
-\label{fig:faillure_probability}
-\end{SCfigure}
+\begin{minipage}{0.45\textwidth}
+\includegraphics[width=0.8\linewidth]{art/faillure_probability}
+\caption{\footnotesize 
+	The probability of failure as a function of components under the 3-sigma standard.}
+\label{fig:failure_proability}
+\end{minipage}\hfill
+\begin{minipage}{0.45\textwidth}
+\centering
+\includegraphics[width=0.8\linewidth]{art/6-sigma_failure_probability}
+\caption{\footnotesize 
+	The probability of failure as a function of components under the 6-sigma standard.}
+\label{fig:failure_proability}
+\end{minipage}
+\end{figure}
+The defective ppm under the 6-sigma rule is $0.002$. Clearly, this criterion is much much harder to attain.
 
 
+Quoting \cite{montgomery_introduction_2007}: 
+\begin{quote}
+The reason for the success of six-sigma in organizations outside the traditional manufacturing sphere is that variability is everywhere, and where there is variability, there is an opportunity to improve business results. 
+\end{quote}
 
 
 
