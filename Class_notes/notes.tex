@@ -80,6 +80,10 @@ I hope the reader will find this text interesting and useful.
 
 \listoffigures
 
+\renewcommand{\listtheoremname}{List of Definitions}
+\listoftheorems[ignoreall,show={definition}]
+
+
 
 % % % Introduction % % % %
 
@@ -573,11 +577,20 @@ For a multivariate data consisting of $x_1,\dots,x_p$ vectors, each with $n$ ent
 \end{align}
 \end{definition}
 
+
 \begin{extra}
 The matrix $\hat{\Sigma}$ has many useful properties. 
 To begin with, it is symmetric, since $Cov(x,y)=Cov(y,x)$.
 The curious reader is referred to \cite{petersen_matrix_2006}, and references therein, for more details.
 \end{extra}
+
+\begin{definition}[Correlation Matrix]
+For a multivariate data consisting of $x_1,\dots,x_p$ vectors, each with $n$ entries: $x_{i,1},\dots,x_{i,n}$, we define the (sample) correlation matrix to be a $p\times p$ matrix whose elements are the (Pearson) correlations between corresponding vectors:
+\begin{align}
+	\hat{R}_{i,j}:= r(x_i, x_j)
+\end{align}
+\end{definition}
+
 
 
 \section{Visualization}
