@@ -755,6 +755,33 @@ This is the purpose of \emph{dashboards}, illustrated in Figure~\ref{fig:dashboa
 
 % % % % Statistical inference % % % %
 \chapter{Statistical Inference} 
+The idea of extrapolating knowledge from a \emph{sample} to a population is known as \emph{statistical inference}.
+It encompasses the ideas of \emph{parameter estimation}, \emph{confidence intervals}, and \emph{hypothesis testing}.
+We will assume the reader is familiar with these ideas, but recall some required terminology.
+The QC and SPC terminology are not always consistent with statisticians' terminology. When new names are given to old ideas, we will emphasize this in the text.
+
+\begin{description}
+\item [Null/Alternative Hypothesis] Some statement about the world we wish to test with data. The frequentist argument follows a Popperian philosophy: ``to show the alternative hypothesis is true, I will show that the null hypothesis is not true''. 
+\item [Statistical Test] The procedure of inferring from data on the truthfulness of the alternative hypothesis.
+\item [Assumptions] As the name suggests, these are assumptions. We stress that unlike hypothesis, assumptions are not being tested in a statistical test. 
+\item [Test Statistic] The function of the data to be computed for the purpose of inference. As such, it is a random variable. 
+\item [Null/Alternative Distribution] The distribution of the test statistic under the null/alternative hypothesis.
+\item [Type I/II error] See Figure~\ref{fig:confusion_table}.
+\item [False/True Positive/Negative] See Figure~\ref{fig:confusion_table}.
+\item [Rejection Region] The collection of event that will lead us to reject the null hypothesis, and believe in the alternative hypothesis.
+\item [p-value] A.k.a. \emph{observed significance}. The null probability of the observed, or ``more extreme'' events.
+\item [Significance Level] A.k.a. $\alpha$. The probability of a false positive.
+\item [Power] The probability of a true positive.
+
+\end{description}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.8\linewidth]{art/Beware-of-False-Positives-Chart-1}
+\caption[Confusion Table]{Type I/II error confusion table. Source: \url{https://infocus.emc.com/william_schmarzo/beware-of-false-positives/}}
+\label{fig:confusion_table}
+\end{figure}
+
 
 
 
