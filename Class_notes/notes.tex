@@ -322,7 +322,7 @@ Plugging the 3-sigma performance in Eq.(\ref{eq:failure_rate}) returns
 \begin{align*}
 	P(\text{3-sigma failure}) &< 1-(1-0.0027)^m
 \end{align*}
-Figure~\ref{fig:failure_proability} illustrates the probability of failure against the number of components. 
+Figure~\ref{fig:3_sigma_failure_proability} illustrates the probability of failure against the number of components. 
 For simple devices, the 3-sigma criterion may suffice. 
 But now imagine the number of components in a car, a cellular phone, \dots. The 3-sigma rule is just not good enough. 
 This is where 6-sigma requirement comes along. It implies that the production is process is so accurate, that $$6 \sigma < TV-LSL= USL- TV.$$
@@ -335,14 +335,14 @@ This is obviously excellent news, except for the typically tremendous effort inv
 \includegraphics[width=0.8\linewidth]{art/faillure_probability}
 \caption[3-sigma probability of failure]{\footnotesize 
 	The probability of failure as a function of components under the 3-sigma standard.}
-\label{fig:failure_proability}
+\label{fig:3_sigma_failure_proability}
 \end{minipage}\hfill
 \begin{minipage}{0.45\textwidth}
 \centering
 \includegraphics[width=0.8\linewidth]{art/6-sigma_failure_probability}
 \caption[6-sigma probability of failure]{\footnotesize 
 	The probability of failure as a function of components under the 6-sigma standard.}
-\label{fig:failure_proability}
+\label{fig:6_sigma_failure_proability}
 \end{minipage}
 \end{figure}
 
@@ -583,12 +583,43 @@ Several extensions exist. By far, the most informative and recommended figure, i
 \end{figure}
 
 
-% mosaicplot
-
 
 \subsection{Continuous Data}
 
+
+
+
 \subsubsection{Univariate}
+Visualization of univariate continuous vectors can present the raw data, or it distribution (i.e.- discarding the indexes).
+The most basic visualizations are the \emph{dotchart}, \emph{histogram}, \emph{boxplot}, \emph{stem-and-leaf plot}. 
+These are illustrated in figures ..
+
+
+ 
+\begin{figure}
+\centering
+\includegraphics[width=0.7\linewidth]{art/lmCm0}
+\caption[Dot Plot]{Dot Plot. Source: \url{http://stackoverflow.com/questions/15109822/r-creating-scatter-plot-from-data-frame}}
+\label{fig:dot_plot}
+\end{figure}
+
+
+
+\begin{figure}
+\centering
+\includegraphics[width=0.7\linewidth]{art/histogram_eruptions}
+\caption[Histogram]{Histogram. Source: \url{http://compbio.pbworks.com/w/page/16252882/Basic}}
+\label{fig:histogram_eruptions}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.7\linewidth]{art/stem_and_leaf}
+\caption[Stem and Leaf Pot]{Stem-and-leaf plot. Source: \url{https://www.mathsisfun.com/data/stem-leaf-plots.html}}
+\label{fig:stem_and_leaf}
+\end{figure}
+
+
 % stem and leaf
 % histogram
 % boxpolot
