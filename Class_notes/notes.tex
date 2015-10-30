@@ -616,7 +616,7 @@ Ask me for reference books or courses if this topic interests you.
 Much like computing summaries, there is not much to be said about visualizing univariate categorical variables. 
 The most natural, and perhaps only visualization, is the \emph{bar plot}, illustrated in Figure~\ref{fig:barplot}.
 
-\begin{figure}[t]
+\begin{figure}[h]
 \centering
 \includegraphics[height=0.3\textheight]{art/categorical-data1x}
 \caption[Bar Plot]{The Bar-Plot. Source: \url{http://www.r-tutor.com/elementary-statistics/qualitative-data/bar-graph}}
@@ -629,7 +629,7 @@ The most natural, and perhaps only visualization, is the \emph{bar plot}, illust
 Visualizing a two-way cross-table can be done using an extension of the bar-plot.
 Several extensions exist. By far, the most informative and recommended figure, in this author's view, is the \emph{mosaic plot}, illustrated in Figure~\ref{fig:mosaic}. \marginnote{Mosaic Plot}
 
-\begin{figure}
+\begin{figure}[h]
 \centering
 \includegraphics[height=0.3\textheight]{art/mosaic1}
 \caption[Mosaic Plot]{Mosaic Plot. Source: \url{http://www.statmethods.net/advgraphs/mosaic.html}}
@@ -650,7 +650,7 @@ These are illustrated in figures \ref{fig:dot_plot}, \ref{fig:histogram_eruption
 
 
  
-\begin{figure}
+\begin{figure}[h]
 \centering
 \includegraphics[height=0.3\textheight]{art/lmCm0}
 \caption[Dot Plot]{Dot Plot. Source: \url{http://stackoverflow.com/questions/15109822/r-creating-scatter-plot-from-data-frame}}
@@ -659,14 +659,14 @@ These are illustrated in figures \ref{fig:dot_plot}, \ref{fig:histogram_eruption
 
 
 
-\begin{figure}
+\begin{figure}[h]
 \centering
 \includegraphics[height=0.3\textheight]{art/histogram_eruptions}
 \caption[Histogram]{Histogram. Source: \url{http://compbio.pbworks.com/w/page/16252882/Basic}}
 \label{fig:histogram_eruptions}
 \end{figure}
 
-\begin{figure}
+\begin{figure}[h]
 \centering
 \includegraphics[height=0.3\textheight]{art/ex6aout}
 \caption[BoxPlot]{Boxplot. Source: \url{http://support.sas.com/documentation/cdl/en/statug/63033/HTML/default/viewer.htm}}
@@ -675,7 +675,7 @@ These are illustrated in figures \ref{fig:dot_plot}, \ref{fig:histogram_eruption
 
 
 
-\begin{figure}
+\begin{figure}[h]
 \centering
 \includegraphics[height=0.3\textheight]{art/stem_and_leaf}
 \caption[Stem and Leaf Pot]{Stem-and-leaf plot. Source: \url{https://www.mathsisfun.com/data/stem-leaf-plots.html}}
@@ -690,7 +690,7 @@ The simultaneous visualization of two continuous variables, can naturally be don
 More sophisticated visualization, which generalizes the histogram into two dimensions, is the \emph{hexbin plot}.  
 These are illustrated in figures \ref{fig:scatterplot}, and \ref{fig:hexbin}, respectively. 
 
-\begin{figure}
+\begin{figure}[h]
 \centering
 \includegraphics[height=0.3\textheight]{art/scatterplot}
 \caption[Scatter Plot]{Scatter Plot. Source: \url{http://texample.net/tikz/examples/scatterplot/}}
@@ -699,7 +699,7 @@ These are illustrated in figures \ref{fig:scatterplot}, and \ref{fig:hexbin}, re
 
 
 
-\begin{figure}
+\begin{figure}[h]
 \centering
 \includegraphics[height=0.3\textheight]{art/hexbin2}
 \caption[HexBin Plot]{HexBin plot. Sorce: \url{http://www.r-bloggers.com/5-ways-to-do-2d-histograms-in-r/}}
@@ -716,7 +716,12 @@ Since we cannot possibly visualize data in more than $3$-dimensions, and we clea
 An important exception is due to the observation that a computer image, is essentially a matrix. 
 We can thus visualize matrices, with a simple image, and in particular, covariance and correlation matrices, as illustrated in Figure~\ref{fig:covariance_image}.
 
-\begin{figure}
+A second exception is when the data has both continous variables and discrete attributes. 
+Endlessly many combinations are then possible.
+The author strongly recommends to visit Hans Rosling's \emph{Gap Minder} at \url{http://www.gapminder.org/world} for an excellent interactive visualization. 
+
+
+\begin{figure}[h]
 \centering
 \includegraphics[height=0.3\textheight]{art/covarianceSupervised}
 \caption[Covariance Matrix]{Image of covariance matrix. Source:\url{http://cs.brown.edu/courses/csci1950-g/results/final/sghosh/}}
@@ -727,7 +732,15 @@ We can thus visualize matrices, with a simple image, and in particular, covarian
 
 
 \subsection{On-Line Visualization}
-%dashboards
+For the purpose of quality control, we may often want an \emph{on-line} visualization, and not \emph{off-line}, as the ones previously discussed.
+This is the purpose of \emph{dashboards}, illustrated in Figure~\ref{fig:dashboard}.
+
+\begin{figure}
+\centering
+\includegraphics[height=0.3\textheight, width=0.9\linewidth]{art/dashboard}
+\caption[Dashboard]{Dashboard. Source:\url{http://www.iconics.com/Home/Products/AnalytiX/Quality-AnalytiX.aspx}}
+\label{fig:dashboard}
+\end{figure}
 
 
 
