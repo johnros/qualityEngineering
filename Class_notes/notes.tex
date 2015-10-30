@@ -578,7 +578,7 @@ For a multivariate data consisting of $x_1,\dots,x_p$ vectors, each with $n$ ent
 \end{definition}
 
 
-\begin{extra}
+\begin{extra}[Sample Covariance Matrix]
 The matrix $\hat{\Sigma}$ has many useful properties. 
 To begin with, it is symmetric, since $Cov(x,y)=Cov(y,x)$.
 The curious reader is referred to \cite{petersen_matrix_2006}, and references therein, for more details.
@@ -590,6 +590,21 @@ For a multivariate data consisting of $x_1,\dots,x_p$ vectors, each with $n$ ent
 	\hat{R}_{i,j}:= r(x_i, x_j)
 \end{align}
 \end{definition}
+
+
+\begin{extra}[Multivariate Data Analysis]
+Multivariate analysis is an important, and very actively studied field in statistics and machine learning.
+A non-comprehensive list of methods that belong to this realm include 
+Principal Component Analysis (PCA),
+Singular Value Decomposition (SVD), 
+Factor Analysis (FA), 
+Independent Component Analysis (ICA),
+Dimensionality Reduction, 
+Manifold Learning, 
+Self Organizing Maps, 
+etc.
+Ask me for reference books or courses if this topic interests you.
+\end{extra}
 
 
 
@@ -698,7 +713,15 @@ These are illustrated in figures \ref{fig:scatterplot}, and \ref{fig:hexbin}, re
 \subsubsection{Multivariate Data}
 Since we cannot possibly visualize data in more than $3$-dimensions, and we clearly prefer data in $1$ or $2$ dimensions, the visualization of multivariate data will typically consist of summarizing the data into $1D$ or $2D$, and then applying the above mentioned visualization techniques.
 
-[TODO: image ]
+An important exception is due to the observation that a computer image, is essentially a matrix. 
+We can thus visualize matrices, with a simple image, and in particular, covariance and correlation matrices, as illustrated in Figure~\ref{fig:covariance_image}.
+
+\begin{figure}
+\centering
+\includegraphics[width=0.7\linewidth]{art/covarianceSupervised}
+\caption[Covariance Matrix]{Image of covariance matrix. Source:\url{http://cs.brown.edu/courses/csci1950-g/results/final/sghosh/}}
+\label{fig:covariance_image}
+\end{figure}
 
 
 
