@@ -830,18 +830,46 @@ The Chi-Square GOF test (not to be confused with the Chi-Square independence tes
 Note that it is very general, since all continuous variables may be discretized, simply by binning.
 
 \begin{definition}[Chi-Square GOF Test]
-Assume an i.i.d. sampling process.
+Assume an i.i.d. sample $x_1,\dots,x_n$. 
+The Chi-Square GOF is a tests $H_0: \x_i \sim \dist$ versus $H_1: \x_i \not\sim \dist$.
+$P$ is assumed to be discrete with $K$ categories and $p_k:= \dist(\x_i \in k)$.
+The test statistic, $X^2$, is defined as
+\begin{align}
+	X^2:= \sum_{k=1}^{K}\frac{(obs_k-exp_k)^2}{exp_k}, 
+\end{align}
+where $obs_k:= \#\set{x_i \in k}$, and $exp_k:= p_k n$.
+The approximate null distribution of $X^2$ is $\chi^2_{K-1}$.
 \end{definition} 
 
 
 
-\subsection{Kolmogorov-Smirnov GOF Test}
+\subsection{Kolmogorov–Smirnov GOF Test}
+The Kolmogorov-Smirnof GOF test, tests a hypothesis on the sampling distribution of continuous (variable) data. 
+
+\begin{definition}[Kolmogorov–Smirnov GOF Test]
+Assume an i.i.d. sample $x_1,\dots,x_n$. 
+The Chi-Square GOF is a tests $H_0: \x_i \sim \dist$ versus $H_1: \x_i \not\sim \dist$.
+$P$ is assumed to be continuous.
+The test statistic, $D$, is depicted in Figure~\ref{fig:ks_test}.
+The null distribution of $D$ is the \emph{Kolmogorov distribution} obtained from tables.\marginnote{Kolmogorov Distribution}
+
+\begin{figure}
+\centering
+\includegraphics[height=0.3\textheight]{art/Kgn0O}
+\caption[Kolmogorov-Smirnov Test]{Kolmogorov-Smirnov Test. The $D$ statistic is $D_+$ in the figure.}
+\label{fig:ks_test}
+\end{figure}
+
+\end{definition} 
+
+
 
 
 
 
 \begin{extra}[GOF tests]
-content...
+There are endlessly many more GOF tests, such as Anderson-Darling, Jarque–Bera, Shapiro–Wilk, Kuiper's test, etc.
+Wikipedia is a good place for further reading.
 \end{extra}
 
 
