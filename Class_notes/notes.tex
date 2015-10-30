@@ -425,7 +425,7 @@ What do the stages of DMAIC mean \footnote{Source: \url{http://asq.org/learn-abo
 In the following chapter we give a set of statistical tools required for \emph{measuring},\emph{analyzing} and \emph{controlling} a process.
 
 % % % % Descriptive Statistics % % % % 
-\chapter{Exploratory Data Analysis (EDA)}
+\chapter{Exploratory Data Analysis- EDA}
 In this chapter, we give a short review of methods for exploratory data analysis, a.k.a.\ \emph{descriptive statistics}.\marginnote{descriptive statistics}
 Recall that our goal is an assumptions-free description of our data. 
 EDA thus consist of computing interpretable summaries of the data, called \emph{summary statistics}, and visualizations. 
@@ -794,6 +794,19 @@ The QC and SPC terminology are not always consistent with statisticians' termino
 
 
 \chapter{System Capability Analysis}
+In a system capability analysis, we essentially use statistical tools to measure the variability in a production process.
+This analysis can answer questions that are raised at the measuring, analyzing, and improving stages of the DMAIC cycle. 
+The methods we will discus compare between the processes variability and specification. 
+Note, however, that a simple statistical analysis of the production process, without relating to specification, may also be qualify as a system capability analysis.
+
+We naturally want production processes that adhere to specifications, and want to quantify the level of adherence.
+The quantification is performed by comparing the variability in a CTQ to the specification.
+In this chapter we assume the process’s capability is fixed over time. 
+In Chapter~\ref{sec:advanced_capability_analysis} we revisit the same problems, when allowing the process’s capability to vary over time. 
+
+The particular setup discusses in this chapter is also known as \emph{product specification}.\marginnote{Product Specification}
+When we use the actual time, and ordering of data samples, as in a control chart, we will no longer regard it as product specification but rather as a bona-fide capability analysis. This is the subject of Chapter~\ref{sec:advanced_capability_analysis}.
+ 
 % Chebychev inequality for failure probability and other measures of inequality. Important! + confidence intervals
 % slope of qq plot
 % goodness of fit tests
@@ -801,7 +814,14 @@ The QC and SPC terminology are not always consistent with statisticians' termino
 
 
 
-\chapter{Statistical Process Control}
+
+
+
+
+
+
+% % % % SPC
+\chapter{Statistical Process Control- SPC}
 \section{Univariate Control Charts}
 \subsection{Control Charts for Variables}
 \subsection{Control Charts for Attributes}
@@ -815,7 +835,10 @@ The QC and SPC terminology are not always consistent with statisticians' termino
 
 
 
-\chapter{Design of Experiments}
+
+
+% % % % DOE
+\chapter{Design of Experiments - DOE}
 
 \section{Terminology}
 \begin{description}
@@ -870,6 +893,8 @@ The QC and SPC terminology are not always consistent with statisticians' termino
 
 
 \chapter{Revisiting System Capability Analysis}
+\label{sec:advanced_capability_analysis}
+[TODO]
 \section{System Capability with Control Charts}
 \section{System Capability with Designed Experiments}
 
