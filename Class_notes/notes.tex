@@ -16,7 +16,7 @@
 \tcbuselibrary{breakable}
 \usepackage{sidecap}
 \usepackage{listings}
-
+\usepackage{afterpage}
 
 
 
@@ -606,11 +606,14 @@ etc.
 Ask me for reference books or courses if this topic interests you.
 \end{extra}
 
+\afterpage{\clearpage}
 
 
 \section{Visualization}
 
 \subsection{Categorical Data}
+
+
 
 \subsubsection{Univariate}
 Much like computing summaries, there is not much to be said about visualizing univariate categorical variables. 
@@ -636,6 +639,7 @@ Several extensions exist. By far, the most informative and recommended figure, i
 \label{fig:mosaic}
 \end{figure}
 
+\afterpage{\clearpage}
 
 
 \subsection{Continuous Data}
@@ -690,12 +694,15 @@ The simultaneous visualization of two continuous variables, can naturally be don
 More sophisticated visualization, which generalizes the histogram into two dimensions, is the \emph{hexbin plot}.  
 These are illustrated in figures \ref{fig:scatterplot}, and \ref{fig:hexbin}, respectively. 
 
+
 \begin{figure}[h]
 \centering
 \includegraphics[height=0.3\textheight]{art/scatterplot}
 \caption[Scatter Plot]{Scatter Plot. Source: \url{http://texample.net/tikz/examples/scatterplot/}}
 \label{fig:scatterplot}
 \end{figure}
+
+
 
 
 
@@ -706,9 +713,10 @@ These are illustrated in figures \ref{fig:scatterplot}, and \ref{fig:hexbin}, re
 \label{fig:hexbin}
 \end{figure}
 
-% scatter plot
-% hexbinplot
-% heatmap
+
+
+
+
 
 \subsubsection{Multivariate Data}
 Since we cannot possibly visualize data in more than $3$-dimensions, and we clearly prefer data in $1$ or $2$ dimensions, the visualization of multivariate data will typically consist of summarizing the data into $1D$ or $2D$, and then applying the above mentioned visualization techniques.
@@ -735,13 +743,14 @@ The author strongly recommends to visit Hans Rosling's \emph{Gap Minder} at \url
 For the purpose of quality control, we may often want an \emph{on-line} visualization, and not \emph{off-line}, as the ones previously discussed.
 This is the purpose of \emph{dashboards}, illustrated in Figure~\ref{fig:dashboard}.
 
-\begin{figure}
+\begin{figure}[h]
 \centering
 \includegraphics[height=0.3\textheight, width=0.9\linewidth]{art/dashboard}
 \caption[Dashboard]{Dashboard. Source:\url{http://www.iconics.com/Home/Products/AnalytiX/Quality-AnalytiX.aspx}}
 \label{fig:dashboard}
 \end{figure}
 
+\afterpage{\clearpage}
 
 
 % % % % Statistical inference % % % %
