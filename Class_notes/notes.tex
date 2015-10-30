@@ -78,6 +78,9 @@ I hope the reader will find this text interesting and useful.
 \tableofcontents
 
 
+\listoffigures
+
+
 % % % Introduction % % % %
 
 \chapter{Introduction}
@@ -330,14 +333,14 @@ This is obviously excellent news, except for the typically tremendous effort inv
 \centering
 \begin{minipage}{0.45\textwidth}
 \includegraphics[width=0.8\linewidth]{art/faillure_probability}
-\caption{\footnotesize 
+\caption[3-sigma probability of failure]{\footnotesize 
 	The probability of failure as a function of components under the 3-sigma standard.}
 \label{fig:failure_proability}
 \end{minipage}\hfill
 \begin{minipage}{0.45\textwidth}
 \centering
 \includegraphics[width=0.8\linewidth]{art/6-sigma_failure_probability}
-\caption{\footnotesize 
+\caption[6-sigma probability of failure]{\footnotesize 
 	The probability of failure as a function of components under the 6-sigma standard.}
 \label{fig:failure_proability}
 \end{minipage}
@@ -562,13 +565,24 @@ The most natural, and perhaps only visualization, is the \emph{bar plot}, illust
 \begin{figure}[t]
 \centering
 \includegraphics[width=0.7\linewidth]{art/categorical-data1x}
-\caption{The Bar-Plot. Source: \url{http://www.r-tutor.com/elementary-statistics/qualitative-data/bar-graph}}
+\caption[Bar Plot]{The Bar-Plot. Source: \url{http://www.r-tutor.com/elementary-statistics/qualitative-data/bar-graph}}
 \label{fig:barplot}
 \end{figure}
 
 
 
 \subsubsection{Bivariate}
+Visualizing a two-way cross-table can be done using an extension of the bar-plot.
+Several extensions exist. By far, the most informative and recommended figure, in this author's view, is the \emph{mosaic plot}, illustrated in Figure~\ref{fig:mosaic}. \marginnote{Mosaic Plot}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.7\linewidth]{art/mosaic1}
+\caption[Mosaic Plot]{Mosaic Plot. Source: \url{http://www.statmethods.net/advgraphs/mosaic.html}}
+\label{fig:mosaic}
+\end{figure}
+
+
 % mosaicplot
 
 
