@@ -333,7 +333,7 @@ This is where 6-sigma requirement comes along. It implies that the production is
 Updating Eq.(\ref{eq:3_sigma}) we get that the defective \emph{ppm} of 6-sigma is $0.002$. 
 This is obviously excellent news, except for the typically tremendous effort involved in achieving this level of quality.
 
-\begin{figure}[t]
+\begin{figure}[h]
 \centering
 \begin{minipage}{0.45\textwidth}
 \includegraphics[width=0.8\linewidth]{art/faillure_probability}
@@ -780,6 +780,7 @@ The QC and SPC terminology are not always consistent with statisticians' termino
 \item [p-value] A.k.a. \emph{observed significance}. The null probability of the observed, or ``more extreme'' events.
 \item [Significance Level] A.k.a. $\alpha$. The probability of a false positive.
 \item [Power] The probability of a true positive.
+\item [i.i.d.] ``Independent and identically distributed'' (i.i.d.) is an assumption made on the sampling distribution, meaning that samples are statistically independent, and all originating from the same distribution.
 
 \end{description}
 
@@ -791,9 +792,70 @@ The QC and SPC terminology are not always consistent with statisticians' termino
 \end{figure}
 
 
+The following sections of this chapter present particular statistical inference methods we will be using in the following chapters.
 
+
+\section{Goodness of Fit- GOF}
+Goodness of fit (GOF) deals with the inference on the sampling distribution, a.k.a., the generative process.
+It can be approached via rigorous hypothesis testing, or by visualizations.
+
+\subsection{QQplot and QQnorm}
+The fundamental idea of the \emph{quantile-quantile plot} (QQplot) is to compare the empirical quantiles in the sample, to the theoretical quantiles implied by the assumed distribution. If the theory and observations agree, we conclude our assumptions are plausible. 
+For the particular case of testing the normality of the data, the corresponding QQplot is known as a \emph{QQnorm plot}.
+
+Figure~\ref{fig:qqnorm_normal} illustrates a QQnorm plot of normal distributed data, while Figure~\ref{fig:qqnorm_non_normal} is the same for non-normal data.
+
+
+\begin{figure}[h]
+\centering
+\begin{minipage}{0.45\textwidth}
+\centering
+\includegraphics[height=0.3\textheight]{art/Qqnorm}
+\caption[QQnorm- Gaussian]{A QQplot of Gaussian distributed data.}
+\label{fig:qqnorm_normal}
+\end{minipage}\hfill
+\begin{minipage}{0.45\textwidth}
+\centering
+\includegraphics[height=0.3\textheight]{art/stab15qqnorm}
+\caption[QQnorm- non Gaussian]{A QQnorm plot of non Gaussian distributed data.}
+\label{fig:qqnorm_non_normal}
+\end{minipage}
+\end{figure}
+
+
+
+
+\subsection{Chi-Square GOF Test}
+The Chi-Square GOF test (not to be confused with the Chi-Square independence test), tests a hypothesis on the sampling distribution of discrete (attributes) data. 
+Note that it is very general, since all continuous variables may be discretized, simply by binning.
+
+\begin{definition}[Chi-Square GOF Test]
+Assume an i.i.d. sampling process.
+\end{definition} 
+
+
+
+\subsection{Kolmogorov-Smirnov GOF Test}
+
+
+
+
+\begin{extra}[GOF tests]
+content...
+\end{extra}
+
+
+% % % Capabilty Analysis
 
 \chapter{System Capability Analysis}
+\label{sec:capability_analysis}
+
+% Chebychev inequality for failure probability and other measures of inequality. Important! + confidence intervals
+% slope of qq plot
+% goodness of fit tests
+% Robust version of C_p (without the in-control assumption)
+
+
 In a system capability analysis, we essentially use statistical tools to measure the variability in a production process.
 This analysis can answer questions that are raised at the measuring, analyzing, and improving stages of the DMAIC cycle. 
 The methods we will discus compare between the processes variability and specification. 
@@ -807,10 +869,7 @@ In Chapter~\ref{sec:advanced_capability_analysis} we revisit the same problems, 
 The particular setup discusses in this chapter is also known as \emph{product specification}.\marginnote{Product Specification}
 When we use the actual time, and ordering of data samples, as in a control chart, we will no longer regard it as product specification but rather as a bona-fide capability analysis. This is the subject of Chapter~\ref{sec:advanced_capability_analysis}.
  
-% Chebychev inequality for failure probability and other measures of inequality. Important! + confidence intervals
-% slope of qq plot
-% goodness of fit tests
-% Robust version of C_p (without the in-control assumption)
+ 
 
 
 
