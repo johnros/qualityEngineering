@@ -486,12 +486,12 @@ For the following, we require the definition of the sample quantiles, themselves
 \begin{definition}[$\alpha$ Quantile]
 The $\alpha$-quantile of the sample is the observation that is larger than $(100\alpha)\%$, and smaller then  $(100(1-\alpha))\%$ of the sample. 
 \end{definition}
-The empirical maximum and minimum are then $x_{1.}$ and $x_{0.}$, respectively.
+The empirical maximum and minimum are then $x_{1.0}$ and $x_{0.0}$, respectively.
 
 
 \begin{definition}[The Range]
 \begin{align}
-	Range(x):= \max_i\set{x_i}-\min_i\set{x_i}= x_{1.}-x_{0.}
+	Range(x):= \max_i\set{x_i}-\min_i\set{x_i}= x_{1.0}-x_{0.0}
 \end{align}
 \end{definition}
 
@@ -530,9 +530,18 @@ We want, however, to summarize the \emph{joint} behaviour of the data.
 For this purpose, we assume that data comes in pairs, implying that $x$ and $y$ are of same length.
 The first measure, is naturally the celebrated (Pearson) correlation coefficient, that captures the level of linear association.
 
+
+\begin{definition}[(Empirical) Covariance]
+\begin{align}
+	Cov(x,y):= \frac{\sum_{i=1}^{n} (x_i-\bar{x})(y_i-\bar{y})}{n-1}
+\end{align}
+\end{definition}
+
+
+
 \begin{definition}[Pearson's Correlation Coefficient]
 \begin{align}
-	r(x,y):= \frac{\sum_{i=1}^{n} (x_i-\bar{x})(y_i-\bar{y})}{S(x) S(y)}
+	r(x,y):= \frac{(n-1) Cov(x,y)}{S(x) S(y)}
 \end{align}
 \end{definition}
 We can dwell into the meaning and intuition underlying Pearson's correlation coefficient, but we will not. 
@@ -549,7 +558,26 @@ We conclude by noting that \emph{regression coefficients} are also a measure of 
 
 
 
+\subsubsection{Multivariate Data}
+Multivariate data, both continuous (variables), and discrete (attributes), admits a vast realm of method for summary and visualization.
+Clearly, associations between several variables can be very complicated so that the more we try to summarize, the more information we give up. On the other hand, and unlike the univariate and bivariate case, our minds will need some type of simplification since they cannot grasp the raw data (did you ever try to imagine how $\mathbb{R}^4$ looks like?).
+As usual, we emphasize that our purpose is to summarize the joint association in the data. 
+For component-wise summaries, we can always apply the univariate summaries one variable at a time. 
 
+By far the most popular measures of joint association are the covariance matrix and correlation matrix.
+
+\begin{definition}[Covariance Matrix]
+For a multivariate data consisting of $x_1,\dots,x_p$ vectors, each with $n$ entries: $x_{i,1},\dots,x_{i,n}$, we define the (sample) covariance matrix to be a $p\times p$ matrix whose elements are the (sample) covariances between corresponding vectors:
+\begin{align}
+	\hat{\Sigma}_{i,j}:= Cov(x_i, x_j)
+\end{align}
+\end{definition}
+
+\begin{extra}
+The matrix $\hat{\Sigma}$ has many useful properties. 
+To begin with, it is symmetric, since $Cov(x,y)=Cov(y,x)$.
+The curious reader is referred to \cite{petersen_matrix_2006}, and references therein, for more details.
+\end{extra}
 
 
 \section{Visualization}
@@ -655,6 +683,11 @@ These are illustrated in figures \ref{fig:scatterplot}, and \ref{fig:hexbin}, re
 % heatmap
 
 \subsubsection{Multivariate Data}
+Since we cannot possibly visualize data in more than $3$-dimensions, and we clearly prefer data in $1$ or $2$ dimensions, the visualization of multivariate data will typically consist of summarizing the data into $1D$ or $2D$, and then applying the above mentioned visualization techniques.
+
+[TODO: image ]
+
+
 
 
 \subsection{On-Line Visualization}
@@ -710,7 +743,7 @@ These are illustrated in figures \ref{fig:scatterplot}, and \ref{fig:hexbin}, re
 %%%%%%%%% Bibliography %%%%%%%%%%%
 \newpage
 \addcontentsline{toc}{chapter}{Bibliography}
-\bibliographystyle{abbrvnat}
+\bibliographystyle{abbrvnat_JR}
 \bibliography{QualityEngineering}
 %\bibliography{quality_clean}
 \label{sec:bibliography}
