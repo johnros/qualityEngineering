@@ -432,6 +432,8 @@ EDA thus consist of computing interpretable summaries of the data, called \emph{
 
 
 \section{Summary Statistics}
+\label{sec:summary_statistics}
+
 We now distinguish between summary statistics that apply to attributes, categorical by definition, and variables, continuous by definition. 
 
 
@@ -610,6 +612,7 @@ Ask me for reference books or courses if this topic interests you.
 
 
 \section{Visualization}
+\label{sec:visualizations}
 
 \subsection{Visualizing Categorical Data}
 
@@ -763,6 +766,8 @@ This is the purpose of \emph{dashboards}, illustrated in Figure~\ref{fig:dashboa
 
 % % % % Statistical inference % % % %
 \chapter{Statistical Inference} 
+\label{sec:inference}
+
 The idea of extrapolating knowledge from a \emph{sample} to a population is known as \emph{statistical inference}.
 It encompasses the ideas of \emph{parameter estimation}, \emph{confidence intervals}, and \emph{hypothesis testing}.
 We will assume the reader is familiar with these ideas, but recall some required terminology.
@@ -898,10 +903,14 @@ The particular setup discusses in this chapter is also known as \emph{product sp
 When we use the actual time, and ordering of data samples, as in a control chart, we will no longer regard it as product specification but rather as a bona-fide capability analysis. This is the subject of Chapter~\ref{sec:advanced_capability_analysis}.
  
  
+\section{Specification Agnostic Capability Analysis}
+ 
+Because capability analysis, or product specification, is essentially the study of the CTQ's distribution, it can be approached with the aforementioned statistical tools such as univariate summary statistics and visualizations presented in Sections~\ref{sec:summary_statistics} and \ref{sec:visualizations}.
+If particular hypothesis want to be tested on the distribution of the CTQ, we may call upon the inference tools from Chapter~\ref{sec:inference}.
 
-
-
-
+\section{Specification Aware Capability Analysis}
+Classical statistical devices are not aimed at introducing the designed process's capabilities.
+We will thus introduce several measures that do so, collectively called \emph{process capability ratios} (PCR).\marginnote{Process Capability Ratio}
 
 
 
