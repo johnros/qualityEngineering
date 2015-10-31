@@ -78,6 +78,10 @@ Namely:
 \item $\targetValue$ is mid-way between LSL and USL.
 \end{enumerate}
 
+
+
+
+
 \subsection{Process Capability for a Non-Gaussian CTQ}
 The first assumption we will now relax is the Gaussianity of $CTQ$. 
 
@@ -98,7 +102,14 @@ For any random variable $\x$, with $\mu:=\expect{\x}$, $\sigma^2:=\expect{(\x-\m
 \end{align}
 \end{theorem}
 Since $3$ is obviously larger than $1.63299$, then an immediate application of Vysochanskij–Petunin inequality yields that for a unimodal CTQ, then $\pnc<0.0493$, or $49,383 ppm$.
-Again we see that if we wrongly assumed normality, we may have many more non-compliances than we thought. Then again, both Chebyshev and Vysochanskij–Petunin are very loose bounds. They should thus be seen as a worst-case, while reality is not as bad.
+Again we see that if we wrongly assumed normality, we may have many more non-compliances than we thought. Then again, both Chebyshev and Vysochanskij–Petunin are very loose bounds. 
+They should thus be seen as a worst-case, while reality is not as bad.
+
+Another important approach to dealing with non-Gaussianity of the CTQ is by a non-linear change of scale.
+As  a rule of thumb, you may try scale transformation such as a log-transform and a square-root, and then inspect the normality of the data with the tools discusses in Chapters~\ref{sec:exploratory} and \ref{sec:inference}.
+
+
+
 
 \subsection{Process Capability of a non-centred Process}
 We will now relax the assumption of the process being in statistical control ($\ctqExpect=\targetValue$).
@@ -120,3 +131,4 @@ An illustration is given in Figure~\ref{fig:cpk}.
 \url{https://www.spcforexcel.com/knowledge/process-capability/interactive-look-process-capability}.}
 \label{fig:Cpk_same_sigma_varying_avg}
 \end{figure}
+
