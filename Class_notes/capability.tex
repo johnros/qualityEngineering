@@ -29,7 +29,7 @@ If particular hypothesis want to be tested on the distribution of the CTQ, we ma
 
 \section{Specification Aware Capability Analysis}
 Classical statistical devices are not aimed at introducing the designed process's capabilities.
-We will thus introduce several measures that do so, collectively called \emph{process capability ratios} (PCR).\marginnote{Process Capability Ratio}
+We will thus introduce several measures that do so, collectively called \emph{process capability ratios} (PCR), or \emph{process capability index}.\marginnote{Process Capability Index}
 The first, and most basic PCR is the $\cp$ of a particular CTQ.
 
 \begin{definition}[$\cp$]
@@ -74,7 +74,8 @@ To derive Eq.(\ref{eq:pc_and_pnc}) we had to call upon several assumptions.
 Namely:
 \begin{enumerate}
 \item The CTQ has a normal distribution.
-\item The process is in statistical control ($\mu=\targetValue$).
+\item The process is in statistical control, i.e. $\ctqExpect$ is fixed over time
+\item The process is centered, i.e. $\ctqExpect=\targetValue$.
 \item $\targetValue$ is mid-way between LSL and USL.
 \end{enumerate}
 
@@ -82,7 +83,10 @@ Namely:
 
 
 
-\subsection{Process Capability for a Non-Gaussian CTQ}
+
+
+
+\subsection{Non-Conformance for a Non-Gaussian CTQ}
 The first assumption we will now relax is the Gaussianity of $CTQ$. 
 
 \begin{theorem}[Chebyshev's inequality]
@@ -108,11 +112,21 @@ They should thus be seen as a worst-case, while reality is not as bad.
 Another important approach to dealing with non-Gaussianity of the CTQ is by a non-linear change of scale.
 As  a rule of thumb, you may try scale transformation such as a log-transform and a square-root, and then inspect the normality of the data with the tools discusses in Chapters~\ref{sec:exploratory} and \ref{sec:inference}.
 
+We now consider $\cpHat$, i.e., the estimation of $\cp$.
+For a Gaussian CTQ, then $\sigma$ can naturally be estimated by $s$. 
+If, however, the Gaussianity assumption does not hold, even if the process is under control, then $s$ may be a poor estimator of $\sigma$.
+We may now recall that in Chapter~\ref{sec:exploratory} we encountered several measure of scale such as the IQR (Definition~\ref{def:iqr}), and MAD (Definition~\ref{def:mad}).
+Since $s$ is essentially a measure of scale, we may replace $s$ by the IQR, or the MAD, for example, and still retain a valid estimator of $\cp$.
+
+
+
+
+
 
 
 
 \subsection{Process Capability of a non-centred Process}
-We will now relax the assumption of the process being in statistical control ($\ctqExpect=\targetValue$).
+We will now relax the assumption of $\ctqExpect=\targetValue$, while still in statistical control.
 
 \begin{definition}[$\cpk$]
 \begin{align}
@@ -127,8 +141,8 @@ An illustration is given in Figure~\ref{fig:cpk}.
 \begin{figure}
 \centering
 \includegraphics[height=0.3\textheight]{art/Cpk_same_sigma_varying_avg}
-\caption[$\cpk$ and $\cp$]{$\cpk and \cp$. \newline
+\caption[$\cpk$ and $\cp$]{$\cpk$ and $\cp$. \newline
 \url{https://www.spcforexcel.com/knowledge/process-capability/interactive-look-process-capability}.}
-\label{fig:Cpk_same_sigma_varying_avg}
+\label{fig:cpk}
 \end{figure}
 
