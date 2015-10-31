@@ -953,7 +953,33 @@ Assuming $CTQ \sim \gauss{\mu, \sigma^2}$, and that the process is centred so th
 As a sanity check, we check this relation for a 3-sigma process.
 A 3-sigma process implies that $\cp=1$, and Eq.(\ref{eq:pc_and_pnc}), implies that $\pnc=0.0027$, as we have already seen in six-sigma introduction in Section~\ref{sec:six_sigma}.
 
+To derive Eq.(\ref{eq:pc_and_pnc}) we had to call upon several assumptions.
+Namely:
+\begin{enumerate}
+\item The CTQ has a normal distribution.
+\item The process is in statistical control ($\mu=\targetValue$).
+\item $\targetValue$ is mid-way between LSL and USL.
+\end{enumerate}
+The first assumption we will now relax is the Gaussianity of $CTQ$. 
 
+\begin{theorem}[Chebyshev's inequality]
+For any random variable $\x$, with $\mu:=\expect{\x}$, and $\sigma^2:=\expect{(\x-\mu)^2}$, then
+\begin{align}
+	P(|\x-\mu|>k\sigma)=\frac{1}{k^2}
+\end{align}
+\end{theorem}
+An immediate application of Chebyshev's inequality yields that for \emph{any} distribution of the CTQ, then $\pnc<0.11$.
+This is nice, but far from amazing, since it means that a 3-sigma process, assumingly with $2,700 ppm$, may actually have $111,111 ppm$, if we were wrong about the Gaussianity assumption.
+We now present a similar bound on $\pnc$ that applies to all \emph{unimodal} CTQ distributions.
+
+\begin{theorem}[Vysochanskij–Petunin inequality]
+For any random variable $\x$, with $\mu:=\expect{\x}$, $\sigma^2:=\expect{(\x-\mu)^2}$, with unimodal distribution, and for $k>\sqrt{8/3}=1.63299$, then 
+\begin{align}
+	P(|\x-\mu|>k\sigma)=\frac{4}{9 k^2}
+\end{align}
+\end{theorem}
+Since $3$ is obviously larger than $1.63299$, then an immediate application of Vysochanskij–Petunin inequality yields that for a unimodal CTQ, then $\pnc<0.0493$, or $49,383 ppm$.
+Again we see that if we wrongly assumed normality, we may have many more non-compliances than we thought. Then again, both Chebyshev and Vysochanskij–Petunin are very loose bounds. They should thus be seen as a worst-case, while reality is not as bad.
 
 
 
