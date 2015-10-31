@@ -911,46 +911,39 @@ If particular hypothesis want to be tested on the distribution of the CTQ, we ma
 \section{Specification Aware Capability Analysis}
 Classical statistical devices are not aimed at introducing the designed process's capabilities.
 We will thus introduce several measures that do so, collectively called \emph{process capability ratios} (PCR).\marginnote{Process Capability Ratio}
-The first, and most basic PCR is the $C_p$.
+The first, and most basic PCR is the $\cp$ of a particular CTQ.
 
-\begin{definition}[$C_p$]
+\begin{definition}[$\cp$]
 \begin{align}
+\label{eq:cp}
 	C_p:= \frac{USL-LSL}{6 \sigma}, 
 \end{align}
 where $\sigma$ is the standard deviation of the CTQ.
 
-Assuming $LSL$ and $USL$ are symmetric about the target value, we have $\Delta:= \frac{1}{2}(USL-LSL)$, and thus
-\begin{align}
-	C_p:= \frac{2 \Delta}{6 \sigma}, 
-\end{align}
 \end{definition}
-Clearly $C_p$ is a process parameter, that needs to be estimated.
-\begin{definition}[$\hat{C}_p$]
+Clearly $\cp$ is a process parameter, that needs to be estimated.
+\begin{definition}[$\cpHat$]
 \begin{align}
-	\hat{C}_p:= \frac{USL-LSL}{6 \hat{\sigma}}, 
+	\cpHat:= \frac{USL-LSL}{6 \hat{\sigma}}, 
 \end{align}
 where $\hat{\sigma}$ is some estimate of the standard deviation of the CTQ.
 \end{definition}
 The most natural $\hat{\sigma}$ is the sample standard deviation $s$, but we will explore other options in the following.
 
 
-[TODO]
-Obviously, there is a relation between $C_p$ and the probability for non-compliance, we shall denote as $p_{NC}$.
-\begin{align}
-	p_{NC} &:= P(CTQ < LSL \union CTQ > USL)	\\	
-	&:= P(CTQ < LSL) + P(CTQ > USL) 
-\end{align}
-Assuming $CTQ$ is symmetrically distributed:
-\begin{align}
-	P(CTQ < LSL) + P(CTQ > USL) &= 2 P(CTQ < LSL)
-\end{align}
-Assuming $CTQ$ is Gaussian distributed about its target value $\mu$, and denoting $Z \sim \gauss{0,1}$:
-\begin{align}
-	2 P(CTQ < LSL) &= 2 P(Z < \frac{-\Delta}{\sigma}) \nonumber \\ 
-	&= 2 P(Z < \frac{-C_p}{3}) \label{eq:cp_and_non_conformance}
-\end{align}
-Now verifying Eq.(\ref{eq:cp_and_non_conformance}), by assuming a 3-sigma process that exhausts its specification, we get: 
-$\Delta=3 \sigma \Rightarrow C_p=1$
+There is a relation between $C_p$ and the probability of non-conformance. 
+To explore this relation we introduce the following notation, under the assumption of a symmetric specification about its target value.
+\begin{tcolorbox}
+\textbf{Collecting Notation} \newline
+$\targetValue:= (USL+LSL)/2$, the target value. \newline
+$\delta:= (USL-LSL)/2$.  \newline
+$\ctqExpect:= \expect{CTQ}$, the expected CTQ. 
+\end{tcolorbox}
+
+With our new notation Eq.(\ref{eq:cp}) is now $\cp=\frac{\delta}{3 \sigma}$.
+
+
+
 
 
 
