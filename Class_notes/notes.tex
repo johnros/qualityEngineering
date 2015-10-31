@@ -934,13 +934,19 @@ The most natural $\hat{\sigma}$ is the sample standard deviation $s$, but we wil
 There is a relation between $C_p$ and the probability of non-conformance. 
 To explore this relation we introduce the following notation, under the assumption of a symmetric specification about its target value.
 \begin{tcolorbox}
+\footnotesize
 \textbf{Collecting Notation} \newline
 $\targetValue:= (USL+LSL)/2$, the target value. \newline
 $\delta:= (USL-LSL)/2$.  \newline
-$\ctqExpect:= \expect{CTQ}$, the expected CTQ. 
+$\ctqExpect:= \expect{CTQ}$, the expected CTQ. \newline
+$1-\pnc:= P(CTQ \in [LSL,USL])$, the probability of compliance, thus $\pnc$ is the probability of non compliance. 
 \end{tcolorbox}
 
 With our new notation Eq.(\ref{eq:cp}) is now $\cp=\frac{\delta}{3 \sigma}$.
+Assuming $CTQ \sim \gauss{\mu, \sigma^2}$, and that the process is centred so that $\ctqExpect=\targetValue$, then $\cp$ is related to $\pnc$ via
+\begin{align}
+ \pnc= 2\, \Phi(-3 \cp)
+\end{align}
 
 
 
