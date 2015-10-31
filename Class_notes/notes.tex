@@ -296,6 +296,8 @@ have regarded it as just another “program” to improve quality. During the 19
 
 
 \subsection{Six-Sigma}
+\label{sec:six_sigma}
+
 Quoting \cite{montgomery_introduction_2007}:
 \begin{quote}
 Products with many components typically have many opportunities for failure or defects to occur. Motorola developed the Six-Sigma program in the late 1980s as a response to the demand for their products. The focus of six-sigma is reducing variability in key product quality characteristics to the level at which failure or defects are extremely unlikely.
@@ -945,9 +947,11 @@ $1-\pnc:= P(CTQ \in [LSL,USL])$, the probability of compliance, thus $\pnc$ is t
 With our new notation Eq.(\ref{eq:cp}) is now $\cp=\frac{\delta}{3 \sigma}$.
 Assuming $CTQ \sim \gauss{\mu, \sigma^2}$, and that the process is centred so that $\ctqExpect=\targetValue$, then $\cp$ is related to $\pnc$ via
 \begin{align}
+\label{eq:pc_and_pnc}
  \pnc= 2\, \Phi(-3 \cp)
 \end{align}
-
+As a sanity check, we check this relation for a 3-sigma process.
+A 3-sigma process implies that $\cp=1$, and Eq.(\ref{eq:pc_and_pnc}), implies that $\pnc=0.0027$, as we have already seen in six-sigma introduction in Section~\ref{sec:six_sigma}.
 
 
 
