@@ -202,6 +202,7 @@ Eq.(\ref{eq:cpm}) readily shows that just like the $\cpk$, then $\cpm<\cp$.
 Since the various process capability indexes are merely population parameters that depend on specifications, we can also construct confidence intervals (CIs) for them, which may be very informative if sample sizes are small.
 The simplest case is that of $\cp$. Being a monotone transformation of $\sigma$, we can call upon confidence intervals for the variance of a normal population, so that with probability $1-\alpha$:
 \begin{align}
+\label{eq:ci_for_cp}
 	\cp \in \left[ 
 		\cpHat \sqrt{\frac{\chi^2_{1-\alpha/2,n-1}}{n-1}},
 		\cpHat \sqrt{\frac{\chi^2_{\alpha/2,n-1}}{n-1}}
@@ -209,3 +210,30 @@ The simplest case is that of $\cp$. Being a monotone transformation of $\sigma$,
 \end{align}
 
 Intervals for the other capability indexes, are available in \cite{montgomery_introduction_2007} and references therein. 
+
+
+
+
+\subsection{Testing Hypotheses on Capability}
+Consider a supply contract, which requires production to have $\cp>1.5$. 
+It may easily be the case, that the $\cp>1.5$, even if $\cpHat<1.5$, especially if the sample size is small.
+It thus makes a lot of sense, to design hypothesis tests on process capabilities. 
+We observe that for an i.i.d. sample from a Gaussian population, where $\cpHat$ is estimated with $s$, then
+\begin{align}
+	(n-1) \left( \frac{\cp}{\cpHat} \right)^2  \sim \chi^2_{n-1}
+\end{align} 
+so that $(n-1) \left( \frac{\cp}{\cpHat} \right)^2 $ may serve as test statistic.
+
+\begin{example}[$\cp$ test for 6-sigma compliance]
+\begin{align*}
+	H_0: \cp &\leq 2	\\
+	H_1:\cp &> 2 \\
+	(n-1) \left( \frac{2}{\cpHat} \right)^2  &\overset{H_0}{\sim} \chi^2_{n-1}
+\end{align*}
+so that the $1-\alpha$ rejection region in $\cpHat$ scale is 
+\begin{align*}
+	\cpHat > \sqrt{\frac{4 (n-1)}{\chi^2_{n-1,1-\alpha}}} .
+\end{align*}
+\end{example}
+Note that we should not be testing this hypothesis with the confidence interval in Eq.(\ref{eq:ci_for_cp}) because this particular hypothesis is directional.
+
