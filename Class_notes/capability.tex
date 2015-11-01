@@ -20,12 +20,18 @@ In Chapter~\ref{sec:advanced_capability_analysis} we revisit the same problems, 
 
 The particular setup discusses in this chapter is also known as \emph{product specification}.\marginnote{Product Specification}
 When we use the actual time, and ordering of data samples, as in a control chart, we will no longer regard it as product specification but rather as a bona-fide capability analysis. This is the subject of Chapter~\ref{sec:advanced_capability_analysis}.
+
+
+
  
  
 \section{Specification Agnostic Capability Analysis}
  
 Because capability analysis, or product specification, is essentially the study of the CTQ's distribution, it can be approached with the aforementioned statistical tools such as univariate summary statistics and visualizations presented in Sections~\ref{sec:summary_statistics} and \ref{sec:visualizations}.
 If particular hypothesis want to be tested on the distribution of the CTQ, we may call upon the inference tools from Chapter~\ref{sec:inference}.
+
+
+
 
 \section{Specification Aware Capability Analysis}
 Classical statistical devices are not aimed at introducing the designed process's capabilities.
@@ -70,12 +76,37 @@ Assuming $CTQ \sim \gauss{\mu, \sigma^2}$, and that the process is centred so th
 As a sanity check, we check this relation for a 3-sigma process.
 A 3-sigma process implies that $\cp=1$, and Eq.(\ref{eq:pc_and_pnc}), implies that $\pnc=0.0027$, as we have already seen in six-sigma introduction in Section~\ref{sec:six_sigma}.
 
-To derive Eq.(\ref{eq:pc_and_pnc}) we had to call upon several assumptions.
+\cite{montgomery_introduction_2007} recommends the following $\cpHat$ values:
+
+\begin{tabular}{|c|c|c|}
+\hline  & $\cpHat$ Value & Implied ppm \\ 
+\hline \hline Existing processes
+ & 1.33
+ & 66 \\ 
+\hline New processes
+ & 1.50
+ & 6.8 \\ 
+\hline Safety, strength, or critical
+parameter, existing process
+ & 1.50
+ & 6.8 \\ 
+\hline Safety, strength, or critical
+parameter, new process
+ & 1.67
+ & 0.5 \\ 
+\hline Six Sigma quality process & 2.00 &  0.002 \\ 
+\hline 
+\bigskip
+\end{tabular} 
+
+
+
+To derive Eq.(\ref{eq:pc_and_pnc}), and thus the ppm column in the table, we had to call upon several assumptions.
 Namely:
 \begin{enumerate}
-\item The CTQ has a normal distribution.
 \item The process is in statistical control, i.e. $\ctqExpect$ is fixed over time
-\item The process is centered, i.e. $\ctqExpect=\targetValue$.
+\item The CTQ has a normal distribution.
+\item The process is centred, i.e. $\ctqExpect=\targetValue$.
 \item $\targetValue$ is mid-way between LSL and USL.
 \end{enumerate}
 
@@ -134,9 +165,14 @@ We will now relax the assumption of $\ctqExpect=\targetValue$, while still in st
 \end{align}
 where $\cpu:= \frac{USL- \ctqExpect}{3 \sigma}$ and $\cpl:= \frac{\ctqExpect-LSL}{3 \sigma}$.
 \end{definition}
-For a non-centered process, this definition is more informative on the probability of non-compliance.
-Generally, $\cpk \leq \cp$, with equality holding under statistical control ($\ctqExpect=\targetValue$).
+For a non-centred process, this definition is more informative on the probability of non-compliance.
+Indeed, Eq.(\ref{eq:pc_and_pnc}) will not hold, but we can derive an updated version:
+\begin{align}
+	 \pnc \approx \Phi(-3 \cpk)[TODO: fix]
+\end{align}
+Generally, $\cpk \leq \cp$, with equality holding for centred processes ($\ctqExpect=\targetValue$).
 An illustration is given in Figure~\ref{fig:cpk}.
+
 
 \begin{figure}
 \centering
@@ -146,3 +182,30 @@ An illustration is given in Figure~\ref{fig:cpk}.
 \label{fig:cpk}
 \end{figure}
 
+
+
+The $\cpk$ index is motivated by conserving the relation between the index and the fallout rate $\pnc$.
+Another index, known as $\cpm$, or the \emph{Taguchi} capability index, deals with the non centring slightly differently. It is motivated by the observation that for $\ctqExpect=\targetValue$, then $\sigma=\sqrt{\expect{(CTQ-\targetValue)^2}}$. This relation does not hold if $\ctqExpect \not=\targetValue$, which leads us to the following definition:
+\begin{definition}[$\cpm$]
+\begin{align}
+		\cpm &:= \frac{USL-LSL}{6 \sqrt{\expect{(CTQ-\targetValue)^2}}} \\
+		&= 	\frac{USL-LSL}{6 \sqrt{\sigma^2+(\ctqExpect-\targetValue)^2}} \\ 
+		&= \frac{\cp}{\sqrt{1+(\frac{\ctqExpect-\targetValue}{\sigma})^2}}. \label{eq:cpm}
+\end{align}
+\end{definition}
+Eq.(\ref{eq:cpm}) readily shows that just like the $\cpk$, then $\cpm<\cp$. 
+
+
+
+
+\subsection{Interval Estimation for Capability Indexes}
+Since the various process capability indexes are merely population parameters that depend on specifications, we can also construct confidence intervals (CIs) for them, which may be very informative if sample sizes are small.
+The simplest case is that of $\cp$. Being a monotone transformation of $\sigma$, we can call upon confidence intervals for the variance of a normal population, so that with probability $1-\alpha$:
+\begin{align}
+	\cp \in \left[ 
+		\cpHat \sqrt{\frac{\chi^2_{1-\alpha/2,n-1}}{n-1}},
+		\cpHat \sqrt{\frac{\chi^2_{\alpha/2,n-1}}{n-1}}
+	\right]
+\end{align}
+
+Intervals for the other capability indexes, are available in \cite{montgomery_introduction_2007} and references therein. 
