@@ -78,7 +78,8 @@ A standard design decision is setting the center line as the grand average of th
 If it is unclear to you, how may we compute the grand average of a process that is still evolving and has not finished, you are right! We thus introduce the ideas of \emph{Phase I} and \emph{Phase II}. \marginnote{Phase I/II}
 Initially we assume the process it out of control, we identify and remove assignable causes of variation, until we are left with a ``well-behaved'' subset of data points. We call this Phase I, and we use it to initialize required quantities such as the centre line. 
 Eq.(\ref{eq:centerline}) thus implies that in Phase I we were left with $\tau$ samples assumingly in statistical control.
-After the chart has been calibrated, and major assignable sources of variability removed, we can focus on monitoring the process, known as Phase II.
+After the chart has been calibrated, and major assignable sources of variability removed, we can finally start monitoring the process, known as Phase II.
+
 
 
 Other design decisions to be made are:
@@ -87,6 +88,7 @@ Other design decisions to be made are:
 \item Sample size in each sample.
 \item Rational groupings (within-period sampling scheme).
 \item Frequency of samples (between-period sampling scheme). 
+\item Other stopping rules.
 \end{enumerate}
 These deign decisions ultimately govern the error rate (false positive rate) and power (false negative rate) of the chart, which in turn, incur some financial costs. 
 For now we will restrict attention to type I/II error rates, until Section~\ref{sec:economical_considerations} where we consider these choices as economical optimization problems.
@@ -96,10 +98,10 @@ We start by a type I error rate analysis.
 Denote $\alpha_t$ the false alarm probability at period $t$.
 How do our design choices affect $\alpha_t$?
 \begin{align}
-	\alpha_t &:= 1-P(\bar{x}_t \in [UCL,LCL]) \\
-	&= 2 P(\bar{x}_t<UCL) \\
-	&= 2 P(Z<\frac{UCL-\mu}{\sigma_{\bar{x}}}) \\
-	&= 2 P(Z < -k) \\
+	\alpha_t &:= 1-P_{H_0}(\bar{x}_t \in [UCL,LCL]) \\
+	&= 2 P_{H_0}(\bar{x}_t<UCL) \\
+	&= 2 P_{H_0}(Z<\frac{UCL-\mu}{\sigma_{\bar{x}}}) \\
+	&= 2 P_{H_0}(Z < -k) \\
 	&= 2 \Phi(-k)
 \end{align}
 The above follows from assuming that $UCL:=\mu + k \sigmabar, LCL:= \mu - k \sigmabar$, $\x_{it}\sim \gauss{\mu,\sigma}$, and denoting $\sigmabar:= \frac{\sigma}{n}$.
@@ -109,9 +111,84 @@ Since we assumed the process is fixed over time, then so is $\alpha_t$ and we ca
 A power analysis for our design choices follows the same lines.
 Denote $\beta_t$, and $\pi_t=1-\beta_t$ the type II error rate, and power, at period $t$.
 We then have
+\begin{align}
+	\pi_t &:= 1-P_{H_1}(\bar{x}_t \in [UCL,LCL])
+\end{align}
+and the rest follow from the distribution of $\bar{x}$ when the process is out of control.
 
 
-Another important related quantity is the \emph{average run length} (ARL), which is the number of periods between two crossings of control limits. 
+
+Another important related quantity is the \emph{average run length} (ARL), which is the expected number of periods between two crossings of control limits. 
+We denote by $ARL_0$ the average run length when the process is under statistical control, and $ARL_1$ otherwise\footnote{Note that it is implied that the process has a \emph{stable} distribution, even though it is out if control.}. 
+If $\bar{x}_t$ are statistically independent, then clearly the number of periods until a crossing is geometrically distributed. Using the expectation of a geometric random variable we can conclude that 
+\begin{align}
+	ARL_0=1/\alpha \\
+	ARL_1=1/\pi
+\end{align}
+Clearly we can convert to time units by multiplying the ARL by the duration of sampling interval.
+
+
+Now assume that we are unhappy with some control chart. 
+It simply makes too many false alarms, or takes too long to detect loss of statistical control.
+What can we do about it?
+Well, this is exactly the same question as when increasing the power or lowering the type I error of a statistical hypothesis test. This is obviously no coincidence, since control charts are nothing but a statistical test!
+Here are some action courses:
+\begin{enumerate}
+\item Increase $k$. This is the same as shrinking a rejection region: 
+it will decrease the false alarm rate, at the cost of statistical sensitivity.
+\item Increase $n$. Brilliant! Statistically, there is nothing to lose. It may, however, cost time and money.
+\item Increase the sampling frequency. Brilliant again! Nothing to lose, except time and money...
+\item Change the sampling scheme within period. We elaborate on this in Section~\ref{sec:rational_grouping}.
+\item Add other stopping rules: 
+this acts just like growing a rejection region. It will increase power, at the cost of type I error. We elaborate in Section~\ref{sec:stopping_rules}.
+\item Pool together more time points or more variables. We elaborate on this in sections \ref{sec:running_windows} and  \ref{sec:multivariate}, respectively. 
+\end{enumerate}
+
+
+
+\subsection{Rational Groupings}
+\label{sec:rational_grouping}
+
+
+
+\subsection{Other Stopping Rules}
+\label{sec:stopping_rules}
+
+
+
+
+
+
+\section{Running Window Charts}
+\label{sec:running_windows}
+\subsection{$EWMA$ Chart}
+\subsection{$Cumsum$ Chart}
+
+
+
+
+\section{Economical Design of Control Charts}
+\label{sec:economical_considerations}
+
+
+
+
+
+\section{Multivariate Control Charts}
+\label{sec:multivariate}
+% Wishart
+% Srivastava Du
+% PCA
+% Higher criticism
+
+
+
+
+
+\section{Non-Statistical Target Functions}
+
+
+
 
 
 
@@ -127,27 +204,6 @@ Another important related quantity is the \emph{average run length} (ARL), which
 \subsection{$u$ Chart}
 \subsection{Time Series Model}
 \subsection{Regression Control Chart}
-
-
-
-\section{Running Window Charts}
-\subsection{$EWMA$ Chart}
-\subsection{$Cumsum$ Chart}
-
-\section{Economical Design of Control Charts}
-\label{sec:economical_considerations}
-
-
-\section{Multivariate Control Charts}
-% Wishart
-% Srivastava Du
-% PCA
-% Higher criticism
-
-
-
-\subsection{Non-Statistical Target Functions}
-
 
 
 
