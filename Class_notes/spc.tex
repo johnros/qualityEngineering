@@ -118,7 +118,7 @@ and the rest follow from the distribution of $\bar{x}$ when the process is out o
 
 
 
-Another important related quantity is the \emph{average run length} (ARL), which is the expected number of periods between two crossings of control limits. 
+Another important related quantity is the \emph{average run length} (ARL), which is the expected number of periods between two crossings of control limits. \marginnote{ARL}
 We denote by $ARL_0$ the average run length when the process is under statistical control, and $ARL_1$ otherwise\footnote{Note that it is implied that the process has a \emph{stable} distribution, even though it is out if control.}. 
 If $\bar{x}_t$ are statistically independent, then clearly the number of periods until a crossing is geometrically distributed. Using the expectation of a geometric random variable we can conclude that 
 \begin{align}
@@ -126,6 +126,7 @@ If $\bar{x}_t$ are statistically independent, then clearly the number of periods
 	ARL_1=1/\pi
 \end{align}
 Clearly we can convert to time units by multiplying the ARL by the duration of sampling interval.
+This is known as the \emph{average time to signal} (ATS).\marginnote{ATS}
 
 
 Now assume that we are unhappy with some control chart. 
@@ -146,14 +147,40 @@ this acts just like growing a rejection region. It will increase power, at the c
 
 
 
+\subsection{Control Limits and the Alarm Rate}
+As previously discussed, $k$ governs the tradeoff between type I and type II errors, or sensitivity versus specificity.
+It is very common to set $k=3$. 
+For a Normally distributed CTQ, this implies $2,700$ false alarms per million periods. 
+This also implies an ARL of $1/\alpha=370$ periods.
+We may however, discard this convention, and simply set $k$ so that it guarantees some desirable false alarm rate. Simply find the $k$ that satisfies $2\Phi(-k)=\alpha$.
+
+
+
+
 \subsection{Rational Groupings}
 \label{sec:rational_grouping}
+Recall that at each period we compute the average of $n$ samples. 
+How should we draw this samples? All at the same time from the same machine?
+At different times from the same machine?
+Many configurations are possible, and the correct approach depends on the type of out-of-control behaviour one seeks. 
+\emph{Rational groupings} merely reminds us to sample ``rationally'' in each period. 
+Quoting \cite{montgomery_introduction_2007}'s words of caution:
+\begin{quotation}
+\dots we can often make any process appear to be in statistical control just by stretching out the interval between observations in the sample.
+\end{quotation}
+
+
+
 
 
 
 \subsection{Other Stopping Rules}
 \label{sec:stopping_rules}
 
+The assumption that we may only create alarms if $\bar{x}$ exceeds some control limits is needle sly restrictive.
+A first relaxation is by allowing multiple regions.
+It is quite common to define \emph{warning limits} which only call for inspection, and \emph{action limits}. Each may have its own alarm rate.
+We may even change the sapling scheme if limits are breached. Increasing the sampling rate once the warning limits have been breached is known as \emph{adaptive sampling}, or \emph{variable sampling}.\marginnote{Adaptive Sampling}
 
 
 
@@ -206,5 +233,11 @@ this acts just like growing a rejection region. It will increase power, at the c
 \subsection{Regression Control Chart}
 
 
+
+
+
+\section{Notes}
+% White noise process
+% One sided control chart
 
 
