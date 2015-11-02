@@ -183,6 +183,28 @@ It is quite common to define \emph{warning limits} which only call for inspectio
 We may even change the sapling scheme if limits are breached. Increasing the sampling rate once the warning limits have been breached is known as \emph{adaptive sampling}, or \emph{variable sampling}.\marginnote{Adaptive Sampling}
 
 
+Another, more strict approach, is to define multiple sets of stopping rules
+Here an example:
+\begin{enumerate}
+\item One or more points outside of the control limits.
+\item Two of three consecutive points outside the 2-sigma warning limits but still inside the control limits.
+\item Four of five consecutive points beyond the 1-sigma limits.
+\item A run of 8 consecutive points on one side of the center line.
+\end{enumerate}
+The above set of rules is known as the Western Electric Rules, a.k.a., the \emph{WECO} rules.\marginnote{WECO}
+Augmenting the set of rules is the same as increasing a rejection region. It adds more sensitivity, at the cost of false alarms. If the rules are properly selected, the gain in sensitivity is worth the increase in false alarms.
+
+As a quick exercise, we may compute $\alpha$  for $m$ independent rules, each with $\alpha^*$ type I error itself:
+\begin{align}
+	\alpha=1-(1-\alpha^*)^m.
+\end{align}
+Having 4 rules, like WECO, each at $\alpha^*0.0027$ implies that we actually have $\alpha=0.01$.
+
+\begin{extra}[Stopping Rules]
+There are many sets of stopping rules. 
+These include WECO, Nelson, AIAG, Juran, Hughes, Duncan, Gitlow, Westgard, and more. 
+See \url{http://www.quinn-curtis.com/spcnamedrulesets.htm} for a quick introduction.
+\end{extra}
 
 
 
