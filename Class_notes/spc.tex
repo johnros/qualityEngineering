@@ -54,14 +54,16 @@ Process capability analysis may benefit from the ideas of control charts. We emp
 An illustration of a \barxChart is given in Figure~\ref{fig:bar_x_chart}. 
 The ingredients of this chart is the centerline, the control limits, and $\bar{x}$ evolving in time. 
 If at each period $t=1,\dots,\tau$, we compute the average of $n$ samples, we denote $\bar{x}_t:=1/n \sum_{i=1}^n x_{it}$.
+
 \begin{figure}[h]
 \centering
-\begin{pgfpicture}
-    \pgftext{\pgfimage[width=0.6\linewidth, height=0.3\textheight]{}}
-\end{pgfpicture}
-\caption{\barxChart.}
+\includegraphics[height=0.3\textheight]{art/X-chartExample}
+\caption[\barxChart]{\barxChart. \newline \url{https://mvpprograms.com/help/P-mvpstats/spc/WhatAreControlCharts}}
 \label{fig:bar_x_chart}
 \end{figure}
+
+
+
 
 
 
@@ -81,16 +83,27 @@ After the chart has been calibrated, and major assignable sources of variability
 
 Other design decisions to be made are:
 \begin{enumerate}
+\item UCL and LCL \footnote{Do not confuse with USL and LSL!}.
 \item Sample size in each sample.
 \item Sampling scheme.
 \item Frequency of samples. 
-\item UCL and LCL \footnote{Do not confuse with USL and LSL!}.
 \end{enumerate}
+These deign decisions ultimately govern the error rate (false positive rate) and power (false negative rate) of the chart, which in turn, incur some financial costs. 
+For now we will restrict attention to type I/II error rates, until Section~\ref{sec:economical_considerations} where we consider these choices as economical optimization problems.
 
-These considerations are demonstrated for the \barxChart in the following subsections, but equally apply to other control charts.
-
-\subsection{title}
-
+For ease of exposition, control chart design is demonstrated for the \barxChart, but equally apply to other control charts.
+We start by a type I error rate analysis. 
+Denote $\alpha_t$ the false alarm probability at period $t$.
+How do our design choices affect $\alpha_t$?
+\begin{align}
+	\alpha_t &:= 1-P(\bar{x}_t \in [UCL,LCL]) \\
+	&= 2 P(\bar{x}_t<UCL) \\
+	&= 2 P(Z<\frac{UCL-\mu}{\sigma_{\bar{x}}}) \\
+	&= 2 P(Z < -k) \\
+	&= 2 \Phi(-k)
+\end{align}
+The above follows from assuming that $UCL:=\mu + k \sigmabar, LCL:= \mu - k \sigmabar$, $\x_{it}\sim \gauss{\mu,\sigma}$, and denoting $\sigmabar:= \frac{\sigma}{n}$.
+A typical design choice is $k=3$, known as 3-sigma controls [TODO: verify] and false alarm rate of $\alpha_t=0.0027$.
 
 
 
@@ -112,6 +125,9 @@ These considerations are demonstrated for the \barxChart in the following subsec
 \section{Running Window Charts}
 \subsection{$EWMA$ Chart}
 \subsection{$Cumsum$ Chart}
+
+\section{Economical Design of Control Charts}
+\label{sec:economical_considerations}
 
 
 \section{Multivariate Control Charts}
