@@ -51,8 +51,9 @@ The chart borrows its name from the fact that it is essentially a visualization 
 The chart is also augmented with visual aids that help in determining if the process is \emph{in control}, i.e., if it consistent with its own history. 
 Process capability analysis may benefit from the ideas of control charts. We emphasize however, that control charts have no information on the specifications of the process, merely on its own history.
 
-An illustration of a \barxChart is given in Figure~\ref{fig:bar_x_chart}
-
+An illustration of a \barxChart is given in Figure~\ref{fig:bar_x_chart}. 
+The ingredients of this chart is the centerline, the control limits, and $\bar{x}$ evolving in time. 
+If at each period $t=1,\dots,\tau$, we compute the average of $n$ samples, we denote $\bar{x}_t:=1/n \sum_{i=1}^n x_{it}$.
 \begin{figure}[h]
 \centering
 \begin{pgfpicture}
@@ -61,6 +62,34 @@ An illustration of a \barxChart is given in Figure~\ref{fig:bar_x_chart}
 \caption{\barxChart.}
 \label{fig:bar_x_chart}
 \end{figure}
+
+
+
+Figure~\ref{fig:bar_x_chart} makes it evident \barxChart requires several design decisions.
+A standard design decision is setting the center line as the grand average of the process: 
+\begin{align}
+\label{eq:centerline}
+	1/\tau \sum_{t=1}^\tau \bar{x}_t
+\end{align}
+
+
+If it is unclear to you, how may we compute the grand average of a process that is still evolving and has not finished, you are right! We thus introduce the ideas of \emph{Phase I} and \emph{Phase II}. \marginnote{Phase I/II}
+Initially we assume the process it out of control, we identify and remove assignable causes of variation, until we are left with a ``well-behaved'' subset of data points. We call this Phase I, and we use it to initialize required quantities such as the centre line. 
+Eq.(\ref{eq:centerline}) thus implies that in Phase I we were left with $\tau$ samples assumingly in statistical control.
+After the chart has been calibrated, and major assignable sources of variability removed, we can focus on monitoring the process, known as Phase II.
+
+
+Other design decisions to be made are:
+\begin{enumerate}
+\item Sample size in each sample.
+\item Sampling scheme.
+\item Frequency of samples. 
+\item UCL and LCL \footnote{Do not confuse with USL and LSL!}.
+\end{enumerate}
+
+These considerations are demonstrated for the \barxChart in the following subsections, but equally apply to other control charts.
+
+\subsection{title}
 
 
 
