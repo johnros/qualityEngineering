@@ -30,11 +30,8 @@ In the context of process control, a subset of tools has gained the nick-name ``
 %\end{pgfpicture}
 
 
-\section{A soft start. The $\bar{x}$ Chart}
-We demonstrate the concepts and utility of Control Charts with the simplest, yet most popular of them all, the $\bar{x}$-chart. 
-The chart borrows its name from the fact that it is essentially a visualization of the time evolution of the average ($\bar{x}$) of the CTQ of a sample of products. 
-The chart is also augmented with visual aids that help in determining if the process is \emph{in control}, i.e., if it consistent with its own history. 
-Process capability analysis may benefit from the ideas of control charts. We emphasize however, that control charts have no information on the specifications of the process, merely on its own history.
+\section{A soft start. The \barxChart}
+
 
 % basic idea
 % descion variables: sample size, intervals, statistic, limits, rational groupins, type I error rate, multiple criteria
@@ -47,6 +44,23 @@ Process capability analysis may benefit from the ideas of control charts. We emp
 % FDR controlling limits
 % western electric rules. The type I error probability of the rule.
 % nelson rules
+
+
+We demonstrate the concepts and utility of Control Charts with the simplest, yet most popular of them all, the \barxChart. 
+The chart borrows its name from the fact that it is essentially a visualization of the time evolution of the average ($\bar{x}$) of the CTQ of a sample of products. 
+The chart is also augmented with visual aids that help in determining if the process is \emph{in control}, i.e., if it consistent with its own history. 
+Process capability analysis may benefit from the ideas of control charts. We emphasize however, that control charts have no information on the specifications of the process, merely on its own history.
+
+An illustration of a \barxChart is given in Figure~\ref{fig:bar_x_chart}
+
+\begin{figure}[h]
+\centering
+\begin{pgfpicture}
+    \pgftext{\pgfimage[width=0.6\linewidth, height=0.3\textheight]{}}
+\end{pgfpicture}
+\caption{\barxChart.}
+\label{fig:bar_x_chart}
+\end{figure}
 
 
 
