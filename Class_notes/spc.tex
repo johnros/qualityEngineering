@@ -147,6 +147,9 @@ this acts just like growing a rejection region. It will increase power, at the c
 
 
 
+
+
+
 \subsection{Control Limits and the Alarm Rate}
 As previously discussed, $k$ governs the tradeoff between type I and type II errors, or sensitivity versus specificity.
 It is very common to set $k=3$. 
@@ -210,14 +213,18 @@ See \url{http://www.quinn-curtis.com/spcnamedrulesets.htm} for a quick introduct
 
 \section{Running Window Charts}
 \label{sec:running_windows}
+
+Assume out out-of-control process is simply a mild shift compared to the controlled-process.
+This shift may be hard to detect in a single period, but if the shift persists, we may gain power, i.e., sensitivity, by pooling several periods together. 
+This can be done in several ways.
+
 \subsection{$EWMA$ Chart}
+
 \subsection{$Cumsum$ Chart}
 
 
 
 
-\section{Economical Design of Control Charts}
-\label{sec:economical_considerations}
 
 
 
@@ -230,6 +237,11 @@ See \url{http://www.quinn-curtis.com/spcnamedrulesets.htm} for a quick introduct
 % PCA
 % Higher criticism
 
+
+
+
+\section{Economical Design of Control Charts}
+\label{sec:economical_considerations}
 
 
 
