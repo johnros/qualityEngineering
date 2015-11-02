@@ -85,8 +85,8 @@ Other design decisions to be made are:
 \begin{enumerate}
 \item UCL and LCL \footnote{Do not confuse with USL and LSL!}.
 \item Sample size in each sample.
-\item Sampling scheme.
-\item Frequency of samples. 
+\item Rational groupings (within-period sampling scheme).
+\item Frequency of samples (between-period sampling scheme). 
 \end{enumerate}
 These deign decisions ultimately govern the error rate (false positive rate) and power (false negative rate) of the chart, which in turn, incur some financial costs. 
 For now we will restrict attention to type I/II error rates, until Section~\ref{sec:economical_considerations} where we consider these choices as economical optimization problems.
@@ -103,11 +103,19 @@ How do our design choices affect $\alpha_t$?
 	&= 2 \Phi(-k)
 \end{align}
 The above follows from assuming that $UCL:=\mu + k \sigmabar, LCL:= \mu - k \sigmabar$, $\x_{it}\sim \gauss{\mu,\sigma}$, and denoting $\sigmabar:= \frac{\sigma}{n}$.
-A typical design choice is $k=3$, known as 3-sigma controls [TODO: verify] and false alarm rate of $\alpha_t=0.0027$.
+A typical design choice is $k=3$, known as \emph{3-sigma control limits}, implying a false alarm rate of $\alpha_t=0.0027$.\marginnote{3-Sigma Control Limits}
+Since we assumed the process is fixed over time, then so is $\alpha_t$ and we can simply write $\alpha$.
+
+A power analysis for our design choices follows the same lines.
+Denote $\beta_t$, and $\pi_t=1-\beta_t$ the type II error rate, and power, at period $t$.
+We then have
+
+
+Another important related quantity is the \emph{average run length} (ARL), which is the number of periods between two crossings of control limits. 
 
 
 
-\section{Other Control Statistic}
+\section{Other Control Statistics}
 \subsection{$R$ Chart}
 \subsection{$s$ Chart}
 \subsection{$s^2$ Chart}
