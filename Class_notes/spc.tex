@@ -6,12 +6,19 @@ As such, it may be found in the Analyze, Improve, and Control stages of the DMAI
 The purpose of the SPC, in the terms coined by Shewart, is to seperate the variability in the process into \emph{assignable} causes of variation and \emph{chance} causes of variation.\marginnote{Causes of variation}
 These are also known as \emph{special} and \emph{common} causes of variation, respectively. 
 A process is said to be in \emph{statistical control} if all its variation is attributable to chance causes.
-If this is not the case, then we will seek the assignable causes, remove then, and re-analyze.
+If this is not the case, we call it \emph{out of control} and we will seek the assignable causes, remove then, and   re-analyze.
+
 
 All the previously mentioned statistical tools may be called upon for this analysis. 
 In the context of process control, a subset of tools has gained the nick-name ``The Magnificent Seven''. These include:
 \begin{description}
-\item 1 1
+\item Histogram and stem-and-leaf plot. As described in Chapter~\ref{sec:exploratory}.
+\item Check Sheet. [TODO: add figure]
+\item Pareto chart. An ordered bar plot of the events due to the various assignable variability causes. [TODO: add figure]
+\item Cause-and-effect diagram. A visualization of candidate assignable variability causes. [TODO: add figure]
+\item Defect concentration diagram. A visual inspection of the location of defects on the product. 
+\item Scatter plot. As described in Chapter~\ref{sec:exploratory}.
+\item Control chart. A powerful analysis tool to which we devote the rest of this chapter. 
 \end{description}
 
 
@@ -24,8 +31,14 @@ In the context of process control, a subset of tools has gained the nick-name ``
 
 
 \section{A soft start. The $\bar{x}$ Chart}
+We demonstrate the concepts and utility of Control Charts with the simplest, yet most popular of them all, the $\bar{x}$-chart. 
+The chart borrows its name from the fact that it is essentially a visualization of the time evolution of the average ($\bar{x}$) of the CTQ of a sample of products. 
+The chart is also augmented with visual aids that help in determining if the process is \emph{in control}, i.e., if it consistent with its own history. 
+Process capability analysis may benefit from the ideas of control charts. We emphasize however, that control charts have no information on the specifications of the process, merely on its own history.
+
 % basic idea
-% descion variables: sample size, intervals, statistic, limits, rational groupins. 
+% descion variables: sample size, intervals, statistic, limits, rational groupins, type I error rate, multiple criteria
+% phase I and II.
 % what to do in case of alarm?
 % extensions: probability limits, other statisics=, sample , adaptive parameters, other rules, non normality, variable sample size, moving windows
 % considerations for setting these values.
