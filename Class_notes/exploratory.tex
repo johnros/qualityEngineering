@@ -59,7 +59,7 @@ From summaries of location, we move to summaries of \emph{scale}. \marginnote{Su
 
 \begin{definition}[The Standard Deviation]
 \begin{align}
-	S^2(x):= \frac{1}{n-1} \sum_{i=1}^{n} (x_i-\bar{x})^2
+	s(x):= \sqrt{\frac{1}{n-1} \sum_{i=1}^{n} (x_i-\bar{x})^2}
 \end{align}
 \end{definition}
 
@@ -160,12 +160,11 @@ For a multivariate data consisting of $x_1,\dots,x_p$ vectors, each with $n$ ent
 
 \begin{extra}[Sample Covariance Matrix]
 The matrix $\hat{\Sigma}$ has many useful properties. 
-To begin with, it is symmetric, since $Cov(x,y)=Cov(y,x)$.
 The curious reader is referred to \cite{petersen_matrix_2006}, and references therein, for more details.
 \end{extra}
 
 \begin{definition}[Correlation Matrix]
-For a multivariate data consisting of $x_1,\dots,x_p$ vectors, each with $n$ entries: $x_{i,1},\dots,x_{i,n}$, we define the (sample) correlation matrix to be a $p\times p$ matrix whose elements are the (Pearson) correlations between corresponding vectors:
+For a multivariate data consisting of $x_1,\dots,x_p$ vectors, each with $n$ entries: $x_{j,1},\dots,x_{j,n}$, we define the (sample) correlation matrix to be a $p\times p$ matrix whose elements are the (Pearson) correlations between corresponding vectors:
 \begin{align}
 	\hat{R}_{i,j}:= r(x_i, x_j)
 \end{align}
@@ -242,7 +241,7 @@ Several extensions exist. By far, the most informative and recommended figure, i
 Visualization of univariate continuous vectors can present the raw data, or it distribution (i.e.- discarding the indexes).
 The most basic visualizations are the \emph{dotchart}, \emph{histogram}, \emph{boxplot}, \emph{stem-and-leaf plot}. 
 These are illustrated in figures \ref{fig:dot_plot}, \ref{fig:histogram_eruptions}, \ref{fig:boxplot}, \ref{fig:stem_and_leaf} respectively. 
-[TODO: add QQplot and QQnorm]
+
 
  
 \begin{figure}[h]
