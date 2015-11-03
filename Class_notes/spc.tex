@@ -115,13 +115,13 @@ We then have
 	\pi_t &:= 1-P_{H_1}(\bar{x}_t \in [UCL,LCL])
 \end{align}
 and the rest follow from the distribution of $\bar{x}$ when the process is out of control.
-Assuming the out-of-control process is a shift of magnitude $\delta$, i.e.: $\x \sim \gauss{\mu_1,\sigma^2}; \mu_1=\mu_0+\delta$, we plot in Figure~\ref{fig:power_function}, the detection power of a 3-sigma chart, as a function of $\delta$. 
+Assuming the out-of-control process is a shift of magnitude $\delta$, i.e.: $\x \sim \gauss{\mu_1,\sigma^2}; \mu_1=k \sigma^2$, we plot in Figure~\ref{fig:power_function}, the detection power of a 3-sigma chart, as a function of $k$. 
 This is known as statistical literature as a \emph{power function}, and in the engineering literature as the \emph{true positive rate} operator characteristic (TPR-OR.)
 
 \begin{figure}[h]
 \centering
 \includegraphics[height=0.3\textheight]{art/power_function}
-\caption[Power Function]{Power function of the 3-sigma \barxChart with $n=5$.}
+\caption[Power Function]{Power function of the 3-sigma \barxChart with $n=5$ and $\mu_1=k \sigma^2$.}
 \label{fig:power_function}
 \end{figure}
 
