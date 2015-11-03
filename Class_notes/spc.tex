@@ -115,9 +115,19 @@ We then have
 	\pi_t &:= 1-P_{H_1}(\bar{x}_t \in [UCL,LCL])
 \end{align}
 and the rest follow from the distribution of $\bar{x}$ when the process is out of control.
+Assuming the out-of-control process is a shift of magnitude $\delta$, i.e.: $\x \sim \gauss{\mu_1,\sigma^2}; \mu_1=\mu_0+\delta$, we plot in Figure~\ref{fig:power_function}, the detection power of a 3-sigma chart, as a function of $\delta$. 
+This is known as statistical literature as a \emph{power function}, and in the engineering literature as the \emph{true positive rate} operator characteristic (TPR-OR.)
 
 
 
+
+
+
+[TODO: add power function (operator charachteristic and discuss power for weak signal)]
+
+[TODO: UCL with empirical quantiles, and Bootstrapping]
+
+\paragraph{ARL}
 Another important related quantity is the \emph{average run length} (ARL), which is the expected number of periods between two crossings of control limits. \marginnote{ARL}
 We denote by $ARL_0$ the average run length when the process is under statistical control, and $ARL_1$ otherwise\footnote{Note that it is implied that the process has a \emph{stable} distribution, even though it is out if control.}. 
 If $\bar{x}_t$ are statistically independent, then clearly the number of periods until a crossing is geometrically distributed. Using the expectation of a geometric random variable we can conclude that 
@@ -215,13 +225,23 @@ See \url{http://www.quinn-curtis.com/spcnamedrulesets.htm} for a quick introduct
 \label{sec:running_windows}
 
 Assume out out-of-control process is simply a mild shift compared to the controlled-process.
+##
 This shift may be hard to detect in a single period, but if the shift persists, we may gain power, i.e., sensitivity, by pooling several periods together. 
 This can be done in several ways.
+
+\subsection{Moving Average}
 
 \subsection{$EWMA$ Chart}
 
 \subsection{$Cumsum$ Chart}
 
+
+\begin{extra}[Local Methods]
+% scan statistic
+% sliding window
+% search light
+% Anomaly detection active learning
+\end{extra}
 
 
 

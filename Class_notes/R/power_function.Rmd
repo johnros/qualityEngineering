@@ -1,0 +1,15 @@
+---
+title: "power function"
+author: "Jonathan Rosenblatt"
+date: "November 3, 2015"
+output: html_document
+---
+
+Power of 3-sigma test
+```{r}
+beta <- function(L, k, n) pnorm(L-k * sqrt(n)) - pnorm(- L -k * sqrt(n))
+power.1 <- function(k ) 1-beta(3, k, 1)
+power.10 <- function(k) 1- beta(3,k, 10)
+curve(power.1, 0,5, xlab='Signal strength (k sigma)', ylab='Power')
+curve(power.10, add = TRUE)
+```

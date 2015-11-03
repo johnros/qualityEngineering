@@ -96,10 +96,9 @@ parameter, new process
  & 0.5 \\ 
 \hline Six Sigma quality process & 2.00 &  0.002 \\ 
 \hline 
-\bigskip
 \end{tabular} 
 
-
+\bigskip
 
 To derive Eq.(\ref{eq:pc_and_pnc}), and thus the ppm column in the table, we had to call upon several assumptions.
 Namely:
@@ -137,8 +136,36 @@ For any random variable $\x$, with $\mu:=\expect{\x}$, $\sigma^2:=\expect{(\x-\m
 \end{align}
 \end{theorem}
 Since $3$ is obviously larger than $1.63299$, then an immediate application of Vysochanskij–Petunin inequality yields that for a unimodal CTQ, then $\pnc<0.0493$, or $49,383 ppm$.
+
+
+
+
+
+%Can we tighten the bound on $\alpha$ by adopting some other weak assumption?
+%Certainly!
+%We can use the fact that 
+%If we are willing to assume that the production process is such that the CTQ of two consecutive units will never be larger than some $c$: 
+%\begin{align}
+%\label{eq:bounded_rv}
+%	P(|x_{i,t}-x_{i-1,t}|<c)=1.
+%\end{align}
+%\begin{theorem}[Azuma-Hoeffding Inequality]
+%For an arbitrary sampling process for which Eq.(\ref{eq:bounded_rv}) holds, then 
+%\begin{align}
+%	P(|\bar{x}_t-\ctqExpect| \geq s ) \leq  2 \exp \left( -\frac{n s^2 }{2c^2} \right)
+%\end{align}
+%\end{theorem}
+
+
+
 Again we see that if we wrongly assumed normality, we may have many more non-compliances than we thought. Then again, both Chebyshev and Vysochanskij–Petunin are very loose bounds. 
 They should thus be seen as a worst-case, while reality is not as bad.
+
+
+
+
+
+
 
 Another important approach to dealing with non-Gaussianity of the CTQ is by a non-linear change of scale.
 As  a rule of thumb, you may try scale transformation such as a log-transform and a square-root, and then inspect the normality of the data with the tools discusses in Chapters~\ref{sec:exploratory} and \ref{sec:inference}.
