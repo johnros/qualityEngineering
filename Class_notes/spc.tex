@@ -116,8 +116,14 @@ We then have
 \end{align}
 and the rest follow from the distribution of $\bar{x}$ when the process is out of control.
 Assuming the out-of-control process is a shift of magnitude $\delta$, i.e.: $\x \sim \gauss{\mu_1,\sigma^2}; \mu_1=\mu_0+\delta$, we plot in Figure~\ref{fig:power_function}, the detection power of a 3-sigma chart, as a function of $\delta$. 
-This is known as statistical literature as a \emph{power function}, and in the engineering literature as the \emph{true positive rate} operator characteristic (TPR-OR.)
+This is known as statistical literature as a \emph{power function}, and in the engineering literature as the \emph{true positive rate} operator characteristic (TPR-OR.)[TODO]
 
+\begin{figure}[h]
+\centering
+\includegraphics[height=0.3\textheight]{art/power_function}
+\caption[Power Function]{Power function of the 3-sigma \barxChart}
+\label{fig:power_function}
+\end{figure}
 
 
 
@@ -225,7 +231,7 @@ See \url{http://www.quinn-curtis.com/spcnamedrulesets.htm} for a quick introduct
 \label{sec:running_windows}
 
 Assume out out-of-control process is simply a mild shift compared to the controlled-process.
-##
+[TODO]
 This shift may be hard to detect in a single period, but if the shift persists, we may gain power, i.e., sensitivity, by pooling several periods together. 
 This can be done in several ways.
 

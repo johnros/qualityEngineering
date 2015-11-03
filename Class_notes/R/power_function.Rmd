@@ -12,4 +12,8 @@ power.1 <- function(k ) 1-beta(3, k, 1)
 power.10 <- function(k) 1- beta(3,k, 10)
 curve(power.1, 0,5, xlab='Signal strength (k sigma)', ylab='Power')
 curve(power.10, add = TRUE)
+
+pdf(file='../art/power_function.pdf')
+curve(power.1, 0,5, xlab='Signal strength (k sigma)', ylab='Power')
+dev.off()
 ```
