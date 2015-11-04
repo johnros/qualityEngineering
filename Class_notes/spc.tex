@@ -237,20 +237,54 @@ See \url{http://www.quinn-curtis.com/spcnamedrulesets.htm} for a quick introduct
 
 
 
-\section{Running Window Charts}
+\section{Pooling Information Over Periods}
 \label{sec:running_windows}
 
 Assume an out-of-control process is simply a mild shift of the controlled-process.
 This shift may be hard to detect in Shewart chart, especially if $n$ is not too large (as seen in Figure~\ref{fig:power_function}).  
 If the shift persists, we may gain power, i.e., sensitivity, by pooling several periods together. 
-This can be done in several ways.
+We now present several ways to pool information from history. These are typically applied in Phase II, where out-of-control processes are expected to have only mild shifts, and not major ones as in Phase I. 
+
+
+
+\subsection{Moving Average Chart}
+One way to pool information from different periods is by a \emph{moving average}.
+\begin{definition}[Moving Average]
+The moving average at period $t$ is defined as
+\begin{align}
+	M_t:= \frac{\bar{x}_t+\dots+\bar{x}_{t-w+1}}{w}
+\end{align}
+\end{definition}
+Assuming $\bar{x}_t \sim \gauss{\mu_0, \sigma^2/n}$ then clearly 
+\begin{align}
+	M_t \sim \gauss{\mu_0, \frac{\sigma^2}{nw}}.
+\end{align}
+It is quite advantageous, and common, to take one observation at a time, so that $n=1$.
+
+The control limits on $M_t$ are typically
+\begin{align}
+	UCL &:= \mu_0 + 3 \sigma_{M_t}= \mu_0 + 3 \, \frac{\sigma_x}{\sqrt{nw}} \\
+	UCL &:= \mu_0 - 3 \sigma_{M_t}= \mu_0 - 3 \, \frac{\sigma_x}{\sqrt{nw}}.
+\end{align}
+The fallout rate of this criterion is trivially $\alpha=0.0027$. 
+We are free to choose the magnitude of $w$. If $w$ is too small, there is no real pooling from history. At the limit, where $w=1$, we are back to the classical Shewart chart. 
+If $w$ is too large, then each new observation has very small importance, and it may take a long time to detect a shift.
+Which is the right intermediate value, is left for you to decide.
+
+
+
 
 
 
 \subsection{$EWMA$ Chart}
-
-
-\subsection{Moving Average Chart}
+The moving average gives all observations the same importance. 
+We want to change this, so that we may capture drifts quickly when they occur, while enjoy the power benefits that come with pooling information over periods. 
+The \emph{Exponentially Weighted Moving Average} (EWMA), \aka the \emph{geometric moving average} (GMA), does just that. 
+\begin{definition}
+\begin{align}
+	z_t:= \lambda \bar{x}_t + (1-\lambda) z_{t-1}
+\end{align}
+\end{definition}
 
 
 \subsection{Filtered Derivative Chart}
