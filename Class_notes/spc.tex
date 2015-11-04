@@ -118,20 +118,14 @@ and the rest follow from the distribution of $\bar{x}$ when the process is out o
 Assuming the out-of-control process is a shift of magnitude $\delta$, i.e.: $\x \sim \gauss{\mu_1,\sigma^2}; \mu_1=k \sigma^2$, we plot in Figure~\ref{fig:power_function}, the detection power of a 3-sigma chart, as a function of $k$. 
 This is known as statistical literature as a \emph{power function}, and in the engineering literature as the \emph{true positive rate} operator characteristic (TPR-OR.)
 
+
 \begin{figure}[h]
 \centering
-\includegraphics[height=0.3\textheight]{art/power_function}
-\caption[Power Function]{Power function of the 3-sigma \barxChart with $n=5$ and $\mu_1=k \sigma^2$.}
+\includegraphics[height=0.3\textheight]{art/power_function.pdf}
+\caption[Power Function]{Power function of the 3-sigma \barxChart with $n=5,10,20$ and $\mu_1=k \sigma^2$.}
 \label{fig:power_function}
 \end{figure}
 
-
-
-
-
-[TODO: add power function (operator charachteristic and discuss power for weak signal)]
-
-[TODO: UCL with empirical quantiles, and Bootstrapping]
 
 \paragraph{ARL}
 Another important related quantity is the \emph{average run length} (ARL), which is the expected number of periods between two crossings of control limits. \marginnote{ARL}
@@ -171,7 +165,14 @@ As previously discussed, $k$ governs the tradeoff between type I and type II err
 It is very common to set $k=3$. 
 For a Normally distributed CTQ, this implies $2,700$ false alarms per million periods. 
 This also implies an ARL of $1/\alpha=370$ periods.
-We may however, discard this convention, and simply set $k$ so that it guarantees some desirable false alarm rate. Simply find the $k$ that satisfies $2\Phi(-k)=\alpha$.
+We may however, discard this convention, and directly set UCL and LCL so they guarantee some desirable false alarm rate. 
+
+If normality of $\bar{x}$ can be assumed, then one may estimate $\sigma$ from phase I, and set LCL and UCL by finding the $k$ that solves $2\Phi(-k)=\alpha$.
+If normality cannot be assumed, there are many ways to go about. Here are some options:
+\begin{enumerate}
+\item Increase $n$: even if $\x_i$ is non normal, for large enough $n$, then $\bar{x}$ will be via the central limit theorem.
+\item Use empirical quantiles: If phase I was returned enough data, then we may estimate $\x_{\alpha/2}$ and $\x_{1-\alpha/2}$ using the empirical quantiles of phase I. The false alarm rate will clearly be $\alpha$ since $P(\x \not \in [\x_{\alpha/2},\x_{1-\alpha/2}])=\alpha$.
+\end{enumerate}
 
 
 
@@ -200,6 +201,7 @@ The assumption that we may only create alarms if $\bar{x}$ exceeds some control 
 A first relaxation is by allowing multiple regions.
 It is quite common to define \emph{warning limits} which only call for inspection, and \emph{action limits}. Each may have its own alarm rate.
 We may even change the sapling scheme if limits are breached. Increasing the sampling rate once the warning limits have been breached is known as \emph{adaptive sampling}, or \emph{variable sampling}.\marginnote{Adaptive Sampling}
+
 
 
 Another, more strict approach, is to define multiple sets of stopping rules
@@ -242,6 +244,8 @@ This can be done in several ways.
 \subsection{$Cumsum$ Chart}
 
 
+
+
 \begin{extra}[Local Methods]
 % scan statistic
 % sliding window
@@ -268,6 +272,8 @@ This can be done in several ways.
 
 \section{Economical Design of Control Charts}
 \label{sec:economical_considerations}
+
+
 
 
 
