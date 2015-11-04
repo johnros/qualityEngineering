@@ -269,7 +269,21 @@ The control limits on $M_t$ are typically
 The fallout rate of this criterion is trivially $\alpha=0.0027$. 
 The ARL, however, is no longer so simple to compute. 
 This is because the pooling of periods has violated the independence between periods, and Eqs.(\ref{eq:arl_0},\ref{eq:arl_1}) are no longer valid. 
-Do not despair, however, as the ARL may still be computed, for instance using the \rcode{spc} \R package.
+Do not despair, however, as the ARL may still be computed. 
+You can always use simulation to compute it, or try using the \rcode{spc} \R package.
+
+
+%\begin{algorithm}[$ARL_0$ simulation for MA Control Chart]
+%\caption{$ARL_0$ simulation for MA Control Chart}
+%\begin{algorithmic}
+%\For {$\bootstrap \in 1,\dots,\bootstraps$}
+%	\State $\sample^\bootstrap \gets$ $n$ randomly selected observations, with replacement, from the original data.
+%	\State $\sample^\bootstrap_\rank \gets$ $\rank$ randomly selected variables from $\sample^\bootstrap$.
+%    \State $\estim{\hyp}^{\bootstrap} \gets$ a tree learned with  $\sample^\bootstrap_\rank$.
+%\EndFor
+%\State \Return the the average prediction for $x$ over $\estim{\hyp}^{\bootstrap}$ .
+%\end{algorithmic}
+%\end{algorithm}
 
 
 We are free to choose the magnitude of $w$. If $w$ is too small, there is no real pooling from history. At the limit, where $w=1$, we are back to the classical Shewart chart. 
@@ -312,6 +326,14 @@ It is however, more economic to observe that for large $\lambda$ and $t$: $(1-(1
 \end{align}
 By now, you should immediately know what is the fallout rate of these limits.
 By now, you should also know that because of the dependence between $z_t$'s, computing the ARL is not as simple as for Shewart charts. The \rcode{xewma.arl()} \R function, in package \rcode{spc}, permits doing so easily. 
+Its output for various $\lambda$ and $k$ is illustrated in Figure~\ref{fig:arl_0_ewma}.
+
+\begin{figure}
+\centering
+\includegraphics[height=0.3\textheight]{art/fig53}
+\caption[$ARL_0$ for EWMA]{$ARL_0$ for EWMA. \newline \url{http://users.phhp.ufl.edu/pqiu/research/book/spc/r-codes/fig53.r}}
+\label{fig:arl_0_ewma}
+\end{figure}
 
 
 In the MA chart, we used the choice of $w$ to balance between quick response (small $w$) and sensitivity (large $w$).
