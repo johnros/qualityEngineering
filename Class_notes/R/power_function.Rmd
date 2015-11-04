@@ -19,7 +19,7 @@ curve(power.100, add = TRUE)
 
 pdf(file='../art/power_function.pdf')
 curve(power.5, 0,5, xlab='Signal strength (k sigma)', ylab='Power')
-curve(power.1, add=TRUE)
+curve(power.10, add=TRUE)
 curve(power.10, add=TRUE)
 curve(power.20, add=TRUE)
 dev.off()

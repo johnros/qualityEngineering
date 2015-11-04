@@ -139,8 +139,8 @@ Another important related quantity is the \emph{average run length} (ARL), which
 We denote by $ARL_0$ the average run length when the process is under statistical control, and $ARL_1$ otherwise\footnote{Note that it is implied that the process has a \emph{stable} distribution, even though it is out if control.}. 
 If $\bar{x}_t$ are statistically independent, then clearly the number of periods until a crossing is geometrically distributed. Using the expectation of a geometric random variable we can conclude that 
 \begin{align}
-	ARL_0=1/\alpha \\
-	ARL_1=1/\pi
+	ARL_0=1/\alpha \label{eq:arl_0} \\
+	ARL_1=1/\pi \label{eq:arl_1}
 \end{align}
 Clearly we can convert to time units by multiplying the ARL by the duration of sampling interval.
 This is known as the \emph{average time to signal} (ATS).\marginnote{ATS}
@@ -267,6 +267,11 @@ The control limits on $M_t$ are typically
 	UCL &:= \mu_0 - 3 \sigma_{M_t}= \mu_0 - 3 \, \frac{\sigma_x}{\sqrt{nw}}.
 \end{align}
 The fallout rate of this criterion is trivially $\alpha=0.0027$. 
+The ARL, however, is no longer so simple to compute. 
+This is because the pooling of periods has violated the independence between periods, and Eqs.(\ref{eq:arl_0},\ref{eq:arl_1}) are no longer valid. 
+Do not despair, however, as the ARL may still be computed, for instance using the \rcode{spc} \R package.
+
+
 We are free to choose the magnitude of $w$. If $w$ is too small, there is no real pooling from history. At the limit, where $w=1$, we are back to the classical Shewart chart. 
 If $w$ is too large, then each new observation has very small importance, and it may take a long time to detect a shift.
 Which is the right intermediate value, is left for you to decide.
@@ -293,7 +298,11 @@ The \emph{Exponentially Weighted Moving Average} (EWMA), \aka the \emph{geometri
 By recursive substitution we have that 
 \begin{align}
 \label{eq:ewma_variance}
-	\sigma^2_{z_t}=\frac{\sigma^2_x}{n}\left( \frac{\lambda}{2-\lambda} \right)(1-(1-\lambda)^{2t}).
+	\sigma^2_{z_t}=\frac{\sigma^2_x}{n}\left( \frac{\lambda}{2-\lambda} \right)(1-(1-\lambda)^{2t}),
+\end{align}
+and 
+\begin{align}
+	z_t \sim \gauss{\mu_0,	\sigma^2_{z_t} }.
 \end{align}
 Eq.(\ref{eq:ewma_variance}) may be used to construct control limits for EWMA:
 It is however, more economic to observe that for large $\lambda$ and $t$: $(1-(1-\lambda)^{2t}) \approx 1$ so that we may use 
@@ -301,7 +310,9 @@ It is however, more economic to observe that for large $\lambda$ and $t$: $(1-(1
 	UCL &:= \mu_0 + 3 \sigma_{z_t}= \mu_0 + 3 \, \sqrt{\frac{\sigma^2_x}{n}\left( \frac{\lambda}{2-\lambda} \right)},  \\
 	UCL &:= \mu_0 - 3 \sigma_{z_t}= \mu_0 - 3 \, \sqrt{\frac{\sigma^2_x}{n}\left( \frac{\lambda}{2-\lambda} \right)}.
 \end{align}
-By now, you should immediately know what is the fallout rate of these limits...
+By now, you should immediately know what is the fallout rate of these limits.
+By now, you should also know that because of the dependence between $z_t$'s, computing the ARL is not as simple as for Shewart charts. The \rcode{xewma.arl()} \R function, in package \rcode{spc}, permits doing so easily. 
+
 
 In the MA chart, we used the choice of $w$ to balance between quick response (small $w$) and sensitivity (large $w$).
 EWMA has no window-width parameter, since it looks on all of the history. On the other hand, we can control it by choosing $\lambda$. 
