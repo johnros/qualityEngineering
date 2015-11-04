@@ -1,7 +1,7 @@
 \chapter{Statistical Process Control- SPC}
 \label{sec:spc}
 
-Statistical process control deals with the quantitative analysis of a ``process'', which may be a production line, a service, or any other repeated operation.
+Statistical process control, \aka \emph{change detection algorithms} deals with the quantitative analysis of a ``process'', which may be a production line, a service, or any other repeated operation.\marginnote{Change Detection}
 As such, it may be found in the Analyze, Improve, and Control stages of the DMAIC cycle.
 The purpose of the SPC, in the terms coined by Shewart, is to seperate the variability in the process into \emph{assignable} causes of variation and \emph{chance} causes of variation.\marginnote{Causes of variation}
 These are also known as \emph{special} and \emph{common} causes of variation, respectively. 
@@ -29,6 +29,13 @@ In the context of process control, a subset of tools has gained the nick-name ``
 %    \pgftext{\pgfimage[width=0.6\linewidth, height=0.3\textheight]{}}
 %\end{pgfpicture}
 
+
+
+\begin{extra}[A more rigorous treatment ]
+The contents of this chapter is mostly derived from \cite{montgomery_introduction_2007}. 
+For a more mathematically rigorous treatment of the topic see \cite{basseville_detection_1993}.
+For an \R oriented exposition of the topic, see \cite{qiu_introduction_2013}.
+\end{extra}
 
 \section{A soft start. The \barxChart}
 
@@ -213,7 +220,7 @@ Here an example:
 \item Four of five consecutive points beyond the 1-sigma limits.
 \item A run of 8 consecutive points on one side of the center line.
 \end{enumerate}
-The above set of rules is known as the Western Electric Rules, a.k.a., the \emph{WECO} rules.\marginnote{WECO}
+The above set of rules is known as the Western Electric Rules, \aka\, the \emph{WECO} rules.\marginnote{WECO}
 Augmenting the set of rules is the same as increasing a rejection region. It adds more sensitivity, at the cost of false alarms. If the rules are properly selected, the gain in sensitivity is worth the increase in false alarms.
 
 As a quick exercise, we may compute $\alpha$  for $m$ independent rules, each with $\alpha^*$ type I error itself:
@@ -239,6 +246,16 @@ If the shift persists, we may gain power, i.e., sensitivity, by pooling several 
 This can be done in several ways.
 
 
+
+\subsection{$EWMA$ Chart}
+
+
+\subsection{Moving Average Chart}
+
+
+\subsection{Filtered Derivative Chart}
+
+
 \subsection{$cusum$ Chart}
 The fundamental idea in a cumulative sum chart, or \emph{cusum} chart, is to sum deviation from the centre line.
 If the process is in control, deviation will cancel each other, and their sum will vary around $0$. 
@@ -255,10 +272,6 @@ The statistic to be plotted is
 \end{extra}
 
 
-
-\subsection{Moving Average}
-
-\subsection{$EWMA$ Chart}
 
 
 \subsection{Combined Shewart and Running Window Charts}
