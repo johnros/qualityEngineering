@@ -104,9 +104,9 @@ How do our design choices affect $\alpha_t$?
 	&= 2 P_{H_0}(Z < -k) \\
 	&= 2 \Phi(-k)
 \end{align}
-The above follows from assuming that $UCL:=\mu + k \sigmabar, LCL:= \mu - k \sigmabar$, $\x_{it}\sim \gauss{\mu,\sigma}$, and denoting $\sigmabar:= \frac{\sigma}{n}$.
+The above follows from assuming that $UCL:=\mu + k \sigmabar, LCL:= \mu - k \sigmabar$, $\x_{it}\sim \gauss{\mu,\sigma^2}$, and denoting $\sigmabar:= \frac{\sigma}{n}$.
 A typical design choice is $k=3$, known as \emph{3-sigma control limits}, implying a false alarm rate of $\alpha_t=0.0027$.\marginnote{3-Sigma Control Limits}
-Since we assumed the process is fixed over time, then so is $\alpha_t$ and we can simply write $\alpha$.
+Since we assumed the process is fixed over time, then so is $\alpha_t$ and we can simply write $\alpha_t=\alpha$.
 
 A power analysis for our design choices follows the same lines.
 Denote $\beta_t$, and $\pi_t=1-\beta_t$ the type II error rate, and power, at period $t$.
@@ -115,14 +115,14 @@ We then have
 	\pi_t &:= 1-P_{H_1}(\bar{x}_t \in [UCL,LCL])
 \end{align}
 and the rest follow from the distribution of $\bar{x}$ when the process is out of control.
-Assuming the out-of-control process is a shift of magnitude $\delta$, i.e.: $\x \sim \gauss{\mu_1,\sigma^2}; \mu_1=k \sigma^2$, we plot in Figure~\ref{fig:power_function}, the detection power of a 3-sigma chart, as a function of $k$. 
+Assuming the out-of-control process is a shift of magnitude $k \sigma$, i.e.: $\x \sim \gauss{\mu_1,\sigma^2}; \mu_1=k \sigma$, we plot in Figure~\ref{fig:power_function}, the detection power of a 3-sigma chart, as a function of $k$. 
 This is known as statistical literature as a \emph{power function}, and in the engineering literature as the \emph{true positive rate} operator characteristic (TPR-OR.)
 
 
 \begin{figure}[h]
 \centering
 \includegraphics[height=0.3\textheight]{art/power_function.pdf}
-\caption[Power Function]{Power function of the 3-sigma \barxChart with $n=5,10,20$ and $\mu_1=k \sigma^2$.}
+\caption[Power Function]{Power function of the 3-sigma \barxChart with $n=5,10,20$ and $\mu_1=k \sigma$.}
 \label{fig:power_function}
 \end{figure}
 
@@ -171,7 +171,8 @@ If normality of $\bar{x}$ can be assumed, then one may estimate $\sigma$ from ph
 If normality cannot be assumed, there are many ways to go about. Here are some options:
 \begin{enumerate}
 \item Increase $n$: even if $\x_i$ is non normal, for large enough $n$, then $\bar{x}$ will be via the central limit theorem.
-\item Use empirical quantiles: If phase I was returned enough data, then we may estimate $\x_{\alpha/2}$ and $\x_{1-\alpha/2}$ using the empirical quantiles of phase I. The false alarm rate will clearly be $\alpha$ since $P(\x \not \in [\x_{\alpha/2},\x_{1-\alpha/2}])=\alpha$.
+\item Use empirical quantiles: If phase I was returned enough data, then we may estimate $\x_{\alpha/2}$ and $\x_{1-\alpha/2}$ using the empirical quantiles of phase I. The false alarm rate will be $\alpha$ since $P(\x \not \in [\x_{\alpha/2},\x_{1-\alpha/2}])=\alpha$, if $[\x_{\alpha/2},\x_{1-\alpha/2}]$ is well estimated.
+\item TODO:simulation
 \end{enumerate}
 
 
@@ -232,16 +233,37 @@ See \url{http://www.quinn-curtis.com/spcnamedrulesets.htm} for a quick introduct
 \section{Running Window Charts}
 \label{sec:running_windows}
 
-Assume out out-of-control process is simply a mild shift compared to the controlled-process.
-[TODO]
-This shift may be hard to detect in a single period, but if the shift persists, we may gain power, i.e., sensitivity, by pooling several periods together. 
+Assume an out-of-control process is simply a mild shift of the controlled-process.
+This shift may be hard to detect in Shewart chart, especially if $n$ is not too large (as seen in Figure~\ref{fig:power_function}).  
+If the shift persists, we may gain power, i.e., sensitivity, by pooling several periods together. 
 This can be done in several ways.
+
+
+\subsection{$cusum$ Chart}
+The fundamental idea in a cumulative sum chart, or \emph{cusum} chart, is to sum deviation from the centre line.
+If the process is in control, deviation will cancel each other, and their sum will vary around $0$. 
+If the process is ot of control, some drift will appear in the cusum. 
+The statistic to be plotted is 
+\begin{align}
+	C_t:= \sum_{j=0}^{t}(\bar{x}_j-\mu_0)=C_{t-1}+ (\bar{x}_t-\mu_0)
+\end{align} 
+
+
+
+\begin{extra}[Wald's Sequential Likelihood Ration Test- SPRT]
+[TODO]
+\end{extra}
+
+
 
 \subsection{Moving Average}
 
 \subsection{$EWMA$ Chart}
 
-\subsection{$Cumsum$ Chart}
+
+\subsection{Combined Shewart and Running Window Charts}
+
+
 
 
 
@@ -297,7 +319,7 @@ This can be done in several ways.
 \subsection{$u$ Chart}
 \subsection{Time Series Model}
 \subsection{Regression Control Chart}
-
+\subsection{Running Window Versions}
 
 
 
