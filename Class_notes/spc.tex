@@ -276,15 +276,32 @@ Which is the right intermediate value, is left for you to decide.
 
 
 
-\subsection{$EWMA$ Chart}
+\subsection{EWMA Chart}
 The moving average gives all observations the same importance. 
 We want to change this, so that we may capture drifts quickly when they occur, while enjoy the power benefits that come with pooling information over periods. 
 The \emph{Exponentially Weighted Moving Average} (EWMA), \aka the \emph{geometric moving average} (GMA), does just that. 
-\begin{definition}
+\begin{definition}[Exponentially Weighted Moving Average- EWMA]
 \begin{align}
 	z_t:= \lambda \bar{x}_t + (1-\lambda) z_{t-1}
 \end{align}
 \end{definition}
+%By recursive substitution, we have 
+%\begin{align}
+%	z_t:= \lambda \sum_{j=0}^{t-1} (1-\lambda)^j \bar{x}_{t-j} + (1-\lambda)^t z_0
+%\end{align}
+
+By recursive substitution we have that 
+\begin{align}
+\label{eq:ewma_variance}
+	\sigma^2_{z_t}=\frac{\sigma^2_x}{n}\left( \frac{\lambda}{2-\lambda} \right)(1-(1-\lambda)^{2t}).
+\end{align}
+Eq.(\ref{eq:ewma_variance}) may be used to construct control limits for EWMA:
+It is however, more economic to observe that for large $\lambda$ and $t$: $(1-(1-\lambda)^{2t}) \approx 1$ so that we may use 
+\begin{align}
+	UCL &:= \mu_0 + 3 \sigma_{z_t}= \mu_0 + 3 \, \sqrt{\frac{\sigma^2_x}{n}\left( \frac{\lambda}{2-\lambda} \right)},  \\
+	UCL &:= \mu_0 - 3 \sigma_{z_t}= \mu_0 - 3 \, \sqrt{\frac{\sigma^2_x}{n}\left( \frac{\lambda}{2-\lambda} \right)}.
+\end{align}
+
 
 
 \subsection{Filtered Derivative Chart}
