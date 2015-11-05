@@ -321,19 +321,24 @@ and
 Eq.(\ref{eq:ewma_variance}) may be used to construct control limits for EWMA:
 It is however, more economic to observe that for large $\lambda$ and $t$: $(1-(1-\lambda)^{2t}) \approx 1$ so that we may use 
 \begin{align}
+\begin{split}
+\label{eq:ewma_variance_approximate}
 	UCL &:= \mu_0 + 3 \sigma_{z_t}= \mu_0 + 3 \, \sqrt{\frac{\sigma^2_x}{n}\left( \frac{\lambda}{2-\lambda} \right)},  \\
 	UCL &:= \mu_0 - 3 \sigma_{z_t}= \mu_0 - 3 \, \sqrt{\frac{\sigma^2_x}{n}\left( \frac{\lambda}{2-\lambda} \right)}.
+\end{split}
 \end{align}
 By now, you should immediately know what is the fallout rate of these limits.
 By now, you should also know that because of the dependence between $z_t$'s, computing the ARL is not as simple as for Shewart charts. The \rcode{xewma.arl()} \R function, in package \rcode{spc}, permits doing so easily. 
 Its output for various $\lambda$ and $k$ is illustrated in Figure~\ref{fig:arl_0_ewma}.
 
-\begin{figure}
+\begin{figure}[h]
 \centering
 \includegraphics[height=0.3\textheight]{art/fig53}
-\caption[$ARL_0$ for EWMA]{$ARL_0$ for EWMA. \newline \url{http://users.phhp.ufl.edu/pqiu/research/book/spc/r-codes/fig53.r}}
+\caption[$ARL_0$ for EWMA]{$ARL_0$ for EWMA. \newline Code from \url{http://users.phhp.ufl.edu/pqiu/research/book/spc/r-codes/fig53.r}}
 \label{fig:arl_0_ewma}
 \end{figure}
+
+Note that if we do not opt for the approximation in Eq.(\ref{eq:ewma_variance_approximate}), and use the exact Eq.(\ref{eq:ewma_variance}) then the alarm limits change over time. 
 
 
 In the MA chart, we used the choice of $w$ to balance between quick response (small $w$) and sensitivity (large $w$).
@@ -347,22 +352,35 @@ Large $\lambda$ gives more importance to the present. At the limit, $\lambda=1$,
 
 
 \subsection{Filtered Derivative Chart}
+[TODO]
 
 
-\subsection{$cusum$ Chart}
-The fundamental idea in a cumulative sum chart, or \emph{cusum} chart, is to sum deviation from the centre line.
+\subsection{CUSUM Chart}
+The \emph{cumulative sum} chart is similar to the EWMA in that it pools information from the history. 
+It does differ, in that it gives all the history an equal weight. 
+The CUSUM simply sums deviations from the centre line.
 If the process is in control, deviation will cancel each other, and their sum will vary around $0$. 
-If the process is ot of control, some drift will appear in the cusum. 
+If the process is ot of control, some drift will appear. 
 The statistic to be plotted is 
 \begin{align}
 	C_t:= \sum_{j=0}^{t}(\bar{x}_j-\mu_0)=C_{t-1}+ (\bar{x}_t-\mu_0)
 \end{align} 
+Observing that when under control then $C_t \sim \gauss{\mu_0, \frac{t}{n} \sigma_x^2}$, we could set 
+\begin{align}
+\begin{split}
+	UCL &:= \mu_0 + 3 \sigma_{C_t}= \mu_0 + 3 \, \sqrt{\frac{t}{n} \sigma_x^2},  \\
+	UCL &:= \mu_0 - 3 \sigma_{C_t}= \mu_0 - 3 \, \sqrt{\frac{t}{n} \sigma_x^2}.
+\end{split}
+\end{align}
+This approach, is rarely seen in practice, because it is suboptimal.
+Indeed, 
 
 
 
-\begin{extra}[Wald's Sequential Likelihood Ration Test- SPRT]
-[TODO]
-\end{extra}
+
+%\begin{extra}[Wald's Sequential Likelihood Ration Test- SPRT]
+%[TODO]
+%\end{extra}
 
 
 
