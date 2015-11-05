@@ -4,7 +4,7 @@
 \contentsline {extra}{\numberline {2}Extra Info}{20}{extra.2}
 \contentsline {definition}{\numberline {1}Definition\thmtformatoptarg {The Mean}}{21}{definition.1}
 \contentsline {definition}{\numberline {2}Definition\thmtformatoptarg {The Median}}{21}{definition.2}
-\contentsline {definition}{\numberline {3}Definition\thmtformatoptarg {$\alpha $-trimmed mean}}{21}{definition.3}
+\contentsline {definition}{\numberline {3}Definition\thmtformatoptarg {$\alpha $-Trimmed Mean}}{21}{definition.3}
 \contentsline {definition}{\numberline {4}Definition\thmtformatoptarg {The Standard Deviation}}{21}{definition.4}
 \contentsline {definition}{\numberline {5}Definition\thmtformatoptarg {$\alpha $ Quantile}}{21}{definition.5}
 \contentsline {definition}{\numberline {6}Definition\thmtformatoptarg {The Range}}{22}{definition.6}
@@ -33,6 +33,6 @@
 \addvspace {10\p@ }
 \contentsline {extra}{\numberline {6}Extra Info\thmtformatoptarg {A more rigorous treatment }}{42}{extra.6}
 \contentsline {extra}{\numberline {7}Extra Info\thmtformatoptarg {Stopping Rules}}{47}{extra.7}
-\contentsline {definition}{\numberline {21}Definition\thmtformatoptarg {Moving Average}}{48}{definition.21}
+\contentsline {definition}{\numberline {21}Definition\thmtformatoptarg {Moving Average- MA}}{48}{definition.21}
 \contentsline {definition}{\numberline {22}Definition\thmtformatoptarg {Exponentially Weighted Moving Average- EWMA}}{49}{definition.22}
 \contentsline {extra}{\numberline {8}Extra Info\thmtformatoptarg {Local Methods}}{50}{extra.8}
