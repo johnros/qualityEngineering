@@ -225,16 +225,17 @@ What is the probability of the device failing, when assuming independent failure
 	&= 1-P(\text{no failure}) \\ \nonumber
 	&= 1-\prod_{j=1}^{m}(1-\alpha_j) 
 \end{align}
-Assuming all components have the same quality guarantees, we omit the index $j$ in $\alpha_j$. 
+Assuming all components have the same fallout rate, we omit the index $j$ in $\alpha_j$. 
 
 The failure probability $\alpha$ is implied by the CTQs, and its specification limits (USL, LSL). 
-Denoting the target value of the CTQ by $TV$, 3-sigma means that the production variability, $\sigma$, is small enough so that $$3 \sigma < TV-LSL= USL- TV.$$
-Denoting the CTQ by $Z$, and assuming $$Z-TV \sim \gauss{0,\sigma}$$, we can compute:
+Denoting the target value of the CTQ by $\targetValue$, then $USL=\targetValue + \delta$ and $LSL=T-\delta$.
+Three-sigma means that the production variability, $\sigma$, is small enough so that $$3 \sigma = \delta.$$
+Assuming $$CTQ \sim \gauss{\targetValue,\sigma},$$ we can compute:
 \begin{align}
 \label{eq:3_sigma}
-	1-\alpha &= P(LSL<Z<USL) \\ \nonumber
-	& = P(|Z| < USL-TV) \\ \nonumber
-	&< P(|Z| < 3 \sigma )= 0.0027.
+	\alpha &= 1-P(LSL<CTQ<USL) \\ \nonumber
+	& = 1-P(|CTQ| < \delta) \\ \nonumber
+	&= 1- P(|CTQ| < 3 \sigma )= 0.0027.
 \end{align}
 The 3-sigma quality guarantee is also known as $2,700$ defective parts per million (ppm) for now obvious reasons.\marginnote{PPM}
 Plugging the 3-sigma performance in Eq.(\ref{eq:failure_rate}) returns
