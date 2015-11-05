@@ -152,9 +152,9 @@ For component-wise summaries, we can always apply the univariate summaries one v
 By far the most popular measures of joint association are the covariance matrix and correlation matrix.
 
 \begin{definition}[Covariance Matrix]
-For a multivariate data consisting of $x_1,\dots,x_p$ vectors, each with $n$ entries: $x_{i,1},\dots,x_{i,n}$, we define the (sample) covariance matrix to be a $p\times p$ matrix whose elements are the (sample) covariances between corresponding vectors:
+For multivariate data consisting of $x_1,\dots,x_j,\dots,x_p$ vectors, each with $n$ entries: $x_{j,1},\dots,x_{j,n}$, we define the (sample) covariance matrix to be a $p\times p$ matrix whose elements are the (sample) covariances between corresponding vectors:
 \begin{align}
-	\hat{\Sigma}_{i,j}:= Cov(x_i, x_j)
+	\hat{\Sigma}_{k,l}:= Cov(x_k, x_l).
 \end{align}
 \end{definition}
 
@@ -165,9 +165,9 @@ The curious reader is referred to \cite{petersen_matrix_2006}, and references th
 \end{extra}
 
 \begin{definition}[Correlation Matrix]
-For a multivariate data consisting of $x_1,\dots,x_p$ vectors, each with $n$ entries: $x_{j,1},\dots,x_{j,n}$, we define the (sample) correlation matrix to be a $p\times p$ matrix whose elements are the (Pearson) correlations between corresponding vectors:
+For multivariate data consisting of $x_1,\dots,x_j,\dots,x_p$ vectors, each with $n$ entries: $x_{j,1},\dots,x_{j,n}$, we define the (sample) correlation matrix to be a $p\times p$ matrix whose elements are the (Pearson) correlations between corresponding vectors:
 \begin{align}
-	\hat{R}_{i,j}:= r(x_i, x_j)
+	\hat{R}_{k,l}:= r(x_k, x_l)
 \end{align}
 \end{definition}
 
@@ -199,6 +199,11 @@ Ask me for reference books or courses if this topic interests you.
 \subsubsection{Univariate}
 Much like computing summaries, there is not much to be said about visualizing univariate categorical variables. 
 The most natural, and perhaps only visualization, is the \emph{bar plot}, illustrated in Figure~\ref{fig:barplot}.
+
+\begin{remark}[Pie Chart]
+About those pie charts. 
+There is really no reason to use them. Ever\footnote{\url{http://www.businessinsider.com/pie-charts-are-the-worst-2013-6}.}.
+\end{remark}
 
 
 
@@ -257,8 +262,9 @@ These are illustrated in figures \ref{fig:dot_plot}, \ref{fig:histogram_eruption
 \begin{figure}[h]
 \centering
 \includegraphics[height=0.3\textheight]{art/histogram_eruptions}
-\caption[Histogram]{Histogram. \newline
-\url{http://compbio.pbworks.com/w/page/16252882/Basic}}
+\caption[Histogram]{Histogram. 
+Notice the ticks on the x axis. These are the raw data points. Make sure you always add them, with the \rcode{rug()} \R command. 
+\newline \url{http://compbio.pbworks.com/w/page/16252882/Basic}}
 \label{fig:histogram_eruptions}
 \end{figure}
 
@@ -303,7 +309,8 @@ These are illustrated in figures \ref{fig:scatterplot}, and \ref{fig:hexbin}, re
 \begin{figure}[h]
 \centering
 \includegraphics[height=0.3\textheight]{art/hexbin2}
-\caption[HexBin Plot]{HexBin plot. Sorce: \url{http://www.r-bloggers.com/5-ways-to-do-2d-histograms-in-r/}}
+\caption[HexBin Plot]{HexBin plot. 
+\newline \url{http://www.r-bloggers.com/5-ways-to-do-2d-histograms-in-r/}}
 \label{fig:hexbin}
 \end{figure}
 
