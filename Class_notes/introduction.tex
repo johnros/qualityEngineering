@@ -233,8 +233,8 @@ Three-sigma means that the production variability, $\sigma$, is small enough so 
 Assuming $$CTQ \sim \gauss{\targetValue,\sigma},$$ we can compute:
 \begin{align}
 \label{eq:3_sigma}
-	\alpha &= 1-P(LSL<CTQ<USL) \\ \nonumber
-	& = 1-P(|CTQ| < \delta) \\ \nonumber
+	\alpha &= 1-P(LSL<CTQ<USL) \\ 
+	& = 1-P(|CTQ| < \delta) \\ 
 	&= 1- P(|CTQ| < 3 \sigma )= 0.0027.
 \end{align}
 The 3-sigma quality guarantee is also known as $2,700$ defective parts per million (ppm) for now obvious reasons.\marginnote{PPM}
@@ -245,7 +245,8 @@ Plugging the 3-sigma performance in Eq.(\ref{eq:failure_rate}) returns
 Figure~\ref{fig:3_sigma_failure_proability} illustrates the probability of failure against the number of components. 
 For simple devices, the 3-sigma criterion may suffice. 
 But now imagine the number of components in a car, a cellular phone, \dots. The 3-sigma rule is just not good enough. 
-This is where 6-sigma requirement comes along. It implies that the production is process is so accurate, that $$6 \sigma < TV-LSL= USL- TV.$$
+This is where 6-sigma requirement comes along. It implies that the production is process is so accurate that 
+$$6 \sigma = \delta.$$
 Updating Eq.(\ref{eq:3_sigma}) we get that the defective \emph{ppm} of 6-sigma is $0.002$. 
 This is obviously excellent news, except for the typically tremendous effort involved in achieving this level of quality.
 
@@ -289,12 +290,12 @@ It is based on the use of \textbf{statistical tools} like linear regression and 
 
 
 \subsection{Quality Systems and Standards}
-The first quality standard issued by the International Standards Organization (ISO) in $1987$.\marginnote{ISO9000}
+The first quality standard was issued by the International Standards Organization (ISO) in $1987$.\marginnote{ISO9000}
 Current quality standards are known as the \emph{ISO9000 series}. These include:
 \begin{description}
-\item ISO9000:2000 Quality Management System—Fundamentals and Vocabulary
-\item ISO9001:2000 Quality Management System—Requirements
-\item ISO9004:2000 Quality Management System—Guidelines for Performance Improvement
+\item [ISO9000:2000] Quality Management System-Fundamentals and Vocabulary.
+\item [ISO9001:2000] Quality Management System-Requirements.
+\item [ISO9004:2000] Quality Management System-Guidelines for Performance Improvement.
 \end{description}
 In Israel, it is the Standards Institute of Israel\footnote{\url{https://portal.sii.org.il/heb/qualityauth/certificationtypes/qualitylinks/iso9001/}} that may give ISO9000 (like any ISO) certifications upon inspecting the candidate organization.
 As emphasized by \citet[p.24]{montgomery_introduction_2007}, ISO9000 is a set of rules and best practices, mostly oriented at \emph{knowledge management}. 
