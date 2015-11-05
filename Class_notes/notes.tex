@@ -13,14 +13,18 @@
 \usepackage{algpseudocode}
 \usepackage{framed}
 \usepackage{todonotes}
+
 \usepackage{tcolorbox}
 \tcbuselibrary{breakable}
+
 \usepackage{sidecap}
 \usepackage{listings}
 \usepackage{afterpage}
 
+\usepackage{fancyhdr}
+\pagestyle{fancy}
 
-
+\rfoot{Page \thepage}
 
 \usepackage{hyperref}
 \AtBeginDocument{\let\textlabel\label}
@@ -31,12 +35,11 @@
     filecolor=black,
     urlcolor=black,
 }
-
+\usepackage{thmtools} % for lists of theorems
 
 \usepackage{marginnote}
-\renewcommand*{\marginfont}{\scriptsize }
+\renewcommand*{\marginfont}{\scriptsize}
 
-\usepackage{thmtools} % for lists of theorems
 
 
 \input{commands}
@@ -45,18 +48,17 @@
 \author{Jonathan Rosenblatt}
 \title{Quality Engineering - Class Notes (experimental)}
 
+
+
+
 % % % % % % % % % % % % %
-
-
 \begin{document}
 
 \maketitle
 
 
-
-
 \chapter*{Preface}
-The purpose of this text is to accompany my Quality Engineering course at the Dept. of Industrial Engineering at the Ben-Gurion University of the Negev.
+This text accompanies my Quality Engineering course at the Dept. of Industrial Engineering at the Ben-Gurion University of the Negev.
 It has several purposes:
 \begin{itemize}
 \item Help me organize and document the course material.
@@ -64,8 +66,8 @@ It has several purposes:
 \item Help students after class, so that they may self-study.
 \end{itemize}
 
-At it's current state it is experimental. It can thus be expected to change from time to time, and include mistakes.
-I will thus be enormously grateful to whoever decides to share with me the mistakes found.
+At its current state it is experimental. It can thus be expected to change from time to time, and include mistakes.
+I will be enormously grateful to whoever decides to share with me any mistakes found.
 
 I also ask for the readers' forgiveness for my Wikipedia quoting style. 
 It is highly unorthodox to cite Wikipedia as one would cite a peer reviewed publication. 
@@ -87,6 +89,9 @@ I hope the reader will find this text interesting and useful.
 
 
 % % % Introduction % % % %
+
+
+
 \input{introduction}
 
 % % % % Descriptive Statistics % % % % 
