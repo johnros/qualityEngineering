@@ -99,9 +99,8 @@ Note that the MAD may be sometimes scaled by $1.4826$, so that it estimates $\si
 After summaries of scale, we move to summaries of \emph{skewness}, or \emph{asymmetry}.
 
 \begin{definition}[Yule Skewness Measure]
-[TODO: verify]
 \begin{align}
-	YULE(x):= \frac{(x_{0.75}+x_{0.25})-x_{0.5}}{2 IQR(x)}
+	YULE(x):= \frac{\frac{1}{2} (x_{0.75}+x_{0.25})-x_{0.5}}{IQR(x)}
 \end{align}
 \end{definition}
 
