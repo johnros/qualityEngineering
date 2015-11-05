@@ -3,11 +3,12 @@
 
 The idea of extrapolating knowledge from a \emph{sample} to a population is known as \emph{statistical inference}.
 It encompasses the ideas of \emph{parameter estimation}, \emph{confidence intervals}, and \emph{hypothesis testing}.
-We will assume the reader is familiar with these ideas, but recall some required terminology.
+We will assume the reader is familiar with these, but recall some required terminology.
 The QC and SPC terminology are not always consistent with statisticians' terminology. When new names are given to old ideas, we will emphasize this in the text.
 
 \begin{description}
-\item [Null/Alternative Hypothesis] Some statement about the world we wish to test with data. The frequentist argument follows a Popperian philosophy: ``to show the alternative hypothesis is true, I will show that the null hypothesis is not true''. 
+\item [Null/Alternative Hypothesis] Some statement about the world we wish to test with data. The frequentist argument follows a Popperian philosophy: to show the alternative hypothesis is true, we will show that the null hypothesis is not true. 
+In the context of quality control, the null hypothesis will be the process is \emph{in statistical control}, while the alternative will be that it is \emph{out of control}.\marginnote{In Statistical Control}
 \item [Statistical Test] The procedure of inferring from data on the truthfulness of the alternative hypothesis.
 \item [Assumptions] As the name suggests, these are assumptions. We stress that unlike hypothesis, assumptions are not being tested in a statistical test. 
 \item [Test Statistic] The function of the data to be computed for the purpose of inference. As such, it is a random variable. 
@@ -15,7 +16,7 @@ The QC and SPC terminology are not always consistent with statisticians' termino
 \item [Type I/II error] See Figure~\ref{fig:confusion_table}.
 \item [False/True Positive/Negative] See Figure~\ref{fig:confusion_table}.
 \item [Rejection Region] The collection of event that will lead us to reject the null hypothesis, and believe in the alternative hypothesis.
-\item [p-value] A.k.a. \emph{observed significance}. The null probability of the observed, or ``more extreme'' events.
+\item [p-value] A.k.a. \emph{observed significance}. The null probability of the observed (or ``more extreme'') event.
 \item [Significance Level] A.k.a. $\alpha$. The probability of a false positive.
 \item [Power] The probability of a true positive.
 \item [i.i.d.] ``Independent and identically distributed'' (i.i.d.) is an assumption made on the sampling distribution, meaning that samples are statistically independent, and all originating from the same distribution.
