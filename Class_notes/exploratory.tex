@@ -112,10 +112,10 @@ From univariate data $x$, we move to bivariate $x,y$.
 Clearly we can apply univariate summaries component-wise. 
 We want, however, to summarize the \emph{joint} behaviour of the data. 
 For this purpose, we assume that data comes in pairs, implying that $x$ and $y$ are of same length.
-The first measure, is naturally the celebrated (Pearson) correlation coefficient, that captures the level of linear association.
 
 
-\begin{definition}[(Empirical) Covariance]
+\begin{definition}[Covariance]
+The sample covariance, or \emph{empirical} covariance is defined as
 \begin{align}
 	Cov(x,y):= \frac{\sum_{i=1}^{n} (x_i-\bar{x})(y_i-\bar{y})}{n-1}
 \end{align}
@@ -124,8 +124,9 @@ The first measure, is naturally the celebrated (Pearson) correlation coefficient
 
 
 \begin{definition}[Pearson's Correlation Coefficient]
+\emph{Pearson’s Correlation Coefficient}, or \emph{Pearson's Moment Product Correlation Coefficient}, is defined as
 \begin{align}
-	r(x,y):= \frac{(n-1) Cov(x,y)}{S(x) S(y)}
+	r(x,y):= \frac{(n-1) Cov(x,y)}{S(x) S(y)}= \frac{\sum_{i=1}^{n} (x_i-\bar{x})(y_i-\bar{y})}{S(x) S(y)}
 \end{align}
 \end{definition}
 We can dwell into the meaning and intuition underlying Pearson's correlation coefficient, but we will not. 
