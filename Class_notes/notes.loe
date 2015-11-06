@@ -27,13 +27,13 @@
 \contentsline {definition}{\numberline {17}Definition\thmtformatoptarg {$C_p$}}{36}{definition.17}
 \contentsline {definition}{\numberline {18}Definition\thmtformatoptarg {$\mathaccentV {hat}05E{C}_p$}}{36}{definition.18}
 \contentsline {theorem}{\numberline {4.1.1}Theorem\thmtformatoptarg {Chebyshev's inequality}}{37}{theorem.4.1.1}
-\contentsline {theorem}{\numberline {4.1.2}Theorem\thmtformatoptarg {Vysochanskij\IeC {\textendash }Petunin inequality}}{37}{theorem.4.1.2}
-\contentsline {definition}{\numberline {19}Definition\thmtformatoptarg {$C_{pk}$}}{38}{definition.19}
-\contentsline {definition}{\numberline {20}Definition\thmtformatoptarg {$C_{pm}$}}{38}{definition.20}
+\contentsline {definition}{\numberline {19}Definition\thmtformatoptarg {$C_p(q)$}}{38}{definition.19}
+\contentsline {definition}{\numberline {20}Definition\thmtformatoptarg {$C_{pk}$}}{38}{definition.20}
+\contentsline {definition}{\numberline {21}Definition\thmtformatoptarg {$C_{pm}$}}{39}{definition.21}
 \contentsline {example}{\numberline {1}Example\thmtformatoptarg {$C_p$ test for 6-sigma compliance}}{40}{example.1}
 \addvspace {10\p@ }
 \contentsline {extra}{\numberline {6}Extra Info\thmtformatoptarg {A more rigorous treatment }}{42}{extra.6}
 \contentsline {extra}{\numberline {7}Extra Info\thmtformatoptarg {Stopping Rules}}{47}{extra.7}
-\contentsline {definition}{\numberline {21}Definition\thmtformatoptarg {Moving Average- MA}}{48}{definition.21}
-\contentsline {definition}{\numberline {22}Definition\thmtformatoptarg {Exponentially Weighted Moving Average- EWMA}}{49}{definition.22}
+\contentsline {definition}{\numberline {22}Definition\thmtformatoptarg {Moving Average- MA}}{48}{definition.22}
+\contentsline {definition}{\numberline {23}Definition\thmtformatoptarg {Exponentially Weighted Moving Average- EWMA}}{49}{definition.23}
 \contentsline {extra}{\numberline {8}Extra Info\thmtformatoptarg {Local Methods}}{50}{extra.8}
