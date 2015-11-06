@@ -477,17 +477,49 @@ To see this we write the t-statistic in the following weird form:
 This notation readily extends to the multivariate case. 
 For $p$ CTQs, then $\bar{x}_t$ and $\mu_0$ are $p$-length vectors, and $s^2_t(x)$ is replaced with the $p \times p$ matrix $\hat{\Sigma}_t(x)$:
 \begin{align}
-	T^2_t := n (\bar{x}_t-\mu_0)' \hat{\Sigma}_t^{-1} (\bar{x}_t-\mu_0).
+\label{eq:hotteling}
+	T^2_t := n (\bar{x}_t-\hat{\mu}_0)' \hat{\Sigma}_t^{-1} (\bar{x}_t-\hat{\mu}_0).
 \end{align}
-If $\x_{it}$ is $p$-variate Gaussian distributed, $\gauss{\mu_0, \Sigma_{p \times p}}$, then 
+To derive the control limits, we will be assuming that $\x_{it}$ is $p$-variate Gaussian distributed, $\gauss{\mu_0, \Sigma_{p \times p}}$. 
+We need to be very clear, however, on how $\mu_0$ and $\hat{\Sigma}_t^{-1}$ are estimated. 
+We thus consider the following scenario:
+\begin{enumerate}
+\item \tsq is computed at Phase II with a single observation at a time ($n=1$)
+\item $\mu_0,\hat{\Sigma}_t^{-1}$ were estimated from $m$ observations in Phase I.
+\end{enumerate}
+Eq.(\ref{eq:hotteling}) thus yields 
 \begin{align}
-	T^2_t \sim \chi^2_p.
+	T^2_t := (x_t-\hat{\mu}_0)' \hat{\Sigma}_t^{-1} (x_t-\hat{\mu}_0).
 \end{align}
-We can thus construct the control limit:
+and 
 \begin{align}
-	UCL:= \chi^2_{1-\alpha/2,p}.
+	T^2_t \sim F_{p,m-p} \frac{p(m-1)(m+1)}{m(m-p)} \overset{m \to \infty}{\rightsquigarrow }\chi^2_p.
 \end{align}
-Note that the \tsq statistic is non directional: it will increase in the presence of positive or negative drift. 
+We can thus construct the control limit for this scenario:
+\begin{align}
+	UCL:= F_{1-\alpha,p,m-p} \frac{p(m-1)(m+1)}{m(m-p)} \approx \chi^2_{1-\alpha,p}.
+\end{align}
+Note that the \tsq statistic is \emph{non directional}: it will increase in the presence of both positive and negative drift. 
+
+We may consider the distribution of \tsq under many configurations: where $\mu_0,\hat{\Sigma}_t^{-1}$ are estimated at Phase II, where we take $n$ observation in each period, etc. 
+For our current purposes, we will use the fact that if $n \gg p$, or $m \gg p$, then 
+\begin{align}
+	T^2_t  \rightsquigarrow \chi^2_p,
+\end{align}
+and thus
+\begin{align}
+	UCL \approx \chi^2_{1-\alpha,p}.
+\end{align}
+
+
+For exact results and references on these scenarios, we refer the reader to \cite[Ch.7]{qiu_introduction_2013}.
+
+
+
+
+
+
+
 
 \section{Economical Design of Control Charts}
 \label{sec:economical_considerations}
