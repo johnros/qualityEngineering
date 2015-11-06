@@ -408,6 +408,9 @@ These two control limits are equivalent. Before we present them, we try to offer
 The fundamental difference between the control limits of \cite{page_continuous_1954}, and the ones presented until now, is that \citeauthor{page_continuous_1954} designed limits for the particular history of each process, while the limits until now, including Eq.(\ref{eq:cusum_simple_limits}) do not adapt to the particular history of the process.
 As such, \citeauthor{page_continuous_1954}'s control limits are said to be \emph{adaptive}.\marginnote{Adaptive Contol Limits}
 
+[TODO: explain V-mask and tabular]
+
+
 
 
 
@@ -448,6 +451,25 @@ As such, \citeauthor{page_continuous_1954}'s control limits are said to be \emph
 % Srivastava Du
 % PCA
 % Higher criticism
+
+Consider an intensive care unit. 
+The CTQs are the patient's blood pressure, temperature, etc.
+We want to sound an alarm if the patient's condition deteriorates. 
+Clearly, we can apply previous the univariate methodology above. 
+It is possible, that the deterioration is mild, so that it is not picked up by any CTQ individually (low power), but could have been noticed were we to aggregate signal from all CTQs. This is the concern of the current section. 
+
+\subsection{The Mass Univariate Approach}
+A first natural approach is to raise an alarm when \textbf{any} of the processes exceeds its respective control limits.
+For $m$ independent processes, with false alarm rate $\alpha$ each, then the joint false alarm rate is 
+\begin{align}
+	\alpha^* = 1-(1-\alpha)^m.
+\end{align}
+Clearly we could set $\alpha=1-\sqrt[m]{1-\alpha^*}$, so that the joint false alarm rate is under control, but we would not be enjoying the added sensitivity of pooling many CTQs together. 
+
+
+
+\subsection{Hotteling's \tsq}
+
 
 
 
