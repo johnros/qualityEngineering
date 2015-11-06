@@ -117,7 +117,7 @@ Chebyshev's inequality provides a universal bound on $\pnc$ for a $\cp=1$ proces
 \begin{theorem}[Chebyshev's inequality]
 For any random variable $\x$, with $\mu:=\expect{\x}$, and $\sigma^2:=\expect{(\x-\mu)^2}$, then
 \begin{align}
-	P(|\x-\mu|>k\sigma)=\frac{1}{k^2}
+	P(|\x-\mu| \geq k\sigma) \leq \frac{1}{k^2}
 \end{align}
 \end{theorem}
 If $\cp=1$  then $\delta=3\sigma$. Plugging $k=3$ in the inequality returns $\pnc<0.11$.
@@ -176,7 +176,7 @@ When relaxing the normality assumption, $\sigma$ is no longer related to the tai
 
 
 
-\subsection{Process Capability of a non-centred Process}
+\subsection{Process Capability of a Non-Centred Process}
 We will now relax the assumption of $\ctqExpect=\targetValue$, while still in statistical control.
 
 \begin{definition}[$\cpk$]
@@ -188,7 +188,7 @@ where $\cpu:= \frac{USL- \ctqExpect}{3 \sigma}$ and $\cpl:= \frac{\ctqExpect-LSL
 For a non-centred process, this definition is more informative on the probability of non-compliance.
 Indeed, Eq.(\ref{eq:pc_and_pnc}) will not hold, but we can derive an updated version:
 \begin{align}
-	 \pnc \approx \Phi(-3 \cpk)[TODO: fix]
+	 \pnc \approx \Phi(-3 \cpk).
 \end{align}
 Generally, $\cpk \leq \cp$, with equality holding for centred processes ($\ctqExpect=\targetValue$).
 An illustration is given in Figure~\ref{fig:cpk}.
@@ -204,8 +204,8 @@ An illustration is given in Figure~\ref{fig:cpk}.
 
 
 
-The $\cpk$ index is motivated by conserving the relation between the index and the fallout rate $\pnc$.
-Another index, known as $\cpm$, or the \emph{Taguchi} capability index, deals with the non centring slightly differently. It is motivated by the observation that for $\ctqExpect=\targetValue$, then $\sigma=\sqrt{\expect{(CTQ-\targetValue)^2}}$. This relation does not hold if $\ctqExpect \not=\targetValue$, which leads us to the following definition:
+The $\cpk$ index is motivated by conserving the relation between the index and the fallout rate $\pnc$, which is not captured by $\cp$ when the process is not centred. 
+Another index, known as $\cpm$, or the \emph{Taguchi capability index}, also deals with the non centring but slightly differently. It is motivated by the observation that for $\ctqExpect=\targetValue$, then $\sigma=\sqrt{\expect{(CTQ-\targetValue)^2}}$. This relation does not hold if $\ctqExpect \not=\targetValue$, which leads us to the following definition:
 \begin{definition}[$\cpm$]
 \begin{align}
 		\cpm &:= \frac{USL-LSL}{6 \sqrt{\expect{(CTQ-\targetValue)^2}}} \\
@@ -213,22 +213,22 @@ Another index, known as $\cpm$, or the \emph{Taguchi} capability index, deals wi
 		&= \frac{\cp}{\sqrt{1+(\frac{\ctqExpect-\targetValue}{\sigma})^2}}. \label{eq:cpm}
 \end{align}
 \end{definition}
-Eq.(\ref{eq:cpm}) readily shows that just like the $\cpk$, then $\cpm<\cp$. 
+Eq.(\ref{eq:cpm}) readily shows that just like the $\cpk$, then $\cpm \leq \cp$. 
 
 
 
 
 \subsection{Interval Estimation for Capability Indexes}
-Since the various process capability indexes are merely population parameters that depend on specifications, we can also construct confidence intervals (CIs) for them, which may be very informative if sample sizes are small.
+Since the various process capability indexes are merely population parameters, we can also construct confidence intervals (CIs) for them, which may be very informative if sample sizes are small.
 The simplest case is that of $\cp$. Being a monotone transformation of $\sigma$, we can call upon confidence intervals for the variance of a normal population, so that with probability $1-\alpha$:
 \begin{align}
 \label{eq:ci_for_cp}
 	\cp \in \left[ 
 		\cpHat \sqrt{\frac{\chi^2_{\alpha/2,n-1}}{n-1}},
 		\cpHat \sqrt{\frac{\chi^2_{1-\alpha/2,n-1}}{n-1}}
-	\right]
+	\right].
 \end{align}
-
+This equation is simply derived from Eq.(\ref{eq:cp_dist}).
 Intervals for the other capability indexes, are available in \cite{montgomery_introduction_2007} and references therein. 
 
 
@@ -240,6 +240,7 @@ It may easily be the case, that the $\cp>1.5$, even if $\cpHat<1.5$, especially 
 It thus makes a lot of sense, to design hypothesis tests on process capabilities. 
 We observe that for an i.i.d. sample from a Gaussian population, where $\cpHat$ is estimated with $s$, then
 \begin{align}
+\label{eq:cp_dist}
 	(n-1) \left( \frac{\cp}{\cpHat} \right)^2  \sim \chi^2_{n-1}
 \end{align} 
 so that $(n-1) \left( \frac{\cp}{\cpHat} \right)^2 $ may serve as test statistic.
