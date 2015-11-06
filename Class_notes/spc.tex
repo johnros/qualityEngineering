@@ -469,10 +469,25 @@ Clearly we could set $\alpha=1-\sqrt[m]{1-\alpha^*}$, so that the joint false al
 
 
 \subsection{Hotteling's \tsq}
-
-
-
-
+Hotteling's \tsq statistic is a generalization of the t-test.
+To see this we write the t-statistic in the following weird form:
+\begin{align}
+	t(x)=(\bar{x}_t-\mu_0) (s^2_t(x))^{-1} (\bar{x}_t-\mu_0).
+\end{align}
+This notation readily extends to the multivariate case. 
+For $p$ CTQs, then $\bar{x}_t$ and $\mu_0$ are $p$-length vectors, and $s^2_t(x)$ is replaced with the $p \times p$ matrix $\hat{\Sigma}_t(x)$:
+\begin{align}
+	T^2_t := n (\bar{x}_t-\mu_0)' \hat{\Sigma}_t^{-1} (\bar{x}_t-\mu_0).
+\end{align}
+If $\x_{it}$ is $p$-variate Gaussian distributed, $\gauss{\mu_0, \Sigma_{p \times p}}$, then 
+\begin{align}
+	T^2_t \sim \chi^2_p.
+\end{align}
+We can thus construct the control limit:
+\begin{align}
+	UCL:= \chi^2_{1-\alpha/2,p}.
+\end{align}
+Note that the \tsq statistic is non directional: it will increase in the presence of positive or negative drift. 
 
 \section{Economical Design of Control Charts}
 \label{sec:economical_considerations}
