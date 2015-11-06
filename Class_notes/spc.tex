@@ -583,6 +583,7 @@ limited.
 In light of the above skepticism, and following the lines of \cite{duncan_economic_1956}, we aim at the modest goal of an economical optimal \barxChart. 
 Our target function is optimizing the expected income per hour, with respect to the design parameters:
 \begin{align}
+\label{eq:optimal_design}
 	\max_{n,\arm,h}\set{\expect{C/T}}
 \end{align}
 where $C$ is the income between two productions halts, i.e., a \emph{cycle};
@@ -591,7 +592,48 @@ $n$ is the number of samples per period;
 $\arm$ governs the control limits via $UCL:= \mu_0+ \arm \sigma_{\bar{x}}= \mu_0+ \arm \sigma_x / \sqrt{n}$;
 $h$ is the time interval between sample periods. 
 
-We now need to establish how $\expect{C/T}$ is related to $n,\arm,h$. 
+We now need to establish how $\expect{C/T}$ is related to $n,\arm,h$. Here is our set of assumptions and notation:
+\begin{enumerate}
+\item When in control (IC), production is centred on $\mu_0$, assumed known. 
+\item When out of control (OC), $\mu_1=\mu_0 \pm \delta \sigma_x$. 
+\item When OC, production may proceed (!). 
+\item Search and repair costs are not part of $C$.
+\item OCs occur as a Poisson process, with rate $\lambda$ events per hour. The expected time from a sampling to an OC events is thus 
+\begin{align}
+	\tau := \frac{1-(1+ \lambda h) e^{-\lambda h}}{\lambda(1-e^{-\lambda h})}
+\end{align} 
+\item The power to detect an OC is 
+\begin{align}
+	\pi:= \Phi(-\arm-\delta/\sqrt{n})+ (1-\Phi(\arm-\delta/\sqrt{n}))
+\end{align}
+\item The false alarm rate
+\begin{align}
+	\alpha:= 2 \Phi(-\arm)
+\end{align}
+\item Because of the Poisson process assumption,  $\expect{C/T}=\expect{C}/\expect{T}$. 
+\item The expected cycle length:
+\begin{align}
+	\expect{T}= \frac{1}{\lambda}+ \frac{h}{\pi}- \tau  + D
+\end{align}
+where $\frac{1}{\lambda}$ is time IC;
+$\frac{h}{\pi}- \tau$ is the time the process is OC until detection;
+$D$ is a fixed time to identify the assignable cause. 
+\item The expected income per cycle
+\begin{align*}
+	\expect{C}= V_0 \frac{1}{\lambda} + 
+	V_1 \left(\frac{h}{\pi}- \tau  + D  \right) - 
+	a_3 -
+	\frac{a'_3 e^{-\lambda h}}{1-e^{-\lambda h}} -
+	(a_1+a_2n)\frac{\expect{T}}{h}
+\end{align*}
+where $V_0$ is the net income per cycle when IC;
+$V_1$ is the net income when OC;
+$(a_1+a_2n)$ is the fixed and variable cost of taking a sample;
+$a_3$ is the cost of finding an assignable cause;
+$a'_3$ is the cost of investigating a false alarm.
+\end{enumerate}
+
+Given all the above, we may now plug Eq.(\ref{eq:optimal_design}) into our favourite numerical solver to find the optimal $h,\arm,n$.
 
 
 
