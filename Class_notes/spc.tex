@@ -278,24 +278,23 @@ One way to pool information from different periods is by a \emph{moving average}
 \begin{definition}[Moving Average- MA]
 The moving average at period $t$ is defined as
 \begin{align}
-	M_t:= \frac{\bar{x}_t+\dots+\bar{x}_{t-w+1}}{w}
+	M_t:= \frac{x_t+\dots+x_{t-w+1}}{w}
 \end{align}
 \end{definition}
-Assuming $\bar{x}_t \sim \gauss{\mu_0, \sigma^2/n}$ then clearly 
+Assuming $x_t \sim \gauss{\mu_0, \sigma_x^2}$ then clearly 
 \begin{align}
-	M_t \sim \gauss{\mu_0, \frac{\sigma^2}{nw}}.
+	M_t \sim \gauss{\mu_0, \frac{\sigma_x^2}{w}}.
 \end{align}
-It is quite advantageous, and common, to take one observation at a time, so that $n=1$.
 
 The control limits on $M_t$ are typically
 \begin{align}
-	UCL &:= \mu_0 + 3 \sigma_{M_t}= \mu_0 + 3 \, \frac{\sigma_x}{\sqrt{nw}} \\
-	UCL &:= \mu_0 - 3 \sigma_{M_t}= \mu_0 - 3 \, \frac{\sigma_x}{\sqrt{nw}}.
+	UCL &:= \mu_0 + 3 \sigma_{M_t}= \mu_0 + 3 \, \frac{\sigma_x}{\sqrt{w}} \\
+	UCL &:= \mu_0 - 3 \sigma_{M_t}= \mu_0 - 3 \, \frac{\sigma_x}{\sqrt{w}}.
 \end{align}
 The fallout rate of this criterion is trivially $\alpha=0.0027$. 
-The ARL, however, is no longer so simple to compute. 
-This is because the pooling of periods has violated the independence between periods, and Eqs.(\ref{eq:arl_0},\ref{eq:arl_1}) are no longer valid. 
-Do not despair, however, as the ARL may still be computed. 
+The $ARL_0$ is no longer simple to compute. 
+This is because the pooling of periods has compromised independence between periods, and Eqs.(\ref{eq:arl_0},\ref{eq:arl_1}) are no longer valid. 
+Do not despair as the ARL may still be computed. 
 You can always use simulation to compute it, or try using the \rcode{spc} \R package.
 
 
@@ -312,9 +311,10 @@ You can always use simulation to compute it, or try using the \rcode{spc} \R pac
 %\end{algorithm}
 
 
-We are free to choose the magnitude of $w$. If $w$ is too small, there is no real pooling from history. At the limit, where $w=1$, we are back to the classical Shewart chart. 
+We are free to choose the magnitude of $w$. 
+If $w$ is too small, there is no real pooling from history. At the limit, where $w=1$, we are back to the classical Shewart chart. 
 If $w$ is too large, then each new observation has very small importance, and it may take a long time to detect a shift.
-Which is the right intermediate value, is left for you to decide.
+Which is the right intermediate value of $w$, is left for you to decide.
 
 
 
@@ -323,17 +323,17 @@ Which is the right intermediate value, is left for you to decide.
 
 \subsection{Exponentially Weighted Moving Average Chart- EWMA}
 The moving average gives all observations the same importance. 
-We want to change this, so that we may capture drifts quickly when they occur, while enjoy the power benefits that come with pooling information over periods. 
-The \emph{Exponentially Weighted Moving Average} (EWMA), \aka the \emph{geometric moving average} (GMA), does just that. 
+We want to change this, giving more importance to new observations so that we may capture drifts quickly when they occur. 
+The \emph{Exponentially Weighted Moving Average} (EWMA), \aka the \emph{geometric moving average} (GMA), does just that. \marginnote{GMA}
 \begin{definition}[Exponentially Weighted Moving Average- EWMA]
 \begin{align}
 	z_t:= \lambda \bar{x}_t + (1-\lambda) z_{t-1}
 \end{align}
 \end{definition}
-%By recursive substitution, we have 
-%\begin{align}
-%	z_t:= \lambda \sum_{j=0}^{t-1} (1-\lambda)^j \bar{x}_{t-j} + (1-\lambda)^t z_0
-%\end{align}
+By recursive substitution, we have 
+\begin{align}
+	z_t:= \lambda \sum_{j=0}^{t-1} (1-\lambda)^j x_{t-j} + (1-\lambda)^t z_0
+\end{align}
 
 By recursive substitution we have that 
 \begin{align}
