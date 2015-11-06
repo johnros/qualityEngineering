@@ -31,9 +31,12 @@
 \contentsline {definition}{\numberline {20}Definition\thmtformatoptarg {$C_{pk}$}}{38}{definition.20}
 \contentsline {definition}{\numberline {21}Definition\thmtformatoptarg {$C_{pm}$}}{39}{definition.21}
 \contentsline {example}{\numberline {1}Example\thmtformatoptarg {$C_p$ test for 6-sigma compliance}}{40}{example.1}
+\contentsline {remark}{\numberline {2}Remark}{40}{remark.2}
 \addvspace {10\p@ }
 \contentsline {extra}{\numberline {6}Extra Info\thmtformatoptarg {A mathematically rigorous treatment of SPC}}{42}{extra.6}
-\contentsline {extra}{\numberline {7}Extra Info\thmtformatoptarg {Stopping Rules}}{47}{extra.7}
+\contentsline {remark}{\numberline {3}Remark\thmtformatoptarg {3-Sigma Control Limits vs. 3-Sigma Capability}}{44}{remark.3}
+\contentsline {extra}{\numberline {7}Extra Info\thmtformatoptarg {Operator Characteristics}}{44}{extra.7}
+\contentsline {extra}{\numberline {8}Extra Info\thmtformatoptarg {Stopping Rules}}{48}{extra.8}
 \contentsline {definition}{\numberline {22}Definition\thmtformatoptarg {Moving Average- MA}}{48}{definition.22}
 \contentsline {definition}{\numberline {23}Definition\thmtformatoptarg {Exponentially Weighted Moving Average- EWMA}}{49}{definition.23}
-\contentsline {extra}{\numberline {8}Extra Info\thmtformatoptarg {Local Methods}}{50}{extra.8}
+\contentsline {extra}{\numberline {9}Extra Info\thmtformatoptarg {Local Methods}}{51}{extra.9}

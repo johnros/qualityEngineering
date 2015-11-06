@@ -94,15 +94,15 @@ After the chart has been calibrated, and major assignable sources of variability
 Other design decisions to be made are:
 \begin{enumerate}
 \item UCL and LCL \footnote{Do not confuse with USL and LSL!}.
-\item Sample size in each sample.
+\item Sample size in each sample ($n$).
 \item Rational groupings (within-period sampling scheme).
 \item Frequency of samples (between-period sampling scheme). 
 \item Other stopping rules.
 \end{enumerate}
-These deign decisions ultimately govern the error rate (false positive rate) and power (false negative rate) of the chart, which in turn, incur some financial costs. 
+These design decisions ultimately govern the error rates of the chart, which in turn, incur financial costs. 
 For now we will restrict attention to type I/II error rates, until Section~\ref{sec:economical_considerations} where we consider these choices as economical optimization problems.
 
-For ease of exposition, control chart design is demonstrated for the \barxChart, but equally apply to other control charts.
+For ease of exposition, control chart design is demonstrated for the \barxChart, but equally applies to other control charts, presented in Section~\ref{sec:other_control_charts}.
 We start by a type I error rate analysis. 
 Denote $\alpha_t$ the false alarm probability at period $t$.
 How do our design choices affect $\alpha_t$?
@@ -110,12 +110,19 @@ How do our design choices affect $\alpha_t$?
 	\alpha_t &:= 1-P_{H_0}(\bar{x}_t \in [UCL,LCL]) \\
 	&= 2 P_{H_0}(\bar{x}_t<UCL) \\
 	&= 2 P_{H_0}(Z<\frac{UCL-\mu}{\sigma_{\bar{x}}}) \\
-	&= 2 P_{H_0}(Z < -k) \\
+	&= 2 P_{H_0}(Z < -\arm) \\
 	&= 2 \Phi(-k)
 \end{align}
-The above follows from assuming that $UCL:=\mu + k \sigmabar, LCL:= \mu - k \sigmabar$, $\x_{it}\sim \gauss{\mu,\sigma^2}$, and denoting $\sigmabar:= \frac{\sigma}{n}$.
-A typical design choice is $k=3$, known as \emph{3-sigma control limits}, implying a false alarm rate of $\alpha_t=0.0027$.\marginnote{3-Sigma Control Limits}
+The above follows from assuming that $UCL:=\mu + \arm \sigmabar, LCL:= \mu - \arm \sigmabar$, $\x_{it}\sim \gauss{\mu,\sigma^2}$, and denoting $\sigmabar:= \frac{\sigma}{n}$.
+A typical design choice is $\arm=3$, known as \emph{3-sigma control limits}, implying a false alarm rate of $\alpha_t=0.0027$.\marginnote{3-Sigma Control Limits}
 Since we assumed the process is fixed over time, then so is $\alpha_t$ and we can simply write $\alpha_t=\alpha$.
+
+\begin{remark}[3-Sigma Control Limits vs. 3-Sigma Capability]
+Do not confuse these two similar ideas.
+3-Sigma Control Limits is a statement on the false alarm rate of a process with respect to its own \textbf{history}.
+3-Sigma Capability is a statement on the non-compliance rate of a process with respect to its \textbf{specification}.
+\end{remark}
+
 
 A power analysis for our design choices follows the same lines.
 Denote $\beta_t$, and $\pi_t=1-\beta_t$ the type II error rate, and power, at period $t$.
@@ -124,28 +131,35 @@ We then have
 	\pi_t &:= 1-P_{H_1}(\bar{x}_t \in [UCL,LCL])
 \end{align}
 and the rest follow from the distribution of $\bar{x}$ when the process is out of control.
-Assuming the out-of-control process is a shift of magnitude $k \sigma$, i.e.: $\x \sim \gauss{\mu_1,\sigma^2}; \mu_1=k \sigma$, we plot in Figure~\ref{fig:power_function}, the detection power of a 3-sigma chart, as a function of $k$. 
-This is known as statistical literature as a \emph{power function}, and in the engineering literature as the \emph{true positive rate} operator characteristic (TPR-OR.)
+Since the out-of-control shift is stable, we can again omit the time index and write $\pi=\pi_t$.
+Assuming the out-of-control process is a shift of magnitude $k \sigma$, i.e.: $\x \sim \gauss{\mu_1,\sigma^2}; \mu_1=\mu_0+ k \sigma$, we plot in Figure~\ref{fig:power_function}, the detection power of a 3-sigma \barxChart, as a function of $k$. 
+This is known in the statistical literature as a \emph{power function}, and in the engineering literature as the \emph{true positive rate} operator characteristic (TPR-OR).\marginnote{Operator Characteristic}
 
 
 \begin{figure}[h]
 \centering
 \includegraphics[height=0.3\textheight]{art/power_function.pdf}
-\caption[Power Function]{Power function of the 3-sigma \barxChart with $n=5,10,20$ and $\mu_1=k \sigma$.}
+\caption[Power Function]{Power function of the 3-sigma \barxChart with $n=5,10,20$ and $\mu_1=\mu_0 + k \sigma$.}
 \label{fig:power_function}
 \end{figure}
 
+\begin{extra}[Operator Characteristics]
+Many operator characteristics have been proposed to study the performance of control charts, statistical tests, or binary classifiers in general.
+You may be already familiar with some, such as the ROC-curve. 
+The curious reader is referred to \cite{wikipedia_receiver_2015} for more information.
+\end{extra}
 
-\paragraph{ARL}
-Another important related quantity is the \emph{average run length} (ARL), which is the expected number of periods between two crossings of control limits. \marginnote{ARL}
-We denote by $ARL_0$ the average run length when the process is under statistical control, and $ARL_1$ otherwise\footnote{Note that it is implied that the process has a \emph{stable} distribution, even though it is out if control.}. 
+
+Another important related quantity is the \emph{average run length} (ARL), which is the expected number of periods between two crossings of control limits, i.e., the expected periods between alarms. \marginnote{ARL}
+We denote by $ARL_0$ the ARL when the process is under statistical control, and $ARL_1$ otherwise\footnote{Note that it is implied that the process has a \emph{stable} distribution, even though it is out if control.}. 
 If $\bar{x}_t$ are statistically independent, then clearly the number of periods until a crossing is geometrically distributed. Using the expectation of a geometric random variable we can conclude that 
 \begin{align}
-	ARL_0=1/\alpha \label{eq:arl_0} \\
-	ARL_1=1/\pi \label{eq:arl_1}
+	ARL_0=1/\alpha \label{eq:arl_0}, \\
+	ARL_1=1/\pi \label{eq:arl_1}.
 \end{align}
 Clearly we can convert to time units by multiplying the ARL by the duration of sampling interval.
 This is known as the \emph{average time to signal} (ATS).\marginnote{ATS}
+It is quite common to design a control chart so that it achieves a particular $ATS_0$.
 
 
 Now assume that we are unhappy with some control chart. 
@@ -154,14 +168,14 @@ What can we do about it?
 Well, this is exactly the same question as when increasing the power or lowering the type I error of a statistical hypothesis test. This is obviously no coincidence, since control charts are nothing but a statistical test!
 Here are some action courses:
 \begin{enumerate}
-\item Increase $k$. This is the same as shrinking a rejection region: 
-it will decrease the false alarm rate, at the cost of statistical sensitivity.
+\item Increase $\arm$. This is the same as shrinking the rejection region: 
+it will decrease the false alarm rate, at the cost of power.
 \item Increase $n$. Brilliant! Statistically, there is nothing to lose. It may, however, cost time and money.
 \item Increase the sampling frequency. Brilliant again! Nothing to lose, except time and money...
 \item Change the sampling scheme within period. We elaborate on this in Section~\ref{sec:rational_grouping}.
 \item Add other stopping rules: 
-this acts just like growing a rejection region. It will increase power, at the cost of type I error. We elaborate in Section~\ref{sec:stopping_rules}.
-\item Pool together more time points or more variables. We elaborate on this in sections \ref{sec:running_windows} and  \ref{sec:multivariate}, respectively. 
+this acts just like growing the rejection region. It will increase power, at the cost of type I error. We elaborate in Section~\ref{sec:stopping_rules}.
+\item Pool together more time points or more CTQs. We elaborate on this in sections \ref{sec:running_windows} and  \ref{sec:multivariate}, respectively. 
 \end{enumerate}
 
 
@@ -170,18 +184,18 @@ this acts just like growing a rejection region. It will increase power, at the c
 
 
 \subsection{Control Limits and the Alarm Rate}
-As previously discussed, $k$ governs the tradeoff between type I and type II errors, or sensitivity versus specificity.
-It is very common to set $k=3$. 
+As previously discussed, $\arm$ governs the tradeoff between type I and type II errors, or sensitivity versus specificity.
+It is very common to set $\arm=3$. 
 For a Normally distributed CTQ, this implies $2,700$ false alarms per million periods. 
-This also implies an ARL of $1/\alpha=370$ periods.
-We may however, discard this convention, and directly set UCL and LCL so they guarantee some desirable false alarm rate. 
+This also implies an $ARL_0$ of $1/\alpha \approx 370$ periods.
+We may obviously, discard this $\arm=3$ convention, and directly set UCL and LCL so they guarantee some desirable false alarm rate. 
 
-If normality of $\bar{x}$ can be assumed, then one may estimate $\sigma$ from phase I, and set LCL and UCL by finding the $k$ that solves $2\Phi(-k)=\alpha$.
+If normality of $\bar{x}_t$ can be assumed, then one may estimate $\sigma$ from phase I, and set LCL and UCL by finding the $\arm$ that solves $2\Phi(-\arm)=\alpha$.
 If normality cannot be assumed, there are many ways to go about. Here are some options:
 \begin{enumerate}
-\item Increase $n$: even if $\x_i$ is non normal, for large enough $n$, then $\bar{x}$ will be via the central limit theorem.
-\item Use empirical quantiles: If phase I was returned enough data, then we may estimate $\x_{\alpha/2}$ and $\x_{1-\alpha/2}$ using the empirical quantiles of phase I. The false alarm rate will be $\alpha$ since $P(\x \not \in [\x_{\alpha/2},\x_{1-\alpha/2}])=\alpha$, if $[\x_{\alpha/2},\x_{1-\alpha/2}]$ is well estimated.
-\item TODO:simulation
+\item Increase $n$: even if $\x_it$ is non normal, for large enough $n$, then $\bar{x}_t$ will be via the central limit theorem (CLT).
+\item Use empirical quantiles: If phase I was returned enough data, then we may estimate $\x_{\alpha/2}$ and $\x_{1-\alpha/2}$ using the empirical quantiles of phase I. The false alarm rate will be $\alpha$ since $P(\x \not \in [\x_{\alpha/2},\x_{1-\alpha/2}])=\alpha$.
+\item If some other distribution can be assumed then we may compute the false alarm rate of particular limits either analytically, or computationally (by simulation).
 \end{enumerate}
 
 
@@ -190,7 +204,7 @@ If normality cannot be assumed, there are many ways to go about. Here are some o
 \subsection{Rational Groupings}
 \label{sec:rational_grouping}
 Recall that at each period we compute the average of $n$ samples. 
-How should we draw this samples? All at the same time from the same machine?
+How should we draw these samples? All at the same time from the same machine?
 At different times from the same machine?
 Many configurations are possible, and the correct approach depends on the type of out-of-control behaviour one seeks. 
 \emph{Rational groupings} merely reminds us to sample ``rationally'' in each period. 
@@ -207,15 +221,15 @@ Quoting \cite{montgomery_introduction_2007}'s words of caution:
 \subsection{Other Stopping Rules}
 \label{sec:stopping_rules}
 
-The assumption that we may only create alarms if $\bar{x}$ exceeds some control limits is needle sly restrictive.
+The assumption that we may only create alarms if $\bar{x}$ exceeds some control limits is needlessly restrictive.
 A first relaxation is by allowing multiple regions.
 It is quite common to define \emph{warning limits} which only call for inspection, and \emph{action limits}. Each may have its own alarm rate.
 We may even change the sapling scheme if limits are breached. Increasing the sampling rate once the warning limits have been breached is known as \emph{adaptive sampling}, or \emph{variable sampling}.\marginnote{Adaptive Sampling}
 
 
 
-Another, more strict approach, is to define multiple sets of stopping rules
-Here an example:
+Another approach is to define multiple sets of stopping rules.
+Here is an example:
 \begin{enumerate}
 \item One or more points outside of the control limits.
 \item Two of three consecutive points outside the 2-sigma warning limits but still inside the control limits.
@@ -434,6 +448,7 @@ Indeed,
 
 
 \section{Other Control Statistics}
+\label{sec:other_control_charts}
 \subsection{$R$ Chart}
 \subsection{$s$ Chart}
 \subsection{$s^2$ Chart}
