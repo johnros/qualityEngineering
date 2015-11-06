@@ -637,30 +637,57 @@ Given all the above, we may now plug Eq.(\ref{eq:optimal_design}) into our favou
 
 
 
-\section{Other Control Statistics}
+\section{Shewart Charts With Other Test Statistics}
+
+We have been focusing on the \barxChart for ease of exposition. There are, however, many cases where the mean is not an appropriate test statistic.
+Examples include:
+\begin{enumerate}
+\item A discrete CTQ, where only the number of non-compliances can be counted. 
+\item Where the departure from statistical control is not only a shift in $\mu$.
+\end{enumerate}
+
+The following charts are designed for those cases. 
+Practically all of the ideas presented for the \barxChart may be adapted to these other test statistics after appropriate adaptations. 
+The reader is referred to \cite{montgomery_introduction_2007} for the details. 
+
 \label{sec:other_control_charts}
 \subsection{$R$ Chart}
+Where $\bar{x}$ is replaced by the range. 
+Sensitive to variability changes. 
+Popularized by its ease of implementation, in the pre-PC age. 
 \subsection{$s$ Chart}
+Where $\bar{x}$ is replaced by $s$. 
+Sensitive to variability changes. 
+Usually more sensitive than the range.
 \subsection{$s^2$ Chart}
-\subsection{Shewhart Individuals Control Chart}
-\subsection{Three-way Chart}
-\subsection{$p$ Chart}
-\subsection{$np$ Chart}
+Like the $s$ chart, only in variance-scale.
+\subsection{$p$ and $np$ Chart}
+Where $\bar{x}$ is replaced by the proportion ($p$), or number ($np$), of non-conforming units.
+Appropriate for attributes, i.e., discrete QTCs.
 \subsection{$c$ Chart}
+Like a $np$ chart, but where the number of nonconforming units is replaced with the total number of nonconformances, allowing multiple defects per unit. 
 \subsection{$u$ Chart}
-\subsection{Time Series Model}
+Like the $c$ chart, but allowing a variable number of units per sample (varying $n$).
 \subsection{Regression Control Chart}
+In a \emph{regression control chart}, the test statistic can be a regression coefficient. 
+When compounded with multivariate charts, a regression control chart may accommodate several regression  coefficient, or the residuals. 
+
+
+
+
+\section{Other Charts and Considerations}
+\subsection{One Sided Charts}
+[TODO]
+\subsection{Autocorrelation and Time Series Model}
+[TODO]
 \subsection{Running Window Versions}
-
-
-
-\section{Cuescore Charts}
+Just like the \barxChart allows pooling of information over periods (viz. CUSUM, EWMA), so do all the Shewarts charts presented above. 
+\subsection{Shewhart Individuals Control Chart}
+[TODO]
+\subsection{Three-way Chart}
+[TODO]
+\subsection{Cuescore Charts}
 [TODO]
 
-
-
-\section{Notes}
-% White noise process
-% One sided control chart
 
 
