@@ -452,13 +452,19 @@ As such, \citeauthor{page_continuous_1954}'s control limits are said to be \emph
 % PCA
 % Higher criticism
 
+\begin{example}[Intensive Care Unit]
+\label{eg:intensive}
 Consider an intensive care unit. 
 The CTQs are the patient's blood pressure, temperature, etc.
 We want to sound an alarm if the patient's condition deteriorates. 
 Clearly, we can apply previous the univariate methodology above. 
-It is possible, that the deterioration is mild, so that it is not picked up by any CTQ individually (low power), but could have been noticed were we to aggregate signal from all CTQs. This is the concern of the current section. 
+It is possible, that the deterioration is mild, so that it is not picked up by any CTQ individually (low power), but could have been noticed were we to aggregate signal from all CTQs. 
+\end{example}
+This is the concern of the current section. 
 
-\subsection{The Mass Univariate Approach}
+\subsection{Mass Univariate Control}
+\label{sec:mass_univariate}
+
 A first natural approach is to raise an alarm when \textbf{any} of the processes exceeds its respective control limits.
 For $m$ independent processes, with false alarm rate $\alpha$ each, then the joint false alarm rate is 
 \begin{align}
@@ -475,13 +481,15 @@ To see this we write the t-statistic in the following weird form:
 	t(x)=(\bar{x}_t-\mu_0) (s^2_t(x))^{-1} (\bar{x}_t-\mu_0).
 \end{align}
 This notation readily extends to the multivariate case. 
-For $p$ CTQs, then $\bar{x}_t$ and $\mu_0$ are $p$-length vectors, and $s^2_t(x)$ is replaced with the $p \times p$ matrix $\hat{\Sigma}_t(x)$:
+For $p$ CTQs, then $\bar{x}_t$ and $\mu_0$ are $p$-length vectors, and $s^2_t(x)$ is replaced with the $p \times p$ matrix $\hat{\Sigma}_t(x)$.
+\begin{definition}[Hotteling's \tsq]
 \begin{align}
 \label{eq:hotteling}
 	T^2_t := n (\bar{x}_t-\hat{\mu}_0)' \hat{\Sigma}_t^{-1} (\bar{x}_t-\hat{\mu}_0).
 \end{align}
+\end{definition}
 To derive the control limits, we will be assuming that $\x_{it}$ is $p$-variate Gaussian distributed, $\gauss{\mu_0, \Sigma_{p \times p}}$. 
-We need to be very clear, however, on how $\mu_0$ and $\hat{\Sigma}_t^{-1}$ are estimated. 
+We need to be very clear, however, on how $\mu_0$ and $\Sigma_t^{-1}$ are estimated. 
 We thus consider the following scenario:
 \begin{enumerate}
 \item \tsq is computed at Phase II with a single observation at a time ($n=1$)
@@ -519,8 +527,38 @@ Since the above limits have an (approximate) type-I error rate of $\alpha$, and 
 
 
 
+\subsection{$\max$ Pooling}
+Hotteling's \tsq implicitly targets a weak signal on many coordinates. 
+In the signal detection literature, this is known as a \emph{dense} signal.
+In our intensive care unit example (Example~\ref{eg:intensive}), it may be the case the a patient's deterioration is mildly manifested in many CTQs. It may however, be the case, that deterioration is manifested in a small subset of CTQs.
+This is further emphasized in Example~\ref{eg:cyber}.
+
+\begin{example}[Cyber Monitoring System]
+\label{eg:cyber}
+Consider a server farm. All servers dump their status into logs. These include CPU loads, temperature, network I/O, etc.
+The administrator is worried about an imminent attack, and it thus parsing the logs for CTQs, and inspecting the on-line status on his dashboard.
+He knows that the cyber-attacker is no amateur, so that if any fingerprint is left in the logs, it will be very subtle. 
+\end{example}
+
+The intensive care example, and the cyber security example, motivate our search for a statistic, that unlike Hotteling's \tsq, is sensitive to \emph{sparse} signals. \marginnote{Sparse Signal}
+I.e., a signal that is manifested in very few of the $p$ CTQs.
+A first natural candidate for this purpose is the $\max$ over CTQs.
+\begin{definition}[$\max$ Pooling]
+Denoting by $x^{(1)}_t,\dots,x^{(p)}_t$, the $p$ CTQs at period $t$, we define
+\begin{align}
+	max_t:= \max\set{x^{(1)}_t,\dots,x^{(p)}_t}
+\end{align}
+\end{definition}
+We would now like to define control limits for this statistic, but we note the following:
+\begin{enumerate}
+\item If the $x_t^{(j)}$'s are independent, then $\max$ pooling is identical to the mass univariate control of Section~\ref{sec:mass_univariate}.
+\item If $x_t^{(j)}$ are not independent, then the distribution of their max is hard to derive. There are many ways to deal with this, but we will will leave this matter for some other day.
+\end{enumerate}
 
 
+
+
+\section{Higher Criticism}
 
 
 
