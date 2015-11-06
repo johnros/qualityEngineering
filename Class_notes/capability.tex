@@ -253,10 +253,24 @@ so that $(n-1) \left( \frac{\cp}{\cpHat} \right)^2 $ may serve as test statistic
 \end{align*}
 so that the $1-\alpha$ rejection region in $\cpHat$ scale is 
 \begin{align*}
-	\cpHat > \sqrt{\frac{4 (n-1)}{\chi^2_{n-1,1-\alpha}}} .
+	\cpHat > \sqrt{\frac{4 (n-1)}{\chi^2_{n-1,\alpha}}} .
 \end{align*}
 \end{example}
 Note that we should not be testing this hypothesis with the confidence interval in Eq.(\ref{eq:ci_for_cp}) because this particular hypothesis is directional.
+Now for a more general case:
+\begin{align*}
+	H_0: \cp \leq a; 
+	H_1:\cp > a 
+	&\Rightarrow \text{reject if } \cpHat > \sqrt{\frac{a^2 (n-1)}{\chi^2_{n-1,\alpha}}},\\
+	H_0: \cp \geq  a; 
+	H_1:\cp < a 
+	&\Rightarrow \text{reject if } \cpHat < \sqrt{\frac{a^2 (n-1)}{\chi^2_{n-1,1-\alpha}}}, \\
+	H_0: \cp =  a; 
+	H_1:\cp \neq a 
+	&\Rightarrow \text{reject if } \cpHat < \sqrt{\frac{a^2 (n-1)}{\chi^2_{n-1,1-\alpha/2}}}
+	\text{ or } \cpHat > \sqrt{\frac{a^2 (n-1)}{\chi^2_{n-1,\alpha/2}}} \\
+\end{align*}
+
 
 
 
