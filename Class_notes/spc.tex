@@ -1,12 +1,12 @@
 \chapter[SPC]{Statistical Process Control- SPC}
 \label{sec:spc}
 
-Statistical process control, \aka \emph{change detection algorithms} deals with the quantitative analysis of a ``process'', which may be a production line, a service, or any other repeated operation.\marginnote{Change Detection}
-As such, it may be found in the Analyze, Improve, and Control stages of the DMAIC cycle.
+Statistical process control (SPC), \aka \emph{change detection}, or \emph{novelty detection}, deals with the quantitative analysis of a ``process'', which may be a production line, a service, or any other repeated operation.\marginnote{Change Detection}
+As such, SPC may be found in the Analyze, Improve, and Control stages of the DMAIC cycle.
 The purpose of the SPC, in the terms coined by Shewart, is to seperate the variability in the process into \emph{assignable} causes of variation and \emph{chance} causes of variation.\marginnote{Causes of variation}
 These are also known as \emph{special} and \emph{common} causes of variation, respectively. 
 A process is said to be in \emph{statistical control} if all its variation is attributable to chance causes.
-If this is not the case, we call it \emph{out of control} and we will seek the assignable causes, remove then, and   re-analyze.
+If this is not the case, we call it \emph{out of control} and we will seek the assignable causes, so that we may reduce variability by removing them.
 
 
 All the previously mentioned statistical tools may be called upon for this analysis. 
@@ -16,7 +16,7 @@ In the context of process control, a subset of tools has gained the nick-name ``
 \item Check Sheet. [TODO: add figure]
 \item Pareto chart. An ordered bar plot of the events due to the various assignable variability causes. [TODO: add figure]
 \item Cause-and-effect diagram. A visualization of candidate assignable variability causes. [TODO: add figure]
-\item Defect concentration diagram. A visual inspection of the location of defects on the product. 
+\item Defect concentration diagram. A visual inspection of the location of defects on the product. [TODO: add figure]
 \item Scatter plot. As described in Chapter~\ref{sec:exploratory}.
 \item Control chart. A powerful analysis tool to which we devote the rest of this chapter. 
 \end{description}
@@ -31,7 +31,7 @@ In the context of process control, a subset of tools has gained the nick-name ``
 
 
 
-\begin{extra}[A more rigorous treatment ]
+\begin{extra}[A mathematically rigorous treatment of SPC]
 The contents of this chapter is mostly derived from \cite{montgomery_introduction_2007}. 
 For a more mathematically rigorous treatment of the topic see \cite{basseville_detection_1993}.
 For an \R oriented exposition of the topic, see \cite{qiu_introduction_2013}.
