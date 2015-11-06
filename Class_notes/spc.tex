@@ -272,6 +272,11 @@ The following charts have a continuous flavour. As such, it is both favourable, 
 
 
 
+\subsection{Run Test Chart}
+[TODO]
+
+
+
 
 \subsection{Moving Average Chart- MA}
 One way to pool information from different periods is by a \emph{moving average}.
@@ -338,20 +343,21 @@ and
 \begin{align}
 \label{eq:ewma_variance}
 	z_t &\sim \gauss{\mu_0,	\sigma^2_{z_t} }, \\
-	\sigma^2_{z_t} &= \frac{\sigma^2_x}{n}\left( \frac{\lambda}{2-\lambda} \right)(1-(1-\lambda)^{2t}).
+	\sigma^2_{z_t} &= \sigma^2_x \left( \frac{\lambda}{2-\lambda} \right)(1-(1-\lambda)^{2t}).
 \end{align}
 Eq.(\ref{eq:ewma_variance}) may be used to construct control limits for EWMA:
 It is however, more economic to observe that for large $\lambda$ and $t$: $(1-(1-\lambda)^{2t}) \approx 1$ so that we may use 
 \begin{align}
 \begin{split}
 \label{eq:ewma_variance_approximate}
-	UCL &:= \mu_0 + 3 \sigma_{z_t} \approx \mu_0 + 3 \, \sqrt{\frac{\sigma^2_x}{n}\left( \frac{\lambda}{2-\lambda} \right)},  \\
-	UCL &:= \mu_0 - 3 \sigma_{z_t} \approx \mu_0 - 3 \, \sqrt{\frac{\sigma^2_x}{n}\left( \frac{\lambda}{2-\lambda} \right)}.
+	UCL &:= \mu_0 + 3 \sigma_{z_t} \approx \mu_0 + \arm \, \sqrt{\sigma^2_x\left( \frac{\lambda}{2-\lambda} \right)},  \\
+	UCL &:= \mu_0 - 3 \sigma_{z_t} \approx \mu_0 - \arm \, \sqrt{\sigma^2_x\left( \frac{\lambda}{2-\lambda} \right)},
 \end{split}
 \end{align}
+with $\arm=3$ being the typical choice.
 By now, you should immediately know what is the fallout rate of these limits.
 By now, you should also know that because of the dependence between $z_t$'s, computing the ARL is not as simple as for Shewart charts. The \rcode{xewma.arl()} \R function, in package \rcode{spc}, permits doing so easily. 
-Its output for various $\lambda$ and $k$ is illustrated in Figure~\ref{fig:arl_0_ewma}.
+Its output for various $\lambda$ and $\arm$ is illustrated in Figure~\ref{fig:arl_0_ewma}.
 
 \begin{figure}[h]
 \centering
@@ -364,7 +370,7 @@ Note that if we do not opt for the approximation in Eq.(\ref{eq:ewma_variance_ap
 
 
 In the MA chart, we used the choice of $w$ to balance between quick response (small $w$) and sensitivity (large $w$).
-EWMA has no window-width parameter, since it looks on all of the history. On the other hand, we can control it by choosing $\lambda$. 
+EWMA has no window-width parameter, since it looks into all of history. On the other hand, we can control it by choosing $\lambda$. 
 Large $\lambda$ gives more importance to the present. At the limit, $\lambda=1$, EWMA collapses to a standard Shewart chart.
 
 
@@ -379,26 +385,32 @@ Large $\lambda$ gives more importance to the present. At the limit, $\lambda=1$,
 
 \subsection{CUSUM Chart}
 The \emph{cumulative sum} chart is similar to the EWMA in that it pools information from the history. 
-It does differ, in that it gives all the history an equal weight. 
-The CUSUM simply sums deviations from the centre line.
+The CUSUM simply sums all past deviations from the centre line.
 If the process is in control, deviation will cancel each other, and their sum will vary around $0$. 
-If the process is ot of control, some drift will appear. 
+If the process is ot of control, a drift will appear. 
 The statistic to be plotted is 
 \begin{align}
-	C_t:= \sum_{j=0}^{t}(\bar{x}_j-\mu_0)=C_{t-1}+ (\bar{x}_t-\mu_0)
+	C_t:= \sum_{j=0}^{t}(x_j-\mu_0)=C_{t-1}+ (x_t-\mu_0)
 \end{align} 
-Observing that when under control then $C_t \sim \gauss{\mu_0, \frac{t}{n} \sigma_x^2}$, we could set 
+Observing that when under control then $C_t \sim \gauss{\mu_0, t \sigma_x^2}$, we could set 
 \begin{align}
+\label{eq:cusum_simple_limits}
 \begin{split}
-	UCL &:= \mu_0 + 3 \sigma_{C_t}= \mu_0 + 3 \, \sqrt{\frac{t}{n} \sigma_x^2},  \\
-	UCL &:= \mu_0 - 3 \sigma_{C_t}= \mu_0 - 3 \, \sqrt{\frac{t}{n} \sigma_x^2}.
+	UCL &:= \mu_0 + 3 \sigma_{C_t}= \mu_0 + \arm \, \sqrt{t \sigma_x^2},  \\
+	UCL &:= \mu_0 - 3 \sigma_{C_t}= \mu_0 - \arm \, \sqrt{t \sigma_x^2}.
 \end{split}
 \end{align}
-This approach, is rarely seen in practice, because it is suboptimal.
-Indeed, 
+You may encounter these limits in your favourite software (\rcode{qcc} package in \R?), but it less often discussed in the literature. 
+This is because CUSUMs were introduced by \cite{page_continuous_1954}, which offered different control limits. 
+\cite{montgomery_introduction_2007} adopts \citeauthor{page_continuous_1954}'s view and presents limits in two forms: the \emph{decision interval} (DI) form, \aka the \emph{tabular} form, and the graphical form known as a \emph{V-mask}.
+These two control limits are equivalent. Before we present them, we try to offer some intuition for the difference between the limits in Eq.(\ref{eq:cusum_simple_limits}) and those of \cite{page_continuous_1954}.
 
 
 
+
+
+\subsection{Shiryaev-Roberts Procedure}
+[TODO]
 
 %\begin{extra}[Wald's Sequential Likelihood Ration Test- SPRT]
 %[TODO]
