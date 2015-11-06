@@ -55,12 +55,13 @@ For an \R oriented exposition of the topic, see \cite{qiu_introduction_2013}.
 
 We demonstrate the concepts and utility of Control Charts with the simplest, yet most popular of them all, the \barxChart. 
 The chart borrows its name from the fact that it is essentially a visualization of the time evolution of the average ($\bar{x}$) of the CTQ of a sample of products. 
-The chart is also augmented with visual aids that help in determining if the process is \emph{in control}, i.e., if it consistent with its own history. 
-Process capability analysis may benefit from the ideas of control charts. We emphasize however, that control charts have no information on the specifications of the process, merely on its own history.
+The chart is also augmented with visual aids that help in determining if the process is \emph{in control}, i.e., if it is consistent with its own history. 
+Process capability analysis may benefit from the ideas of control charts, as we explain in Chapter~\ref{sec:advanced_capability_analysis}.
+We emphasize, again, that control charts have no information on the specifications of the process, merely on its own history.
 
 An illustration of a \barxChart is given in Figure~\ref{fig:bar_x_chart}. 
-The ingredients of this chart is the centerline, the control limits, and $\bar{x}$ evolving in time. 
-If at each period $t=1,\dots,\tau$, we compute the average of $n$ samples, we denote $\bar{x}_t:=1/n \sum_{i=1}^n x_{it}$.
+The ingredients of this chart are the centerline, lower and upper control limits (LCL, UCL), and $\bar{x}$ evolving in time. 
+If at each period $t=1,\dots,\tau$ we compute the average of $n$ samples, we denote $\bar{x}_t:=1/n \sum_{i=1}^n x_{it}$.
 
 \begin{figure}[h]
 \centering
@@ -78,8 +79,9 @@ Figure~\ref{fig:bar_x_chart} makes it evident \barxChart requires several design
 A standard design decision is setting the center line as the grand average of the process: 
 \begin{align}
 \label{eq:centerline}
-	1/\tau \sum_{t=1}^\tau \bar{x}_t
+	\hat{\mu}_0=1/\tau \sum_{t=1}^\tau \bar{x}_t,
 \end{align}
+where $\mu_0$ denotes the in-control mean of the process. Notation follows from treating the in-control process as a null hypothesis.
 
 
 If it is unclear to you, how may we compute the grand average of a process that is still evolving and has not finished, you are right! We thus introduce the ideas of \emph{Phase I} and \emph{Phase II}. \marginnote{Phase I/II}
