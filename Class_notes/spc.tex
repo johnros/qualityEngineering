@@ -527,7 +527,7 @@ Since the above limits have an (approximate) type-I error rate of $\alpha$, and 
 
 
 
-\subsection{$\max$ Pooling}
+\subsection{Other Pooling Statistics}
 Hotteling's \tsq implicitly targets a weak signal on many coordinates. 
 In the signal detection literature, this is known as a \emph{dense} signal.
 In our intensive care unit example (Example~\ref{eg:intensive}), it may be the case the a patient's deterioration is mildly manifested in many CTQs. It may however, be the case, that deterioration is manifested in a small subset of CTQs.
@@ -542,24 +542,12 @@ He knows that the cyber-attacker is no amateur, so that if any fingerprint is le
 
 The intensive care example, and the cyber security example, motivate our search for a statistic, that unlike Hotteling's \tsq, is sensitive to \emph{sparse} signals. \marginnote{Sparse Signal}
 I.e., a signal that is manifested in very few of the $p$ CTQs.
-A first natural candidate for this purpose is the $\max$ over CTQs.
-\begin{definition}[$\max$ Pooling]
-Denoting by $x^{(1)}_t,\dots,x^{(p)}_t$, the $p$ CTQs at period $t$, we define
-\begin{align}
-	max_t:= \max\set{x^{(1)}_t,\dots,x^{(p)}_t}
-\end{align}
-\end{definition}
-We would now like to define control limits for this statistic, but we note the following:
-\begin{enumerate}
-\item If the $x_t^{(j)}$'s are independent, then $\max$ pooling is identical to the mass univariate control of Section~\ref{sec:mass_univariate}.
-\item If $x_t^{(j)}$ are not independent, then the distribution of their max is hard to derive. There are many ways to deal with this, but we will will leave this matter for some other day.
-\end{enumerate}
-
-
-
-
-\section{Higher Criticism}
-
+For this purpose, we merely offer several candidate multivariate statistics, with references where appropriate.
+\begin{description}
+\item [Max pooling] Where we control the process using the $\max$ over CTQs. Useful when we expect signal in a handful of CTQs.
+\item [Higher Criticism] Where pooling is performed using the Higher Criticism statistic. Appropriate for an intermediate \emph{rare-weak} sparsity pattern. See details in \citep{jin_cosmological_2005}.
+\item [Skewness Statistic] Where pooling is performed using the empirical third moment. Appropriate for an intermediate sparsity pattern. See details in \citep{jin_cosmological_2005}.
+\end{description}
 
 
 
