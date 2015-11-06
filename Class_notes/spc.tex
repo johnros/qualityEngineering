@@ -527,7 +527,7 @@ Since the above limits have an (approximate) type-I error rate of $\alpha$, and 
 
 
 
-\subsection{Other Pooling Statistics}
+\subsection{Extra Info- Other Pooling Statistics}
 Hotteling's \tsq implicitly targets a weak signal on many coordinates. 
 In the signal detection literature, this is known as a \emph{dense} signal.
 In our intensive care unit example (Example~\ref{eg:intensive}), it may be the case the a patient's deterioration is mildly manifested in many CTQs. It may however, be the case, that deterioration is manifested in a small subset of CTQs.
@@ -551,18 +551,47 @@ For this purpose, we merely offer several candidate multivariate statistics, wit
 
 
 
+
+
+
+
 \section{Economical Design of Control Charts}
 \label{sec:economical_considerations}
 
+Up until now, our design of control charts was driven by type-I error rates, and ARLs. Economical consideration were merely implied.
+In this section, economical consideration take the driver's seat. 
+We present a toy model, to demonstrate the economical optimization of design parameters in a \barxChart. 
+Before beginning, a few remarks are in order. 
 
+\begin{remark}[Economical Design of Control Charts]
+\noindent
+\begin{enumerate}
+\item According to \cite{montgomery_introduction_2007} 
+\begin{quote}
+Saniga and Shirland (1977) and Chiu and Wetherill (1975) report that very few practitioners have implemented economic models for the design of control charts.
+\end{quote}
+Hmmmm.. Have things changed since 1977?
+\item A comprehensive theoretical analysis of the optimization of a quality control system may be found in \cite{girshick_bayes_1952}. Again, \cite{montgomery_introduction_2007} is skeptic:
+\begin{quote}
+The optimal control rules are difficult to derive, as they depend on the solution to
+complex integral equations. Consequently, the model’s use in practice has been very
+limited.
+\end{quote}
+\end{enumerate}
+\end{remark}
 
+In light of the above skepticism, and following the lines of \cite{duncan_economic_1956}, we aim at the modest goal of an economical optimal \barxChart. 
+Our target function is optimizing the expected income per hour, with respect to the design parameters:
+\begin{align}
+	\max_{n,\arm,h}\set{\expect{C/T}}
+\end{align}
+where $C$ is the income between two productions halts, i.e., a \emph{cycle};
+$T$ is the cycle duration;
+$n$ is the number of samples per period;
+$\arm$ governs the control limits via $UCL:= \mu_0+ \arm \sigma_{\bar{x}}= \mu_0+ \arm \sigma_x / \sqrt{n}$;
+$h$ is the time interval between sample periods. 
 
-
-
-\section{Non-Statistical Target Functions}
-
-
-
+We now need to establish how $\expect{C/T}$ is related to $n,\arm,h$. 
 
 
 
@@ -581,6 +610,10 @@ For this purpose, we merely offer several candidate multivariate statistics, wit
 \subsection{Regression Control Chart}
 \subsection{Running Window Versions}
 
+
+
+\section{Cuescore Charts}
+[TODO]
 
 
 
