@@ -31,19 +31,19 @@
 \contentsline {definition}{\numberline {20}Definition\thmtformatoptarg {$C_{pk}$}}{38}{definition.20}
 \contentsline {definition}{\numberline {21}Definition\thmtformatoptarg {$C_{pm}$}}{39}{definition.21}
 \contentsline {example}{\numberline {1}Example\thmtformatoptarg {$C_p$ test for 6-sigma compliance}}{40}{example.1}
-\contentsline {remark}{\numberline {2}Remark}{40}{remark.2}
+\contentsline {remark}{\numberline {2}Remark}{41}{remark.2}
 \addvspace {10\p@ }
-\contentsline {extra}{\numberline {6}Extra Info\thmtformatoptarg {A mathematically rigorous treatment of SPC}}{42}{extra.6}
-\contentsline {remark}{\numberline {3}Remark\thmtformatoptarg {3-Sigma Control Limits vs. 3-Sigma Capability}}{44}{remark.3}
-\contentsline {extra}{\numberline {7}Extra Info\thmtformatoptarg {Operator Characteristics}}{44}{extra.7}
-\contentsline {extra}{\numberline {8}Extra Info\thmtformatoptarg {Stopping Rules}}{48}{extra.8}
-\contentsline {remark}{\numberline {4}Remark\thmtformatoptarg {No longer Shewart}}{48}{remark.4}
-\contentsline {remark}{\numberline {5}Remark\thmtformatoptarg {One observation at a time}}{48}{remark.5}
-\contentsline {definition}{\numberline {22}Definition\thmtformatoptarg {Moving Average- MA}}{48}{definition.22}
-\contentsline {definition}{\numberline {23}Definition\thmtformatoptarg {Exponentially Weighted Moving Average- EWMA}}{49}{definition.23}
-\contentsline {extra}{\numberline {9}Extra Info\thmtformatoptarg {Local Methods}}{51}{extra.9}
-\contentsline {example}{\numberline {2}Example\thmtformatoptarg {Intensive Care Unit}}{52}{example.2}
-\contentsline {definition}{\numberline {24}Definition\thmtformatoptarg {Hotteling's $T^2$ }}{52}{definition.24}
-\contentsline {extra}{\numberline {10}Extra Info}{53}{extra.10}
-\contentsline {example}{\numberline {3}Example\thmtformatoptarg {Cyber Monitoring System}}{54}{example.3}
-\contentsline {remark}{\numberline {6}Remark\thmtformatoptarg {Economical Design of Control Charts}}{54}{remark.6}
+\contentsline {extra}{\numberline {6}Extra Info\thmtformatoptarg {A mathematically rigorous treatment of SPC}}{43}{extra.6}
+\contentsline {remark}{\numberline {3}Remark\thmtformatoptarg {3-Sigma Control Limits vs. 3-Sigma Capability}}{45}{remark.3}
+\contentsline {extra}{\numberline {7}Extra Info\thmtformatoptarg {Operator Characteristics}}{45}{extra.7}
+\contentsline {extra}{\numberline {8}Extra Info\thmtformatoptarg {Stopping Rules}}{49}{extra.8}
+\contentsline {remark}{\numberline {4}Remark\thmtformatoptarg {No longer Shewart}}{49}{remark.4}
+\contentsline {remark}{\numberline {5}Remark\thmtformatoptarg {One observation at a time}}{49}{remark.5}
+\contentsline {definition}{\numberline {22}Definition\thmtformatoptarg {Moving Average- MA}}{49}{definition.22}
+\contentsline {definition}{\numberline {23}Definition\thmtformatoptarg {Exponentially Weighted Moving Average- EWMA}}{50}{definition.23}
+\contentsline {extra}{\numberline {9}Extra Info\thmtformatoptarg {Local Methods}}{52}{extra.9}
+\contentsline {example}{\numberline {2}Example\thmtformatoptarg {Intensive Care Unit}}{53}{example.2}
+\contentsline {definition}{\numberline {24}Definition\thmtformatoptarg {Hotteling's $T^2$ }}{53}{definition.24}
+\contentsline {extra}{\numberline {10}Extra Info}{54}{extra.10}
+\contentsline {example}{\numberline {3}Example\thmtformatoptarg {Cyber Monitoring System}}{55}{example.3}
+\contentsline {remark}{\numberline {6}Remark\thmtformatoptarg {Economical Design of Control Charts}}{55}{remark.6}

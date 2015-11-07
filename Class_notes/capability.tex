@@ -218,6 +218,10 @@ Eq.(\ref{eq:cpm}) readily shows that just like the $\cpk$, then $\cpm \leq \cp$.
 
 
 
+
+
+
+
 \subsection{Interval Estimation for Capability Indexes}
 Since the various process capability indexes are merely population parameters, we can also construct confidence intervals (CIs) for them, which may be very informative if sample sizes are small.
 The simplest case is that of $\cp$. Being a monotone transformation of $\sigma$, we can call upon confidence intervals for the variance of a normal population, so that with probability $1-\alpha$:
@@ -270,6 +274,21 @@ Now for a more general case:
 	&\Rightarrow \text{reject if } \cpHat < \sqrt{\frac{a^2 (n-1)}{\chi^2_{n-1,1-\alpha/2}}}
 	\text{ or } \cpHat > \sqrt{\frac{a^2 (n-1)}{\chi^2_{n-1,\alpha/2}}} \\
 \end{align*}
+
+
+
+
+
+
+\subsection{In Practice}
+By this point in our discussion you should have noted that to understand a capability index, we always revert to the probability of non compliance, particularly of a 3-sigma process.
+Is may not surprise you then, that perhaps the most frequently used capability indexes are simply the probability of non compliance, $\pnc$, and the ``sigma level''.
+By sigma-level, we mean $\frac{USL-LSL}{2\sigma}=\frac{\delta}{\sigma}$. 
+
+
+
+
+
 
 
 
