@@ -1,11 +1,18 @@
 \chapter{Design of Experiments - DOE}
 
 \section{Terminology}
+Compiled from \cite{natrella_nist/sematech_2010}.
 \begin{description}
-\item [Alias]
-\item [Balanced Design]
-\item [Blocking]
-\item [Factor Encodings]
+\item [Alias] When the estimate of an effect also includes the influence of one or more other effects (usually high order interactions) the effects are said to be aliased.
+\item [Balanced Design] An experimental design where all cells (i.e. treatment combinations) have the same number of observations.
+\item [Blocking] A schedule for conducting treatment combinations in an experimental study such that any effects on the experimental results due to a known change in raw materials, operators, machines, etc., become concentrated in the levels of the blocking variable. Note: the reason for blocking is to isolate a systematic effect and prevent it from obscuring the main effects. Blocking is achieved by restricting randomization.
+\item [Factor Encodings] Transforming the scale of measurement for a factor. 
+Two level factor encodings include:
+\begin{itemize}
+\item Effect coding: where levels are encoded with $-1,1$ returning orthogonal design matrices for balanced designs.
+\item Dummy coding: where levels are encoded with $0,1$ returning easily interpretable coefficients.
+\end{itemize}
+
 \item [Confounding]
 \item [Control Group]
 \item [Design]
@@ -31,8 +38,11 @@
 
 \section{Randomization}
 
+
+
 \section{Full Factorial Designs}
 \section{Fractional Factorial Designs}
+\section{Response Surface Methods}
 \section{Robust Parameter Design (RPD)}
 \section{Latin-Square Design}
 \section{Plackett–Burman Design}
