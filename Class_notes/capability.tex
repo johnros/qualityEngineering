@@ -206,6 +206,11 @@ An illustration is given in Figure~\ref{fig:cpk}.
 
 
 The $\cpk$ index is motivated by conserving the relation between the index and the fallout rate $\pnc$, which is not captured by $\cp$ when the process is not centred. 
+Indeed if $\cp$ can be interpreted as ``accuracy compared to a (centred) 3-sigma process'', then $\cpk$ can be interpreted as ``accuracy compared to a (equally non-centred) 3-sigma process''.
+The 3-sigma process is used as a benchmark for historical reasons. 
+In practice, it is actually very common to report the sigma-level as a capability index. This implies the 1-sigma process as a benchmark: $\min\set{\frac{USL-\mu}{\sigma},\frac{\mu-LSL}{\sigma}}$. Three-sigma would thus be reported as $3$, 6-sigma as $6$, etc.
+
+
 Another index, known as $\cpm$, or the \emph{Taguchi capability index}, also deals with the non centring but slightly differently. It is motivated by the observation that for $\ctqExpect=\targetValue$, then $\sigma=\sqrt{\expect{(CTQ-\targetValue)^2}}$. This relation does not hold if $\ctqExpect \not=\targetValue$, which leads us to the following definition:
 \begin{definition}[$\cpm$]
 \begin{align}
@@ -280,11 +285,6 @@ Now for a more general case:
 
 
 
-
-\subsection{In Practice}
-By this point in our discussion you should have noted that to understand a capability index, we always revert to the probability of non compliance, particularly of a 3-sigma process.
-Is may not surprise you then, that perhaps the most frequently used capability indexes are simply the probability of non compliance, $\pnc$, and the ``sigma level''.
-By sigma-level, we mean $\frac{USL-LSL}{2\sigma}=\frac{\delta}{\sigma}$. 
 
 
 
