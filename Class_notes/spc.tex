@@ -1,4 +1,4 @@
-\chapter{Statistical Process Control- SPC}
+\chapter[SPC]{Statistical Process Control- SPC}
 \label{sec:spc}
 
 Statistical process control (SPC), \aka \emph{change detection}, or \emph{novelty detection}, deals with the quantitative analysis of a ``process'', which may be a production line, a service, or any other repeated operation.\marginnote{Change Detection}
@@ -445,7 +445,7 @@ As such, \citeauthor{page_continuous_1954}'s control limits are said to be \emph
 
 
 
-\section{Multivariate Control Charts}
+\section[Multivariate]{Multivariate Control Charts}
 \label{sec:multivariate}
 % Wishart
 % Srivastava Du
@@ -675,17 +675,25 @@ When compounded with multivariate charts, a regression control chart may accommo
 
 
 
-\section{Other Charts and Considerations}
-\subsection{One Sided Charts}
-[TODO]
-\subsection{Autocorrelation and Time Series Model}
-[TODO]
-\subsection{Running Window Versions}
-Just like the \barxChart allows pooling of information over periods (viz. CUSUM, EWMA), so do all the Shewarts charts presented above. 
-\subsection{Shewhart Individuals Control Chart}
-[TODO]
-\subsection{Three-way Chart}
-[TODO]
+\section[Extensions]{Extensions of Control Charts}
+We have been discussing the simplest of \barxChart chart, for ease of exposition.
+Several immediate extensions are possible.
+The reader is referred to \cite{montgomery_introduction_2007} for details.
+\begin{description}
+
+\item [One sided charts] Just like hypothesis testing, where we may consider non-directional or directional hypotheses, we may consider directional control chart. 
+Obviously the control limits and the test statistic may need appropriate updates.
+
+\item [Autocorrelation and time series models] The assumption of independence between sampling periods may be relaxed, by adopting a quantitative or qualitative model for temporal dependence.
+
+\item [Running Window Versions] The ideas of pooling information over periods with a moving averages, EWMA, and CUSUM may be extended to all type of Shewart charts. 
+
+\item [Multiple Charts] When inspecting a process, rarely does one inspect a single chart at a time. A typical dashboard would include several charts running in parallel, as depicted in Figure~\ref{fig:dashboard}.
+
+\end{description}
+
+
+
 \subsection{Cuescore Charts}
 [TODO]
 
