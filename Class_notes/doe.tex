@@ -28,53 +28,57 @@ Before we dig in, two matters should be emphasized:
 
 
 \section{Terminology}
-Compiled from \cite{natrella_nist/sematech_2010} and \cite{mason_statistical_2003}.
+Compiled from \cite{mason_statistical_2003}.
 Many, if not most of the following terms, originate in R.A. Fisher's seminal book ``The Design of Experiments'' \citep{fisher_design_1960}.
 
-\subsection{Major Terminology}
-
 \begin{description}
-\item [Alias] When the estimate of an effect also includes the influence of one or more other effects (usually high order interactions) the effects are said to be aliased.
-\item [Balanced Design] An experimental design where all cells (i.e. treatment combinations) have the same number of observations.
-\item [Blocking] A schedule for conducting treatment combinations in an experimental study such that any effects on the experimental results due to a known change in raw materials, operators, machines, etc., become concentrated in the levels of the blocking variable. Note: the reason for blocking is to isolate a systematic effect and prevent it from obscuring the main effects. Blocking is achieved by restricting randomization.
-\item [Factor Encodings] Transforming the scale of measurement for a factor. 
+
+\item [Experimental Unit]  Entity on which a measurement or an observation is made;
+sometimes refers to the actual measurement or observation.
+\item [Homogenous Experimental Unit] Units that are as uniform as possible on all characteristics that could affect the response.
+
+\item [Factors]  A controllable experimental variable that is thought to influence the response. In the language of SPC: \emph{a controllable input}.
+
+\item [Level] Specific value of a factor.
+
+\item [Factor Encodings] The numerical encoding of factor levels.
 Two level factor encodings include:
-\begin{itemize}
+\begin{enumerate}
 \item Effect coding: where levels are encoded with $-1,1$ returning orthogonal design matrices for balanced designs.
 \item Dummy coding: where levels are encoded with $0,1$ returning easily interpretable coefficients.
-\end{itemize}
+\end{enumerate}
 
-\item [Confounding] When the design is such that several effects cannot be told apart. 
-\item [Control Group] 
+\item [Experimental Region] All possible factor–level combinations for which experimentation is possible. \Aka \emph{factor space}.
+
+\item [Design Matrix] A matrix description of an experiment that is useful for constructing and analyzing experiments.
+
+\item [Response] The CTQ.
+
+\item [Main Effect] Change in the expected response between two factor–levels.  
+
+\item [Interaction] Existence of joint factor effects in which the effect of each factor depends on the levels of the other factors.
+
+\item [Replication] Repetition of an entire experiment or a portion of an experiment
+under two or more sets of conditions.
+
 \item [Covariate]  An uncontrollable variable that influences the response but is
 unaffected by any other experimental factors.
-\item [Design]  Complete specification of experimental test runs, including
-blocking, randomization, repeat tests, replication, and the assignment of
-factor–level combinations to experimental units.
-\item [Design Matrix] A matrix description of an experiment that is useful for constructing and analyzing experiments.
-\item [Effect]  Change in the average response between two factor–level combinations or between two experimental conditions. 
-\item [Experimental Unit] The entity to which a specific treatment combination is applied.
-\item [Experimental Region] All possible factor–level combinations for which experimentation is possible. \Aka \emph{factor space}.
-\item [Factors]  A controllable experimental variable that is thought to influence the response. In the language of SPC: \emph{a controllable input}.
-\item [Fixed Effect] 
-\item [Random Effect]
-\item [Interaction]
-\item [Lack of fit error]
-\item [Pure Error]
-\item [Orthogonality]
-\item [Replication]
-\item [Resolution]
-\item [Response]
-\item [Screening Design]
-\item [Test Plan]
-\item [Treatment]
-\item [Treatment Group]
-\item [Variance Components]
+
+\item [Design]  Complete specification of experimental test runs, including blocking, randomization, repeat tests, replication, and the assignment of factor–level combinations to experimental units.
+
+\item [Balanced Design] An experimental design where all cells (i.e. treatment combinations) have the same number of observations.
+
+\item [Block] Group of homogeneous experimental units.
+
+\item [Confounding] When the design is such that several effects cannot be told apart. \Aka \emph{aliasing}.
+
+\item [Repeat Tests] Two or more observations that have the same levels for all the
+factors.
+
+
 \end{description}
 
 
-
-\subsection{Minor Terminology}
 
 
 
