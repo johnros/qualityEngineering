@@ -36,9 +36,9 @@ That book, however, may be hard to come by, in which case, I also recommend \cit
 
 
 \section{Terminology}
-Compiled from \cite{mason_statistical_2003}.
-Many, if not most of the following terms, originate in R.A. Fisher's seminal book ``The Design of Experiments'' \citep{fisher_design_1960}.
-As usual, when old ideas get new names, we try to emphasize this in the text.
+Compiled from \cite{mason_statistical_2003}. Many, if not most of the following terms, originate in R.A. Fisher's seminal book ``The Design of Experiments'' \citep{fisher_design_1960}. As usual, when old ideas get new names, we try to emphasize this in the text.
+
+
 
 \begin{description}
 
@@ -49,6 +49,8 @@ sometimes refers to the actual measurement or observation.
 \item [Factors]  A controllable experimental variable that is thought to influence the response. In the language of SPC: \emph{a controllable input}.
 
 \item [Level] Specific value of a factor.
+
+\item[Treatment] The particular factor-level combination applied to an experimental unit.
 
 \item [Factor Encodings] The numerical encoding of factor levels.
 Two level factor encodings include:
@@ -67,22 +69,20 @@ Two level factor encodings include:
 
 \item [Interaction] Existence of joint factor effects in which the effect of each factor depends on the levels of the other factors.
 
-\item [Replication] Repetition of an entire experiment or a portion of an experiment
-under two or more sets of conditions.
+\item [Replication] Repetition of an entire experiment or a portion of an experiment under two or more sets of conditions.
 
 \item [Covariate]  An uncontrollable variable that influences the response but is
 unaffected by any other experimental factors.
 
 \item [Design]  Complete specification of experimental test runs, including blocking, randomization, repeat tests, replication, and the assignment of factor–level combinations to experimental units.
 
-\item [Balanced Design] An experimental design where all cells (i.e. treatment combinations) have the same number of observations.
+\item [Balanced Design] An experimental design where all cells (i.e. treatments) have the same number of observations.
 
 \item [Block] Group of homogeneous experimental units.
 
 \item [Confounding] When the design is such that several effects cannot be told apart. \Aka \emph{aliasing}.
 
-\item [Repeat Tests] Two or more observations that have the same levels for all the
-factors.
+\item [Repeat Tests] Two or more observations that have the same levels for all the factors.
 
 \end{description}
 
@@ -93,13 +93,33 @@ factors.
 
 
 \section{Fully Randomized Designs}
-% complete factorial
-% importance of factorial when optimizing a process
-% notation A,B, (1),a,b,ab
-% interaction plot
-% a single replication design
+Fully randomized designs are those where we can freely (randomly) assign experimental units to treatments.
+
 
 \subsection{Full Factorial}
+A \emph{full factorial} design is one where all factor-level combinations are tested.
+In a \emph{balanced full factorial} design, all factor level combinations undergo the same number of \emph{test repeats}.
+
+By far the most common design, in which $k$ factors have 2 levels, is named a $2^k$-design.
+Less common, but not surprisingly, $k$ factors with 3 levels is names $3^k$-design, etc.
+
+\subsubsection{$2^2$ design}
+Consider two factors: $A$ and $B$.
+Adopt the effect coding so that we encode their levels by $-1,1$.
+The design matrix of a single run will look like this:
+\begin{table}[ht]
+\centering
+\begin{tabular}{rrr}
+  \hline
+  Condition n. & A & B \\ 
+  \hline
+1 & -1 & -1 \\ 
+  2 & 1 & -1 \\ 
+  3 & -1 & 1 \\ 
+  4 & 1 & 1 \\ 
+   \hline
+\end{tabular}
+\end{table}
 
 
 
