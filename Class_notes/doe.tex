@@ -160,28 +160,7 @@ For a more rigorous approach, see the Response Surface Methodology section (\ref
 
 \subsubsection{$3^k$ Designs}
 I think that the name $3^k$ design is rather self explanatory.
-Table~\ref{tab:design_3_k} is the design matrix of a single experimental repeat of a $3^2$ design.
-\begin{table}[ht]
-\centering
-\begin{tabular}{rrr}
-  \hline
- & A & B \\ 
-  \hline
-1 & -1 & -1 \\ 
-  2 & 0 & -1 \\ 
-  3 & 1 & -1 \\ 
-  4 & -1 & 0 \\ 
-  5 & 0 & 0 \\ 
-  6 & 1 & 0 \\ 
-  7 & -1 & 1 \\ 
-  8 & 0 & 1 \\ 
-  9 & 1 & 1 \\ 
-   \hline
-\end{tabular}
-\label{tab:design_3_k}
-\caption{$3^2$ full factorial design: A single run of a $3^2$ design, created with the \rcode{gen.factorial()} function in the \rcode{AlgDesign} \R package.}
-\end{table}
-
+Then again, more than $2$ levels are rarely treated as factorial experiments, but rather in the Response Surface methodology of Section~\ref{sec:response_surface}.
 
 
 
@@ -193,8 +172,30 @@ This is where the \emph{fractional factorial}, or \emph{partial factorial} desig
 The fundamental idea is to design a full factorial, but skip a couple experimental conditions. 
 
 \begin{example}[From $2^2$ to $2^{(2-1)}$]
-As a first example, we will try to design a 
+\label{eg:fractional_factorial}
+As a first example, we will try to save some time and money by eliminating particular conditions of the $2^2$ design in Figure~\ref{fig:full_factorial}.
+As the name may suggest, a $2^{2-1}$ design, has $2$ experimental conditions in each run. 
+There are thus $\binom{4}{2}=6$ possible eliminations.
+\begin{table}
+\begin{tabular}{|p{2.5cm}|p{10cm}|}
+\hline Elimination &  Problem \\ 
+\hline
+\hline 1,2 &  No information on $a$. \\ 
+\hline 1,3 &  No information on $b$.\\ 
+\hline 1,4 &  $a$ aliased with $b$ aliased with $ab$. \\ 
+\hline 2,3 &  $a$ aliased with $b$ aliased with $ab$. \\ 
+\hline 2,4 &  No information on $b$. \\ 
+\hline 3,4 &  No information on $a$.\\ 
+\hline 
+\end{tabular} 
+\label{tab:partial_factorial}
+\caption{$2^{2-1}$: All possible eliminations from the $2^2$ design that lead to a $2^{2-1}$ design.}
+\end{table}
 \end{example}
+
+The lesson from Example~\ref{eg:fractional_factorial} is that in a fractional factorial our savings in time and money, come at the cost of the information that can be drawn from the experiment.
+The idea behind partial factorial experiments, is that by an informed choice of the conditions skipped, we can choose what information to give up.
+
 
 
 
