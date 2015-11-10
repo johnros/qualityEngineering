@@ -171,6 +171,7 @@ A major drawback, are the resources required when $k$ is large.
 This is where the \emph{fractional factorial}, or \emph{partial factorial} designs kick in.
 The fundamental idea is to design a full factorial, but skip a couple experimental conditions. 
 
+
 \begin{example}[From $2^2$ to $2^{(2-1)}$]
 \label{eg:fractional_factorial}
 As a first example, we will try to save some time and money by eliminating particular conditions of the $2^2$ design in Figure~\ref{fig:full_factorial}.
@@ -194,8 +195,34 @@ There are thus $\binom{4}{2}=6$ possible eliminations.
 \end{example}
 
 The lesson from Example~\ref{eg:fractional_factorial} is that in a fractional factorial our savings in time and money, come at the cost of the information that can be drawn from the experiment.
-The idea behind partial factorial experiments, is that by an informed choice of the conditions skipped, we can choose what information to give up.
+The idea behind partial factorial experiments, is that by an informed choice of the conditions skipped, we can choose what information to give up. The information lost, is known as the \emph{alias structure}.\marginnote{Alias Structure}
 
+In practice, we will rarely do the actual elimination of conditions, but rather to pre-selected designs. 
+Table~\ref{tab:partial_factorial_2}, generated with the \rcode{FrF2()} in the \rcode{FrF2} \R package, is an optimal $2^{3-1}$ design.
+\begin{table}[ht]
+\label{tab:partial_factorial_2}
+\centering
+\begin{tabular}{rrrrrr}
+  \hline
+ & A & B & C & D & E \\ 
+  \hline
+1 & -1 & 1 & -1 & -1 & 1 \\ 
+  2 & 1 & -1 & 1 & -1 & 1 \\ 
+  3 & -1 & -1 & -1 & 1 & 1 \\ 
+  4 & -1 & 1 & 1 & -1 & -1 \\ 
+  5 & -1 & -1 & 1 & 1 & -1 \\ 
+  6 & 1 & 1 & 1 & 1 & 1 \\ 
+  7 & 1 & -1 & -1 & -1 & -1 \\ 
+  8 & 1 & 1 & -1 & 1 & -1 \\ 
+   \hline
+\end{tabular}
+\end{table}
+
+
+
+\begin{extra}[Minimal Aberration]
+If you want to learn how are optimal fractional factorial designs selected, ask me, or Google, for references on \emph{minimal aberration}.
+\end{extra}
 
 
 
