@@ -6,6 +6,11 @@ When designing a product (remember DFSS \ref{sec:dfss}), or one a control chart 
 In our SPC terminology, we will want to know what are the \emph{causal} \emph{effect} of our \emph{controllable inputs}, or \emph{factors} influence our CTQ, or \emph{response}. 
 The theory of discovering these effects is the theory of \emph{design of experiments} (DOE).
 
+Roughly speaking, the challenges in designing good experiments are:
+\begin{enumerate}
+\item Efficiency: extract the most information per sample.
+\item 
+\end{enumerate}
 
 
 Before we dig in, two matters should be emphasized:
@@ -128,16 +133,36 @@ With this $2^2$ design, we may recover several effects:
 The effect of varying $A$ from $-$ to $+$: the \emph{main effect of $A$} typically denoted $a$. 
 The effect of varying $B$ from $-$ to $+$: the \emph{main effect of $B$} typically denoted $b$.  
 The effect of varying both $A$ and $B$ from $-$ to $+$. 
-If the expected response at $++$, denoted $\mu_{++}$, is merely $\mu_{--}+a+b$. 
+We denote the expected response at $A=-,B=-$ with $\mu_{--}$, and the other conditions respectively.
+We denote $ab=\mu_{++}-\mu_{--}-a-b$.
+If $ab=0$ we say there is \emph{no interaction}.
+If $ab \neq 0$, it means that the effect of $A$ depends on the state of $B$, or conversely, that the effect of $B$ depends on the state of $A$.  In short, if $ab \neq 0$ we say there is an \emph{interaction} between $A$ and $B$. \marginnote{Interaction}
+
+Slightly intruding into the realm of data analysis, a visualization of interactions is known as the \emph{interaction plot}, depicted in Figure~\ref{fig:interaction_plot}. 
+The upper left panel demonstrates a lack of interaction (think why), while the upper right panel depicts an interaction.
+
+
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.3\textheight]{art/attribute_doe_interaction_plot}
+\caption{Interactions plot. \newline \url{http://blog.minitab.com/blog/statistics-in-the-field/optimizing-attribute-responses-using-design-of-experiments-doe-part-2}}
+\label{fig:interaction_plot}
+\end{figure}
+
+
 
 
 
 \begin{remark}[Intermediate Factor Levels]
-In a $2^k$ design, a factor may actually be a continuous controllable input, which was restricted to two possible values for convenience. 
+In a $2^k$ design, a factor may actually be a continuous controllable input which was restricted to two values for convenience. 
 After estimating the effect of the factor, we may want to know what would the effect have been, were we to set it on some intermediate level.
 It is customary to assume that a main effect acts linearly in-between experimental conditions, yet you should remember that there is nothing in the data to support this.
 For a more rigorous approach, see the Response Surface Methodology section (\ref{sec:response_surface}).
 \end{remark}
+
+
+
 
 
 
@@ -172,7 +197,7 @@ For a more rigorous approach, see the Response Surface Methodology section (\ref
 \subsubsection{Incomplete Block Designs}
 
 
-\subsection{Random Effects Facotor}
+\subsection{Random Effects Factors}
 
 \subsection{Nested Designs}
 
@@ -185,6 +210,8 @@ For a more rigorous approach, see the Response Surface Methodology section (\ref
 
 
 \subsection{Process Improvement Designs}
+
+
 
 \subsubsection{Taguchi's Robust Design Approach}
 
@@ -201,12 +228,24 @@ For a more rigorous approach, see the Response Surface Methodology section (\ref
 
 \subsubsection{Box-Behnken Design}
 
+\subsection{Optimal Designs}
+
+\subsubsection{A optimality}
+\subsubsection{B optimality}
+\subsubsection{C optimality}
+\subsubsection{D optimality}
+
 
 
 
 \section{Sequential Designs}
+% Mark Vandelmeulenbruke
 
-\subsection{Po}
+\subsubsection{Active Learning}
+
+
+\subsubsection{MultiArmed Bandits}
+
 
 
 
