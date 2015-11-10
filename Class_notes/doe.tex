@@ -1,16 +1,22 @@
 \chapter[DOE]{Design of Experiments - DOE}
 
 This chapter is devoted to the matter of designing experiments.
-A control chart may be seen as an on-line running experiment alerting us when things go sour. W
-When designing a product (remember DFSS \ref{sec:dfss}), or one a control chart has signalled an alert, we will want to know what influences our production.
-In our SPC terminology, we will want to know what are the \emph{causal} \emph{effect} of our \emph{controllable inputs}, or \emph{factors} influence our CTQ, or \emph{response}. 
+A control chart may be seen as an on-line running experiment alerting us when things go sour. 
+When designing a product (remember DFSS \ref{sec:dfss}), or one a control chart has signalled an alert, we will want to know what influences our production, and how to optimize it.
+In our SPC terminology, we will want to know what are the \emph{causal} \emph{effects} of our \emph{controllable inputs} (or \emph{factors}), on our \emph{CTQ} (or \emph{response}). 
 The theory of discovering these effects is the theory of \emph{design of experiments} (DOE).
+Its goal is to \emph{screen} factors with no effect, to estimate effect sizes, and find optimal factor-level combinations; all these as efficiently as possibly.
 
-Roughly speaking, the challenges in designing good experiments are:
+
+Roughly speaking, the challenges in designing good experiment are:
 \begin{enumerate}
 \item Efficiency: extract the most information per sample.
-\item 
+\item Signal to noise: factor effects masked by the variability introduced by uncontrolled factors.
+\item Bias: introduced by uncontrolled factors.
 \end{enumerate}
+
+
+
 
 
 Before we dig in, two matters should be emphasized:
@@ -198,7 +204,7 @@ The lesson from Example~\ref{eg:fractional_factorial} is that in a fractional fa
 The idea behind partial factorial experiments, is that by an informed choice of the conditions skipped, we can choose what information to give up. The information lost, is known as the \emph{alias structure}.\marginnote{Alias Structure}
 
 In practice, we will rarely do the actual elimination of conditions, but rather to pre-selected designs. 
-Table~\ref{tab:partial_factorial_2}, generated with the \rcode{FrF2()} in the \rcode{FrF2} \R package, is an optimal $2^{3-1}$ design.
+Table~\ref{tab:partial_factorial_ii}, generated with the \rcode{FrF2()} in the \rcode{FrF2} \R package, is an optimal $2^{3-1}$ design.
 Using the \rcode{design.info()} function of that same package, we know that the aliasing structure of this design is
 $a=bd=ce, b=ad, c=ae, d=ab, e=ac$.
 We will not do into the details of how the aliasing structure is computed. 
@@ -243,10 +249,7 @@ If you want to learn how are optimal fractional factorial designs selected, ask 
 
 
 
-\subsubsection{Design Resolution}
 
-
-\subsection{Screening Experiments}
 
 \section{Random Effects}
 
