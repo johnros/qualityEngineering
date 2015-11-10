@@ -103,6 +103,10 @@ In a \emph{balanced full factorial} design, all factor level combinations underg
 By far the most common design, in which $k$ factors have 2 levels, is named a $2^k$-design.
 Less common, but not surprisingly, $k$ factors with 3 levels is names $3^k$-design, etc.
 
+\subsubsection{$2^1$ design}
+Well, this is your usual A/B test. 
+There is not much to be said about the design of such experiments, and the analysis is pretty much your good old t-test.
+
 \subsubsection{$2^2$ design}
 Consider two factors: $A$ and $B$.
 Adopt the effect coding so that we encode their levels by $-1,1$.
@@ -119,6 +123,7 @@ The design matrix of a single run will look like this:
   4 & 1 & 1 \\ 
    \hline
 \end{tabular}
+\caption{A $2^2$ design. As generated with \rcode{gen.factorial()} in the \rcode{AlgDesign} \R package.}
 \end{table}
 
 
