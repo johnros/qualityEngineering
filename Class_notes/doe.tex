@@ -190,7 +190,7 @@ There are thus $\binom{4}{2}=6$ possible eliminations.
 \hline 
 \end{tabular} 
 \label{tab:partial_factorial}
-\caption{$2^{2-1}$: All possible eliminations from the $2^2$ design that lead to a $2^{2-1}$ design.}
+\caption{$2^{2-1}$ design: All possible eliminations from the $2^2$ design that lead to a $2^{2-1}$ design.}
 \end{table}
 \end{example}
 
@@ -199,8 +199,11 @@ The idea behind partial factorial experiments, is that by an informed choice of 
 
 In practice, we will rarely do the actual elimination of conditions, but rather to pre-selected designs. 
 Table~\ref{tab:partial_factorial_2}, generated with the \rcode{FrF2()} in the \rcode{FrF2} \R package, is an optimal $2^{3-1}$ design.
+Using the \rcode{design.info()} function of that same package, we know that the aliasing structure of this design is
+$a=bd=ce, b=ad, c=ae, d=ab, e=ac$.
+We will not do into the details of how the aliasing structure is computed. 
+
 \begin{table}[ht]
-\label{tab:partial_factorial_2}
 \centering
 \begin{tabular}{rrrrrr}
   \hline
@@ -216,7 +219,19 @@ Table~\ref{tab:partial_factorial_2}, generated with the \rcode{FrF2()} in the \r
   8 & 1 & 1 & -1 & 1 & -1 \\ 
    \hline
 \end{tabular}
+\label{tab:partial_factorial_ii}
+\caption{$2^{5-2}$ design.}
 \end{table}
+
+
+As we have already seen, there are $\binom{2^k}{2^{k-p}}$ possible eliminations that convert a $2^k$ design to a $2^{k-p}$ design.
+\begin{definition}[Resolution of a Design]
+We call the \emph{resolution of the design}, the lowest order effect that is aliased. 
+\end{definition}
+In Table~\ref{tab:partial_factorial_ii}, the resolution is 1, making it a rather unattractive design. 
+Resolutions below 3 typically considered not informative, and above 5, considered wasteful.
+
+
 
 
 
@@ -226,7 +241,7 @@ If you want to learn how are optimal fractional factorial designs selected, ask 
 
 
 
-\subsubsection{Confounding of Effects}
+
 
 \subsubsection{Design Resolution}
 
