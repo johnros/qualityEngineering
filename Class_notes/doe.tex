@@ -1,4 +1,4 @@
-\chapter{Design of Experiments - DOE}
+\chapter[DOE]{Design of Experiments - DOE}
 
 This chapter is devoted to the matter of designing experiments.
 A control chart may be seen as an on-line running experiment alerting us when things go sour. W
@@ -6,7 +6,9 @@ When designing a product (remember DFSS \ref{sec:dfss}), or one a control chart 
 In our SPC terminology, we will want to know what are the \emph{causal} \emph{effect} of our \emph{controllable inputs}, or \emph{factors} influence our CTQ, or \emph{response}. 
 The theory of discovering these effects is the theory of \emph{design of experiments} (DOE).
 
-\begin{remark}[We do not discuss analysis]
+
+
+\begin{remark}[What about the analysis of the data?]
 In this text, we only discuss the design of the experiment, and not the analysis of the data.
 This is a non-standard choice as DOE is typically presented alongside the \emph{analysis of variance} (ANOVA) which deals with the analysis of the data once this has been obtained.\marginnote{ANOVA}
 We decouple the two since: 
@@ -46,12 +48,15 @@ Two level factor encodings include:
 \item [Control Group] 
 \item [Covariate]  An uncontrollable variable that influences the response but is
 unaffected by any other experimental factors.
-\item [Design]
-\item [Design Matrix]
-\item [Effect]
-\item [Experimental Unit]
-\item [Factors]
-\item [Fixed Effect]
+\item [Design]  Complete specification of experimental test runs, including
+blocking, randomization, repeat tests, replication, and the assignment of
+factor–level combinations to experimental units.
+\item [Design Matrix] A matrix description of an experiment that is useful for constructing and analyzing experiments.
+\item [Effect]  Change in the average response between two factor–level combinations or between two experimental conditions. 
+\item [Experimental Unit] The entity to which a specific treatment combination is applied.
+\item [Experimental Region] All possible factor–level combinations for which experimentation is possible. \Aka \emph{factor space}.
+\item [Factors]  A controllable experimental variable that is thought to influence the response. In the language of SPC: \emph{a controllable input}.
+\item [Fixed Effect] 
 \item [Random Effect]
 \item [Interaction]
 \item [Lack of fit error]
