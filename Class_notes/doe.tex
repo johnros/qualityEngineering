@@ -8,15 +8,15 @@ The theory of discovering these effects is the theory of \emph{design of experim
 
 
 
-\begin{remark}[What about the analysis of the data?]
-In this text, we only discuss the design of the experiment, and not the analysis of the data.
-This is a non-standard choice as DOE is typically presented alongside the \emph{analysis of variance} (ANOVA) which deals with the analysis of the data once this has been obtained.\marginnote{ANOVA}
+\begin{remark}[Data Analysis]
+In this text, we only discuss the \textbf{design} of the experiment, and not the \textbf{analysis} of the data.
+This is a non-standard choice as DOE is typically presented alongside the \emph{analysis of variance} (ANOVA) analysis framework.\marginnote{ANOVA}
 We decouple the two since: 
 (a) these are two different things, and 
-(b) the language of ANOVA may be replaced, and has indeed been in many contexts, by the language of the \emph{linear models}.
+(b) the language of ANOVA may be replaced, and has indeed been in many contexts, by the language of \emph{linear models}.
 There is a vast literature on analysis methods. 
 If asked, this author may recommend \cite{hocking_analysis_1985}, which presents both the ANOVA terminology, and the linear models terminology.
-That book, however, may be hard to come by, in which case, I also recommend \cite{greene_econometric_2003}, with a more econometric approach.
+That book, however, may be hard to come by, in which case, I also recommend \cite{mason_statistical_2003}.
 \end{remark}
 
 
@@ -30,6 +30,7 @@ Before we dig in, two matters should be emphasized:
 \section{Terminology}
 Compiled from \cite{mason_statistical_2003}.
 Many, if not most of the following terms, originate in R.A. Fisher's seminal book ``The Design of Experiments'' \citep{fisher_design_1960}.
+As usual, when old ideas get new names, we try to emphasize this in the text.
 
 \begin{description}
 
@@ -75,46 +76,7 @@ unaffected by any other experimental factors.
 \item [Repeat Tests] Two or more observations that have the same levels for all the
 factors.
 
-
 \end{description}
-
-
-
-
-
-
-
-%Block. Group of homogeneous experimental units.
-%Confounding. One or more effects that cannot unambiguously be attributed to
-%a single factor or interaction.
-%Covariate. An uncontrollable variable that influences the response but is
-%unaffected by any other experimental factors.
-%Design (layout). Complete specification of experimental test runs, including
-%blocking, randomization, repeat tests, replication, and the assignment of
-%factor–level combinations to experimental units.
-%Effect. Change in the average response between two factor–level
-%combinations or between two experimental conditions.
-%Experimental region (factor space). All possible factor–level combinations
-%for which experimentation is possible.
-%Factor. A controllable experimental variable that is thought to influence the
-%response.
-%Homogeneous experimental units. Units that are as uniform as possible on
-%all characteristics that could affect the response.
-%Interaction. Existence of joint factor effects in which the effect of each factor
-%depends on the levels of the other factors.
-%Level. Specific value of a factor.
-%Repeat tests. Two or more observations that have the same levels for all the
-%factors.
-%Replication. Repetition of an entire experiment or a portion of an experiment
-%under two or more sets of conditions.
-%Response. Outcome or result of an experiment.
-%Test run. Single combination of factor levels that yields an observation on the
-%response.
-%Unit (item). Entity on which a measurement or an observation is made;
-%sometimes refers to the actual measurement or observation.
-
-
-
 
 
 
@@ -125,12 +87,13 @@ factors.
 \section{Fully Randomized Designs}
 % complete factorial
 % importance of factorial when optimizing a process
-% Regression and ANOVA terminology (reference: the analysis of linear models)
 % notation A,B, (1),a,b,ab
 % interaction plot
 % a single replication design
 
 \subsection{Full Factorial}
+
+
 
 \subsection{Fractional Factorial}
 
