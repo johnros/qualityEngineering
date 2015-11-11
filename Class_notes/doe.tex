@@ -1,6 +1,6 @@
 \chapter[DOE]{Design of Experiments - DOE}
 
-This chapter is devoted to the matter of designing experiments.
+This chapter is devoted to the matter of designing experiments, and follows the lines of \cite{cox_theory_2000}.
 A control chart may be seen as an on-line running experiment alerting us when things go sour. 
 When designing a product (remember DFSS \ref{sec:dfss}), or one a control chart has signalled an alert, we will want to know what influences our production, and how to optimize it.
 In our SPC terminology, we will want to know what are the \emph{causal} \emph{effects} of our \emph{controllable inputs} (or \emph{factors}), on our \emph{CTQ} (or \emph{response}). 
@@ -35,11 +35,12 @@ For a treatment of causal inference in \emph{observational data}, i.e., without 
 In this text, we only discuss the \textbf{design} of the experiment, and not the \textbf{analysis} of the data.
 This is a non-standard choice as DOE is typically presented alongside the \emph{analysis of variance} (ANOVA) analysis framework.\marginnote{ANOVA}
 We decouple the two since: 
-(a) these are two different things, and 
-(b) the language of ANOVA may be replaced, and has indeed been in many contexts, by the language of \emph{linear models}, \emph{generalized linear models}, \emph{mixed models}, \emph{variance components}, and possibly others. 
-There is a vast literature on analysis methods. \marginnote{Linear Models, \\ GLM, \\ Mixed Models, Variance Components}
+(a) \cite{cox_theory_2000} do so, 
+(b) there are two different thing, 
+(c) the language of ANOVA may be replaced, as it often is, by the language of \emph{linear models}, \emph{mixed models}, \emph{variance components}, and possibly others. 
+There is a vast literature focusing on the analysis method. \marginnote{Linear Models, \\ GLM, \\ Mixed Models, Variance Components}
 If asked, this author may recommend \cite{hocking_analysis_1985}, which presents both the ANOVA terminology, and the linear models terminology.
-That book, however, may be hard to come by, in which case, I also recommend \cite{mason_statistical_2003}.
+That book, however, may be hard to come by, so feel free to ask me for other references is required.
 \end{remark}
 
 
@@ -95,6 +96,9 @@ unaffected by any other experimental factors.
 
 \item [Repeat Tests] Two or more observations that have the same levels for all the factors.
 
+\item [Balance] 
+
+\item [Orthogonality]
 \end{description}
 
 
@@ -249,7 +253,7 @@ If you want to learn how are optimal fractional factorial designs selected, ask 
 
 
 
-\section{Variance Components}
+\section{Controlling Variability Sources}
 The idea that random samples come with variability, or noise, should not be new to the reader (but see Extra~\ref{extra:pac_learning} below.)
 In this section, we will try to decompose the noise into it sources, or \emph{variance components}, and learn several techniques to reduce the noise sources.
 Starting with a motivating example.
@@ -386,12 +390,21 @@ If units are suspceted to be non-homogenous, then we may block, and assign full 
 \end{table}
 
 
-
-\subsection{Random Effects Factors}
+\begin{remark}[Crossed Treatments]
+Both crossover designs and full factorial designs are \emph{crossed} in that all factor combinations are sampled. 
+The difference is that in a full-factorial, a factor combination is applied simultaneously to an experiment unit, and in a crossover design, the application is sequential.[TODO: cite cambridge dictionary of statistics]
+\end{remark}
 
 
 
 \subsection{Nested Designs}
+Until now, whenever you had several factors, and resources permit, we aimed at \emph{crossing} all factors levels, so that in the analysis stage we may recover information on all main-effects, and interactions.
+There are cases, however, where crossing factors does not make any sense.
+This is the idea of \emph{nested designs}, \aka \emph{hirarchial design}, demonstrated in the following example.\marginnote{Hirarchial Design}
+
+\begin{example}[TODO]
+content...
+\end{example}
 
 
 \subsubsection{Nested and Crossed Designs}
