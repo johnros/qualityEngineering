@@ -258,24 +258,6 @@ If treatments are combinations of several factors, it is not uncommon to use lat
 \end{table}
 
 
-\begin{remark}[Crossed Treatments]
-Both crossover designs and full factorial designs are \emph{crossed} in that all factor combinations are sampled. 
-The difference is that in a full-factorial, a factor combination is applied simultaneously to an experiment unit, and in a crossover design, the application is sequential \citep{everitt_cambridge_2010}.
-\end{remark}
-
-
-
-\subsection{Nested Designs}
-[TODO]
-\subsubsection{Nested and Crossed Designs}
-[TODO]
-\subsubsection{Split Plot Designs}
-[TODO]
-\subsection{Process Improvement Designs}
-[TODO]
-\subsubsection{Taguchi's Robust Design Approach}
-[TODO]
-
 
 
 
@@ -286,7 +268,7 @@ It is quite common, is not certain, that the many treatments are merely combinat
 
 
 
-\subsection{Full Factorial}
+\subsection{Full Factorial Designs}
 A \emph{full factorial}, or \emph{complete factorial} design, is one where all factor-level combinations are replicated the same number of times.
 By far the most common design, in which $k$ factors have 2 levels, is named a $2^k$-design.
 A $2^k$ design with $n$ repeats will necessitate $2^k\times n$ experimental units.
@@ -331,12 +313,25 @@ The upper left panel demonstrates a lack of interaction (think why), while the u
 \end{figure}
 
 
+\begin{remark}[Screening Experiments]
+The $2^k$ designs are probably the most popular full factorial designs. 
+This may be attributed to the fact that many factors studied really have two levels, but more plausibly, since these are merely \emph{screening} experiments. 
+Once non related factors have been screened, the experimenter may proceed from the $2^k$ design to more elaborate ones. 
+\end{remark}
+
+
 
 \begin{remark}[Intermediate Factor Levels]
 In a $2^k$ design, a factor may actually be a continuous controllable input which was restricted to two values for convenience. 
 After estimating the effect of the factor, we may want to know what would the effect have been, were we to set it on some intermediate level.
 It is customary to assume that a main effect acts linearly in-between experimental conditions, yet you should remember that there is nothing in the data to support this.
 For a more rigorous approach, see the Response Surface Methodology section (\ref{sec:response_surface}).
+\end{remark}
+
+
+\begin{remark}[Crossed Treatments]
+Both crossover designs and full factorial designs are \emph{crossed} in that all factor combinations are sampled. 
+The difference is that in a full-factorial, a factor combination is applied simultaneously to an experiment unit, and in a crossover design, the application is sequential \citep{everitt_cambridge_2010}.
 \end{remark}
 
 
