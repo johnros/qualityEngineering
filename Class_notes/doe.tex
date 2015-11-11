@@ -19,7 +19,7 @@ Roughly speaking, the challenges in designing good experiment are:
 
 
 
-Before we dig in, two matters should be emphasized:
+Before we dig in, several matters should be emphasized:
 \begin{description}
 \item [Randomization] Randomization is fundamental to our purpose. This because the idea of an \emph{effect} implies causality. Any inference we make, is causal, which is the inference we need for controlling a process.
 It is the mechanism of randomization, that allows us to conclude that inferred correlations are causal, and not merely statistical.
@@ -27,6 +27,7 @@ For a treatment of causal inference in \emph{observational data}, i.e., without 
 
 \item [Pre-experiment] In this text we take it for granted that the purpose of the experiment is well known, and the candidate factors defined. We are fully aware, as should be the reader, that in application this is a non-trivial luxury. Indeed, a lot of planning, and domain-knowledge go into the selection of factors, their candidate levels, etc.
 
+\item [Power Analysis] Part of the pre-experiment may include a power analysis. The pre-experiment power analysis will typically be very approximate, and rely on many assumptions. It is still important, as it gives an idea of the feasibility of an experiment, and avoids wasting resources.
 \end{description}
 
 
@@ -62,7 +63,7 @@ sometimes refers to the actual measurement or observation.
 
 \item [Level] Specific value of a factor.
 
-\item[Treatment] The particular factor-level combination applied to an experimental unit.
+\item[Treatment] The particular factor-level combination applied to an experimental unit. \Aka \emph{manipulation}.
 
 \item [Factor Encodings] The numerical encoding of factor levels.
 Two level factor encodings include:
