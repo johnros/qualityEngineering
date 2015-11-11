@@ -315,12 +315,15 @@ One natural approach, is to reduce the number of conditions.
 To demonstrate the idea of a Latin-Square design, we revert to an agricultural example, where the whole blocking theory began.
 
 \begin{example}[Agricultural Yield Study]
+\label{eg:latin_square}
 Consider an farmer growing corn.
-He wishes to study the effect of a fertilizer (factor A).
+He wishes to study the effect of $7$ candidate fertilizers (single factor with $7$ levels).
 He is aware that the location of the plot may affect yield, due to slightly different sunlight, irrigation, altitude, etc.
-
+He thus assumes he has to deal with two extra variance sources: row and column of the plot. 
+He could treat the row and column as two factors, with $7$ levels each, be he does not care to estimate the row/column effect, but merely to avoid bias.
+He will thus try to look for an allocation of fertilizer to rows and columns so that any row/column effect will be averaged out.
+The Latin Square design of Table~\ref{tab:latin_square} does just that.
 \end{example}
-
 
 \begin{table}[ht]
 \centering
@@ -338,13 +341,17 @@ He is aware that the location of the plot may affect yield, due to slightly diff
    \hline
 \end{tabular}
 \label{tab:latin_square}
-\caption{Latin Square: $7$-factor latin square: generated with the \rcode{MOLS()} function of the \rcode{crossdes} \R package.}
+\caption{Latin Square: A $7$-factor latin square, generated with the \rcode{MOLS()} function of the \rcode{crossdes} \R package.
+The number in each cell denotes the treatment (the fertilizer in Example~\ref{eg:latin_square}).}
 \end{table}
+
+When balancing more than two factors (such as row/column), we will call upon \emph{latin hypercube designs}.\marginnote{Latin Hypercube}
+
+
 
 \subsubsection{Greco Latin Square Design}
 
 
-\subsubsection{Latin Hypercube Design}
 
 
 \subsubsection{Cross Over Design}
