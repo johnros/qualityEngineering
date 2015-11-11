@@ -104,7 +104,7 @@ unaffected by any other experimental factors.
 
 
 \section{Fully Randomized Designs}
-Fully randomized designs are those where we can freely (randomly) assign experimental units to treatments.
+Fully randomized designs are those where we freely (and randomly) assign experimental units to treatments.
 
 
 \subsection{Full Factorial}
@@ -166,7 +166,8 @@ For a more rigorous approach, see the Response Surface Methodology section (\ref
 
 \subsubsection{$3^k$ Designs}
 I think that the name $3^k$ design is rather self explanatory.
-Then again, more than $2$ levels are rarely treated as factorial experiments, but rather in the Response Surface methodology of Section~\ref{sec:response_surface}.
+Then again, more than $2$ levels are rarely treated as factorial experiments. 
+This is because $3$ level factors typically appear when aiming at optimizing the factor combination, for which the \emph{response surface} methodology of Section~\ref{sec:response_surface} is more economical.
 
 
 
@@ -183,7 +184,7 @@ The fundamental idea is to design a full factorial, but skip a couple experiment
 As a first example, we will try to save some time and money by eliminating particular conditions of the $2^2$ design in Figure~\ref{fig:full_factorial}.
 As the name may suggest, a $2^{2-1}$ design, has $2$ experimental conditions in each run. 
 There are thus $\binom{4}{2}=6$ possible eliminations.
-\begin{table}
+\begin{table}[ht]
 \begin{tabular}{|p{2.5cm}|p{10cm}|}
 \hline Elimination &  Problem \\ 
 \hline
@@ -196,7 +197,7 @@ There are thus $\binom{4}{2}=6$ possible eliminations.
 \hline 
 \end{tabular} 
 \label{tab:partial_factorial}
-\caption{$2^{2-1}$ design: All possible eliminations from the $2^2$ design that lead to a $2^{2-1}$ design.}
+\caption{Aliasing in a $2^{2-1}$ design: All possible eliminations from the $2^2$ design that lead to a $2^{2-1}$ design.}
 \end{table}
 \end{example}
 
@@ -324,7 +325,6 @@ He could treat the row and column as two factors, with $7$ levels each, be he do
 He will thus try to look for an allocation of fertilizer to rows and columns so that any row/column effect will be averaged out.
 The Latin Square design of Table~\ref{tab:latin_square} does just that.
 \end{example}
-
 \begin{table}[ht]
 \centering
 \begin{tabular}{rlllllll}
@@ -346,12 +346,10 @@ The number in each cell denotes the treatment (the fertilizer in Example~\ref{eg
 \end{table}
 
 \subsubsection{Extensions of the Latin Square}
-\begin{description}
-
-\item [Latin Hypercube] When balancing more than two factors (such as row/column), we will call upon \emph{latin hypercube designs}.
-
-\item [Latin-Greco] [TODO]
-\end{description}
+\begin{enumerate}
+\item \textbf{Latin Hypercube}: When balancing more than two factors (such as row/column), we will call upon \emph{latin hypercube designs}.
+\item \textbf{Greco-Latin Square}: A latin-hypercube with three factors. 
+\end{enumerate}
 
 
 
