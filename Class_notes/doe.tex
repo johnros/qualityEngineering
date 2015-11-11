@@ -12,7 +12,7 @@ Roughly speaking, the challenges in designing good experiment are:
 \begin{enumerate}
 \item Efficiency: extract the most information per sample.
 \item Signal to noise: factor effects masked by the variability introduced by uncontrolled factors.
-\item Bias: introduced by uncontrolled factors.
+\item Bias: controlled factor-effects ``absorb'' the effects of uncontrolled factors.
 \end{enumerate}
 
 
@@ -89,7 +89,7 @@ unaffected by any other experimental factors.
 
 \item [Balanced Design] An experimental design where all cells (i.e. treatments) have the same number of observations.
 
-\item [Block] Group of homogeneous experimental units.
+\item [Blocking]  Blocking, or \emph{grouping}, is an experimental design technique that removes excess variation by grouping experimental units or test runs so that those units or test runs within a block are more homogeneous than those in different blocks.
 
 \item [Confounding] When the design is such that several effects cannot be told apart. \Aka \emph{aliasing}.
 
@@ -238,9 +238,6 @@ In Table~\ref{tab:partial_factorial_ii}, the resolution is 1, making it a rather
 Resolutions below 3 typically considered not informative, and above 5, considered wasteful.
 
 
-
-
-
 \begin{extra}[Minimal Aberration]
 If you want to learn how are optimal fractional factorial designs selected, ask me, or Google, for references on \emph{minimal aberration}.
 \end{extra}
@@ -251,20 +248,83 @@ If you want to learn how are optimal fractional factorial designs selected, ask 
 
 
 
-\section{Random Effects}
+\section{Variance Components}
+The idea that random samples come with variability, or noise, should not be new to the reader (but see Extra~\ref{extra:pac_learning} below.)
+In this section, we will try to decompose the noise into it sources, or \emph{variance components}, and learn several techniques to reduce the noise sources.
+Starting with a motivating example.
+
+\begin{example}[Movie Ratings]
+\label{eg:variance_components}
+Consider the problem of ranking movies along their rating.
+For this purpose, individuals are asked to rate each movie they have seen.
+A movie's rating is thus influenced by several factors:
+the movie's quality, 
+the viewer's strictness, 
+the viewer's affinity to that type of movie,
+the viewer's mood at the time of watching,
+other factors.
+How can we accurately rate a movie, in the presence of these variance components?
+The movie's quality is a controllable input, thus a factor.
+The viewer's strictness is not controllable, but observable, thus may be introduced as a covariate.
+The viewer's affinity to that type of movie is an interaction, since both movie type and viewer, are observable.
+The viewer's mood is unobservable, we would thus like the viewer to watch as many movies as possible under similar circumstances. Put differently, we would like to \emph{group}, or \emph{block} the time of watching. 
+Any other variance source, will be captured by the error term of the model. 
+\end{example}
+
+Example~\ref{eg:variance_components} teaches us that by an informed experimental design and analysis, we may reduce noise. Either by moving it to the signal (with covariates), or by removing it (with blocking).
+These are the ideas discussed in this section.
+
+
+\begin{extra}[PAC learning]
+\label{extra:pac_learning}
+It may be shocking for a statistician, but not all data is noisy.
+Try reading about \emph{PAC learning} in the machine learning literature for a counter example.
+\end{extra}
+
+
+
+
+\subsection{Gage R\&R Studies}
+R\&R stands for \emph{repeatability} and \emph{reproducibility}.
+In the context of quality control\footnote{Beware that these words may be used with different meanings by different communities.} repeatability is the variability under repeated measurement, and reproducibility is the variability when the same measurement is performed elsewhere (different lab, technician, etc.).
+Gage R\&R experiments consist of performing several \emph{repeat tests}, and different replications, in order to assess R\&R, which can be thought of the variance components attributable inherent to the measurement process.
+
+
+
 
 \subsection{Randomized Block Designs}
 
-\subsubsection{Complete Block Designs}
 
+\subsubsection{Randomized Complete Block Designs - RCB}
+In the simplest case, known awe first block, or group, observations and we then (randomly) assign them to conditions.
+If we have $n_c$ experimental conditions, we naturally need blocks of $n_c$ experimental units for a \emph{balanced design}.
+The first problem with complete block designs is thus obvious- we may not have $n_c$ observations per block.
+The second problem with RCBs is that it typically deals with a single variability source. 
+In the movie ranking example (\ref{eg:variance_components}), blocking was along time. 
+Clearly time is just a proxy of the viewer's mood. 
+If mood is not continuous in time (he got an agitating phone call), then we would need a more elaborate blocking scheme.
 
-\subsubsection{Latin Square Design}
-
-\subsubsection{Latin Square Design}
-
-\subsubsection{Cross Over Design}
 
 \subsubsection{Incomplete Block Designs}
+Incomplete block designs arise where there are not enough observations per block to be (randomly) assigned to the $n_c$ experimental conditions.
+One natural approach, is to reduce the number of conditions. 
+[TODO: balanced incomplete factorial]
+
+
+\subsubsection{Latin Square Design}
+To demonstrate the idea of a Latin-Square design, we revert to an agricultural example, where the whole blocking theory began.
+
+\begin{example}[Agricultural Yield Study]
+Consider an farmer growing corn.
+He wishes to study the effect of a fertilizer (factor A).
+He is aware that when 
+\end{example}
+
+
+\subsubsection{Greco Latin Square Design}
+
+
+\subsubsection{Cross Over Design}
 
 
 \subsection{Random Effects Factors}
