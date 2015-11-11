@@ -345,17 +345,47 @@ The Latin Square design of Table~\ref{tab:latin_square} does just that.
 The number in each cell denotes the treatment (the fertilizer in Example~\ref{eg:latin_square}).}
 \end{table}
 
-When balancing more than two factors (such as row/column), we will call upon \emph{latin hypercube designs}.\marginnote{Latin Hypercube}
+\subsubsection{Extensions of the Latin Square}
+\begin{description}
+
+\item [Latin Hypercube] When balancing more than two factors (such as row/column), we will call upon \emph{latin hypercube designs}.
+
+\item [Latin-Greco] [TODO]
+\end{description}
 
 
 
-\subsubsection{Greco Latin Square Design}
+\subsubsection{Crossover Design}
+Lets return to the movie rating example (\ref{eg:variance_components}).
+We can easily agree that tastes may vary considerably between individuals. 
+We would like to balance individuals' tastes.
+As previously mentioned, we could opt for a blocking strategy so that we cancel within-subject variability.
+Alternatively, we may balance the viewing periods over subjects. This will not remove within-subject variability, but it will avoid a ``mood bias''.
 
+In \emph{crossover designs}, or \emph{crossover trials}, each unit undergoes several treatments.
+Preferably, the design is balanced so that each unit undergoes all treatments.
+You are certainly familiar with the idea, since the paired t-test from your introductory statistical courses is just a crossover deign with two treatments.
 
-
-
-\subsubsection{Cross Over Design}
-
+There are many ways to set the sequence of treatments to each unit.
+Clearly, if we set the same sequence to all units, we may be confounding treatment effect and sequence effect.
+We may thus randomize the allocation, or balance it non-randomly with, say, a latin square.
+\begin{table}[ht]
+\centering
+\begin{tabular}{rlll}
+  \hline
+ & 1 & 2 & 3 \\ 
+  \hline
+1 & 1 & 2 & 3 \\ 
+  2 & 2 & 3 & 1 \\ 
+  3 & 3 & 1 & 2 \\ 
+  4 & 1 & 3 & 2 \\ 
+  5 & 2 & 1 & 3 \\ 
+  6 & 3 & 2 & 1 \\ 
+   \hline
+\end{tabular}
+\label{tab:crossover}
+\caption{Crossover design: a balanced sequence of administration of $3$ treatments, generated with the \rcode{des.MOLS()} function of the \rcode{crossdes} \R package. }
+\end{table}
 
 \subsection{Random Effects Factors}
 
