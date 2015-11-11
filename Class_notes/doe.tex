@@ -295,13 +295,25 @@ Allowing $n$ observations per condition, the experiment will include $4n$ observ
 \label{fig:full_factorial}
 \end{figure}
 With this $2^2$ design, we may recover several effects:
-The effect of varying $A$ from $-$ to $+$: the \emph{main effect of $A$} typically denoted $a$. 
-The effect of varying $B$ from $-$ to $+$: the \emph{main effect of $B$} typically denoted $b$.  
+The effect of varying $A$ from $-$ to $+$: the \emph{main effect of $A$}.
+The effect of varying $B$ from $-$ to $+$: the \emph{main effect of $B$}.
 The effect of varying both $A$ and $B$ from $-$ to $+$. 
-We denote the expected response at $A=-,B=-$ with $\mu_{--}$, and the other conditions respectively.
-We denote $ab=\mu_{++}-\mu_{--}-a-b$.
-If $ab=0$ we say there is \emph{no interaction}.
-If $ab \neq 0$, it means that the effect of $A$ depends on the state of $B$, or conversely, that the effect of $B$ depends on the state of $A$.  In short, if $ab \neq 0$ we say there is an \emph{interaction} between $A$ and $B$. \marginnote{Interaction}
+
+We typically denote $\mu_{(1)}$ the expected response for treatment $A=-,B=-$; 
+$\mu_a$ for $A=+,B=-$;
+$\mu_b$ for $A=-,B=+$;
+$\mu_{ab}$ for $A=+,B=+$.
+We can thus identify the following parameters:
+the global mean $\mu$, the main effect of A $\tau^A$, the main effect of B $\tau^B$, and an interaction between A and B $\tau^{AB}$:
+\begin{align}
+	\tau^A &:= \frac{1}{2}\left( (\mu_{ab}+\mu_a)/2- (\mu_{(1)}+\mu_b)/2\right), \\
+	\tau^B &:= \frac{1}{2}\left( -(\mu_{ab}+\mu_a)/2 +  (\mu_{(1)}+\mu_b)/2\right), \\
+	\tau^{AB} &:= \frac{1}{4}\left( \mu_{ab} - \mu_a +  \mu_{(1)} - \mu_b \right).	
+\end{align}
+
+
+
+\marginnote{Interaction}
 
 Slightly intruding into the realm of data analysis, a visualization of interactions is known as the \emph{interaction plot}, depicted in Figure~\ref{fig:interaction_plot}. 
 The upper left panel demonstrates a lack of interaction (think why), while the upper right panel depicts an interaction.
