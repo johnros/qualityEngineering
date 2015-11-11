@@ -111,6 +111,8 @@ unaffected by any other experimental factors.
 
 
 \section{Dealing with Variability}
+\label{sec:variance_components}
+
 The idea that random samples come with variability, or noise, should not be new to the reader (but see Extra~\ref{extra:pac_learning} below.)
 In this section, we will try to decompose variability into it sources, and learn several techniques to reduce the noise sources. 
 Starting with a motivating example.
@@ -264,53 +266,40 @@ The difference is that in a full-factorial, a factor combination is applied simu
 
 
 \subsection{Nested Designs}
-Until now, whenever you had several factors, and resources permit, we aimed at \emph{crossing} all factors levels, so that in the analysis stage we may recover information on all main-effects, and interactions.
-There are cases, however, where crossing factors does not make any sense.
-This is the idea of \emph{nested designs}, \aka \emph{hirarchial design}, demonstrated in the following example.\marginnote{Hirarchial Design}
-
-\begin{example}[TODO]
-content...
-\end{example}
-
-
+[TODO]
 \subsubsection{Nested and Crossed Designs}
-
+[TODO]
 \subsubsection{Split Plot Designs}
-
-
-
-
+[TODO]
 \subsection{Process Improvement Designs}
-
-
-
+[TODO]
 \subsubsection{Taguchi's Robust Design Approach}
+[TODO]
 
 
 
 
 
+\section{Factorial Designs}
+Until now we discussed some set of treatments. 
+It is quite common, is not certain, that the many treatments are merely combination of a small number of \emph{factors} with a small number of \emph{levels} each.
 
-\section{Fully Randomized Designs}
-Fully randomized designs are those where we freely (and randomly) assign experimental units to treatments.
 
 
 \subsection{Full Factorial}
-A \emph{full factorial} design is one where all factor-level combinations are tested.
-In a \emph{balanced full factorial} design, all factor level combinations undergo the same number of \emph{test repeats}.
-
+A \emph{full factorial}, or \emph{complete factorial} design, is one where all factor-level combinations are replicated the same number of times.
 By far the most common design, in which $k$ factors have 2 levels, is named a $2^k$-design.
-Less common, but not surprisingly, $k$ factors with 3 levels is names $3^k$-design, etc.
+A $2^k$ design with $n$ repeats will necessitate $2^k\times n$ experimental units.
+The $2^1$ design has become known as A/B testing.
+At this point it should be emphasized that a full factorial design is much better than $k$ experiments with one factor at a time. This is because:
+\begin{enumerate}
+\item Factorial experiments are much more efficient at estimating main effects.
+\item Factorial experiments allow the estimation of interactions between factors. 
+\end{enumerate}
 
 
-
-
-\subsubsection{$2^1$ design}
-Well, this is your usual A/B test. \marginnote{A/B Testing}
-There is not much to be said about the design of such experiments, and the analysis is pretty much your good old t-test.
-
-
-
+We will now present several designs for factorial experiments.
+Recall that factors define treatments, so that all the following designs may enjoy the tools from Section~\ref{sec:variance_components} in order to reduce variability and bias. 
 
 \subsubsection{$2^k$ design}
 Consider two factors denoted $A$ and $B$.
