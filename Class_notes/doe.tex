@@ -230,12 +230,13 @@ As previously mentioned, we could opt for a blocking strategy so that we cancel 
 Alternatively, we may balance the viewing periods over subjects. 
 This will not remove within-subject variability, but it will avoid a ``mood bias''.
 
-In \emph{crossover designs}, or \emph{crossover trials}, each unit undergoes several treatments.
-Preferably, the design is balanced so that each unit undergoes all treatments.
-You are certainly familiar with the idea, since the paired t-test from your introductory statistical courses is just a crossover deign with two treatments.
+The more general phenomenon is dependence in the noise between trials. 
+Consider the same subject undergoing different treatments, or adjacent fields. 
+Clearly, one treatment may affect the response to another treatment. This is known as \emph{carry over}, or \emph{residual effect}. \marginnote{Carry Over Effect}
+\emph{Crossover} designs are such that all possible treatment adjacencies are considered, so that the carry over effect averages out. 
 
 In a \emph{fully randomized crossover design}, each unit is randomly allocated to a sequence of treatments.
-If units are suspceted to be non-homogenous, then we may block, and assign full blocks to sequences.
+If treatments are combinations of several factors, it is not uncommon to use latin-hypercubes to generate the sequences. Table~\ref{tab:crossover} demonstrates possible sequences for a single, $3$-level factor.
 \begin{table}[ht]
 \centering
 \begin{tabular}{rlll}
@@ -257,7 +258,7 @@ If units are suspceted to be non-homogenous, then we may block, and assign full 
 
 \begin{remark}[Crossed Treatments]
 Both crossover designs and full factorial designs are \emph{crossed} in that all factor combinations are sampled. 
-The difference is that in a full-factorial, a factor combination is applied simultaneously to an experiment unit, and in a crossover design, the application is sequential.[TODO: cite cambridge dictionary of statistics]
+The difference is that in a full-factorial, a factor combination is applied simultaneously to an experiment unit, and in a crossover design, the application is sequential \citep{everitt_cambridge_2010}.
 \end{remark}
 
 
