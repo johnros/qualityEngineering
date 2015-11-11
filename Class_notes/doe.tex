@@ -317,11 +317,34 @@ To demonstrate the idea of a Latin-Square design, we revert to an agricultural e
 \begin{example}[Agricultural Yield Study]
 Consider an farmer growing corn.
 He wishes to study the effect of a fertilizer (factor A).
-He is aware that when 
+He is aware that the location of the plot may affect yield, due to slightly different sunlight, irrigation, altitude, etc.
+
 \end{example}
 
 
+\begin{table}[ht]
+\centering
+\begin{tabular}{rlllllll}
+  \hline
+ & 1 & 2 & 3 & 4 & 5 & 6 & 7 \\ 
+  \hline
+1 & 1 & 2 & 3 & 4 & 5 & 6 & 7 \\ 
+  2 & 2 & 3 & 4 & 5 & 6 & 7 & 1 \\ 
+  3 & 3 & 4 & 5 & 6 & 7 & 1 & 2 \\ 
+  4 & 4 & 5 & 6 & 7 & 1 & 2 & 3 \\ 
+  5 & 5 & 6 & 7 & 1 & 2 & 3 & 4 \\ 
+  6 & 6 & 7 & 1 & 2 & 3 & 4 & 5 \\ 
+  7 & 7 & 1 & 2 & 3 & 4 & 5 & 6 \\ 
+   \hline
+\end{tabular}
+\label{tab:latin_square}
+\caption{Latin Square: $7$-factor latin square: generated with the \rcode{MOLS()} function of the \rcode{crossdes} \R package.}
+\end{table}
+
 \subsubsection{Greco Latin Square Design}
+
+
+\subsubsection{Latin Hypercube Design}
 
 
 \subsubsection{Cross Over Design}
