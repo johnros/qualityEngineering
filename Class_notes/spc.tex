@@ -227,7 +227,7 @@ Having 4 rules, like WECO, each at $\alpha^*=0.0027$ implies that we actually ha
 \begin{extra}[Stopping Rules]
 There are many sets of stopping rules. 
 These include WECO, Nelson, AIAG, Juran, Hughes, Duncan, Gitlow, Westgard, and more. 
-See \url{http://www.quinn-curtis.com/spcnamedrulesets.htm} for a quick introduction.
+See \url{http://www.quinn-curtis.com/spcnamedrulesets.htm} for a quick review.
 \end{extra}
 
 
@@ -241,7 +241,7 @@ See \url{http://www.quinn-curtis.com/spcnamedrulesets.htm} for a quick introduct
 
 Assume an out-of-control process is simply a mild shift of the controlled-process.
 This shift may be hard to detect in Shewart chart, especially if $n$ is not too large (as seen in Figure~\ref{fig:power_function}).  
-If the shift persists, we may gain power, i.e., sensitivity, by pooling several periods together. 
+If the shift persists over periods, we may gain power, i.e., sensitivity, by pooling several periods together. 
 We now present several ways to pool information from history. These are typically applied in Phase II, where out-of-control processes are expected to have only mild shifts, and not major ones as in Phase I. 
 
 \begin{remark}[No longer Shewart]
@@ -250,7 +250,7 @@ When several periods are pooled together, we will no longer call this  ``Shewart
 \end{remark}
 
 \begin{remark}[One observation at a time]
-The following charts have a continuous flavour. As such, it is both favourable, and common, to compute them using one observation at a time, and not by grouping, as is typically for Shewart charts. 
+The following charts have a continuous flavour. As such, it is both favourable, and common, to compute them using one observation at a time, meaning that $n=1$. 
 \end{remark}
 
 
@@ -264,14 +264,14 @@ The following charts have a continuous flavour. As such, it is both favourable, 
 \subsection{Moving Average Chart- MA}
 One way to pool information from different periods is by a \emph{moving average}.
 \begin{definition}[Moving Average- MA]
-The moving average at period $t$ is defined as
+The moving average in a window $w$, at period $t$, is defined as
 \begin{align}
 	M_t:= \frac{x_t+\dots+x_{t-w+1}}{w}
 \end{align}
 \end{definition}
-Assuming $x_t \sim \gauss{\mu_0, \sigma_x^2}$ then clearly 
+Assuming $x_t \sim \gauss{\mu, \sigma_x^2}$ then clearly 
 \begin{align}
-	M_t \sim \gauss{\mu_0, \frac{\sigma_x^2}{w}}.
+	M_t \sim \gauss{\mu, \frac{\sigma_x^2}{w}}.
 \end{align}
 
 The control limits on $M_t$ are typically
@@ -279,7 +279,7 @@ The control limits on $M_t$ are typically
 	UCL &:= \mu_0 + 3 \sigma_{M_t}= \mu_0 + 3 \, \frac{\sigma_x}{\sqrt{w}} \\
 	UCL &:= \mu_0 - 3 \sigma_{M_t}= \mu_0 - 3 \, \frac{\sigma_x}{\sqrt{w}}.
 \end{align}
-The fallout rate of this criterion is trivially $\alpha=0.0027$. 
+The false alarm rate of this criterion is trivially $\alpha=0.0027$. 
 The $ARL_0$ is no longer simple to compute. 
 This is because the pooling of periods has compromised independence between periods, and Eqs.(\ref{eq:arl_0},\ref{eq:arl_1}) are no longer valid. 
 Do not despair as the ARL may still be computed. 
