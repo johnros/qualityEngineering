@@ -103,7 +103,7 @@ We then have
 \end{align}
 and the rest follow from the distribution of $\bar{x}$ when the process is out of control.
 Since the out-of-control shift is (asumingly) stable, we can again omit the time index and write $\pi=\pi_t$.
-Assuming the out-of-control process is a shift of magnitude $k \sigma$, i.e.: $\x \sim \gauss{\mu_1,\sigma^2}; \mu_1=\mu_0+ k \sigma$, we plot in Figure~\ref{fig:power_function}, the detection power of a 3-sigma \barxChart, as a function of $k$. 
+Assuming the out-of-control process is a shift of magnitude $k \sigma$, i.e.: $\x \sim_{H_1} \gauss{\mu_1,\sigma^2}; \mu_1=\mu_0+ k \sigma$, we plot in Figure~\ref{fig:power_function}, the detection power of a 3-sigma \barxChart, as a function of $k$. 
 This is known in the statistical literature as a \emph{power function}, and in the engineering literature as the \emph{true positive rate} operator characteristic (TPR-OR).\marginnote{Operator Characteristic}
 
 
@@ -121,9 +121,9 @@ The curious reader is referred to \cite{wikipedia_receiver_2015} for more inform
 \end{extra}
 
 
-Another important related quantity is the \emph{average run length} (ARL), which is the expected number of periods between two crossings of control limits, i.e., the expected periods between alarms. \marginnote{ARL}
+An important related quantity is the \emph{average run length} (ARL), which is the expected number of periods between two crossings of control limits, i.e., the expected periods between alarms. \marginnote{ARL}
 We denote by $ARL_0$ the ARL when the process is under statistical control, and $ARL_1$ otherwise\footnote{Note that it is implied that the process has a \emph{stable} distribution, even though it is out if control.}. 
-If $\bar{x}_t$ are statistically independent, then clearly the number of periods until a crossing is geometrically distributed. Using the expectation of a geometric random variable we can conclude that 
+For Shewart charts, where $\bar{x}_t$ are typically statistically independent, then clearly the number of periods until a crossing is geometrically distributed. Using the expectation of a geometric random variable we can conclude that 
 \begin{align}
 	ARL_0=1/\alpha \label{eq:arl_0}, \\
 	ARL_1=1/\pi \label{eq:arl_1}.
@@ -131,6 +131,12 @@ If $\bar{x}_t$ are statistically independent, then clearly the number of periods
 Clearly we can convert to time units by multiplying the ARL by the duration of sampling interval.
 This is known as the \emph{average time to signal} (ATS).\marginnote{ATS}
 It is quite common to design a control chart so that it achieves a particular $ATS_0$.
+
+\begin{remark}[ARLs more important than type-I errors]
+In the case of Shewart charts, there is a simple mapping between ARL and type I error rates.
+This need not be the case for general control charts. 
+Since type I errors are certain, if the process runs long enough, then it is actually the ARL the design parameter of importance, and not the type-I erro.
+\end{remark}
 
 
 Now assume that we are unhappy with some control chart. 

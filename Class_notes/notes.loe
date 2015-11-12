@@ -37,25 +37,26 @@
 \contentsline {remark}{\numberline {3}Remark\thmtformatoptarg {Control Charts and Capability Analysis}}{43}{remark.3}
 \contentsline {remark}{\numberline {4}Remark\thmtformatoptarg {3-Sigma Control Limits vs. 3-Sigma Capability}}{45}{remark.4}
 \contentsline {extra}{\numberline {7}Extra Info\thmtformatoptarg {Operator Characteristics}}{45}{extra.7}
-\contentsline {extra}{\numberline {8}Extra Info\thmtformatoptarg {Stopping Rules}}{48}{extra.8}
-\contentsline {remark}{\numberline {5}Remark\thmtformatoptarg {No longer Shewart}}{49}{remark.5}
-\contentsline {remark}{\numberline {6}Remark\thmtformatoptarg {One observation at a time}}{49}{remark.6}
+\contentsline {remark}{\numberline {5}Remark\thmtformatoptarg {ARLs more important than type-I errors}}{46}{remark.5}
+\contentsline {extra}{\numberline {8}Extra Info\thmtformatoptarg {Stopping Rules}}{49}{extra.8}
+\contentsline {remark}{\numberline {6}Remark\thmtformatoptarg {No longer Shewart}}{49}{remark.6}
+\contentsline {remark}{\numberline {7}Remark\thmtformatoptarg {One observation at a time}}{49}{remark.7}
 \contentsline {definition}{\numberline {22}Definition\thmtformatoptarg {Moving Average- MA}}{49}{definition.22}
 \contentsline {definition}{\numberline {23}Definition\thmtformatoptarg {Exponentially Weighted Moving Average- EWMA}}{50}{definition.23}
 \contentsline {extra}{\numberline {9}Extra Info\thmtformatoptarg {Local Methods}}{52}{extra.9}
-\contentsline {example}{\numberline {2}Example\thmtformatoptarg {Intensive Care Unit}}{52}{example.2}
+\contentsline {example}{\numberline {2}Example\thmtformatoptarg {Intensive Care Unit}}{53}{example.2}
 \contentsline {definition}{\numberline {24}Definition\thmtformatoptarg {Hotteling's $T^2$ }}{53}{definition.24}
 \contentsline {extra}{\numberline {10}Extra Info}{54}{extra.10}
-\contentsline {example}{\numberline {3}Example\thmtformatoptarg {Cyber Monitoring System}}{54}{example.3}
-\contentsline {remark}{\numberline {7}Remark\thmtformatoptarg {Economical Design of Control Charts}}{55}{remark.7}
+\contentsline {example}{\numberline {3}Example\thmtformatoptarg {Cyber Monitoring System}}{55}{example.3}
+\contentsline {remark}{\numberline {8}Remark\thmtformatoptarg {Economical Design of Control Charts}}{55}{remark.8}
 \addvspace {10\p@ }
-\contentsline {remark}{\numberline {8}Remark\thmtformatoptarg {Analysis of Experimental Data}}{61}{remark.8}
+\contentsline {remark}{\numberline {9}Remark\thmtformatoptarg {Analysis of Experimental Data}}{61}{remark.9}
 \contentsline {example}{\numberline {4}Example\thmtformatoptarg {Movie Ratings}}{63}{example.4}
 \contentsline {extra}{\numberline {11}Extra Info\thmtformatoptarg {PAC learning}}{63}{extra.11}
 \contentsline {example}{\numberline {5}Example\thmtformatoptarg {Agricultural Yield Study}}{64}{example.5}
-\contentsline {remark}{\numberline {9}Remark\thmtformatoptarg {Screening Experiments}}{68}{remark.9}
-\contentsline {remark}{\numberline {10}Remark\thmtformatoptarg {Intermediate Factor Levels}}{68}{remark.10}
-\contentsline {remark}{\numberline {11}Remark\thmtformatoptarg {Crossed Treatments}}{68}{remark.11}
+\contentsline {remark}{\numberline {10}Remark\thmtformatoptarg {Screening Experiments}}{68}{remark.10}
+\contentsline {remark}{\numberline {11}Remark\thmtformatoptarg {Intermediate Factor Levels}}{68}{remark.11}
+\contentsline {remark}{\numberline {12}Remark\thmtformatoptarg {Crossed Treatments}}{68}{remark.12}
 \contentsline {example}{\numberline {6}Example\thmtformatoptarg {From $2^2$ to $2^{(2-1)}$}}{69}{example.6}
 \contentsline {definition}{\numberline {25}Definition\thmtformatoptarg {Resolution of a Design}}{70}{definition.25}
 \contentsline {extra}{\numberline {12}Extra Info\thmtformatoptarg {Coding Theory}}{70}{extra.12}
