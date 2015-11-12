@@ -135,7 +135,7 @@ It is quite common to design a control chart so that it achieves a particular $A
 \begin{remark}[ARLs more important than type-I errors]
 In the case of Shewart charts, there is a simple mapping between ARL and type I error rates.
 This need not be the case for general control charts. 
-Since type I errors are certain, if the process runs long enough, then it is actually the ARL the design parameter of importance, and not the type-I erro.
+Since type I errors are certain (Eq.~\ref{eq:multiplicity_in_spc}), if the process runs long enough, then it is actually the ARL the design parameter of importance, and not the type-I erro.
 \end{remark}
 
 
@@ -218,6 +218,7 @@ Augmenting the set of rules is the same as increasing a rejection region. It add
 
 As a quick exercise, we may compute $\alpha$  for $m$ independent rules, each with $\alpha^*$ type I error itself:
 \begin{align}
+\label{eq:multiplicity_in_spc}
 	\alpha=1-(1-\alpha^*)^m.
 \end{align}
 Having 4 rules, like WECO, each at $\alpha^*0.0027$ implies that we actually have $\alpha=0.01$.
