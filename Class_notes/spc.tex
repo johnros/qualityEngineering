@@ -4,30 +4,13 @@
 Statistical process control (SPC), \aka \emph{change detection}, or \emph{novelty detection}, deals with the quantitative analysis of a ``process'', which may be a production line, a service, or any other repeated operation.\marginnote{Change Detection}
 As such, SPC may be found in the Analyze, Improve, and Control stages of the DMAIC cycle.
 The purpose of the SPC, in the terms coined by Shewart, is to seperate the variability in the process into \emph{assignable} causes of variation and \emph{chance} causes of variation.\marginnote{Causes of variation}
-These are also known as \emph{special} and \emph{common} causes of variation, respectively. 
+Assignable are also known as \emph{special} causes, or simply \emph{signal}.
+Chance causes are also known as \emph{common} causes of variation, or \emph{haphazard} variability, or simply \emph{noise}.
+ 
 A process is said to be in \emph{statistical control} if all its variation is attributable to chance causes.
 If this is not the case, we call it \emph{out of control} and we will seek the assignable causes, so that we may reduce variability by removing them.
-
-
-All the previously mentioned statistical tools may be called upon for this analysis. 
-In the context of process control, a subset of tools has gained the nick-name ``The Magnificent Seven''. These include:
-\begin{description}
-\item Histogram and stem-and-leaf plot. As described in Chapter~\ref{sec:exploratory}.
-\item Check Sheet. [TODO: add figure]
-\item Pareto chart. An ordered bar plot of the events due to the various assignable variability causes. [TODO: add figure]
-\item Cause-and-effect diagram. A visualization of candidate assignable variability causes. [TODO: add figure]
-\item Defect concentration diagram. A visual inspection of the location of defects on the product. [TODO: add figure]
-\item Scatter plot. As described in Chapter~\ref{sec:exploratory}.
-\item Control chart. A powerful analysis tool to which we devote the rest of this chapter. 
-\end{description}
-
-
-
-
-
-%\begin{pgfpicture}
-%    \pgftext{\pgfimage[width=0.6\linewidth, height=0.3\textheight]{}}
-%\end{pgfpicture}
+All the statistical tools of chapters \ref{sec:exploratory} and \ref{sec:inference} may be called upon for this endeavour but in this chapter we focus on one particular such tool- the \emph{control chart}.
+We start with the \emph{Shewart control chart}, in which each value is charted using different data, from different periods. \marginnote{Shewart Chart}
 
 
 
@@ -39,11 +22,15 @@ For an \R oriented exposition of the topic, see \cite{qiu_introduction_2013}.
 
 \section{A soft start. The \barxChart}
 
-We demonstrate the concepts and utility of Control Charts with the simplest, yet most popular of them all, the \barxChart. 
-The chart borrows its name from the fact that it is essentially a visualization of the time evolution of the average ($\bar{x}$) of the CTQ of a sample of products. 
+We demonstrate the concepts and utility of control charts with the simplest, yet most popular of them all, the \barxChart. 
+The chart borrows its name from the fact that it is essentially a visualization of the time evolution of the average ($\bar{x}$) of the CTQ. 
 The chart is also augmented with visual aids that help in determining if the process is \emph{in control}, i.e., if it is consistent with its own history. 
-Process capability analysis may benefit from the ideas of control charts, as we explain in Chapter~\ref{sec:advanced_capability_analysis}.
-We emphasize, again, that control charts have no information on the specifications of the process, merely on its own history.
+
+\begin{remark}[Control Charts and Capability Analysis]
+Control charts have no information on the specifications of the process, merely on its own history.
+Process capability analysis may, however, benefit from the ideas of control charts, as we explain in Chapter~\ref{sec:advanced_capability_analysis}.
+\end{remark}
+
 
 An illustration of a \barxChart is given in Figure~\ref{fig:bar_x_chart}. 
 The ingredients of this chart are the centerline, lower and upper control limits (LCL, UCL), and $\bar{x}$ evolving in time. 
