@@ -360,7 +360,7 @@ This is because $3$ level factors typically appear when aiming at optimizing the
 The full factorial designs are the simplest designs to setup and interpret. 
 A major drawback, are the resources required when $k$ is large. 
 This is where the \emph{fractional factorial}, or \emph{partial factorial} designs kick in.
-The fundamental idea is to design a full factorial, but skip a couple experimental conditions. 
+The fundamental idea is to design a full factorial, but skip a couple experimental conditions. If conditions to skip are wisely selected, only information on higher order interactions will be compromised.
 
 
 \begin{example}[From $2^2$ to $2^{(2-1)}$]
@@ -388,12 +388,11 @@ There are thus $\binom{4}{2}=6$ possible eliminations.
 The lesson from Example~\ref{eg:fractional_factorial} is that in a fractional factorial our savings in time and money, come at the cost of the information that can be drawn from the experiment.
 The idea behind partial factorial experiments, is that by an informed choice of the conditions skipped, we can choose what information to give up. The information lost, is known as the \emph{alias structure}.\marginnote{Alias Structure}
 
-In practice, we will rarely do the actual elimination of conditions, but rather to pre-selected designs. 
+In practice, we will rarely do the actual elimination of conditions, but rather revert to pre-selected designs. 
 Table~\ref{tab:partial_factorial_ii}, generated with the \rcode{FrF2()} in the \rcode{FrF2} \R package, is an optimal $2^{3-1}$ design.
 Using the \rcode{design.info()} function of that same package, we know that the aliasing structure of this design is
 $a=bd=ce, b=ad, c=ae, d=ab, e=ac$.
-We will not do into the details of how the aliasing structure is computed. 
-
+We will not go into the details of how the aliasing structure is computed, but rather refer the reader to \cite{cox_theory_2000}.
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrrrrr}
@@ -415,19 +414,18 @@ We will not do into the details of how the aliasing structure is computed.
 \end{table}
 
 
-As we have already seen, there are $\binom{2^k}{2^{k-p}}$ possible eliminations that convert a $2^k$ design to a $2^{k-p}$ design.
 \begin{definition}[Resolution of a Design]
+As we have already seen, there are $\binom{2^k}{2^{k-p}}$ possible eliminations that convert a $2^k$ design to a $2^{k-p}$ design.
 We call the \emph{resolution of the design}, the lowest order effect that is aliased. 
-\end{definition}
 In Table~\ref{tab:partial_factorial_ii}, the resolution is 1, making it a rather unattractive design. 
 Resolutions below 3 typically considered not informative, and above 5, considered wasteful.
+\end{definition}
 
 
-\begin{extra}[Minimal Aberration]
-If you want to learn how are optimal fractional factorial designs selected, ask me, or Google, for references on \emph{minimal aberration}.
+\begin{extra}[Coding Theory]
+There is a close relationship between design of experiments and coding theory in computer science. 
+A possible reference on the matter is \cite{hill_first_1986}.
 \end{extra}
-
-
 
 
 
