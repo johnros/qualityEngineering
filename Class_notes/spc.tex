@@ -314,13 +314,14 @@ The moving average gives all observations the same importance.
 We want to change this, giving more importance to new observations so that we may capture drifts quickly when they occur. 
 The \emph{Exponentially Weighted Moving Average} (EWMA), \aka the \emph{geometric moving average} (GMA), does just that. \marginnote{GMA}
 \begin{definition}[Exponentially Weighted Moving Average- EWMA]
+For $\lambda \in [0,1]$,
 \begin{align}
 	z_t &:= \lambda x_t + (1-\lambda) z_{t-1}
 \end{align}
 \end{definition}
 By recursive substitution, we have 
 \begin{align}
-	z_t &:= \lambda \sum_{j=0}^{t-1} (1-\lambda)^j x_{t-j} + (1-\lambda)^t z_0,
+	z_t &= \lambda \sum_{j=0}^{t-1} (1-\lambda)^j x_{t-j} + (1-\lambda)^t z_0,
 \end{align}
 and 
 \begin{align}
@@ -338,7 +339,7 @@ It is however, more economic to observe that for large $\lambda$ and $t$: $(1-(1
 \end{split}
 \end{align}
 with $\arm=3$ being the typical choice.
-By now, you should immediately know what is the fallout rate of these limits.
+By now, you should immediately know what is the false alarm rate of these limits.
 By now, you should also know that because of the dependence between $z_t$'s, computing the ARL is not as simple as for Shewart charts. The \rcode{xewma.arl()} \R function, in package \rcode{spc}, permits doing so easily. 
 Its output for various $\lambda$ and $\arm$ is illustrated in Figure~\ref{fig:arl_0_ewma}.
 
@@ -348,9 +349,6 @@ Its output for various $\lambda$ and $\arm$ is illustrated in Figure~\ref{fig:ar
 \caption[$ARL_0$ for EWMA]{$ARL_0$ for EWMA. \newline Code from \url{http://users.phhp.ufl.edu/pqiu/research/book/spc/r-codes/fig53.r}}
 \label{fig:arl_0_ewma}
 \end{figure}
-
-Note that if we do not opt for the approximation in Eq.(\ref{eq:ewma_variance_approximate}), and use the exact Eq.(\ref{eq:ewma_variance}) then the alarm limits change over time. 
-
 
 In the MA chart, we used the choice of $w$ to balance between quick response (small $w$) and sensitivity (large $w$).
 EWMA has no window-width parameter, since it looks into all of history. On the other hand, we can control it by choosing $\lambda$. 
@@ -370,7 +368,7 @@ Large $\lambda$ gives more importance to the present. At the limit, $\lambda=1$,
 The \emph{cumulative sum} chart is similar to the EWMA in that it pools information from the history. 
 The CUSUM simply sums all past deviations from the centre line.
 If the process is in control, deviation will cancel each other, and their sum will vary around $0$. 
-If the process is ot of control, a drift will appear. 
+If the process is out of control, a drift will appear. 
 The statistic to be plotted is 
 \begin{align}
 	C_t:= \sum_{j=0}^{t}(x_j-\mu_0)=C_{t-1}+ (x_t-\mu_0)
@@ -408,19 +406,8 @@ As such, \citeauthor{page_continuous_1954}'s control limits are said to be \emph
 
 
 \subsection{Combined Shewart and Running Window Charts}
-
-
-
-
-
-
-\begin{extra}[Local Methods]
-% scan statistic
-% sliding window
-% search light
-% Anomaly detection active learning
-\end{extra}
-
+Well sure- if you want to enjoy the quick detection of Shewart charts, and the sensitivity of running windows charts, you may certainly design charts that marry these ideas.
+False alarm rates and ARLs should be computed mutatis mutandis.
 
 
 
