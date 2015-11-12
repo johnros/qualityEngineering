@@ -82,7 +82,7 @@ How do our design choices affect $\alpha_t$?
 	&= 2 P_{H_0}(\bar{x}_t<UCL) \\
 	&= 2 P_{H_0}(Z<\frac{UCL-\mu}{\sigma_{\bar{x}}}) \\
 	&= 2 P_{H_0}(Z < -\arm) \\
-	&= 2 \Phi(-k)
+	&= 2 \Phi(-L)
 \end{align}
 The above follows from assuming that $UCL:=\mu_0 + \arm \sigmabar, LCL:= \mu_0 - \arm \sigmabar$, $\x_{it}\sim \gauss{\mu,\sigma^2}$, and denoting $\sigmabar:= \frac{\sigma}{\sqrt{n}}$.
 A typical design choice is $\arm=3$, known as \emph{3-sigma control limits}, implying a false alarm rate of $\alpha_t=0.0027$.\marginnote{3-Sigma Control Limits}
@@ -464,7 +464,7 @@ We need to be very clear, however, on how $\mu_0$ and $\Sigma_t^{-1}$ are estima
 We thus consider the following scenario:
 \begin{enumerate}
 \item \tsq is computed at Phase II with a single observation at a time ($n=1$)
-\item $\mu_0,\hat{\Sigma}_t^{-1}$ were estimated from $m$ observations in Phase I.
+\item $\mu_0,{\Sigma}_t^{-1}$ were estimated from $m$ observations in Phase I.
 \end{enumerate}
 Eq.(\ref{eq:hotteling}) thus yields 
 \begin{align}
@@ -472,7 +472,7 @@ Eq.(\ref{eq:hotteling}) thus yields
 \end{align}
 and 
 \begin{align}
-	T^2_t \sim F_{p,m-p} \frac{p(m-1)(m+1)}{m(m-p)} \overset{m \to \infty}{\rightsquigarrow }\chi^2_p.
+	T^2_t \sim_{H_0} F_{p,m-p} \frac{p(m-1)(m+1)}{m(m-p)} \overset{m \to \infty}{\rightsquigarrow }\chi^2_p.
 \end{align}
 We can thus construct the control limit for this scenario:
 \begin{align}
@@ -481,7 +481,7 @@ We can thus construct the control limit for this scenario:
 Note that the \tsq statistic is \emph{non directional}: it will increase in the presence of both positive and negative drift. 
 
 We may consider the distribution of \tsq under many configurations: where $\mu_0,\hat{\Sigma}_t^{-1}$ are estimated at Phase II, where we take $n$ observation in each period, etc. 
-For our current purposes, we will use the fact that if $n \gg p$, or $m \gg p$, then 
+Conveniently enough, if the estimation of $\mu_0$ and $\Sigma$ is based on many observations (compared to $p$) then under all scenarios
 \begin{align}
 	T^2_t  \rightsquigarrow \chi^2_p,
 \end{align}
