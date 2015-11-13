@@ -497,9 +497,9 @@ As the figure depicts, it is preferable to spread the sampling points as far as 
 \caption[Design for Linear Models]{Design for linear regression. Different panels show different designs. True function as a dashed line. Estimated function as a full line.}
 \label{fig:design_linear}
 \end{figure}
-
-
 \end{example}
+
+
 
 
 
@@ -512,8 +512,40 @@ The figure is non conclusive as to the best design, but it may seem that unlike 
 \caption[Design for Non Linear Models]{Design for non linear regression. Different panels show different designs. True function as a dashed line. Estimated function as a full line.}
 \label{fig:design_nonlinear}
 \end{figure}
-
 \end{example}
+
+
+
+
+
+Now are some facts that are supported by the previous examples:
+\begin{enumerate}
+\item The idea of ``balancing'' as a design criterion is very useful with discrete factors, but limited with continuous factors. 
+\item The optimal design may depend on the unknown generative model. Luckily, for linear models, this is not the case, and an optimal design will be so for all values of the generative parameter.
+\end{enumerate}
+
+
+
+\subsection{Space Filling Design}
+The most natural of designs, which is particularly suitable when we have no a-priori assumption on the functional relation between the (continuous) factors, $f:x \mapsto y$,  and the response is known as a \emph{space filling design}.
+As the name suggests, in a space filling design we aim at filling the factor space. Lacking any a-priori information, the filling will typically be as uniform as possible. 
+We note however, that once information on $f$ is made available, then a space filling design is typically sub optimal (see Example~\ref{eg:design_linear}).
+
+
+
+\subsection{D-Optimal Design}
+We have already noted the the optimality of the design depends on the data generating process.
+In this section it is made obvious that optimality will also depend on the analysis method we choose.
+
+When estimating the effect of a single continuous factor, we would like a design that gives us the most information per observation. This is the same as minimizing the variance of the estimator. 
+
+When generalizing to 
+
+
+
+
+
+
 
 \section{Sequential Designs}
 % Mark Vandelmeulenbruke
