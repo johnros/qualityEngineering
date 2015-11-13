@@ -38,15 +38,15 @@
 \contentsline {remark}{\numberline {4}Remark\thmtformatoptarg {3-Sigma Control Limits vs. 3-Sigma Capability}}{45}{remark.4}
 \contentsline {extra}{\numberline {7}Extra Info\thmtformatoptarg {Operator Characteristics}}{45}{extra.7}
 \contentsline {remark}{\numberline {5}Remark\thmtformatoptarg {ARLs more important than type-I errors}}{46}{remark.5}
-\contentsline {extra}{\numberline {8}Extra Info\thmtformatoptarg {Stopping Rules}}{49}{extra.8}
+\contentsline {extra}{\numberline {8}Extra Info\thmtformatoptarg {Stopping Rules}}{48}{extra.8}
 \contentsline {remark}{\numberline {6}Remark\thmtformatoptarg {No longer Shewart}}{49}{remark.6}
 \contentsline {remark}{\numberline {7}Remark\thmtformatoptarg {One observation at a time}}{49}{remark.7}
 \contentsline {definition}{\numberline {22}Definition\thmtformatoptarg {Moving Average- MA}}{49}{definition.22}
 \contentsline {definition}{\numberline {23}Definition\thmtformatoptarg {Exponentially Weighted Moving Average- EWMA}}{50}{definition.23}
-\contentsline {example}{\numberline {2}Example\thmtformatoptarg {Intensive Care Unit}}{53}{example.2}
+\contentsline {example}{\numberline {2}Example\thmtformatoptarg {Intensive Care Unit}}{52}{example.2}
 \contentsline {definition}{\numberline {24}Definition\thmtformatoptarg {Hotteling's $T^2$ }}{53}{definition.24}
 \contentsline {extra}{\numberline {9}Extra Info}{54}{extra.9}
-\contentsline {example}{\numberline {3}Example\thmtformatoptarg {Cyber Monitoring System}}{55}{example.3}
+\contentsline {example}{\numberline {3}Example\thmtformatoptarg {Cyber Monitoring System}}{54}{example.3}
 \contentsline {remark}{\numberline {8}Remark\thmtformatoptarg {Economical Design of Control Charts}}{55}{remark.8}
 \addvspace {10\p@ }
 \contentsline {example}{\numberline {4}Example\thmtformatoptarg {Movie Ratings}}{63}{example.4}
@@ -66,3 +66,4 @@
 \contentsline {definition}{\numberline {28}Definition\thmtformatoptarg {D-Optimality}}{74}{definition.28}
 \contentsline {extra}{\numberline {13}Extra Info\thmtformatoptarg {Other Optimality Criteria}}{74}{extra.13}
 \contentsline {extra}{\numberline {14}Extra Info\thmtformatoptarg {Active Learning}}{75}{extra.14}
+\contentsline {example}{\numberline {9}Example\thmtformatoptarg {Designing Wings}}{75}{example.9}

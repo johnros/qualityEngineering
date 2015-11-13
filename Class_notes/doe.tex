@@ -1,4 +1,5 @@
-\chapter[DOE]{Design of Experiments - DOE}
+\chapter{Design of Experiments}
+\chaptermark{DOE}
 
 This chapter is devoted to the matter of designing experiments, and follows the lines of \cite{cox_theory_2000}.
 A control chart may be seen as an on-line running experiment alerting us when things go sour. 
@@ -616,9 +617,24 @@ In the machine learning literature, the idea of adaptive design of experiments i
 
 
 
-
-
 \section{Computer Experiments}
 % no randomness
 % space filling parameter choices for simulation
+\begin{example}[Designing Wings]
+\label{eg:wings}
+Consider the problem of designing an air-craft's wing.
+We would like to know how the wing's attributes, i.e., factors, govern its lift.
+We could obviously conduct real-life experiments by varying the wing's attributes, building the wing, flying the air-plane, and recording results. 
+Needless to say how expensive this process is.
+It is much more reasonable to program the differential equations that govern the lift to a computer, fix several factors values, and perform a \emph{computer experiment}. 
+\end{example}
+
+
+The wind design example (\ref{eg:wings}) demonstrates the following points:
+\begin{enumerate}
+\item Computer experiments are essentially numerical solutions to complicated systems of equations.
+\item Because solutions take a lot of time, only a small finite set of values may be evaluated. 
+\item The ``response'' to each treatment, is deterministic. 
+\item The problem of interest is in reconstructing the response at non measured factor values, so that optimal values may be identified. 
+\end{enumerate}
 
