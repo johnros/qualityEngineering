@@ -532,6 +532,11 @@ The most natural of designs, which is particularly suitable when we have no a-pr
 As the name suggests, in a space filling design we aim at filling the factor space. Lacking any a-priori information, the filling will typically be as uniform as possible. 
 We note however, that once information on $f$ is made available, then a space filling design is typically sub optimal (see Example~\ref{eg:design_linear}).
 
+\begin{extra}[Space Filling and Hashing]
+If you are familiar with the idea of \emph{hashing functions}, then you may see the similarity between space filling and the \emph{uniformity} property of hash functions. 
+For a more rigorous discussion, see \cite{hill_first_1986}.
+\end{extra}
+
 
 
 \subsection{Covariance Optimality}
@@ -573,20 +578,34 @@ If you are familiar with the geometrical interpretation of the determinant, this
 If not, then one way to think of D-optimality is via confidence regions.
 D-optimality has the property that in the multivariate Gaussian case, a D-optimal design will return confidence regions for $\beta$ with smallest volume. 
 
+
+\begin{extra}[Other Optimality Criteria]
 There are as many optimality criteria as there are matrix norms. 
 For a more detailed review, see \cite{wikipedia_optimal_2015}.
+\end{extra}
 
-
-The non-linear model example (\ref{eg:design_non_linear}) suggests that the optimal design may depend on the underlying (unknown) effect. 
-This is obviously bad news since if we had knowledge of the effect's value, we would not need an experiment to estimate it. 
+The non-linear model example (\ref{eg:design_non_linear}) suggests that the optimal design may depend on the underlying (unknown) effect $\beta$. 
+This is obviously bad news since if we had knowledge of $\beta$, we would not need an experiment to estimate it. 
 There are, however, some good news.
-First, for linear models and least-squares estimate, then $M$ will not depend on $\beta$, and neither will the optimal design. 
+First, for linear models and least-squares estimate, then $M$ will not depend\footnote{This is known as the \emph{equivariant in law} property.} on $\beta$, and neither will the optimal design. 
 Second, when $M$ does depend on $\beta$, we will simply do some initial small experiment, and then optimize the design based on initial results. 
 
 
 
 \section{Sequential Designs}
 % Mark Vandelmeulenbruke
+
+Consider a clinical trial with a treatment and control group.
+Now assume the medicine being tested is a miracle cure with immediate improvement. 
+Do we really need to keep administering placebos to the control group, just because that was the initial experimental design?
+This is where sequential designs come in.
+Interestingly, the initial application of a sequential design was not in drug testing, but rather in a military context \citep{wald_sequential_1945}.
+
+The problem with sequential testing, is the inflation of the type-I error. To see this, think about an endless sequential experiment. Also assume the null hypothesis is true. Can we agree that a regular experiment will not reject $H_0$? Can we agree that a sequential experiment will necessarily reject $H_0$?
+
+There are many ways of introducing early stopping rules in sequential experiments. For an excellent review, see \cite{marc_vandemeulebroecke_group_2008}. 
+
+
 
 
 \subsection{Adaptive Designs}
