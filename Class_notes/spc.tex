@@ -546,14 +546,12 @@ Before beginning, a few remarks are in order.
 \begin{enumerate}
 \item According to \cite{montgomery_introduction_2007} 
 \begin{quote}
-Saniga and Shirland (1977) and Chiu and Wetherill (1975) report that very few practitioners have implemented economic models for the design of control charts.
+Saniga and Shirland (1977) and Chiu and Wetherill (1975) report that \textbf{very few practitioners} have implemented economic models for the design of control charts.
 \end{quote}
 Hmmmm.. Have things changed since 1977?
 \item A comprehensive theoretical analysis of the optimization of a quality control system may be found in \cite{girshick_bayes_1952}. Again, \cite{montgomery_introduction_2007} is skeptic:
 \begin{quote}
-The optimal control rules are difficult to derive, as they depend on the solution to
-complex integral equations. Consequently, the model’s use in practice has been very
-limited.
+The optimal control rules are difficult to derive, as they depend on the solution to complex integral equations. Consequently, \textbf{the model’s use in practice has been very limited}.
 \end{quote}
 \end{enumerate}
 \end{remark}
@@ -664,7 +662,9 @@ Obviously the control limits and the test statistic may need appropriate updates
 
 \item [Autocorrelation and time series models] The assumption of independence between sampling periods may be relaxed, by adopting a quantitative or qualitative model for temporal dependence.
 
-\item [Running Window Versions] The ideas of pooling information over periods with a moving averages, EWMA, and CUSUM may be extended to all type of Shewart charts. 
+\item [Running windows] The ideas of pooling information over periods with a MA, EWMA, and CUSUM may be extended to all type of Shewart charts. 
+Also, there are endlessly many period pooling schemes. 
+You are free to pick a set of weights, or convolve your data with a \emph{causal filter}\footnote{\url{https://en.wikipedia.org/wiki/Causal_filter}} can provide a pooling scheme.
 
 \item [Multiple Charts] When inspecting a process, rarely does one inspect a single chart at a time. A typical dashboard would include several charts running in parallel, as depicted in Figure~\ref{fig:dashboard}.
 
