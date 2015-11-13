@@ -504,6 +504,7 @@ As the figure depicts, it is preferable to spread the sampling points as far as 
 
 
 \begin{example}[Design for non linear regression]
+\label{eg:design_non_linear}
 Figure~\ref{fig:design_nonlinear} demonstrates the effect of the different location of the sampling points ($x$) on the quality of the estimated regression line, in a \textbf{nonlinear} model.
 The figure is non conclusive as to the best design, but it may seem that unlike the linear case (Example~\ref{eg:design_linear}) optimality is achieved in some non trivial sampling scheme.
 \begin{figure}[ht]
@@ -576,8 +577,11 @@ There are as many optimality criteria as there are matrix norms.
 For a more detailed review, see \cite{wikipedia_optimal_2015}.
 
 
-
-
+The non-linear model example (\ref{eg:design_non_linear}) suggests that the optimal design may depend on the underlying (unknown) effect. 
+This is obviously bad news since if we had knowledge of the effect's value, we would not need an experiment to estimate it. 
+There are, however, some good news.
+First, for linear models and least-squares estimate, then $M$ will not depend on $\beta$, and neither will the optimal design. 
+Second, when $M$ does depend on $\beta$, we will simply do some initial small experiment, and then optimize the design based on initial results. 
 
 
 
