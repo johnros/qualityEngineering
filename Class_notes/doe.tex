@@ -207,7 +207,7 @@ The Latin Square design of Table~\ref{tab:latin_square} does just that.
    \hline
 \end{tabular}
 \label{tab:latin_square}
-\caption{Latin Square: A $7$-factor latin square, generated with the \rcode{MOLS()} function of the \rcode{crossdes} \R package.
+\caption[Latin Square]{Latin Square: A $7$-factor latin square, generated with the \rcode{MOLS()} function of the \rcode{crossdes} \R package.
 The number in each cell denotes the treatment (the fertilizer in Example~\ref{eg:latin_square}).}
 \end{table}
 
@@ -259,7 +259,7 @@ If treatments are combinations of several factors, it is not uncommon to use lat
    \hline
 \end{tabular}
 \label{tab:crossover}
-\caption{Crossover design: a balanced sequence of administration of $3$ treatments, generated with the \rcode{des.MOLS()} function of the \rcode{crossdes} \R package. }
+\caption[Crossover Design]{Crossover design: a balanced sequence of administration of $3$ treatments, generated with the \rcode{des.MOLS()} function of the \rcode{crossdes} \R package. }
 \end{table}
 
 
@@ -296,7 +296,7 @@ Allowing $n$ observations per condition, the experiment will include $4n$ observ
 \begin{figure}[ht]
 \centering
 \includegraphics[width=0.7\linewidth, height=0.3\textheight]{art/full_factorial}
-\caption{Full factorial designs: $2^2$ and $2^3$. \newline \url{http://chemwiki.ucdavis.edu/Analytical_Chemistry/Analytical_Chemistry_2.0/14_Developing_a_Standard_Method}}
+\caption[Full Factorial Design]{Full factorial designs: $2^2$ and $2^3$. \newline \url{http://chemwiki.ucdavis.edu/Analytical_Chemistry/Analytical_Chemistry_2.0/14_Developing_a_Standard_Method}}
 \label{fig:full_factorial}
 \end{figure}
 With this $2^2$ design, we may recover several effects:
@@ -325,7 +325,7 @@ The upper left panel demonstrates a lack of interaction (think why), while the u
 \begin{figure}[ht]
 \centering
 \includegraphics[width=0.3\textheight]{art/attribute_doe_interaction_plot}
-\caption{Interactions plot. \newline \url{http://blog.minitab.com/blog/statistics-in-the-field/optimizing-attribute-responses-using-design-of-experiments-doe-part-2}}
+\caption[Interactions plot]{Interactions plot. \newline \url{http://blog.minitab.com/blog/statistics-in-the-field/optimizing-attribute-responses-using-design-of-experiments-doe-part-2}}
 \label{fig:interaction_plot}
 \end{figure}
 
@@ -386,7 +386,7 @@ There are thus $\binom{4}{2}=6$ possible eliminations.
 \hline 
 \end{tabular} 
 \label{tab:partial_factorial}
-\caption{Aliasing in a $2^{2-1}$ design: All possible eliminations from the $2^2$ design that lead to a $2^{2-1}$ design.}
+\caption[Aliasing]{Aliasing in a $2^{2-1}$ design: All possible eliminations from the $2^2$ design that lead to a $2^{2-1}$ design.}
 \end{table}
 \end{example}
 
@@ -415,7 +415,7 @@ We will not go into the details of how the aliasing structure is computed, but r
    \hline
 \end{tabular}
 \label{tab:partial_factorial_ii}
-\caption{$2^{5-2}$ design.}
+\caption[Fractional Factorial Design]{$2^{5-2}$ design.}
 \end{table}
 
 
@@ -488,11 +488,13 @@ In this section, we try to formalize the notion of a ``good design''.
 We start with some motivating examples.
 
 \begin{example}[Design for non linear regression]
-
+\label{eg:design_linear}
+Figure~\ref{fig:design_linear} demonstrates the effect of the different location of the sampling points ($x$) on the quality of the estimated regression line, in a \textbf{linear} model.
+As the figure depicts, it is preferable to spread the sampling points as far as possible, as intuition may suggest.
 \begin{figure}[ht]
 \centering
 \includegraphics[height=0.3\textheight]{art/linear}
-\caption{Design for linear regression. Different panels show different designs. True function as a dashed line. Estimated function as a full line.}
+\caption[Design for Linear Models]{Design for linear regression. Different panels show different designs. True function as a dashed line. Estimated function as a full line.}
 \label{fig:design_linear}
 \end{figure}
 
@@ -502,11 +504,12 @@ We start with some motivating examples.
 
 
 \begin{example}[Design for non linear regression]
-
+Figure~\ref{fig:design_nonlinear} demonstrates the effect of the different location of the sampling points ($x$) on the quality of the estimated regression line, in a \textbf{nonlinear} model.
+The figure is non conclusive as to the best design, but it may seem that unlike the linear case (Example~\ref{eg:design_linear}) optimality is achieved in some non trivial sampling scheme.
 \begin{figure}[ht]
 \centering
 \includegraphics[height=0.3\textheight]{art/nonlinear}
-\caption{Design for non linear regression. Different panels show different designs. True function as a dashed line. Estimated function as a full line.}
+\caption[Design for Non Linear Models]{Design for non linear regression. Different panels show different designs. True function as a dashed line. Estimated function as a full line.}
 \label{fig:design_nonlinear}
 \end{figure}
 
