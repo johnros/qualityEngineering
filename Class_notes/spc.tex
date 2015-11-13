@@ -261,7 +261,7 @@ The following charts have a continuous flavour. As such, it is both favourable, 
 
 
 
-\subsection{Moving Average Chart- MA}
+\subsection[MA]{Moving Average Chart- MA}
 One way to pool information from different periods is by a \emph{moving average}.
 \begin{definition}[Moving Average- MA]
 The moving average in a window $w$, at period $t$, is defined as
@@ -309,7 +309,7 @@ Which is the right intermediate value of $w$, is left for you to decide.
 
 
 
-\subsection{Exponentially Weighted Moving Average Chart- EWMA}
+\subsection[EWMA]{Exponentially Weighted Moving Average Chart- EWMA}
 The moving average gives all observations the same importance. 
 We want to change this, giving more importance to new observations so that we may capture drifts quickly when they occur. 
 The \emph{Exponentially Weighted Moving Average} (EWMA), \aka the \emph{geometric moving average} (GMA), does just that. \marginnote{GMA}
@@ -364,7 +364,7 @@ Large $\lambda$ gives more importance to the present. At the limit, $\lambda=1$,
 [TODO]
 
 
-\subsection{CUSUM Chart}
+\subsection[CUSUM]{CUSUM Chart}
 The \emph{cumulative sum} chart is similar to the EWMA in that it pools information from the history. 
 The CUSUM simply sums all past deviations from the centre line.
 If the process is in control, deviation will cancel each other, and their sum will vary around $0$. 
@@ -498,7 +498,7 @@ Since the above limits have an (approximate) type-I error rate of $\alpha$, and 
 
 
 
-\subsection{Extra Info- Other Pooling Statistics}
+\subsection{Other Pooling Statistics}
 Hotteling's \tsq implicitly targets a weak signal on many coordinates. 
 In the signal detection literature, this is known as a \emph{dense} signal.
 In our intensive care unit example (Example~\ref{eg:intensive}), it may be the case the a patient's deterioration is mildly manifested in many CTQs. It may however, be the case, that deterioration is manifested in a small subset of CTQs.
