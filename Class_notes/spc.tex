@@ -21,7 +21,9 @@ For a more mathematically rigorous treatment of the topic see \cite{basseville_d
 For an \R oriented exposition of the topic, see \cite{qiu_introduction_2013}.
 \end{extra}
 
-\section{A soft start. The \barxChart}
+\section[The \barxChart]{A soft start. The \barxChart}
+\sectionmark{\barxChart}
+
 
 We demonstrate the concepts and utility of control charts with the simplest, yet most popular of them all, the \barxChart. 
 The chart borrows its name from the fact that it is essentially a visualization of the time evolution of the average ($\bar{x}$) of the CTQ. 
@@ -262,7 +264,9 @@ The following charts have a continuous flavour. As such, it is both favourable, 
 
 
 
-\subsection[MA]{Moving Average Chart- MA}
+\subsection{Moving Average Chart (MA)}
+\sectionmark{MA}
+
 One way to pool information from different periods is by a \emph{moving average}.
 \begin{definition}[Moving Average- MA]
 The moving average in a window $w$, at period $t$, is defined as
@@ -310,7 +314,8 @@ Which is the right intermediate value of $w$, is left for you to decide.
 
 
 
-\subsection[EWMA]{Exponentially Weighted Moving Average Chart- EWMA}
+\subsection{Exponentially Weighted Moving Average Chart (EWMA)}
+\sectionmark{EWMA}
 The moving average gives all observations the same importance. 
 We want to change this, giving more importance to new observations so that we may capture drifts quickly when they occur. 
 The \emph{Exponentially Weighted Moving Average} (EWMA), \aka the \emph{geometric moving average} (GMA), does just that. \marginnote{GMA}
