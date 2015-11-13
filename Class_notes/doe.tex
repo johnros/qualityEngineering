@@ -604,7 +604,9 @@ This is where sequential designs come in.
 Interestingly, the initial application of a sequential design was not in drug testing, but rather in a military context \citep{wald_sequential_1945}.
 
 The problem with sequential testing, is the \emph{type-I error inflation}, which is simply a \emph{multiplicity problem}. \marginnote{Multiplicity}
-To see this, think about an endless sequential experiment. Also assume the null hypothesis is true. Can we agree that a regular experiment will not reject $H_0$? Can we agree that a sequential experiment will necessarily reject $H_0$?
+To see this, think about an endless sequential experiment. Also assume the null hypothesis is true. 
+Can we agree that a regular (non sequential) experiment will not reject $H_0$? 
+Can we also agree that a sequential experiment will necessarily reject $H_0$ at some stage?
 
 In it simplest version, a sequential design allows early stopping for rejection of the null, or for futility (non-rejection). 
 In more elaborate schemes then not only is early stopping allowed, but also the redesign of the experiment. 
@@ -627,7 +629,8 @@ Consider the problem of designing an air-craft's wing.
 We would like to know how the wing's attributes, i.e., factors, govern its lift.
 We could obviously conduct real-life experiments by varying the wing's attributes, building the wing, flying the air-plane, and recording results. 
 Needless to say how expensive this process is.
-It is much more reasonable to program the differential equations that govern the lift to a computer, fix several factors values, and perform a \emph{computer experiment}. 
+It is much more reasonable to program the differential equations that govern the lift to a computer, fix several factors values, and solve the equations.
+This is what \emph{computer experiments} are all about. 
 \end{example}
 
 
