@@ -320,8 +320,8 @@ Which is the right intermediate value of $w$, is left for you to decide.
 The moving average gives all observations the same importance. 
 We want to change this, giving more importance to new observations so that we may capture drifts quickly when they occur. 
 The \emph{Exponentially Weighted Moving Average} (EWMA), \aka the \emph{geometric moving average} (GMA), does just that. \marginnote{GMA}
-\begin{definition}[Exponentially Weighted Moving Average- EWMA]
-For $\lambda \in [0,1]$,
+\begin{definition}[EWMA]
+For a fixed $\lambda \in [0,1]$, the \emph{exponentially weighted moving average} (EWMA) is defined as 
 \begin{align}
 	z_t &:= \lambda x_t + (1-\lambda) z_{t-1}
 \end{align}
