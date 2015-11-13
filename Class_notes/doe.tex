@@ -533,7 +533,7 @@ We note however, that once information on $f$ is made available, then a space fi
 
 
 
-\subsection{D-Optimal Design}
+\subsection{Covariance Optimality}
 We have already noted the the optimality of the design depends on the data generating process.
 In this section it is made obvious that optimality will also depend on the analysis method we choose.
 
@@ -542,8 +542,38 @@ When estimating the effect of a single continuous factor, we would like a design
 When generalizing to several continuous factors, with several effect, matters are more subtle.
 This is because, having several parameters, we may consider several target criteria such as
 minimal average variance, or minimal worst-case variance.
-Matters further complicate when effect estimates are correlated. 
+Matters further complicate when effect estimates are correlated, as will be promptly explained. 
 
+
+\begin{definition}[Error Covariance Matrix]
+For a $p$-vector of effects $\beta$, we define the $p \times p$ \emph{error covariance} matrix $M(\hat{\beta},\beta)$ to be 
+\begin{align}
+	M(\hat{\beta},\beta)_{i,j}:= \expect{(\hat{\beta}_i-\beta_i)((\hat{\beta}_j-\beta_j))}  
+\end{align}
+\end{definition}
+Denoting $M=M(\hat{\beta},\beta)$, we readily note that for unbiased $\hat{\beta}$, then the diagonal of $M$ is simply the variances of $\hat{\beta}$, and the off-diagonal are the covariances. 
+We also remark that if $p=1$, then $M$ is merely the scalar variance. 
+
+We now try to generalize the idea of ``minimal variance'' to the multivariate case. 
+
+\begin{definition}[A-Optimality]
+	A design is said to be \emph{A optimal} if it minimizes the trace of $M$.
+\end{definition}
+A-optimality has an intuitive interpretation: since the average variance is proportional to the trace, then A-optimality is actually minimizing the average variance over effects.
+
+Alas, A-optimality does not account for covariances. 
+In an extreme scenario, if we have several copies of the same variable, the more copies we have, the more importance that variable will be given by A-optimality.
+The most popular optimality criterion is known as \emph{D-optimality}, and does not suffer from this phenomenon.
+
+\begin{definition}[D-Optimality]
+	A design is said to be \emph{D optimal} if it minimizes the determinant of $M$.
+\end{definition}
+If you are familiar with the geometrical interpretation of the determinant, this definition may not surprise you. 
+If not, then one way to think of D-optimality is via confidence regions.
+D-optimality has the property that in the multivariate Gaussian case, a D-optimal design will return confidence regions for $\beta$ with smallest volume. 
+
+There are as many optimality criteria as there are matrix norms. 
+For a more detailed review, see \cite{wikipedia_optimal_2015}.
 
 
 
