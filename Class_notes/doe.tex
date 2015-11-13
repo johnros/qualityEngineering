@@ -604,18 +604,14 @@ Interestingly, the initial application of a sequential design was not in drug te
 The problem with sequential testing, is the \emph{type-I error inflation}, which is simply a \emph{multiplicity problem}. \marginnote{Multiplicity}
 To see this, think about an endless sequential experiment. Also assume the null hypothesis is true. Can we agree that a regular experiment will not reject $H_0$? Can we agree that a sequential experiment will necessarily reject $H_0$?
 
-There are many ways of introducing early stopping rules in sequential experiments. For an excellent review, see \cite{marc_vandemeulebroecke_group_2008}. 
+In it simplest version, a sequential design allows early stopping for rejection of the null, or for futility (non-rejection). 
+In more elaborate schemes then not only is early stopping allowed, but also the redesign of the experiment. 
+This is known as \emph{adaptive design}. The crux, as usual, is not inflating the type-I error, or introducing bias, by redesigning.\marginnote{Adaptive Design}
 
 
-
-
-\subsection{Adaptive Designs}
-
-
-\subsection{Active Learning}
-
-
-\subsection{MultiArmed Bandits}
+\begin{extra}[Active Learning]
+In the machine learning literature, the idea of adaptive design of experiments is known as \emph{active learning}, where the emphasis is less on adaptive-testing, but rather on adaptive-estimation.
+\end{extra}
 
 
 
