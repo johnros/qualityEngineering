@@ -82,7 +82,7 @@ Two level factor encodings include:
 
 \item [Response] The CTQ.
 
-\item [Main Effect] Change in the expected response between two factor–levels.  
+\item [Main Effect] Change in the expected response between two factor–levels.  We emphasize that effects, unlike simple population parameters, imply a causal relationship.
 
 \item [Interaction] Existence of joint factor effects in which the effect of each factor depends on the levels of the other factors.
 
@@ -537,9 +537,13 @@ We note however, that once information on $f$ is made available, then a space fi
 We have already noted the the optimality of the design depends on the data generating process.
 In this section it is made obvious that optimality will also depend on the analysis method we choose.
 
-When estimating the effect of a single continuous factor, we would like a design that gives us the most information per observation. This is the same as minimizing the variance of the estimator. 
+When estimating the effect of a single continuous factor, we would like a design that gives us the most information per observation. This is the same as minimizing the variance of the estimator: $\min \{Var(\hat{\beta})\}$.
 
-When generalizing to 
+When generalizing to several continuous factors, with several effect, matters are more subtle.
+This is because, having several parameters, we may consider several target criteria such as
+minimal average variance, or minimal worst-case variance.
+Matters further complicate when effect estimates are correlated. 
+
 
 
 
