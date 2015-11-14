@@ -88,4 +88,38 @@ In a double sampling scheme, we first example $n_1$ units.
 We may then decide to accept, reject, or sample another $n_2$ units. 
 After those $n_2$ samples, we can accept or reject. 
 The idea of a power function remains the same, even if calculations are slightly more cumbersome.
+Here is our our policy:
+For $x_1$ computed on the first $n_1$ samples:
+If $x_1  < a_1$ then accept the batch;
+If $x_1 \geq  c_1$ then reject the batch;
+Otherwise, compute $x_2$ with $n_1+n_2$ samples.
+If $x_2 < a_2$ accept the batch;
+If $x_2 \geq c_2$ then reject the batch.
 
+For brevity, we denote all the design parameters of the scheme by $\gamma:= (n_1,n_2,c_1,c_2,a_1,a_2)$. 
+The power function of such a scheme would thus be:
+\begin{align}
+	\pi_\gamma &:= P(\set{\x_1 \geq c_1} \union \set{\x_1 \in [a_1,c_1], \x_2 \geq c_2}) \\
+	&= P(\x_1 \geq c_1) + \sum_{k=a_1}^{c_1} P(\x_1 =k, \x_2-\x_1 \geq c_2-k) \\
+		&= P(\x_1 \geq c_1) + \sum_{k=a_1}^{c_1} P(\x_1 =k) P(\x_2-\x_1 \geq c_2-k).
+\end{align}
+We may now use the fact that $\x_1 \sim Binom(n_1,p)$ and that $\x_2-\x_1 \sim Binom(n_2,p)$, and quickly compute the power in \R.
+
+\begin{remark}[Redundancy]
+Unlike the single stage LASP, where we have two equations with two variables, in the two-stage case there are many $\gamma$ configurations that will achieve given consumer and producer risks ($\alpha_0,\pi_0$).
+The choice of the particular configuration should depend on the type of signal we expect. 
+For quick detection of strong signal (large $p$), choose small $n_1$. 
+For sensitive detection of subtle signal, choose large $n_1$. 
+\end{remark}
+
+\begin{remark}[No Free Lunch]
+While it may seem that a two stage LASP is always better than a single stage LASP, this is not the case.
+To see why, consider a weak signal ($p$ close to AQL). We may need all $n_1+n_2$ samples to get decent power. The first stage then add nothing except logistic complications.
+\end{remark}
+
+
+\section{Sequential Scheme}
+At this point you should be thinking: why only two stages? 
+Clearly we may reject or accept a sample as each unit comes in.
+This is exactly what Sequential LASPs are all about.
+We will not give the details, except the observation that this is merely a type of sequential experiment as described in Section~\ref{sec:sequantial}.
