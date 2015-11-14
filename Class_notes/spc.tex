@@ -82,8 +82,8 @@ Denote $\alpha_t$ the false alarm probability at period $t$.
 How do our design choices affect $\alpha_t$?
 \begin{align}
 	\alpha_t &:= 1-P_{H_0}(\bar{x}_t \in [LCL,UCL]) \\
-	&= 2 P_{H_0}(\bar{x}_t<UCL) \\
-	&= 2 P_{H_0}(Z<\frac{UCL-\mu}{\sigma_{\bar{x}}}) \\
+	&= 2 P_{H_0}(\bar{x}_t<LCL) \\
+	&= 2 P_{H_0}(Z<\frac{LCL-\mu}{\sigma_{\bar{x}}}) \\
 	&= 2 P_{H_0}(Z < -\arm) \\
 	&= 2 \Phi(-L)
 \end{align}
