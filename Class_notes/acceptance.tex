@@ -40,9 +40,6 @@ Adapted from \cite{natrella_nist/sematech_2010}.
 \item [Producer's Risk] The \emph{producer's risk} is throwing away good batches. Formally, this is the probability of rejecting a batch with less than AQL defects. We consider there type-I errors.
 \item [Consumer's Risk] The \emph{consumer's risk} is accepting bad batches. Formally, this is the probability of accepting a batch with more than LTPD defects. We consider there type-II errors.
 \item [Rectifying Inspection] An LASP where lots are not rejected but rather rectified. 
-\item [AOQ] The \emph{average outgoing quality}, as the name suggests, is the average proportion of defects after a rectifying inspection has been introduced in the process. 
-\item [AOQL] The \emph{average outgoing quality level} is the (unknown) defect proportion that would return the worst AOQ after a rectifying inspection.
-\item [ATI] The \emph{average total inspection}, as the name suggests, is the average number of units inspected in a batch.
 \end{description}
 
 
@@ -83,3 +80,10 @@ It is quite wired that we would sample with replacement from a batch.
 It is quite more probable that we used the replacement assumption, only as an approximation because $n$ is small compared to the batch size $N$. 
 If this is not the case, the binomial distribution in Eq.(\ref{eq:power_accpet}) should be replaced with the Hypergeometric distribution. 
 For all practical purposes, this means using the \rcode{phyper()} \R function, instead of \rcode{pbinom()}.
+
+
+
+\subsection{Double Sampling Scheme}
+In a double sampling scheme, we first example $n_1$ units. 
+We may then decide to accept, reject, or sample another $n_2$ units. 
+The idea of a power function remains the same, even if calculations are slightly more cumbersome.
