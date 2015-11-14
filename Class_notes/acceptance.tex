@@ -32,7 +32,7 @@ For this reason, the \emph{power function} will play a crucial role.
 \section{Acceptance Sampling Terminology}
 Adapted from \cite{natrella_nist/sematech_2010}.
 \begin{description}
-\item [LASP] A \emph{lot acceptance sampling plan}, as the name suggests. In this text we typically use the \emph{batch acceptance sampling scheme} for the same purpose. 
+\item [LASP] A \emph{lot acceptance sampling plan}, ultimately, a statistical test at the end of which we either accept a batch. In this text we typically use the \emph{batch acceptance sampling scheme} for the same purpose. 
 \item [AQL] The \emph{acceptable quality level}, or \emph{acceptable quality limit}, is the highest proportion of defects acceptable to the producer. 
 \item [LTPD] The \emph{lot tolerance percent defective} is the highest proportion of defects acceptable to the consumer. Clearly, $AQL<LTPD$. LTPD is also known as \emph{rejectable quality level} (RQL), and \emph{ limiting quality level} (LQL). 
 \item [OC Curve] The \emph{operating characteristic curve} is the power function of an LSAP.
@@ -50,3 +50,12 @@ Adapted from \cite{natrella_nist/sematech_2010}.
 \section{Single Sampling Scheme}
 In the simplest LASP we base our decisions on a single random sample from each batch.
 This obviously facilitates the statistical analysis of the properties of this LASP.
+
+When sampling $n$ units from a batch with a proportion of $p$ defects, then the number of defects $\x \sim Binom(n,p)$.
+If we reject a batch when more than $c$ defects are found, then the power function of a type-B LASP is given by
+\begin{align}
+\label{eq:power_accpet}
+	\pi_{n,c}(p)=P(\x \geq c)= \sum_{k=c}^n \binom{n}{k} p^k (1-p)^{1-k} .
+\end{align}
+Eq.(\ref{eq:power_accpet}) may be evaluated manually, or with the \rcode{pbinom()} \R function. 
+
