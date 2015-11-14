@@ -1,7 +1,7 @@
 \chapter{Reliability Analysis}
 \chaptermark{Reliability}
 
-This chapter is adapted from \cite{natrella_nist/sematech_2010} and German Rodriguez's Generalized-Linear-Models class notes\footnote{\url{http://data.princeton.edu/wws509/notes/c7.pdf}.}.
+This chapter is adapted from \cite[Ch.8]{natrella_nist/sematech_2010} and German Rodriguez's Generalized-Linear-Models class notes\footnote{\url{http://data.princeton.edu/wws509/notes/c7.pdf}.}.
 
 The attempt to define the difference between \emph{reliability} and \emph{quality} will certainly fail, since given the intentional ambiguity in our definition of quality (Chapter~\ref{sec:introduction}).
 For our purposes, however, this terminological matter will not bother us, since we will simply define reliability analysis to be the analysis of the \emph{time} to \emph{failure}.
@@ -12,11 +12,13 @@ We should also consider, however, the case of a product that is designed to fail
 Some may say that a major hi-tech company named after a fruit employs this practice. 
 Be it true or not, I hope we can agree that good knowledge of your product's life expectancy is a desirable. 
 
+Reliability analysis involves the study of a probabilistic property of our product- its survival.
+Any probabilistic model will require calibration to reality via data. 
+This chapter thus introduces both the probability calculus typically used for reliability analysis, and some statistical considerations involved when fitting these models.
+But before the fun begins, we need some definitions and terminology.
 
 
 
-
-% source of nomenclature
 % survival function
 % hazard rate
 % estimating survival
@@ -34,12 +36,19 @@ This is why the terminology may sometimes seem ill-suited for services and produ
 
 
 \begin{definition}[CDF]
-content...
+The cumulative distribution function (CDF) of a random variable $\T$ at a point $t$  is given by
+\begin{align}
+	F_\T(t):= P(\T<t).
+\end{align}
 \end{definition}
 
 
 \begin{definition}[PDF]
-content...
+The probability density function (PDF) of a continuous random variable $\T$ at a point $t$ is given by 
+\begin{align}
+	p_\T(t):= \frac{\partial}{\partial t}F_\T(t).
+\end{align}
+
 \end{definition}
 
 
@@ -59,8 +68,11 @@ content...
 
 
 \begin{description}
+\item [Death]
+\item [Survival]
 \item [Censored type-I]
 \item [Censored type-I]
+\item [Bathtub Function]
 \end{description}
 
 
