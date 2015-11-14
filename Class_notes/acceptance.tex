@@ -51,6 +51,8 @@ Adapted from \cite{natrella_nist/sematech_2010}.
 In the simplest LASP we base our decisions on a single random sample from each batch.
 This obviously facilitates the statistical analysis of the properties of this LASP.
 
+\subsubsection{Type-B Power Function}
+
 When sampling $n$ units from a batch with a proportion of $p$ defects, then the number of defects $\x \sim Binom(n,p)$.
 If we reject a batch when more than $c$ defects are found, then the power function of a type-B LASP is given by
 \begin{align}
@@ -62,10 +64,22 @@ Eq.(\ref{eq:power_accpet}) may be evaluated manually, or with the \rcode{pbinom(
 Just like any other hypothesis test, it is common practice to set $n,c$ so that control both the consumer's risk ($\beta_{n,c}=1-\pi_{n,c}$) and the producer's risk ($\alpha_{n,c}$).
 By adopting a the hypothesis testing philosophy, we solve $n,c$ so that 
 \begin{align}
+\label{eq:power_acceptance}
  \min \set{n : \pi_{n,c}\geq \pi_0 \quad and \quad \alpha_{n,c}\leq \alpha_0 }.
 \end{align}
 For relating the LASP terminology to this problem, we need to observe that $$\alpha_{n,c}=\pi_{n,c}(p=AQL)$$ and $$\pi_{n,c}=\pi_{n,c}(p=LTPD).$$
-For a producer which does not want to reject batches where $AQL=10\%$ defects, with more than $\alpha=10\%$; 
-and a consumer who does not want to accept batches where $LTPD=30\%$, with less than $\pi=80\%$, 
-we have 
+For a producer who does not want to reject batches where $AQL=10\%$ defects, with more than $\alpha_0=10\%$; 
+and a consumer who does not want to accept batches where $LTPD=30\%$, with less than $\pi_0=80\%$, 
+we have that their LASP would take $n=33$ samples, and reject a batch whenever the $\x>4$, when $n=21$.
+\begin{remark}[Approximate Power Calculations]
+The problem to solve in Eq.(\ref{eq:power_acceptance}) requires some non trivial iterations because of the discrete nature.
+It is quite more convenient to replace the exact form of Eq.(\ref{eq:power_accpet}) with a normal approximation, so that Eq.(\ref{eq:power_acceptance}) has a closed form solution. 
+\end{remark}
 
+
+
+\subsubsection{Type-A Power Function}
+It is quite wired that we would sample with replacement from a batch.
+It is quite more probable that we used the replacement assumption, only as an approximation because $n$ is small compared to the batch size $N$. 
+If this is not the case, the binomial distribution in Eq.(\ref{eq:power_accpet}) should be replaced with the Hypergeometric distribution. 
+For all practical purposes, this means using the \rcode{phyper()} \R function, instead of \rcode{pbinom()}.
