@@ -6,3 +6,22 @@
 % RQL
 % LQL
 % Type A and Type B RO curves.
+
+We can improve quality (read- conformance to specification) by introducing an inspection stage in our process.
+Clearly, a full inspection is time consuming. 
+It may also be destructive (you don't want to re-package ice-cream after checking its texture \dots).
+No-inspection may be appropriate if you don't particularly care about your brand, or if production has very high capability indices.
+A reasonable, intermediate approach, is a partial random inspection, known as \emph{acceptance sampling}.
+As the name suggests, in acceptance sampling, one samples, then checks, then accepts (or not).
+
+Acceptance sampling can be seen as a control chart monitoring that triggers active intervention in the production. As such ,it is a crude type of \emph{engineering control} (Sec.~\ref{sec:terminology_statistical}).
+The intervention is obvious. The monitoring is based on some continuous (variable) or discrete (attribute) of a sample of units from a \emph{batch}, \aka, a \emph{lot}.
+Seen as a feedback control, it is not surprising that when designing an acceptance sampling scheme, we have similar decisions as when designing a control chart:
+\begin{enumerate}
+\item What is a batch? Just like choosing the sampling frequency in a Shewart chart. 
+We would like homogenous batches, i.e., with low inner variability. A box, a shipment, a day's production, are typical batches. 
+\item Within batch sampling scheme: just like rational grouping in Shewart chart. Typical approaches include \emph{single sampling plans}, \emph{double}, \emph{multiple}, and \emph{sequential sampling plans}.
+\item How many units? Just like choosing the sample size in a Shewart chart.
+\item Decision cutoff: Just like setting control limits in a Shewart chart. 
+\end{enumerate}
+
