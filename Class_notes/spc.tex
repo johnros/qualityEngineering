@@ -4,14 +4,14 @@
 
 Statistical process control (SPC), \aka \emph{change detection}, or \emph{novelty detection}, deals with the quantitative analysis of a ``process'', which may be a production line, a service, or any other repeated operation.\marginnote{Change Detection}
 As such, SPC may be found in the Analyze, Improve, and Control stages of the DMAIC cycle.
-The purpose of the SPC, in the terms coined by Shewart, is to seperate the variability in the process into \emph{assignable} causes of variation and \emph{chance} causes of variation.\marginnote{Causes of variation}
+The purpose of the SPC, in the terms coined by Shewhart, is to seperate the variability in the process into \emph{assignable} causes of variation and \emph{chance} causes of variation.\marginnote{Causes of variation}
 Assignable are also known as \emph{special} causes, or simply \emph{signal}.
 Chance causes are also known as \emph{common} causes of variation, or \emph{haphazard} variability, or simply \emph{noise}.
  
 A process is said to be in \emph{statistical control} if all its variation is attributable to chance causes.
 If this is not the case, we call it \emph{out of control} and we will seek the assignable causes, so that we may reduce variability by removing them.
 All the statistical tools of chapters \ref{sec:exploratory} and \ref{sec:inference} may be called upon for this endeavour but in this chapter we focus on one particular such tool- the \emph{control chart}.
-We start with the \emph{Shewart control chart}, in which each value is charted using different data, from different periods. \marginnote{Shewart Chart}
+We start with the \emph{Shewhart control chart}, in which each value is charted using different data, from different periods. \marginnote{Shewhart Chart}
 
 
 
@@ -126,7 +126,7 @@ The curious reader is referred to \cite{wikipedia_receiver_2015} for more inform
 
 An important related quantity is the \emph{average run length} (ARL), which is the expected number of periods between two crossings of control limits, i.e., the expected periods between alarms. \marginnote{ARL}
 We denote by $ARL_0$ the ARL when the process is under statistical control, and $ARL_1$ otherwise\footnote{Note that it is implied that the process has a \emph{stable} distribution, even though it is out if control.}. 
-For Shewart charts, where $\bar{x}_t$ are typically statistically independent, then clearly the number of periods until a crossing is geometrically distributed. Using the expectation of a geometric random variable we can conclude that 
+For Shewhart charts, where $\bar{x}_t$ are typically statistically independent, then clearly the number of periods until a crossing is geometrically distributed. Using the expectation of a geometric random variable we can conclude that 
 \begin{align}
 	ARL_0=1/\alpha \label{eq:arl_0}, \\
 	ARL_1=1/\pi \label{eq:arl_1}.
@@ -136,7 +136,7 @@ This is known as the \emph{average time to signal} (ATS).\marginnote{ATS}
 It is quite common to design a control chart so that it achieves a particular $ATS_0$.
 
 \begin{remark}[ARLs more important than type-I errors]
-In the case of Shewart charts, there is a simple mapping between ARL and type I error rates.
+In the case of Shewhart charts, there is a simple mapping between ARL and type I error rates.
 This need not be the case for general control charts. 
 Since type I errors are certain, if the process runs long enough, then it is actually the ARL the design parameter of importance, and not the type-I error.
 \end{remark}
@@ -244,13 +244,13 @@ See \url{http://www.quinn-curtis.com/spcnamedrulesets.htm} for a quick review.
 \label{sec:running_windows}
 
 Assume an out-of-control process is simply a mild shift of the controlled-process.
-This shift may be hard to detect in Shewart chart, especially if $n$ is not too large (as seen in Figure~\ref{fig:power_function}).  
+This shift may be hard to detect in Shewhart chart, especially if $n$ is not too large (as seen in Figure~\ref{fig:power_function}).  
 If the shift persists over periods, we may gain power, i.e., sensitivity, by pooling several periods together. 
 We now present several ways to pool information from history. These are typically applied in Phase II, where out-of-control processes are expected to have only mild shifts, and not major ones as in Phase I. 
 
-\begin{remark}[No longer Shewart]
-The name \emph{Shewart control chart} is reserved to charts plotting one period at a time. 
-When several periods are pooled together, we will no longer call this  ``Shewart''.
+\begin{remark}[No longer Shewhart]
+The name \emph{Shewhart control chart} is reserved to charts plotting one period at a time. 
+When several periods are pooled together, we will no longer call this  ``Shewhart''.
 \end{remark}
 
 \begin{remark}[One observation at a time]
@@ -306,7 +306,7 @@ You can always use simulation to compute it, or try using the \rcode{spc} \R pac
 
 
 We are free to choose the magnitude of $w$. 
-If $w$ is too small, there is no real pooling from history. At the limit, where $w=1$, we are back to the classical Shewart chart. 
+If $w$ is too small, there is no real pooling from history. At the limit, where $w=1$, we are back to the classical Shewhart chart. 
 If $w$ is too large, then each new observation has very small importance, and it may take a long time to detect a shift.
 Which is the right intermediate value of $w$, is left for you to decide.
 
@@ -347,7 +347,7 @@ It is however, more economic to observe that for large $\lambda$ and $t$: $(1-(1
 \end{align}
 with $\arm=3$ being the typical choice.
 By now, you should immediately know what is the false alarm rate of these limits.
-By now, you should also know that because of the dependence between $z_t$'s, computing the ARL is not as simple as for Shewart charts. The \rcode{xewma.arl()} \R function, in package \rcode{spc}, permits doing so easily. 
+By now, you should also know that because of the dependence between $z_t$'s, computing the ARL is not as simple as for Shewhart charts. The \rcode{xewma.arl()} \R function, in package \rcode{spc}, permits doing so easily. 
 Its output for various $\lambda$ and $\arm$ is illustrated in Figure~\ref{fig:arl_0_ewma}.
 
 \begin{figure}[h]
@@ -359,7 +359,7 @@ Its output for various $\lambda$ and $\arm$ is illustrated in Figure~\ref{fig:ar
 
 In the MA chart, we used the choice of $w$ to balance between quick response (small $w$) and sensitivity (large $w$).
 EWMA has no window-width parameter, since it looks into all of history. On the other hand, we can control it by choosing $\lambda$. 
-Large $\lambda$ gives more importance to the present. At the limit, $\lambda=1$, EWMA collapses to a standard Shewart chart.
+Large $\lambda$ gives more importance to the present. At the limit, $\lambda=1$, EWMA collapses to a standard Shewhart chart.
 
 
 
@@ -412,8 +412,8 @@ As such, \citeauthor{page_continuous_1954}'s control limits are said to be \emph
 
 
 
-\subsection{Combined Shewart and Running Window Charts}
-Well sure- if you want to enjoy the quick detection of Shewart charts, and the sensitivity of running windows charts, you may certainly design charts that marry these ideas.
+\subsection{Combined Shewhart and Running Window Charts}
+Well sure- if you want to enjoy the quick detection of Shewhart charts, and the sensitivity of running windows charts, you may certainly design charts that marry these ideas.
 False alarm rates and ARLs should be computed mutatis mutandis.
 
 
@@ -613,7 +613,7 @@ Given all the above, we may now plug Eq.(\ref{eq:optimal_design}) into our favou
 
 
 
-\section{Shewart Charts With Other Test Statistics}
+\section{Shewhart Charts With Other Test Statistics}
 
 We have been focusing on the \barxChart for ease of exposition. There are, however, many cases where the mean is not an appropriate test statistic.
 Examples include:
@@ -662,7 +662,7 @@ Obviously the control limits and the test statistic may need appropriate updates
 
 \item [Autocorrelation and time series models] The assumption of independence between sampling periods may be relaxed, by adopting a quantitative or qualitative model for temporal dependence.
 
-\item [Running windows] The ideas of pooling information over periods with a MA, EWMA, and CUSUM may be extended to all type of Shewart charts. 
+\item [Running windows] The ideas of pooling information over periods with a MA, EWMA, and CUSUM may be extended to all type of Shewhart charts. 
 Also, there are endlessly many period pooling schemes. 
 You are free to pick a set of weights, or convolve your data with a \emph{causal filter}\footnote{\url{https://en.wikipedia.org/wiki/Causal_filter}} can provide a pooling scheme.
 
