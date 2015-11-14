@@ -38,7 +38,7 @@ This is why the terminology may sometimes seem ill-suited for services and produ
 \begin{definition}[CDF]
 The cumulative distribution function (CDF) of a random variable $\T$ at a point $t$  is given by
 \begin{align}
-	F_\T(t):= P(\T<t).
+	\cdf{\T}{t}:= P(\T<t).
 \end{align}
 \end{definition}
 
@@ -46,15 +46,17 @@ The cumulative distribution function (CDF) of a random variable $\T$ at a point 
 \begin{definition}[PDF]
 The probability density function (PDF) of a continuous random variable $\T$ at a point $t$ is given by 
 \begin{align}
-	p_\T(t):= \frac{\partial}{\partial t}F_\T(t).
+	\pdf_\T(t):= \frac{\partial}{\partial t}\cdf{\T}{t}.
 \end{align}
-
 \end{definition}
 
 
 
 \begin{definition}[Survival Function]
-content...
+The survival function of a random variable $\T$ at a point $t$ is given by 
+\begin{align}
+	\survive{\T}{t}:= P(\T>t)=1-\cdf{\T}{t}.
+\end{align}
 \end{definition}
 
 
