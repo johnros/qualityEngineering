@@ -59,5 +59,13 @@ If we reject a batch when more than $c$ defects are found, then the power functi
 \end{align}
 Eq.(\ref{eq:power_accpet}) may be evaluated manually, or with the \rcode{pbinom()} \R function. 
 
-Just like any other hypothesis test, it is common practice to set $n,c$ so that control both the consumer's risk ($\beta=1-\pi$) and the producer's risk ($\alpha$).
+Just like any other hypothesis test, it is common practice to set $n,c$ so that control both the consumer's risk ($\beta_{n,c}=1-\pi_{n,c}$) and the producer's risk ($\alpha_{n,c}$).
+By adopting a the hypothesis testing philosophy, we solve $n,c$ so that 
+\begin{align}
+ \min \set{n : \pi_{n,c}\geq \pi_0 \quad and \quad \alpha_{n,c}\leq \alpha_0 }.
+\end{align}
+For relating the LASP terminology to this problem, we need to observe that $$\alpha_{n,c}=\pi_{n,c}(p=AQL)$$ and $$\pi_{n,c}=\pi_{n,c}(p=LTPD).$$
+For a producer which does not want to reject batches where $AQL=10\%$ defects, with more than $\alpha=10\%$; 
+and a consumer who does not want to accept batches where $LTPD=30\%$, with less than $\pi=80\%$, 
+we have 
 
