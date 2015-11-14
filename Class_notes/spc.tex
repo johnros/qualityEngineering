@@ -81,7 +81,7 @@ We start by a type I error rate analysis.
 Denote $\alpha_t$ the false alarm probability at period $t$.
 How do our design choices affect $\alpha_t$?
 \begin{align}
-	\alpha_t &:= 1-P_{H_0}(\bar{x}_t \in [UCL,LCL]) \\
+	\alpha_t &:= 1-P_{H_0}(\bar{x}_t \in [LCL,UCL]) \\
 	&= 2 P_{H_0}(\bar{x}_t<UCL) \\
 	&= 2 P_{H_0}(Z<\frac{UCL-\mu}{\sigma_{\bar{x}}}) \\
 	&= 2 P_{H_0}(Z < -\arm) \\
@@ -102,7 +102,7 @@ A power analysis for our design choices follows the same lines.
 Denote by $H_1$ the out-of-control distribution,  $\beta_t$ the type-II error rate, and $\pi_t=1-\beta_t$ the power, at period $t$.
 We then have
 \begin{align}
-	\pi_t &:= 1-P_{H_1}(\bar{x}_t \in [UCL,LCL])
+	\pi_t &:= 1-P_{H_1}(\bar{x}_t \in [LCL,UCL])
 \end{align}
 and the rest follow from the distribution of $\bar{x}$ when the process is out of control.
 Since the out-of-control shift is (asumingly) stable, we can again omit the time index and write $\pi=\pi_t$.
