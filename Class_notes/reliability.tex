@@ -46,7 +46,7 @@ The cumulative distribution function (CDF) of a random variable $\T$ at a point 
 \begin{definition}[PDF]
 The probability density function (PDF) of a continuous random variable $\T$ at a point $t$ is given by 
 \begin{align}
-	\pdf_\T(t):= \frac{\partial}{\partial t}\cdf{\T}{t}.
+	\pdf{\T}{t}:= \frac{\partial}{\partial t}\cdf{\T}{t}.
 \end{align}
 \end{definition}
 
@@ -60,10 +60,14 @@ The survival function of a random variable $\T$ at a point $t$ is given by
 \end{definition}
 
 
-
+Another way to present a distribution, no less informative than the previous ones, is by the \emph{hazard function}, which is the ``probability of surviving just another instant''.
 \begin{definition}[Hazard Function]
-content...
+The hazard function of a random variable $\T$ at a point $t$ is given by 
+\begin{align}
+	\hazard{\T}{t}:= \lim_{dt\to 0}\frac{P( \T \in [t,t+dt)|\T \geq t )}{dt}= \frac{\pdf{\T}{t}}{\survive{\T}{t}}
+\end{align}
 \end{definition}
+
 
 
 
