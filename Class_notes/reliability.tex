@@ -439,6 +439,21 @@ The problem demonstrated in Example~\ref{eg:likelihood_of_failures} is known in 
 
 
 
+\subsection{Censoring}
+[TODO]
+
+
+\subsection{Introducing Covariates}
+Since we are in the business of improving quality via improving reliability, we want to know what affects failure rates. 
+We will thus introduce now covariates, or factors (in the DOE parlance), in the hope of estimating their effects.
+
+
+\subsubsection{Accelerated Life Models}
+The \emph{accelerated life} model is very popular for very reliable components. This is because it may take forever to produce defect. We thus ``accelerate'' their life, by testing them under extreme conditions, and then scale back to the regular operating environment.
+
+An accelerate life mode assumes that the effect of covariates are multiplicative. For this reason, a change in a covariate ``accelerates life'' by the factor of its effect. 
+
+
 
 \section{Bibliographic Notes}
 The probabilistic analysis is adapted from \cite{aven_stochastic_1999}.
