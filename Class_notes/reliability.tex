@@ -452,6 +452,13 @@ We will thus introduce now covariates, or factors (in the DOE parlance), in the 
 The \emph{accelerated life} model is very popular for very reliable components. This is because it may take forever to produce defect. We thus ``accelerate'' their life, by testing them under extreme conditions, and then scale back to the regular operating environment.
 
 An accelerate life mode assumes that the effect of covariates are multiplicative. For this reason, a change in a covariate ``accelerates life'' by the factor of its effect. 
+Let's be clear.
+Such models imply that $\log \T = x'\beta + \varepsilon \Leftrightarrow \T = $
+
+
+\begin{extra}[Accelrated life and generalized linear models]
+Fans of generalized linear models (GLM) may recognize the accelerated life model as a exponential regression with canonical link function.
+\end{extra}
 
 
 
