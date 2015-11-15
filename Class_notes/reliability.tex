@@ -1,8 +1,6 @@
 \chapter{Reliability Analysis}
 \chaptermark{Reliability}
 
-This chapter is adapted from \cite[Ch.8]{natrella_nist/sematech_2010} and German Rodriguez's Generalized-Linear-Models class notes\footnote{\url{http://data.princeton.edu/wws509/notes/c7.pdf}.}.
-
 The attempt to define the difference between \emph{reliability} and \emph{quality} will certainly fail, since given the intentional ambiguity in our definition of quality (Chapter~\ref{sec:introduction}).
 For our purposes, however, this terminological matter will not bother us, since we will simply define reliability analysis to be the analysis of the \emph{time} to \emph{failure}.
 We will also assume that ``time'' and ``failure'' are well defined and agreed upon.
@@ -74,7 +72,8 @@ The \emph{hazard function}, or \emph{failure rate}, of a random variable $\T$ at
 \begin{definition}[Cumulative Hazard]
 The cumulative hazard, \aka the cumulative risk function of a random variable $\T$ at a point $t$ is given by 
 \begin{align}
-	\cuhazard{\T}{t}:= \int_{0}^{t}\hazard{\T}{t}
+	\cuhazard{\T}{t} &:= \int_{0}^{t}\hazard{\T}{t} \\
+	\Rightarrow \survive{\T}{t} &= \exp(-\cuhazard{\T}{t})
 \end{align}
 \end{definition}
 
@@ -94,6 +93,22 @@ so that
 \end{example}
 The exponential is the only distribution with constant hazard which makes it very easy to analyze.
 The constant hazard is due to the \emph{memoryless} property; think what the memoryless property implies on Eq.(\ref{eq:hazard}).
+
+
+\begin{example}[Weibull Hazard]
+The Weibull distribution is very common in reliability analysis, and can be constructed by 
+$\T := \lambda \U^{1/k}$, where 
+Recalling
+\begin{align}
+	\pdf{\T}{t}= \frac{k}{\lambda}
+	\cdf{\T}{t}= 
+\end{align}
+so that 
+\begin{align}
+	\survive{\T}{t} &= 
+	\hazard{\T}{t} &= 
+\end{align}
+\end{example}
 
 
 
@@ -126,3 +141,8 @@ The constant hazard is due to the \emph{memoryless} property; think what the mem
 
 \section{Statistical Analysis}
 [TODO]
+
+
+\section{Bibliographic Notes}
+This chapter is adapted from \cite[Ch.8]{natrella_nist/sematech_2010}, German Rodriguez's Generalized-Linear-Models class notes\footnote{\url{http://data.princeton.edu/wws509/notes/c7.pdf}.}, and \cite{aven_stochastic_1999}.
+
