@@ -24,17 +24,21 @@ But before the fun begins, we need some definitions and terminology.
 % accelerated life models
 
 
-\section{Terminology}
-\begin{description}
-\item [Binary system] A system which may be in one of two states: \emph{functioning} and \emph{failure}. 
-\item [Death] In the \emph{survival anlysis} literature, the \emph{failure} state is termed a \emph{death} (for obvious reasons).
-\end{description}
+
+\section{Probabilistic Analysis}
+% competing risk
+% series model
+% parallel/redundant model
+% r out of n model
+% standby model
+% complex systems
+% min-cut max-flow and inclusion-exclusion
+% two-state vs. nultistate systems
 
 
 
 
-
-\subsection{Reliability Analysis- A Static View}
+\subsection{A Static View}
 
 Let $\x_j \in \set{0,1}, j=1,\dots,p$ denote the state of the $j$'th component of a system, and $x=(x_1,\dots,x_p)$.
 
@@ -86,16 +90,6 @@ This seems rather natural (I am still looking for a counter example).
 
 
 
-
-\section{Probabilistic Analysis}
-% competing risk
-% series model
-% parallel/redundant model
-% r out of n model
-% standby model
-% complex systems
-% min-cut max-flow and inclusion-exclusion
-% two-state vs. nultistate systems
 
 \begin{definition}[Reliability]
 We define the \emph{reliabity of component $j$} to be $$p_j:= P(\x_j=1),$$ 
