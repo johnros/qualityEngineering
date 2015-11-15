@@ -416,6 +416,7 @@ Roughly speaking, censoring occurs because our experiments have finite durations
 Before we dive into the matter of censoring, we demonstrate the estimation of the failure rate in a simple system.
 
 \begin{example}[Likelihood estimation of a series system]
+\label{eg:likelihood_of_failures}
 Assume a series system $\Phi$ with $p$ independent, exponential components with rates $(\lambda_1,\dots,\lambda_p)$.
 We have $n$ observations on the failure times of the system $t_1,\dots,t_n$.
 How can we estimate the failure rates?
@@ -427,8 +428,10 @@ $\pdf{\T_i}{t}=\lambda \exp(-\lambda t)$.
 We may then write the likelihood function, maximize it with respect to $\lambda$ and discover, as we already know, that $$\hat{\lambda}=\frac{n}{\sum_{i=1}^{n} t_i}.$$
 We are now left with the problem of recovering $(\lambda_1,\dots,\lambda_p)$ from $\lambda$. 
 Can we do it? On the face of it- no. Which should not surprise us, since the mere knowledge of a device failure, is not very informative on the particular component that failed, which we would need to estimate $(\lambda_1,\dots,\lambda_p)$.
-
 \end{example}
+
+Example~\ref{eg:likelihood_of_failures} teaches us that unless further assumptions are introduced, the estimation of the component-wise failure rates requires information on the component-wise failure times. 
+
 
 
 
