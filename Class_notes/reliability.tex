@@ -243,6 +243,9 @@ The failure rate of a series system of independent components $\Phi$ is given by
 The proof is immediate using the cumulative risk.
 The failure rate of a parallel system, does not admit such a nice closed form.
 
+
+
+
 \begin{example}[Exponential Hazard]
 The simplest distribution when discussing hazards is the exponential.
 Recalling
@@ -345,6 +348,27 @@ Our goal will ultimately be to understand the reliability of a whole system, as 
 We call a failure time distribution to be in the \emph{increasing failure rate} (IFR) class, if it has a non decreasing failure rate.
 \end{definition}
 
+Clearly IFR is not a strong enough notion of reliability, since we know from Example~\ref{eg:failure_parallel}, that two IFR components in parallel, are not an IFR system.
+
+
+\begin{definition}[IFRA]
+We call a failure time distribution to be in the \emph{increasing failure rate average} (IFRA) class, if 
+$\cuhazard{\T}{t}/t$ is non decreasing in $t$.
+\end{definition}
+
+\begin{definition}[NBU]
+We call a failure time distribution to be in the \emph{new better then used} (NBU) class, if 
+$\survive{\T}{t_1+t_2} \leq \survive{\T}{t_2} \survive{\T}{t_1}$.
+\end{definition}
+
+
+\begin{definition}[NBUE]
+Define the \emph{expected residual life}, $\mu(t)$, to be 
+$$\mu(t):= \expect{\T-t|\T>t}.$$
+\marginnote{Expected Residual Life}
+We call a failure time distribution to be in the \emph{new better then used in expectation} (NBUE) class, if 
+$\mu(t) \leq \mu(0)$.
+\end{definition}
 
 
 
