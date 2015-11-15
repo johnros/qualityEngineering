@@ -199,13 +199,14 @@ The failure rate of a series system of independent components $\Phi$ is given by
 \end{align}
 \end{theorem}
 The proof is immediate using the cumulative risk.
+The failure rate of a parallel system, does not admit such a nice closed form.
 
 \begin{example}[Exponential Hazard]
 The simplest distribution when discussing hazards is the exponential.
 Recalling
 \begin{align}
 	\pdf{\T}{t}= \lambda \exp(-\lambda t) \indicator{t \geq 0} \\
-	\cdf{\T}{t}= (1-\exp(-\lambda t)) \indicator{t \geq 0}
+	\cdf{\T}{t}= (1-\exp(-\lambda t)) 
 \end{align}
 so that 
 \begin{align}
@@ -215,6 +216,15 @@ so that
 \end{example}
 The exponential is the only distribution with constant hazard which makes it very easy to analyze.
 The constant hazard is due to the \emph{memoryless} property; think what the memoryless property implies on Eq.(\ref{eq:hazard}).
+
+
+
+\begin{example}[Failure rate of a series of exponential components]
+The failure rate of a series system of $p$ independent components $\Phi$, each with exponentially distributed failure times is simply 
+\begin{align}
+	\hazard{\Phi}{t}= p \lambda, \forall t \geq 0
+\end{align}
+\end{example}
 
 
 \begin{example}[Weibull Hazard]
