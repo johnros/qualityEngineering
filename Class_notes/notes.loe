@@ -85,7 +85,10 @@
 \contentsline {definition}{\numberline {35}Definition\thmtformatoptarg {CDF}}{89}{definition.35}
 \contentsline {definition}{\numberline {36}Definition\thmtformatoptarg {PDF}}{89}{definition.36}
 \contentsline {definition}{\numberline {37}Definition\thmtformatoptarg {Survival Function}}{89}{definition.37}
-\contentsline {definition}{\numberline {38}Definition\thmtformatoptarg {Hazard Function}}{89}{definition.38}
-\contentsline {definition}{\numberline {39}Definition\thmtformatoptarg {Cumulative Hazard}}{89}{definition.39}
-\contentsline {example}{\numberline {13}Example\thmtformatoptarg {Exponential Hazard}}{90}{example.13}
-\contentsline {example}{\numberline {14}Example\thmtformatoptarg {Weibull Hazard}}{90}{example.14}
+\contentsline {example}{\numberline {13}Example\thmtformatoptarg {Survival of a series system}}{89}{example.13}
+\contentsline {example}{\numberline {14}Example\thmtformatoptarg {Survival of a parallel system}}{89}{example.14}
+\contentsline {definition}{\numberline {38}Definition\thmtformatoptarg {Failure Rate}}{90}{definition.38}
+\contentsline {theorem}{\numberline {8.1.1}Theorem\thmtformatoptarg {Failure rate of a series system}}{90}{theorem.8.1.1}
+\contentsline {definition}{\numberline {39}Definition\thmtformatoptarg {Cumulative Hazard}}{90}{definition.39}
+\contentsline {example}{\numberline {15}Example\thmtformatoptarg {Exponential Hazard}}{90}{example.15}
+\contentsline {example}{\numberline {16}Example\thmtformatoptarg {Weibull Hazard}}{91}{example.16}

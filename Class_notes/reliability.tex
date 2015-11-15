@@ -94,25 +94,25 @@ This seems rather natural (I am still looking for a counter example).
 \begin{definition}[Reliability]
 We define the \emph{reliabity of component $j$} to be $$p_j:= P(\x_j=1),$$ 
 and  the \emph{reliability of the system} 
-$$h(\struct):=P(\struct(x)=1).$$
+$$ S_\struct:=P(\struct(x)=1).$$
 \end{definition}
 
 
 \begin{example}[Reliability of a series system]
 For $\Phi(x)$ a series system, assuming independent components, we have
-$$ h(\struct)= \prod_{j=1}^{p} p_j.$$
+$$ S_\struct= \prod_{j=1}^{p} p_j.$$
 \end{example}
 
 
 \begin{example}[Reliability of a parallel system]
 For $\Phi(x)$ a parallel system, assuming independent components, we have
-$$ h(\struct)= 1-\prod_{j=1}^{p} (1-p_j)= \coprod_{j=1}^p p_j. $$
+$$ S_\struct= 1-\prod_{j=1}^{p} (1-p_j)= \coprod_{j=1}^p p_j. $$
 \end{example}
 
 
 \begin{example}[Reliability of a k-out-of-p system]
 For $\Phi(x)$ a k-out-of-p system, assuming independent components with equal reliability ($p_i=p$), we have
-$$ h(\struct)= \sum_{i=k}^{p} \binom{n}{i} p^i (1-p)^{n-i} .$$
+$$ S_\struct= \sum_{i=k}^{p} \binom{n}{i} p^i (1-p)^{n-i} .$$
 \end{example}
 
 
@@ -124,10 +124,8 @@ For more details, see \cite{aven_stochastic_1999}.
 
 
 
-\subsection{A Dynamic View}
+\subsection{A Time Dynamic View}
 The reliability of each component ($p_j$), typically changes in time, and so does the reliability of the whole system.
-We now introduce the time evolution of reliability.
-But as usual, we need some definitions.
 In the following, $\T$ will typically stand for the time to malfunction. It is thus assumed to be \textbf{continuous} and \textbf{non-negative}.
 
 
@@ -138,7 +136,6 @@ The cumulative distribution function (CDF) of a random variable $\T$ at a point 
 \end{align}
 \end{definition}
 
-
 \begin{definition}[PDF]
 The probability density function (PDF) of a continuous random variable $\T$ at a point $t$ is given by 
 \begin{align}
@@ -147,17 +144,31 @@ The probability density function (PDF) of a continuous random variable $\T$ at a
 \end{definition}
 
 
-
 \begin{definition}[Survival Function]
 The survival function of a random variable $\T$ at a point $t$ is given by 
 \begin{align}
 	\survive{\T}{t}:= P(\T>t)=1-\cdf{\T}{t}.
 \end{align}
 \end{definition}
+By definition, it follows that if $\T_j$ is the time to failure of component $j$, then $p_j(t)=\survive{\T_j}{t}$.
+Our notation bot $S_\struct$ also becomes clear, since it $\T_\struct$ is the time to failure of a structure $\Phi$, then we may write $S_\struct(t)=\survive{\T_\struct}{t}$.
+
+
+\begin{example}[Survival of a series system]
+For a series system $\struct$, the reliability of the system at time $t$ is given by $$\survive{\Phi}{t}=\prod_{j=1}^{p} p_j(t)$$.
+\end{example}
+
+
+\begin{example}[Survival of a parallel system]
+For a series system $\struct$, the reliability of the system at time $t$ is given by $$\survive{\Phi}{t}=\prod_{j=1}^{p} p_j(t)$$.
+\end{example}
+
+
+
 
 
 Another way to present a distribution, no less informative than the previous ones, is by the \emph{hazard function}, which is the ``probability of surviving just another instant''.
-\begin{definition}[Hazard Function]
+\begin{definition}[Failure Rate]
 The \emph{hazard function}, or \emph{failure rate}, of a random variable $\T$ at a point $t$ is given by \marginnote{Failure Rate}
 \begin{align}
 	\hazard{\T}{t} &:= \lim_{dt\to 0}\frac{P( \T \in [t,t+dt)|\T \geq t )}{dt} \label{eq:hazard}\\
@@ -165,6 +176,17 @@ The \emph{hazard function}, or \emph{failure rate}, of a random variable $\T$ at
 	&= \frac{\partial}{\partial t}\log \survive{\T}{t}.
 \end{align}
 \end{definition}
+
+
+
+\begin{theorem}[Failure rate of a series system]
+The failure rate of of a series system of independent components $\Phi$ is given by the sum of the failure rates of its components
+\begin{align}
+	\hazard{\Phi}{t}= \sum_{j=1}^{p} \hazard{\T_j}{t}
+\end{align}
+\end{theorem}
+
+
 
 
 \begin{definition}[Cumulative Hazard]
@@ -175,6 +197,9 @@ The \emph{cumulative hazard}, \aka the \emph{cumulative risk function} of a rand
 \end{align}
 \end{definition}
 Eq.(\ref{eq:cumhazrd}) readily shows that a distribution is well defined by its hazards.
+
+
+
 
 
 \begin{example}[Exponential Hazard]
