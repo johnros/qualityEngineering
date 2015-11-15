@@ -220,11 +220,22 @@ The constant hazard is due to the \emph{memoryless} property; think what the mem
 
 
 \begin{example}[Failure rate of a series of exponential components]
-The failure rate of a series system of $p$ independent components $\Phi$, each with exponentially distributed failure times is simply 
+The failure rate of a series system $\Phi$, of $p$ independent components each with exponentially distributed failure times, is simply 
 \begin{align}
 	\hazard{\Phi}{t}= p \lambda, \forall t \geq 0
 \end{align}
 \end{example}
+This is obviously the simplest system possible for reliability analysis, which stems from the fact that a minimum of exponentials is exponential with the sum of rates.
+
+
+
+The following example, seemingly very simple, provides tremendous insight into the complexities of reliability analysis.
+\begin{example}[Failure rate of a two exponential-component parallel-system]
+Consider a system of two independent, parallel, exponential components, with failure times $\T_j\sim \exp(\lambda_j); j=1,2$.
+
+\end{example}
+
+
 
 
 \begin{example}[Weibull Hazard]
