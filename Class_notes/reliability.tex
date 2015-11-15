@@ -345,19 +345,19 @@ Instead of checking if a particular distribution has some ageing property, we in
 Our goal will ultimately be to understand the reliability of a whole system, as a function of the reliability of its components.
 
 \begin{definition}[IFR]
-We call a failure time distribution to be in the \emph{increasing failure rate} (IFR) class, if it has a non decreasing failure rate.
+We call a failure time distribution to be in the \emph{increasing failure rate} (IFR) ageing class, if it has a non decreasing failure rate.
 \end{definition}
 
 Clearly IFR is not a strong enough notion of reliability, since we know from Example~\ref{eg:failure_parallel}, that two IFR components in parallel, are not an IFR system.
 
 
 \begin{definition}[IFRA]
-We call a failure time distribution to be in the \emph{increasing failure rate average} (IFRA) class, if 
+We call a failure time distribution to be in the \emph{increasing failure rate average} (IFRA) ageing class, if 
 $\cuhazard{\T}{t}/t$ is non decreasing in $t$.
 \end{definition}
 
 \begin{definition}[NBU]
-We call a failure time distribution to be in the \emph{new better then used} (NBU) class, if 
+We call a failure time distribution to be in the \emph{new better then used} (NBU) ageing class, if 
 $\survive{\T}{t_1+t_2} \leq \survive{\T}{t_2} \survive{\T}{t_1}$.
 \end{definition}
 
@@ -366,7 +366,7 @@ $\survive{\T}{t_1+t_2} \leq \survive{\T}{t_2} \survive{\T}{t_1}$.
 Define the \emph{expected residual life}, $\mu(t)$, to be 
 $$\mu(t):= \expect{\T-t|\T>t}.$$
 \marginnote{Expected Residual Life}
-We call a failure time distribution to be in the \emph{new better then used in expectation} (NBUE) class, if 
+We call a failure time distribution to be in the \emph{new better then used in expectation} (NBUE) ageing class, if 
 $\mu(t) \leq \mu(0)$.
 \end{definition}
 
@@ -385,7 +385,22 @@ If the independent components of a monotone system are IFRA, then so is the whol
 
 
 
+\begin{extra}[IFR and log-concave]
+The IFR requirement, is essentially the same as log-concavity of the density function.
+This immediately implies many properties of the class.
+See \cite{bagnoli_log-concave_2005}.
+\end{extra}
 
+
+
+\begin{theorem}[Convolution of IFR]
+For two independent random variables, $\x$ and $\y$, both in the IFR ageing class, then so is $\x+\y$.
+\end{theorem}
+
+
+\begin{example}[IFR of Gamma]
+The Gamma (and thus the Erlang) distribution is in the IFR aging class, since it is the sum of exponentials, each in the IFR class.
+\end{example}
 
 
 \section{Statistical Analysis}
