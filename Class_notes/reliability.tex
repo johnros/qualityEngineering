@@ -112,9 +112,14 @@ $$ h(\struct)= \prod_{j=1}^{p} p_j.$$
 
 \begin{example}[Reliability of a parallel system]
 For $\Phi(x)$ a parallel system, assuming independent components, we have
-$$ h(\struct)= 1-\prod_{j=1}^{p} (1-p_j)= \coprod_{j=1}^p p_j.$$
+$$ h(\struct)= 1-\prod_{j=1}^{p} (1-p_j)= \coprod_{j=1}^p p_j. $$
 \end{example}
 
+
+\begin{example}[Reliability of a k-out-of-p system]
+For $\Phi(x)$ a k-out-of-p system, assuming independent components with equal reliability ($p_i=p$), we have
+$$ h(\struct)= \sum_{i=k}^{p} \binom{n}{i} p^i (1-p)^{n-i} .$$
+\end{example}
 
 
 
