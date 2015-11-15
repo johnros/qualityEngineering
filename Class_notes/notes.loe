@@ -82,16 +82,18 @@
 \contentsline {example}{\numberline {11}Example\thmtformatoptarg {Reliability of a parallel system}}{65}{example.11}
 \contentsline {example}{\numberline {12}Example\thmtformatoptarg {Reliability of a k-out-of-p system}}{66}{example.12}
 \contentsline {extra}{\numberline {15}Extra Info\thmtformatoptarg {Reliability analysis of complex systems}}{66}{extra.15}
-\contentsline {definition}{\numberline {35}Definition\thmtformatoptarg {CDF}}{66}{definition.35}
-\contentsline {definition}{\numberline {36}Definition\thmtformatoptarg {PDF}}{66}{definition.36}
-\contentsline {definition}{\numberline {37}Definition\thmtformatoptarg {Survival Function}}{66}{definition.37}
-\contentsline {example}{\numberline {13}Example\thmtformatoptarg {Survival of a series system}}{66}{example.13}
-\contentsline {example}{\numberline {14}Example\thmtformatoptarg {Survival of a parallel system}}{66}{example.14}
-\contentsline {definition}{\numberline {38}Definition\thmtformatoptarg {Failure Rate}}{67}{definition.38}
-\contentsline {definition}{\numberline {39}Definition\thmtformatoptarg {Cumulative Risk}}{67}{definition.39}
+\contentsline {definition}{\numberline {35}Definition\thmtformatoptarg {Improvement potential}}{66}{definition.35}
+\contentsline {definition}{\numberline {36}Definition\thmtformatoptarg {Birenbaum's measure}}{66}{definition.36}
+\contentsline {definition}{\numberline {37}Definition\thmtformatoptarg {CDF}}{66}{definition.37}
+\contentsline {definition}{\numberline {38}Definition\thmtformatoptarg {PDF}}{66}{definition.38}
+\contentsline {definition}{\numberline {39}Definition\thmtformatoptarg {Survival Function}}{66}{definition.39}
+\contentsline {example}{\numberline {13}Example\thmtformatoptarg {Survival of a series system}}{67}{example.13}
+\contentsline {example}{\numberline {14}Example\thmtformatoptarg {Survival of a parallel system}}{67}{example.14}
+\contentsline {definition}{\numberline {40}Definition\thmtformatoptarg {Failure Rate}}{67}{definition.40}
+\contentsline {definition}{\numberline {41}Definition\thmtformatoptarg {Cumulative Risk}}{67}{definition.41}
 \contentsline {theorem}{\numberline {8.1.1}Theorem\thmtformatoptarg {Failure rate of a series system}}{67}{theorem.8.1.1}
 \contentsline {example}{\numberline {15}Example\thmtformatoptarg {Exponential Hazard}}{67}{example.15}
-\contentsline {example}{\numberline {16}Example\thmtformatoptarg {Failure rate of a series of exponential components}}{67}{example.16}
+\contentsline {example}{\numberline {16}Example\thmtformatoptarg {Failure rate of a series of exponential components}}{68}{example.16}
 \contentsline {example}{\numberline {17}Example\thmtformatoptarg {Failure rate of a two exponential-component parallel-system}}{68}{example.17}
 \contentsline {example}{\numberline {18}Example\thmtformatoptarg {Weibull Hazard}}{68}{example.18}
-\contentsline {example}{\numberline {19}Example\thmtformatoptarg {Empirical risk rates}}{68}{example.19}
+\contentsline {example}{\numberline {19}Example\thmtformatoptarg {Empirical risk rates}}{69}{example.19}

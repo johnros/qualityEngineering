@@ -124,6 +124,48 @@ For more details, see \cite{aven_stochastic_1999}.
 
 
 
+
+
+
+
+
+
+\subsubsection{Reliability Importance Measures}
+\begin{quotation}
+The Strength Of The Chain Is In The Weakest Link.
+\end{quotation}
+This is obviously a profound observation in reliability analysis.
+In order to identify the weakest link we require some measure of reliability importance.
+
+
+\begin{definition}[Improvement potential]
+The \emph{improvement potential} is defined as the change in a systems reliability, if we could force a component to function indefinitely.
+Formally, we denote $\Phi^{(j)}$ to be a system where component $j$ cannot fail. 
+We then define the improvement potential with respect to component $j$ to be 
+\begin{align}
+	I_j :=S_{\Phi^{(j)}}-S_{\Phi}.
+\end{align}
+\end{definition}
+
+
+
+\begin{definition}[Birenbaum's measure]
+\emph{Birenbaum's measure} is defined as the change in a systems reliability, if we infinitesimally improve the reliability of component $j$.
+Formally 
+\begin{align}
+	I_j: =\frac{\partial}{\partial p_j} S_{\Phi}.
+\end{align}
+\end{definition}
+
+
+Clearly any such importance measure, once computed, may serve to decide which component should be treated to improve reliability.
+
+
+
+
+
+
+
 \subsection{A Time Dynamic View}
 The reliability of each component ($p_j$), typically changes in time, and so does the reliability of the whole system.
 In the following, $\T$ will typically stand for the time to malfunction. It is thus assumed to be \textbf{continuous} and \textbf{non-negative}.
@@ -293,12 +335,13 @@ We refer the reader to \cite{nadarajah_bathtub-shaped_2008} for examples of dist
 
 
 
-\subsection{Reliability Importance Measures}
-\begin{quotation}
-The Strength Of The Chain Is In The Weakest Link.
-\end{quotation}
-This is obviously a profound observation in reliability analysis.
-In order to identify the weakest link we require some measure of reliability importance.
+
+
+
+
+
+
+
 
 
 
