@@ -100,8 +100,20 @@ This seems rather natural (I am still looking for a counter example).
 \begin{definition}[Reliability]
 We define the \emph{reliabity of component $j$} to be $$p_j:= P(\x_j=1),$$ 
 and  the \emph{reliability of the system} 
-$$h:=P(\struct(x)=1).$$
+$$h(\struct):=P(\struct(x)=1).$$
 \end{definition}
+
+
+\begin{example}[Reliability of a series system]
+For $\Phi(x)$ a series system, assuming independent components, we have
+$$ h(\struct)= \prod_{j=1}^{p} p_j.$$
+\end{example}
+
+
+\begin{example}[Reliability of a parallel system]
+For $\Phi(x)$ a parallel system, assuming independent components, we have
+$$ h(\struct)= 1-\prod_{j=1}^{p} (1-p_j)= \coprod_{j=1}^p p_j.$$
+\end{example}
 
 
 
