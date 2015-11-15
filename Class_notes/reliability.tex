@@ -169,7 +169,7 @@ For a series system $\struct$, the reliability of the system at time $t$ is give
 
 Another way to present a distribution, no less informative than the previous ones, is by the \emph{hazard function}, which is the ``probability of surviving just another instant''.
 \begin{definition}[Failure Rate]
-The \emph{hazard function}, or \emph{failure rate}, of a random variable $\T$ at a point $t$ is given by \marginnote{Failure Rate}
+The \emph{hazard function}, or \emph{failure rate}, of a random variable $\T$ at a point $t$ is given by \marginnote{Hazard Function}
 \begin{align}
 	\hazard{\T}{t} &:= \lim_{dt\to 0}\frac{P( \T \in [t,t+dt)|\T \geq t )}{dt} \label{eq:hazard}\\
 	&= \frac{\pdf{\T}{t}}{\survive{\T}{t}} \\
@@ -179,18 +179,10 @@ The \emph{hazard function}, or \emph{failure rate}, of a random variable $\T$ at
 
 
 
-\begin{theorem}[Failure rate of a series system]
-The failure rate of of a series system of independent components $\Phi$ is given by the sum of the failure rates of its components
-\begin{align}
-	\hazard{\Phi}{t}= \sum_{j=1}^{p} \hazard{\T_j}{t}
-\end{align}
-\end{theorem}
 
 
-
-
-\begin{definition}[Cumulative Hazard]
-The \emph{cumulative hazard}, \aka the \emph{cumulative risk function} of a random variable $\T$ at a point $t$ is given by 
+\begin{definition}[Cumulative Risk]
+The \emph{cumulative hazard}, \aka the \emph{cumulative risk}, of a random variable $\T$ at a point $t$ is given by \marginnote{Cumulative Hazrd}
 \begin{align}
 	\cuhazard{\T}{t} &:= \int_{0}^{t}\hazard{\T}{t} \\
 	\Rightarrow \survive{\T}{t} &= \exp(-\cuhazard{\T}{t}). \label{eq:cumhazrd}
@@ -199,8 +191,13 @@ The \emph{cumulative hazard}, \aka the \emph{cumulative risk function} of a rand
 Eq.(\ref{eq:cumhazrd}) readily shows that a distribution is well defined by its hazards.
 
 
-
-
+\begin{theorem}[Failure rate of a series system]
+The failure rate of a series system of independent components $\Phi$ is given by the sum of the failure rates of its components
+\begin{align}
+	\hazard{\Phi}{t}= \sum_{j=1}^{p} \hazard{\T_j}{t}
+\end{align}
+\end{theorem}
+The proof is immediate using the cumulative risk.
 
 \begin{example}[Exponential Hazard]
 The simplest distribution when discussing hazards is the exponential.
