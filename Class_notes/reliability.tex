@@ -56,7 +56,7 @@ The \emph{structure function}, $\struct=\struct(x):x \mapsto \set{0,1}$, is an i
 A \emph{series system}, or \emph{serial system}, is one where all components need to function for the system to function: $$\struct(x)=\prod_{j=1}^{p}x_j$$.
 \end{definition}
 A reliability diagram of a series system is given in Figure~\ref{fig:series_system}.
-\begin{figure}
+\begin{figure}[ht]
 \centering
 \includegraphics[width=0.7\linewidth]{art/series_system}
 \caption{Series system.}
@@ -68,12 +68,12 @@ A reliability diagram of a series system is given in Figure~\ref{fig:series_syst
 A \emph{parallel system} is one where all components need to fail for the system to fail:
 $$\struct(x)=1-\prod_{j=1}^{p} (1-x_j)= \coprod_{j=1}^p x_j$$.
 \end{definition}
-A reliability diagram of a series system is given in Figure~\ref{fig:series_system}.
-\begin{figure}
+A reliability diagram of a parallel system is given in Figure~\ref{fig:parallel_system}.
+\begin{figure}[ht]
 \centering
-\includegraphics[width=0.7\linewidth]{art/series_system}
-\caption{Series system.}
-\label{fig:series_system}
+\includegraphics[width=0.7\linewidth]{art/parallel_system}
+\caption{Parallel system.}
+\label{fig:parallel_system}
 \end{figure}
 
 
