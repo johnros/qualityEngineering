@@ -128,7 +128,7 @@ For more details, see \cite{aven_stochastic_1999}.
 The reliability of each component ($p_j$), typically changes in time, and so does the reliability of the whole system.
 We now introduce the time evolution of reliability.
 But as usual, we need some definitions.
-In the following, $\T$ will typically stand for the time to malfunction. It is thus assumed to be continuous and non-negative.
+In the following, $\T$ will typically stand for the time to malfunction. It is thus assumed to be \textbf{continuous} and \textbf{non-negative}.
 
 
 \begin{definition}[CDF]
@@ -162,13 +162,13 @@ The \emph{hazard function}, or \emph{failure rate}, of a random variable $\T$ at
 \begin{align}
 	\hazard{\T}{t} &:= \lim_{dt\to 0}\frac{P( \T \in [t,t+dt)|\T \geq t )}{dt} \label{eq:hazard}\\
 	&= \frac{\pdf{\T}{t}}{\survive{\T}{t}} \\
-	&= \frac{\partial}{\partial t}\log \survive{\T}{t}
+	&= \frac{\partial}{\partial t}\log \survive{\T}{t}.
 \end{align}
 \end{definition}
 
 
 \begin{definition}[Cumulative Hazard]
-The cumulative hazard, \aka the cumulative risk function of a random variable $\T$ at a point $t$ is given by 
+The \emph{cumulative hazard}, \aka the \emph{cumulative risk function} of a random variable $\T$ at a point $t$ is given by 
 \begin{align}
 	\cuhazard{\T}{t} &:= \int_{0}^{t}\hazard{\T}{t} \\
 	\Rightarrow \survive{\T}{t} &= \exp(-\cuhazard{\T}{t}). \label{eq:cumhazrd}
