@@ -73,9 +73,10 @@ The \emph{hazard function}, or \emph{failure rate}, of a random variable $\T$ at
 The cumulative hazard, \aka the cumulative risk function of a random variable $\T$ at a point $t$ is given by 
 \begin{align}
 	\cuhazard{\T}{t} &:= \int_{0}^{t}\hazard{\T}{t} \\
-	\Rightarrow \survive{\T}{t} &= \exp(-\cuhazard{\T}{t})
+	\Rightarrow \survive{\T}{t} &= \exp(-\cuhazard{\T}{t}). \label{eq:cumhazrd}
 \end{align}
 \end{definition}
+Eq.(\ref{eq:cumhazrd}) readily shows that a distribution is well defined by its hazards.
 
 
 \begin{example}[Exponential Hazard]
@@ -97,29 +98,24 @@ The constant hazard is due to the \emph{memoryless} property; think what the mem
 
 \begin{example}[Weibull Hazard]
 The Weibull distribution is very common in reliability analysis, and can be constructed by 
-$\T := \lambda \U^{1/k}$, where 
+$\T := \lambda \U^{1/k}$, where $\U \sim \exp(1)$. 
 Recalling
 \begin{align}
-	\pdf{\T}{t}= \frac{k}{\lambda}
-	\cdf{\T}{t}= 
+	\pdf{\T}{t} &= \frac{k}{\lambda}\left(\frac{\T}{\lambda} \right)^{k-1} \exp\left(-\frac{\T}{\lambda} \right)^k  \indicator{\T\geq 0} \\
+	\cdf{\T}{t} &= 1 - \exp \left(-\frac{\T}{\lambda} \right)^k 
 \end{align}
 so that 
 \begin{align}
-	\survive{\T}{t} &= 
-	\hazard{\T}{t} &= 
+	\survive{\T}{t} &= \exp \left(-\frac{\T}{\lambda} \right)^k \\
+	\hazard{\T}{t} &= \frac{k}{\lambda} \left(\frac{\T}{\lambda} \right)^{k-1} .
 \end{align}
 \end{example}
+Elementary analysis shows that the hazard function of the Weibull may be increasing or decreasing in time ($\T$), depending on $k$, but it is always monotone.
 
 
 
 
-\begin{description}
-\item [Death]
-\item [Survival]
-\item [Censored type-I]
-\item [Censored type-I]
-\item [Bathtub Function]
-\end{description}
+
 
 
 
@@ -135,6 +131,18 @@ so that
 % r out of n model
 % standby model
 % complex systems
+% min-cut max-flow and inclusion-exclusion
+% two-state vs. nultistate systems
+
+\subsection{Reliability Analysis- A Static View}
+
+
+
+\subsection{The Time Evolution of Reliability}
+
+
+
+
 
 
 
@@ -144,5 +152,6 @@ so that
 
 
 \section{Bibliographic Notes}
-This chapter is adapted from \cite[Ch.8]{natrella_nist/sematech_2010}, German Rodriguez's Generalized-Linear-Models class notes\footnote{\url{http://data.princeton.edu/wws509/notes/c7.pdf}.}, and \cite{aven_stochastic_1999}.
+This chapter is adapted from \cite[Ch.8]{natrella_nist/sematech_2010}, German Rodriguez's Generalized-Linear-Models class notes\footnote{\url{http://data.princeton.edu/wws509/notes/c7.pdf}.}.
+See \cite{aven_stochastic_1999} for a mathematically rigorous treatment.
 

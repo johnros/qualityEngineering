@@ -1,81 +1,81 @@
 \addvspace {10\p@ }
-\contentsline {extra}{\numberline {1}Extra Info}{19}{extra.1}
+\contentsline {extra}{\numberline {1}Extra Info}{20}{extra.1}
 \addvspace {10\p@ }
-\contentsline {extra}{\numberline {2}Extra Info}{22}{extra.2}
-\contentsline {definition}{\numberline {1}Definition\thmtformatoptarg {The Mean}}{23}{definition.1}
-\contentsline {definition}{\numberline {2}Definition\thmtformatoptarg {The Median}}{23}{definition.2}
-\contentsline {definition}{\numberline {3}Definition\thmtformatoptarg {$\alpha $-Trimmed Mean}}{23}{definition.3}
-\contentsline {definition}{\numberline {4}Definition\thmtformatoptarg {The Standard Deviation}}{23}{definition.4}
-\contentsline {definition}{\numberline {5}Definition\thmtformatoptarg {$\alpha $ Quantile}}{23}{definition.5}
-\contentsline {definition}{\numberline {6}Definition\thmtformatoptarg {The Range}}{24}{definition.6}
-\contentsline {definition}{\numberline {7}Definition\thmtformatoptarg {The Inter Quantile Range- IQR}}{24}{definition.7}
-\contentsline {definition}{\numberline {8}Definition\thmtformatoptarg {The Median Absolute Deviation- MAD}}{24}{definition.8}
-\contentsline {definition}{\numberline {9}Definition\thmtformatoptarg {Yule Skewness Measure}}{24}{definition.9}
-\contentsline {definition}{\numberline {10}Definition\thmtformatoptarg {Covariance}}{24}{definition.10}
-\contentsline {definition}{\numberline {11}Definition\thmtformatoptarg {Pearson's Correlation Coefficient}}{24}{definition.11}
-\contentsline {definition}{\numberline {12}Definition\thmtformatoptarg {Spearman's Correlation Coefficient}}{25}{definition.12}
-\contentsline {definition}{\numberline {13}Definition\thmtformatoptarg {Covariance Matrix}}{25}{definition.13}
-\contentsline {extra}{\numberline {3}Extra Info\thmtformatoptarg {Sample Covariance Matrix}}{25}{extra.3}
-\contentsline {definition}{\numberline {14}Definition\thmtformatoptarg {Correlation Matrix}}{25}{definition.14}
-\contentsline {extra}{\numberline {4}Extra Info\thmtformatoptarg {Multivariate Data Analysis}}{25}{extra.4}
-\contentsline {remark}{\numberline {1}Remark\thmtformatoptarg {Pie Chart}}{26}{remark.1}
+\contentsline {extra}{\numberline {2}Extra Info}{23}{extra.2}
+\contentsline {definition}{\numberline {1}Definition\thmtformatoptarg {The Mean}}{24}{definition.1}
+\contentsline {definition}{\numberline {2}Definition\thmtformatoptarg {The Median}}{24}{definition.2}
+\contentsline {definition}{\numberline {3}Definition\thmtformatoptarg {$\alpha $-Trimmed Mean}}{24}{definition.3}
+\contentsline {definition}{\numberline {4}Definition\thmtformatoptarg {The Standard Deviation}}{24}{definition.4}
+\contentsline {definition}{\numberline {5}Definition\thmtformatoptarg {$\alpha $ Quantile}}{24}{definition.5}
+\contentsline {definition}{\numberline {6}Definition\thmtformatoptarg {The Range}}{25}{definition.6}
+\contentsline {definition}{\numberline {7}Definition\thmtformatoptarg {The Inter Quantile Range- IQR}}{25}{definition.7}
+\contentsline {definition}{\numberline {8}Definition\thmtformatoptarg {The Median Absolute Deviation- MAD}}{25}{definition.8}
+\contentsline {definition}{\numberline {9}Definition\thmtformatoptarg {Yule Skewness Measure}}{25}{definition.9}
+\contentsline {definition}{\numberline {10}Definition\thmtformatoptarg {Covariance}}{25}{definition.10}
+\contentsline {definition}{\numberline {11}Definition\thmtformatoptarg {Pearson's Correlation Coefficient}}{25}{definition.11}
+\contentsline {definition}{\numberline {12}Definition\thmtformatoptarg {Spearman's Correlation Coefficient}}{26}{definition.12}
+\contentsline {definition}{\numberline {13}Definition\thmtformatoptarg {Covariance Matrix}}{26}{definition.13}
+\contentsline {extra}{\numberline {3}Extra Info\thmtformatoptarg {Sample Covariance Matrix}}{26}{extra.3}
+\contentsline {definition}{\numberline {14}Definition\thmtformatoptarg {Correlation Matrix}}{26}{definition.14}
+\contentsline {extra}{\numberline {4}Extra Info\thmtformatoptarg {Multivariate Data Analysis}}{26}{extra.4}
+\contentsline {remark}{\numberline {1}Remark\thmtformatoptarg {Pie Chart}}{27}{remark.1}
 \addvspace {10\p@ }
-\contentsline {definition}{\numberline {15}Definition\thmtformatoptarg {Chi-Square GOF Test}}{35}{definition.15}
-\contentsline {definition}{\numberline {16}Definition\thmtformatoptarg {Kolmogorov\IeC {\textendash }Smirnov GOF Test}}{35}{definition.16}
-\contentsline {extra}{\numberline {5}Extra Info\thmtformatoptarg {GOF tests}}{36}{extra.5}
+\contentsline {definition}{\numberline {15}Definition\thmtformatoptarg {Chi-Square GOF Test}}{36}{definition.15}
+\contentsline {definition}{\numberline {16}Definition\thmtformatoptarg {Kolmogorov\IeC {\textendash }Smirnov GOF Test}}{36}{definition.16}
+\contentsline {extra}{\numberline {5}Extra Info\thmtformatoptarg {GOF tests}}{37}{extra.5}
 \addvspace {10\p@ }
-\contentsline {definition}{\numberline {17}Definition\thmtformatoptarg {$C_p$}}{38}{definition.17}
-\contentsline {definition}{\numberline {18}Definition\thmtformatoptarg {$\mathaccentV {hat}05E{C}_p$}}{38}{definition.18}
-\contentsline {theorem}{\numberline {4.1.1}Theorem\thmtformatoptarg {Chebyshev's inequality}}{39}{theorem.4.1.1}
-\contentsline {definition}{\numberline {19}Definition\thmtformatoptarg {$C_p(q)$}}{40}{definition.19}
-\contentsline {definition}{\numberline {20}Definition\thmtformatoptarg {$C_{pk}$}}{40}{definition.20}
-\contentsline {definition}{\numberline {21}Definition\thmtformatoptarg {$C_{pm}$}}{41}{definition.21}
-\contentsline {example}{\numberline {1}Example\thmtformatoptarg {$C_p$ test for 6-sigma compliance}}{42}{example.1}
-\contentsline {remark}{\numberline {2}Remark}{43}{remark.2}
+\contentsline {definition}{\numberline {17}Definition\thmtformatoptarg {$C_p$}}{39}{definition.17}
+\contentsline {definition}{\numberline {18}Definition\thmtformatoptarg {$\mathaccentV {hat}05E{C}_p$}}{39}{definition.18}
+\contentsline {theorem}{\numberline {4.1.1}Theorem\thmtformatoptarg {Chebyshev's inequality}}{40}{theorem.4.1.1}
+\contentsline {definition}{\numberline {19}Definition\thmtformatoptarg {$C_p(q)$}}{41}{definition.19}
+\contentsline {definition}{\numberline {20}Definition\thmtformatoptarg {$C_{pk}$}}{41}{definition.20}
+\contentsline {definition}{\numberline {21}Definition\thmtformatoptarg {$C_{pm}$}}{42}{definition.21}
+\contentsline {example}{\numberline {1}Example\thmtformatoptarg {$C_p$ test for 6-sigma compliance}}{43}{example.1}
+\contentsline {remark}{\numberline {2}Remark}{44}{remark.2}
 \addvspace {10\p@ }
-\contentsline {extra}{\numberline {6}Extra Info\thmtformatoptarg {A mathematically rigorous treatment of SPC}}{44}{extra.6}
-\contentsline {remark}{\numberline {3}Remark\thmtformatoptarg {Control Charts and Capability Analysis}}{45}{remark.3}
-\contentsline {remark}{\numberline {4}Remark\thmtformatoptarg {3-Sigma Control Limits vs. 3-Sigma Capability}}{47}{remark.4}
-\contentsline {extra}{\numberline {7}Extra Info\thmtformatoptarg {Operator Characteristics}}{47}{extra.7}
-\contentsline {remark}{\numberline {5}Remark\thmtformatoptarg {ARLs more important than type-I errors}}{48}{remark.5}
-\contentsline {extra}{\numberline {8}Extra Info\thmtformatoptarg {Stopping Rules}}{50}{extra.8}
-\contentsline {remark}{\numberline {6}Remark\thmtformatoptarg {No longer Shewhart}}{51}{remark.6}
-\contentsline {remark}{\numberline {7}Remark\thmtformatoptarg {One observation at a time}}{51}{remark.7}
-\contentsline {definition}{\numberline {22}Definition\thmtformatoptarg {Moving Average- MA}}{51}{definition.22}
-\contentsline {definition}{\numberline {23}Definition\thmtformatoptarg {EWMA}}{52}{definition.23}
-\contentsline {example}{\numberline {2}Example\thmtformatoptarg {Intensive Care Unit}}{54}{example.2}
-\contentsline {definition}{\numberline {24}Definition\thmtformatoptarg {Hotteling's $T^2$ }}{55}{definition.24}
-\contentsline {extra}{\numberline {9}Extra Info}{56}{extra.9}
-\contentsline {example}{\numberline {3}Example\thmtformatoptarg {Cyber Monitoring System}}{56}{example.3}
-\contentsline {remark}{\numberline {8}Remark\thmtformatoptarg {Economical Design of Control Charts}}{57}{remark.8}
+\contentsline {extra}{\numberline {6}Extra Info\thmtformatoptarg {A mathematically rigorous treatment of SPC}}{45}{extra.6}
+\contentsline {remark}{\numberline {3}Remark\thmtformatoptarg {Control Charts and Capability Analysis}}{46}{remark.3}
+\contentsline {remark}{\numberline {4}Remark\thmtformatoptarg {3-Sigma Control Limits vs. 3-Sigma Capability}}{48}{remark.4}
+\contentsline {extra}{\numberline {7}Extra Info\thmtformatoptarg {Operator Characteristics}}{48}{extra.7}
+\contentsline {remark}{\numberline {5}Remark\thmtformatoptarg {ARLs more important than type-I errors}}{49}{remark.5}
+\contentsline {extra}{\numberline {8}Extra Info\thmtformatoptarg {Stopping Rules}}{51}{extra.8}
+\contentsline {remark}{\numberline {6}Remark\thmtformatoptarg {No longer Shewhart}}{52}{remark.6}
+\contentsline {remark}{\numberline {7}Remark\thmtformatoptarg {One observation at a time}}{52}{remark.7}
+\contentsline {definition}{\numberline {22}Definition\thmtformatoptarg {Moving Average- MA}}{52}{definition.22}
+\contentsline {definition}{\numberline {23}Definition\thmtformatoptarg {EWMA}}{53}{definition.23}
+\contentsline {example}{\numberline {2}Example\thmtformatoptarg {Intensive Care Unit}}{55}{example.2}
+\contentsline {definition}{\numberline {24}Definition\thmtformatoptarg {Hotteling's $T^2$ }}{56}{definition.24}
+\contentsline {extra}{\numberline {9}Extra Info}{57}{extra.9}
+\contentsline {example}{\numberline {3}Example\thmtformatoptarg {Cyber Monitoring System}}{57}{example.3}
+\contentsline {remark}{\numberline {8}Remark\thmtformatoptarg {Economical Design of Control Charts}}{58}{remark.8}
 \addvspace {10\p@ }
-\contentsline {example}{\numberline {4}Example\thmtformatoptarg {Movie Ratings}}{65}{example.4}
-\contentsline {extra}{\numberline {10}Extra Info\thmtformatoptarg {PAC learning}}{65}{extra.10}
-\contentsline {example}{\numberline {5}Example\thmtformatoptarg {Agricultural Yield Study}}{66}{example.5}
-\contentsline {remark}{\numberline {9}Remark\thmtformatoptarg {Screening Experiments}}{70}{remark.9}
-\contentsline {remark}{\numberline {10}Remark\thmtformatoptarg {Intermediate Factor Levels}}{70}{remark.10}
-\contentsline {remark}{\numberline {11}Remark\thmtformatoptarg {Crossed Treatments}}{71}{remark.11}
-\contentsline {example}{\numberline {6}Example\thmtformatoptarg {From $2^2$ to $2^{(2-1)}$}}{71}{example.6}
-\contentsline {definition}{\numberline {25}Definition\thmtformatoptarg {Resolution of a Design}}{72}{definition.25}
-\contentsline {extra}{\numberline {11}Extra Info\thmtformatoptarg {Coding Theory}}{72}{extra.11}
-\contentsline {example}{\numberline {7}Example\thmtformatoptarg {Design for non linear regression}}{74}{example.7}
-\contentsline {example}{\numberline {8}Example\thmtformatoptarg {Design for non linear regression}}{74}{example.8}
-\contentsline {extra}{\numberline {12}Extra Info\thmtformatoptarg {Space Filling and Hashing}}{75}{extra.12}
-\contentsline {definition}{\numberline {26}Definition\thmtformatoptarg {Error Covariance Matrix}}{76}{definition.26}
-\contentsline {definition}{\numberline {27}Definition\thmtformatoptarg {A-Optimality}}{76}{definition.27}
-\contentsline {definition}{\numberline {28}Definition\thmtformatoptarg {D-Optimality}}{76}{definition.28}
-\contentsline {extra}{\numberline {13}Extra Info\thmtformatoptarg {Other Optimality Criteria}}{76}{extra.13}
-\contentsline {extra}{\numberline {14}Extra Info\thmtformatoptarg {Active Learning}}{77}{extra.14}
-\contentsline {example}{\numberline {9}Example\thmtformatoptarg {Designing Wings}}{77}{example.9}
+\contentsline {example}{\numberline {4}Example\thmtformatoptarg {Movie Ratings}}{66}{example.4}
+\contentsline {extra}{\numberline {10}Extra Info\thmtformatoptarg {PAC learning}}{66}{extra.10}
+\contentsline {example}{\numberline {5}Example\thmtformatoptarg {Agricultural Yield Study}}{67}{example.5}
+\contentsline {remark}{\numberline {9}Remark\thmtformatoptarg {Screening Experiments}}{71}{remark.9}
+\contentsline {remark}{\numberline {10}Remark\thmtformatoptarg {Intermediate Factor Levels}}{71}{remark.10}
+\contentsline {remark}{\numberline {11}Remark\thmtformatoptarg {Crossed Treatments}}{72}{remark.11}
+\contentsline {example}{\numberline {6}Example\thmtformatoptarg {From $2^2$ to $2^{(2-1)}$}}{72}{example.6}
+\contentsline {definition}{\numberline {25}Definition\thmtformatoptarg {Resolution of a Design}}{73}{definition.25}
+\contentsline {extra}{\numberline {11}Extra Info\thmtformatoptarg {Coding Theory}}{73}{extra.11}
+\contentsline {example}{\numberline {7}Example\thmtformatoptarg {Design for non linear regression}}{75}{example.7}
+\contentsline {example}{\numberline {8}Example\thmtformatoptarg {Design for non linear regression}}{75}{example.8}
+\contentsline {extra}{\numberline {12}Extra Info\thmtformatoptarg {Space Filling and Hashing}}{76}{extra.12}
+\contentsline {definition}{\numberline {26}Definition\thmtformatoptarg {Error Covariance Matrix}}{77}{definition.26}
+\contentsline {definition}{\numberline {27}Definition\thmtformatoptarg {A-Optimality}}{77}{definition.27}
+\contentsline {definition}{\numberline {28}Definition\thmtformatoptarg {D-Optimality}}{77}{definition.28}
+\contentsline {extra}{\numberline {13}Extra Info\thmtformatoptarg {Other Optimality Criteria}}{77}{extra.13}
+\contentsline {extra}{\numberline {14}Extra Info\thmtformatoptarg {Active Learning}}{78}{extra.14}
+\contentsline {example}{\numberline {9}Example\thmtformatoptarg {Designing Wings}}{78}{example.9}
 \addvspace {10\p@ }
-\contentsline {remark}{\numberline {12}Remark\thmtformatoptarg {Approximate Power Calculations}}{81}{remark.12}
-\contentsline {remark}{\numberline {13}Remark\thmtformatoptarg {Redundancy}}{82}{remark.13}
-\contentsline {remark}{\numberline {14}Remark\thmtformatoptarg {No Free Lunch}}{82}{remark.14}
+\contentsline {remark}{\numberline {12}Remark\thmtformatoptarg {Approximate Power Calculations}}{82}{remark.12}
+\contentsline {remark}{\numberline {13}Remark\thmtformatoptarg {Redundancy}}{83}{remark.13}
+\contentsline {remark}{\numberline {14}Remark\thmtformatoptarg {No Free Lunch}}{83}{remark.14}
 \addvspace {10\p@ }
-\contentsline {definition}{\numberline {29}Definition\thmtformatoptarg {CDF}}{84}{definition.29}
-\contentsline {definition}{\numberline {30}Definition\thmtformatoptarg {PDF}}{85}{definition.30}
-\contentsline {definition}{\numberline {31}Definition\thmtformatoptarg {Survival Function}}{85}{definition.31}
-\contentsline {definition}{\numberline {32}Definition\thmtformatoptarg {Hazard Function}}{85}{definition.32}
-\contentsline {definition}{\numberline {33}Definition\thmtformatoptarg {Cumulative Hazard}}{85}{definition.33}
-\contentsline {example}{\numberline {10}Example\thmtformatoptarg {Exponential Hazard}}{85}{example.10}
-\contentsline {example}{\numberline {11}Example\thmtformatoptarg {Weibull Hazard}}{86}{example.11}
+\contentsline {definition}{\numberline {29}Definition\thmtformatoptarg {CDF}}{85}{definition.29}
+\contentsline {definition}{\numberline {30}Definition\thmtformatoptarg {PDF}}{86}{definition.30}
+\contentsline {definition}{\numberline {31}Definition\thmtformatoptarg {Survival Function}}{86}{definition.31}
+\contentsline {definition}{\numberline {32}Definition\thmtformatoptarg {Hazard Function}}{86}{definition.32}
+\contentsline {definition}{\numberline {33}Definition\thmtformatoptarg {Cumulative Hazard}}{86}{definition.33}
+\contentsline {example}{\numberline {10}Example\thmtformatoptarg {Exponential Hazard}}{86}{example.10}
+\contentsline {example}{\numberline {11}Example\thmtformatoptarg {Weibull Hazard}}{87}{example.11}
