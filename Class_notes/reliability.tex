@@ -413,6 +413,23 @@ Indeed, given any particular probabilistic model, we may write the likelihood pr
 Reliability data, have the particular phenomenon of \emph{censoring}. 
 Roughly speaking, censoring occurs because our experiments have finite durations, so that events that have not yet occurred, will not have precise timing. 
 
+Before we dive into the matter of censoring, we demonstrate the estimation of the failure rate in a simple system.
+
+\begin{example}[Likelihood estimation of a series system]
+Assume a series system $\Phi$ with $p$ independent, exponential components with rates $(\lambda_1,\dots,\lambda_p)$.
+We have $n$ observations on the failure times of the system $t_1,\dots,t_n$.
+How can we estimate the failure rates?
+To use a likelihood approach, we need the data's sampling distribution.
+Denoting the failure time of the $j$'th component of the $i$th device with $\T_{i,j}$, we have that $\T_{i,j}\sim \exp(\lambda_j)$ by assumption.
+Since the system is serial, then $\T_i=\min_j(\T_{i,1},\dots,\T_{i,p})$.
+By the properties of the exponential distribution $\T_i \sim \exp(\lambda)$, where $\lambda:=\sum_{j=1}^{p} \lambda_j$, as we have already seen with the failure rate. It follows that
+$\pdf{\T_i}{t}=\lambda \exp(-\lambda t)$.
+We may then write the likelihood function, maximize it with respect to $\lambda$ and discover, as we already know, that $$\hat{\lambda}=\frac{n}{\sum_{i=1}^{n} t_i}.$$
+We are now left with the problem of recovering $(\lambda_1,\dots,\lambda_p)$ from $\lambda$. 
+Can we do it? On the face of it- no. Which should not surprise us, since the mere knowledge of a device failure, is not very informative on the particular component that failed, which we would need to estimate $(\lambda_1,\dots,\lambda_p)$.
+
+\end{example}
+
 
 
 
