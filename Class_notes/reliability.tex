@@ -62,9 +62,9 @@ The survival function of a random variable $\T$ at a point $t$ is given by
 
 Another way to present a distribution, no less informative than the previous ones, is by the \emph{hazard function}, which is the ``probability of surviving just another instant''.
 \begin{definition}[Hazard Function]
-The hazard function of a random variable $\T$ at a point $t$ is given by 
+The \emph{hazard function}, or \emph{failure rate}, of a random variable $\T$ at a point $t$ is given by \marginnote{Failure Rate}
 \begin{align}
-	\hazard{\T}{t} &:= \lim_{dt\to 0}\frac{P( \T \in [t,t+dt)|\T \geq t )}{dt}\\
+	\hazard{\T}{t} &:= \lim_{dt\to 0}\frac{P( \T \in [t,t+dt)|\T \geq t )}{dt} \label{eq:hazard}\\
 	&= \frac{\pdf{\T}{t}}{\survive{\T}{t}} \\
 	&= \frac{\partial}{\partial t}\log \survive{\T}{t}
 \end{align}
@@ -81,11 +81,19 @@ The cumulative hazard, \aka the cumulative risk function of a random variable $\
 
 \begin{example}[Exponential Hazard]
 The simplest distribution when discussing hazards is the exponential.
+Recalling
 \begin{align}
-	\survive{\T}{t}=\exp(-\lambda t)
+	\pdf{\T}{t}= \lambda \exp(-\lambda t) \indicator{t \geq 0} \\
+	\cdf{\T}{t}= (1-\exp(-\lambda t)) \indicator{t \geq 0}
+\end{align}
+so that 
+\begin{align}
+	\survive{\T}{t} &= \exp(-\lambda t), \\
+	\hazard{\T}{t} &= \lambda.
 \end{align}
 \end{example}
-
+The exponential is the only distribution with constant hazard which makes it very easy to analyze.
+The constant hazard is due to the \emph{memoryless} property; think what the memoryless property implies on Eq.(\ref{eq:hazard}).
 
 
 
