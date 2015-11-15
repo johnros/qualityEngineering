@@ -34,16 +34,6 @@ But before the fun begins, we need some definitions and terminology.
 
 
 
-\section{Probabilistic Analysis}
-% competing risk
-% series model
-% parallel/redundant model
-% r out of n model
-% standby model
-% complex systems
-% min-cut max-flow and inclusion-exclusion
-% two-state vs. nultistate systems
-
 \subsection{Reliability Analysis- A Static View}
 
 Let $\x_j \in \set{0,1}, j=1,\dots,p$ denote the state of the $j$'th component of a system, and $x=(x_1,\dots,x_p)$.
@@ -53,7 +43,7 @@ The \emph{structure function}, $\struct=\struct(x):x \mapsto \set{0,1}$, is an i
 \end{definition}
 
 \begin{definition}[Series System]
-A \emph{series system}, or \emph{serial system}, is one where all components need to function for the system to function: $$\struct(x)=\prod_{j=1}^{p}x_j$$.
+A \emph{series system}, or \emph{serial system}, is one where all components need to function for the system to function: $$\struct(x)=\prod_{j=1}^{p}x_j.$$
 \end{definition}
 A reliability diagram of a series system is given in Figure~\ref{fig:series_system}.
 \begin{figure}[ht]
@@ -66,7 +56,7 @@ A reliability diagram of a series system is given in Figure~\ref{fig:series_syst
 
 \begin{definition}[Parallel System]
 A \emph{parallel system} is one where all components need to fail for the system to fail:
-$$\struct(x)=1-\prod_{j=1}^{p} (1-x_j)= \coprod_{j=1}^p x_j$$.
+$$\struct(x)=1-\prod_{j=1}^{p} (1-x_j)= \coprod_{j=1}^p x_j.$$
 \end{definition}
 A reliability diagram of a parallel system is given in Figure~\ref{fig:parallel_system}.
 \begin{figure}[ht]
@@ -75,6 +65,38 @@ A reliability diagram of a parallel system is given in Figure~\ref{fig:parallel_
 \caption{Parallel system.}
 \label{fig:parallel_system}
 \end{figure}
+
+
+\begin{definition}[k-out-of-p System]
+A \emph{k-out-of-p} system is one where at least $k+1$ components need to fail for the system to fail:
+$$\struct(x)=\indicator{\sum_{j=1}^{p} x_j \geq k}.$$
+\end{definition}
+A reliability diagram of a k-our-of-p system is not provided, since it is not very friendly.
+
+
+
+
+\begin{definition}[Monotone System]
+A system is said to be \emph{monotone} if $\struct(x_1,\dots,\x_p)$ is non decreasing in all is components.
+\end{definition}
+The definition of monotonicity captures the idea that you cannot improve a system's state by breaking components.
+This seems rather natural (I am still looking for a counter example).
+
+
+
+
+
+
+\section{Probabilistic Analysis}
+% competing risk
+% series model
+% parallel/redundant model
+% r out of n model
+% standby model
+% complex systems
+% min-cut max-flow and inclusion-exclusion
+% two-state vs. nultistate systems
+
 
 
 
