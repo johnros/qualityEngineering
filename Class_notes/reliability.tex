@@ -518,6 +518,13 @@ We now focus on the more flexible framework of semi-parametric modelling.
 
 
 
+\subsection{Piecewise Exponential Class}
+Consider the proportional hazard model:
+\begin{align}
+	\hazard{\T|x}{t}:=\hazard{\T|x_0}{t} \times \exp((x-x_0)'\beta).
+\end{align}
+The model clearly requires some baseline failure rate $\hazard{0}{t}=\hazard{\T|x_0}{t}$.
+
 
 
 
