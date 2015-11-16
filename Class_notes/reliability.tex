@@ -459,9 +459,14 @@ The \emph{accelerated life} model is very popular for very reliable components. 
 
 An accelerate life mode assumes that the effect of covariates are \textbf{multiplicative}. For this reason, a change in a covariate multiplies fail rates, as ``fast forwarding'' time would. 
 Such models imply that 
-$\log \T = x'\beta + \varepsilon \Leftrightarrow \T = \exp(x'\beta) \times \T_0$.
+\begin{align}
+	\log \T = x'\beta + \varepsilon \Leftrightarrow \T = \exp(x'\beta) \times \T_0.
+\end{align}
 If $\T_1$ has $x_1'\beta=1$ , and $\T_2$ has $x_2'\beta=\gamma$, then 
-$\survive{\T_2}{t}=\survive{\T_1}{t/\gamma}$, which gives the model its name.
+\begin{align}
+\survive{\T_2}{t}=\survive{\T_1}{t/\gamma},
+\end{align}
+which gives the model its name.
 
 Popular accelerated time models include, that capture effects of temperature include the \emph{Arrhenius model}, and the \emph{Eyring model}.\marginnote{Arrhenius \\ Eyring}
 For models for stress, voltage, humidity, and other life accelerating covariates, see \cite[Sec.8.1.5]{natrella_nist/sematech_2010}
@@ -471,7 +476,10 @@ For models for stress, voltage, humidity, and other life accelerating covariates
 
 
 \subsection{Proportional Hazard Models}
-The \emph{proportional hazard}, or \emph{proportional risk} class of models, assumes that covariates multiply not survival times, but rather failure rates: $$\hazard{\T|x}{t}:=\hazard{\T|x_0}{t} \times \exp((x-x_0)'\beta) ,$$
+The \emph{proportional hazard}, or \emph{proportional risk} class of models, assumes that covariates multiply not survival times, but rather failure rates: 
+\begin{align}
+	\hazard{\T|x}{t}:=\hazard{\T|x_0}{t} \times \exp((x-x_0)'\beta) ,
+\end{align}
 where $x_0$ is some baseline condition with $\hazard{\T|x_0}{t}$ baseline hazard rate.
 To fix idea, let $x \in \set{0,1}$ be a group indicator, in which case $\hazard{\T|x=1}{t} = \hazard{\T|x=0}{t} \exp(\beta)$, so that $\exp(\beta)$ can be interpreted as the \emph{relative risk}.\marginnote{Relative Risk}
 
@@ -487,6 +495,13 @@ If you change factors so that the \textbf{hazard doubles} (proportional hazard),
 If you accelerate life so that the \textbf{rate doubles} (accelerated life), it is still constant in time, thus exponentially distributed. 
 \end{example}
 
+%[HW: prove this for Weibull ]
+
+\begin{extra}[General Hazard Rate Model]
+The effects of covariates on the failure time distribution, may be modelled in many ways. 
+The two models presented are probably the most popular, but may certainly be extended. 
+For a more detailed discussion, see \cite{cox_analysis_1984}.
+\end{extra}
 
 
 \section{Bibliographic Notes}
