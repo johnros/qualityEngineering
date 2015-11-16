@@ -409,11 +409,18 @@ The Gamma (and thus the Erlang) distribution is in the IFR aging class, since it
 \section{Statistical Analysis}
 The probabilistic analysis of the previous section is great fun and all, but like any probabilistic problem, is has to be calibrated to real life. 
 This is where data, and statistics come in.
-Indeed, given any particular probabilistic model, we may write the likelihood problem, and call upon maximum likelihood principles. 
-Reliability data, have the particular phenomenon of \emph{censoring}. 
-Roughly speaking, censoring occurs because our experiments have finite durations, so that events that have not yet occurred, will not have precise timing. 
+Indeed, given any particular probabilistic model, we may write the likelihood problem, and call upon maximum likelihood principles.
 
-Before we dive into the matter of censoring, we demonstrate the estimation of the failure rate in a simple system.
+The particular problems of failure data, we will have to work our way through are:
+\begin{description}
+\item [Identifiability] It is typically hard, if not impossible, to estimate the reliability of particular components, from the reliability of the whole system. 
+\item [Censoring] a major concern with reliability data, is that in any finite length experiment, some events will just not have happened yet; their failure time will thus be censored. Ironically- the more reliable a component, the less data we will have to estimate its reliability. 
+\item [Extrapolating from lab to life] Once estimated reliability in a lab, we would like to extrapolate findings into real-life operating conditions.
+\item [Failure Distribution] like any statistical model, we will need to commit to some failure time sampling distribution.
+\end{description}
+
+
+\subsection{Identifiability}
 
 \begin{example}[Likelihood estimation of a series system]
 \label{eg:likelihood_of_failures}
@@ -433,22 +440,21 @@ Can we do it? On the face of it- no. Which should not surprise us, since the mer
 Example~\ref{eg:likelihood_of_failures} teaches us that unless further assumptions are introduced, the estimation of the component-wise failure rates requires information on the component-wise failure times. 
 
 
-\begin{example}[Identifiability]
-The problem demonstrated in Example~\ref{eg:likelihood_of_failures} is known in the statistical literature as an \emph{identifiability} problem. 
-\end{example}
 
 
 
-\subsection{Censoring}
+\subsection{Censor Events}
+The problem of censoring, which in an extreme case may lead us to having no failure time data at all, will be approached in several ways. The first, will be an explicit modelling of censoring events.
+The second, will be to introduce covariates, or factors in the DOE parlance, so that failure rates can be extrapolated from lab conditions, to operating conditions.
+
+
 [TODO]
 
 
-\subsection{Introducing Covariates}
-Since we are in the business of improving quality via improving reliability, we want to know what affects failure rates. 
-We will thus introduce now covariates, or factors (in the DOE parlance), in the hope of estimating their effects.
 
 
-\subsubsection{Accelerated Life Models}
+
+\subsection{Accelerated Life Models}
 The \emph{accelerated life} model is very popular for very reliable components. This is because it may take forever to produce defect. We thus ``accelerate'' their life, by testing them under extreme conditions, and then scale back to the regular operating environment.
 
 An accelerate life mode assumes that the effect of covariates are \textbf{multiplicative}. For this reason, a change in a covariate multiplies fail rates, as ``fast forwarding'' time would. 
@@ -461,9 +467,25 @@ Popular accelerated time models include, that capture effects of temperature inc
 For models for stress, voltage, humidity, and other life accelerating covariates, see \cite[Sec.8.1.5]{natrella_nist/sematech_2010}
 
 
-\begin{extra}[Accelrated life and generalized linear models]
-Fans of generalized linear models (GLM) may recognize the accelerated life model as a exponential regression with canonical link function.
-\end{extra}
+
+
+
+\subsection{Proportional Hazard Models}
+The \emph{proportional hazard}, or \emph{proportional risk} class of models, assumes that covariates multiply not survival times, but rather failure rates: $$\hazard{\T|x}{t}:=\hazard{\T|x_0}{t} \times \exp((x-x_0)'\beta) ,$$
+where $x_0$ is some baseline condition with $\hazard{\T|x_0}{t}$ baseline hazard rate.
+To fix idea, let $x \in \set{0,1}$ be a group indicator, in which case $\hazard{\T|x=1}{t} = \hazard{\T|x=0}{t} \exp(\beta)$, so that $\exp(\beta)$ can be interpreted as the \emph{relative risk}.\marginnote{Relative Risk}
+
+The implied survival function satisfies $$ \survive{\T|x}{t}=\survive{\T|x_0}{t} \times \exp((x-x_0)'\beta).$$
+In our two group example, a proportion hazard thus implies that group $x=1$ has $\exp(\beta)$ times more probability of surviving until time $t$ then group $x=0$. 
+
+
+We may now ask ourselves, which of our favourite failure time distribution functions posses the accelerated life and the proportional hazard property. It turns out that the Weibull class is the only distribution with both properties.
+We now explain for the particular instance of the exponential failure time distribution, which is part of the Weibull class.
+\begin{example}[Accelerated life and proportional hazard in the exponential class]
+Recall that the exponential distribution has a fixed failure rate (over time). 
+If you change factors so that the \textbf{hazard doubles} (proportional hazard), it is still constant in time, thus exponentially distributed. 
+If you accelerate life so that the \textbf{rate doubles} (accelerated life), it is still constant in time, thus exponentially distributed. 
+\end{example}
 
 
 
