@@ -524,6 +524,13 @@ Consider the proportional hazard model:
 	\hazard{\T|x}{t}:=\hazard{\T|x_0}{t} \times \exp((x-x_0)'\beta).
 \end{align}
 The model clearly requires some baseline failure rate $\hazard{0}{t}=\hazard{\T|x_0}{t}$.
+A flexible, yet not too flexible assumptions, is that the failure rate is constant in some time intervals:
+\begin{align}
+	\hazard{0}{t}=h_j \quad \text{if} \quad t\in [\tau_{j-1},\tau_j)
+\end{align}
+This class of distributions clearly has $2J$ parameters: $(\tau_1,\dots,\tau_J,h_1,\dots,h_J)$.
+We are free to choose $J$. Large $J$ are very flexible classes, but will require a lot of failure data to estimate.
+Small $J$ are less flexible, but more easily estimable. At the limits, wen $J=1$, we are back to the exponential failure times. 
 
 
 
