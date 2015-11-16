@@ -451,9 +451,14 @@ We will thus introduce now covariates, or factors (in the DOE parlance), in the 
 \subsubsection{Accelerated Life Models}
 The \emph{accelerated life} model is very popular for very reliable components. This is because it may take forever to produce defect. We thus ``accelerate'' their life, by testing them under extreme conditions, and then scale back to the regular operating environment.
 
-An accelerate life mode assumes that the effect of covariates are multiplicative. For this reason, a change in a covariate ``accelerates life'' by the factor of its effect. 
-Let's be clear.
-Such models imply that $\log \T = x'\beta + \varepsilon \Leftrightarrow \T = $
+An accelerate life mode assumes that the effect of covariates are \textbf{multiplicative}. For this reason, a change in a covariate multiplies fail rates, as ``fast forwarding'' time would. 
+Such models imply that 
+$\log \T = x'\beta + \varepsilon \Leftrightarrow \T = \exp(x'\beta) \times \T_0$.
+If $\T_1$ has $x_1'\beta=1$ , and $\T_2$ has $x_2'\beta=\gamma$, then 
+$\survive{\T_2}{t}=\survive{\T_1}{t/\gamma}$, which gives the model its name.
+
+Popular accelerated time models include, that capture effects of temperature include the \emph{Arrhenius model}, and the \emph{Eyring model}.\marginnote{Arrhenius \\ Eyring}
+For models for stress, voltage, humidity, and other life accelerating covariates, see \cite[Sec.8.1.5]{natrella_nist/sematech_2010}
 
 
 \begin{extra}[Accelrated life and generalized linear models]
