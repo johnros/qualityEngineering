@@ -303,24 +303,37 @@ If treatments are combinations of several factors, it is not uncommon to use Lat
 \section{Factorial Designs}
 Until now we discussed some arbitrary set of treatments.
 It is quite common, is not certain, that the many treatments are merely combination of a small number of \emph{factors} with a small number of \emph{levels} each.
-This means that we may decompose treatment effect into the (partial) sums of the effects of underlying factors, which would make both the design and the analysis more economical.
+This means that we may decompose treatment effect into the (partial) sums of the effects of underlying factors, which would make both the design more economical, and the analysis easier to interpret.
+
+We will now present several designs for factorial experiments.
+Recall that factors define treatments. The noise reducing and bias avoiding methods of Section~\ref{sec:variance_components} may thus be compounded with the treatment generating methods of this section.
+
+It should be emphasized that a factorial design is better than $k$ experiments with one factor at a time. This is because:
+\begin{enumerate}
+\item Factorial experiments are make better (statistical) use of each sample unit for estimating main effects.
+\item Factorial experiments allow the estimation of interactions between factors. 
+\end{enumerate}
+A classical illustration of the second point, is given in Figure~\ref{fig:one_factor_at_a_time}.
+The figure depicts a one-factor-at-a-time optimization sequence (from A to H). Since the factors are not varied simultaneously, the experiments is unable to identify that the response is not a linear surface. 
+Put differently, he is unable to estimate an interaction.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[height=0.3\textheight]{art/optimization-without-statistical-doe-2015-03-23-7-638}
+\caption{Optimizing factors, one at a time.\newline \url{http://www.slideshare.net/PaulFishbein/optimization-without-statistical-doe-2015-03-23-46817073}}
+\label{fig:one_factor_at_a_time}
+\end{figure}
+
 
 
 
 \subsection{Full Factorial Designs}
 A \emph{full factorial}, or \emph{complete factorial} design, is one where all factor-level combinations are replicated the same number of times.
-By far the most common design, in which $k$ factors have 2 levels, is named a $2^k$-design.
+The most common of the full-factorial designs is the $2^k$-design where all combinations of $k$ factors with two levels each are tested in each replication.
 A $2^k$ design with $n$ repeats will necessitate $2^k\times n$ experimental units.
-The $2^1$ design has become known as A/B testing.
-At this point it should be emphasized that a full factorial design is much better than $k$ experiments with one factor at a time. This is because:
-\begin{enumerate}
-\item Factorial experiments are much more efficient at estimating main effects.
-\item Factorial experiments allow the estimation of interactions between factors. 
-\end{enumerate}
 
 
-We will now present several designs for factorial experiments.
-Recall that factors define treatments, so that all the following designs may enjoy the tools from Section~\ref{sec:variance_components} in order to reduce variability and bias. 
+
 
 \subsubsection{$2^k$ design}
 Consider two factors denoted $A$ and $B$.
