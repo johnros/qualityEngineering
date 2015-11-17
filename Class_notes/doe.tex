@@ -223,10 +223,10 @@ Table~\ref{tab:latin_square} demonstrates a Latin Square for $7$ web site design
 		   \hline
 		\end{tabular}
 		\end{minipage} 
-\caption{A $7$-treatment, two-factor design. 
-Left pane is not balanced.
-Right pane is balanced with a Latin Square, generated with the \rcode{MOLS()} function of the \rcode{crossdes} \R package.}
-\label{tab:latin_square}		
+	\caption{A $7$-treatment, two-factor design. 
+	Left pane is not balanced.
+	Right pane is balanced with a Latin Square, generated with the \rcode{MOLS()} function of the \rcode{crossdes} \R package.}
+	\label{tab:latin_square}		
 \end{table}
 
 
@@ -449,7 +449,7 @@ The lesson from Example~\ref{eg:fractional_factorial} is that in a fractional fa
 The idea behind partial factorial experiments, is that by an informed choice of the conditions skipped, we can choose what information to give up. The information lost, is known as the \emph{alias structure}.\marginnote{Alias Structure}
 
 In practice, we will rarely do the actual elimination of conditions, but rather revert to pre-selected designs. 
-Table~\ref{tab:partial_factorial_ii}, generated with the \rcode{FrF2()} in the \rcode{FrF2} \R package, is an optimal $2^{3-1}$ design.
+Table~\ref{tab:partial_factorial_ii}, generated with the \rcode{FrF2()} in the \rcode{FrF2} \R package, is an optimal $2^{5-2}$ design.
 Using the \rcode{design.info()} function of that same package, we know that the aliasing structure of this design is
 $a=bd=ce, b=ad, c=ae, d=ab, e=ac$.
 We will not go into the details of how the aliasing structure is computed, but rather refer the reader to \cite{cox_theory_2000}.
@@ -491,15 +491,16 @@ A possible reference on the matter is \cite{hill_first_1986}, or \cite{hedayat_o
 
 \subsection{Split Plot Design}
 \label{sec:split_plot}
-A \emph{split plot}, or \emph{split unit} design, is essentially a factorial design with blocking. 
-It takes its name from farming plots: where these are used for blocking and split among the various treatments. 
-The canonical example is due to \cite[Sec.12.4]{montgomery_design_2012}, and consists of studying two production factors with blocking by day. 
+Revisiting our web site layout problem:
+We want to block along age and country. 
+For each age and country combination (full factorial blocking) we can randomly assign users to site layouts. 
+This combination of a factorial design for blocking, is known as a \emph{split plot}, or \emph{split unit} design.
 For more on split plots see \cite[Sec.6.4]{cox_theory_2000}.
 
 
 
 \section{Continuous Factors}
-When dealing with continuous factors, or \emph{quantitative factors}, we have many more analysis strategies than when dealing with qualitative factors.
+When dealing with \emph{continuous factors}, or \emph{quantitative factors}, we have many more analysis strategies than when dealing with qualitative factors.
 No matter the analysis strategy, it is still important of choosing the right factor level combinations to study.
 
 Clearly, we cannot identify nonlinearities when sampling a factor only a two levels.
