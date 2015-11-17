@@ -281,8 +281,8 @@ Assuming $x_t \sim \gauss{\mu, \sigma_x^2}$ then clearly
 
 The control limits on $M_t$ are typically
 \begin{align}
-	UCL &:= \mu_0 + L \sigma_{M_t}= \mu_0 + L \, \frac{\sigma_x}{\sqrt{w}}, \\
-	LCL &:= \mu_0 - L \sigma_{M_t}= \mu_0 - L \, \frac{\sigma_x}{\sqrt{w}}.
+	UCL &:= \mu_0 + \arm \sigma_{M_t}= \mu_0 + \arm \, \frac{\sigma_x}{\sqrt{w}}, \\
+	LCL &:= \mu_0 - \arm \sigma_{M_t}= \mu_0 - \arm \, \frac{\sigma_x}{\sqrt{w}}.
 \end{align}
 The false alarm rate of this criterion is trivially $\alpha=0.0027$. 
 The $ARL_0$ is no longer simple to compute. 
@@ -335,13 +335,13 @@ and
 	z_t &\sim \gauss{\mu_0,	\sigma^2_{z_t} }, \\
 	\sigma^2_{z_t} &= \sigma^2_x \left( \frac{\lambda}{2-\lambda} \right)(1-(1-\lambda)^{2t}).
 \end{align}
-Eq.(\ref{eq:ewma_variance}) may be used to construct control limits for EWMA:
+Eq.(\ref{eq:ewma_variance}) may be used to construct control limits for EWMA.
 It is however, more economic to observe that for large $\lambda$ and $t$: $(1-(1-\lambda)^{2t}) \approx 1$ so that we may use 
 \begin{align}
 \begin{split}
 \label{eq:ewma_variance_approximate}
-	UCL &:= \mu_0 + 3 \sigma_{z_t} \approx \mu_0 + \arm \, \sqrt{\sigma^2_x\left( \frac{\lambda}{2-\lambda} \right)},  \\
-	UCL &:= \mu_0 - 3 \sigma_{z_t} \approx \mu_0 - \arm \, \sqrt{\sigma^2_x\left( \frac{\lambda}{2-\lambda} \right)},
+	UCL &:= \mu_0 + \arm \sigma_{z_t} \approx \mu_0 + \arm \, \sqrt{\sigma^2_x\left( \frac{\lambda}{2-\lambda} \right)},  \\
+	UCL &:= \mu_0 - \arm \sigma_{z_t} \approx \mu_0 - \arm \, \sqrt{\sigma^2_x\left( \frac{\lambda}{2-\lambda} \right)},
 \end{split}
 \end{align}
 with $\arm=3$ being the typical choice.
