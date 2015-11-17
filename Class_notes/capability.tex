@@ -111,17 +111,17 @@ Namely:
 \subsection{Non-Conformance for a Non-Gaussian CTQ}
 The first assumption we will now relax is the Gaussianity of $CTQ$. 
 We start by checking what is the non compliance rate, if we were completely wrong about the distribution of the CTQ. 
-Chebyshev's inequality provides a universal bound on $\pnc$ for a $\cp=1$ process.
+Chebyshev's inequality provides a universal bound on $\pnc$.
 
 
 \begin{theorem}[Chebyshev's inequality]
 For any random variable $\x$, with $\mu:=\expect{\x}$, and $\sigma^2:=\expect{(\x-\mu)^2}$, then
 \begin{align}
-	P(|\x-\mu| \geq k\sigma) \leq \frac{1}{k^2}
+	P(|\x-\mu| \geq k\sigma) \leq \frac{1}{k^2}.
 \end{align}
 \end{theorem}
 If $\cp=1$  then $\delta=3\sigma$. Plugging $k=3$ in the inequality returns $\pnc<0.11$.
-This means that a 3-sigma process, assumingly with $2,700 ppm$, may actually have $111,111 ppm$, if we were wrong about the Gaussianity assumption.
+This means that a 3-sigma process, assumingly with $2,700 ppm$, may actually have $111,111 ppm$, if we were very very wrong about the Gaussianity assumption.
 
 
 %\begin{theorem}[Vysochanskij–Petunin inequality]
@@ -177,7 +177,7 @@ When relaxing the normality assumption, $\sigma$ is no longer related to the tai
 
 
 \subsection{Process Capability of a Non-Centred Process}
-We will now relax the assumption of $\ctqExpect=\targetValue$, while still in statistical control.
+We will now relax the assumption of $\ctqExpect=\targetValue$.
 
 \begin{definition}[$\cpk$]
 \begin{align}
@@ -205,9 +205,10 @@ An illustration is given in Figure~\ref{fig:cpk}.
 
 
 The $\cpk$ index is motivated by conserving the relation between the index and the non-compliance rate $\pnc$, which is not captured by $\cp$ when the process is not centred. 
-Indeed if $\cp$ can be interpreted as ``accuracy compared to a (centred) 3-sigma process'', then $\cpk$ can be interpreted as ``accuracy compared to a (equally non-centred) 3-sigma process''.
+Indeed if $\cp$ can be interpreted as ``accuracy compared to a (centred) 3-sigma process'', then $\cpk$ can be interpreted as ``accuracy compared to a (non-centred) 3-sigma process''.
 The 3-sigma process is used as a benchmark for historical reasons. 
-In practice, it is actually very common to report the sigma-level as a capability index. This implies the 1-sigma process as a benchmark: $\min\set{\frac{USL-\mu}{\sigma},\frac{\mu-LSL}{\sigma}}$. Three-sigma would thus be reported as $3$, 6-sigma as $6$, etc.
+In practice, it is actually very common to report the sigma-level as a capability index: $\min\set{\frac{USL-\mu}{\sigma},\frac{\mu-LSL}{\sigma}}$. 
+Three-sigma would thus be reported as $3$, 6-sigma as $6$, etc.
 
 
 Another index, known as $\cpm$, or the \emph{Taguchi capability index}, also deals with the non centring but slightly differently. It is motivated by the observation that for $\ctqExpect=\targetValue$, then $\sigma=\sqrt{\expect{(CTQ-\targetValue)^2}}$. This relation does not hold if $\ctqExpect \not=\targetValue$, which leads us to the following definition:
