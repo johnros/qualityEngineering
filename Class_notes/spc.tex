@@ -137,7 +137,7 @@ It is quite common to design a control chart so that it achieves a particular $A
 \begin{remark}[ARLs more important than type-I errors]
 In the case of Shewhart charts, there is a simple mapping between ARL and type I error rates.
 This need not be the case for general control charts. 
-Since type I errors are guaranteed if the process runs long enough, then it is actually the ARL the design parameter of importance, and not the type-I error.
+Since type I errors are guaranteed if the process runs long enough, then it is actually the ARL that is more informative than type-I errors.
 \end{remark}
 
 
@@ -173,7 +173,7 @@ If normality of $\bar{x}_t$ can be assumed, then one may estimate $\sigma$ from 
 If normality cannot be assumed, there are many ways to go about. Here are some options:
 \begin{enumerate}
 \item Increase $n$: even if $\x_{it}$ is non normal, for large enough $n$, then $\bar{x}_t$ will be via the central limit theorem (CLT).
-\item Use empirical quantiles: If phase I was returned enough data, then we may estimate $\x_{\alpha/2}$ and $\x_{1-\alpha/2}$ using the empirical quantiles of phase I. The false alarm rate will be $\alpha$ since $P(\x \not \in [\x_{\alpha/2},\x_{1-\alpha/2}])=\alpha$.
+\item Use empirical quantiles: If phase I was returned enough data, then we may estimate $\x_{\alpha/2}$ and $\x_{1-\alpha/2}$ using the empirical quantiles of phase I. The false alarm rate will be $\alpha$ since $P(\x \not \in [\hat{\x}_{\alpha/2},\hat{\x}_{1-\alpha/2}]) \approx \alpha$.
 \item If some other distribution can be assumed then we may compute the false alarm rate of particular limits either analytically, or computationally (by simulation).
 \end{enumerate}
 
