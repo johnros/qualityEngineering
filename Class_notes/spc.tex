@@ -268,10 +268,10 @@ The following charts have a continuous flavour. As such, it is both favourable, 
 \sectionmark{MA}
 
 One way to pool information from different periods is by a \emph{moving average}.
-\begin{definition}[Moving Average- MA]
-The moving average in a window $w$, at period $t$, is defined as
+\begin{definition}[MA]
+The \emph{moving average} (MA) in a window $w$, at period $t$, is defined as
 \begin{align}
-	M_t:= \frac{x_t+\dots+x_{t-w+1}}{w}
+	M_t:= \frac{x_t+\dots+x_{t-w+1}}{w}.
 \end{align}
 \end{definition}
 Assuming $x_t \sim \gauss{\mu, \sigma_x^2}$ then clearly 
@@ -281,8 +281,8 @@ Assuming $x_t \sim \gauss{\mu, \sigma_x^2}$ then clearly
 
 The control limits on $M_t$ are typically
 \begin{align}
-	UCL &:= \mu_0 + 3 \sigma_{M_t}= \mu_0 + 3 \, \frac{\sigma_x}{\sqrt{w}} \\
-	UCL &:= \mu_0 - 3 \sigma_{M_t}= \mu_0 - 3 \, \frac{\sigma_x}{\sqrt{w}}.
+	UCL &:= \mu_0 + L \sigma_{M_t}= \mu_0 + L \, \frac{\sigma_x}{\sqrt{w}}, \\
+	LCL &:= \mu_0 - L \sigma_{M_t}= \mu_0 - L \, \frac{\sigma_x}{\sqrt{w}}.
 \end{align}
 The false alarm rate of this criterion is trivially $\alpha=0.0027$. 
 The $ARL_0$ is no longer simple to compute. 
