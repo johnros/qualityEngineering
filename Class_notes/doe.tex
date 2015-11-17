@@ -38,7 +38,7 @@ In this text, we only discuss the \textbf{design} of the experiment, and not the
 This is a non-standard choice as DOE is typically presented alongside the \emph{analysis of variance} (ANOVA) framework.\marginnote{ANOVA}
 We decouple the two since: 
 \cite{cox_theory_2000} do so, 
-these are two different thing, and finally, because the ANOVA framework may be easily replaced by the framework of \emph{linear models}, \emph{mixed models}, \emph{variance components}, and possibly others. 
+these are two different thing, and finally because the ANOVA framework may be easily replaced by the framework of \emph{linear models}, \emph{mixed models}, \emph{variance components}, and possibly others. 
 There is a vast literature focusing on the analysis method. \marginnote{Linear Models, \\ Mixed Models, Variance Components}
 If asked, this author may recommend \cite{hocking_analysis_1985}, which presents both the ANOVA terminology, and the linear models terminology.
 That book, however, may be hard to come by, so feel free to ask me for other references if required.
@@ -67,23 +67,25 @@ sometimes refers to the actual measurement or observation.
 
 \item [Level] Specific value of a factor.
 
-\item[Treatment] The particular factor-level combination applied to an experimental unit. \Aka \emph{manipulation}.
+\item[Treatment] The particular factor-level combination applied to an experimental unit. \Aka \emph{manipulation}, or \emph{cell}.
 
 \item [Factor Encodings] The numerical encoding of factor levels.
 Of minor importance for designing. Of major importance for analysis.
 Two level factor encodings include:
 \begin{enumerate}
-\item Effect coding: where levels are encoded with $-1,1$ returning orthogonal design matrices for balanced designs.
-\item Dummy coding: where levels are encoded with $0,1$ returning easily interpretable coefficients.
+\item Effect coding: where levels are encoded with $\set{-1,1}$.
+\item Dummy coding: where levels are encoded with $\set{0,1}$.
 \end{enumerate}
 
 \item [Experimental Region] All possible factor–level combinations for which experimentation is possible. \Aka \emph{factor space}, and \emph{design region}.
 
 \item [Design Matrix] A matrix description of an experiment that is useful for constructing and analyzing experiments.
 
-\item [Response] The CTQ.
+\item [Response] The CTQ in the SPC literature. 
 
-\item [Main Effect] Change in the expected response between two factor–levels.  We emphasize that effects, unlike simple population parameters, imply a causal relationship.
+\item [Main Effect] Change in the expected response between two factor–levels.  
+We emphasize that effects, unlike simple population parameters, imply a causal relationship.
+This is the \emph{assignable causes} in the SPC literature.
 
 \item [Interaction] Existence of joint factor effects in which the effect of each factor depends on the levels of the other factors.
 
