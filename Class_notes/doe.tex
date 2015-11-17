@@ -172,6 +172,7 @@ In our running example, we could reduce the variability of the web site's attrib
 Alternatively, we could block individuals along, say, age group. Age would act as a a non-specific factor, and we would then randomly assign user's to sites, only within age groups.
 If each age group has as many users as there are different site designs, this is a \emph{randomized complete block design}.\marginnote{Complete Block Design}
 If there are less users then site designs, this is a \emph{incomplete block design}.
+There are several approaches to incomplete block designs, but we refer the reader to \cite[Sec.4.2]{cox_theory_2000} for details.
 
 
 
@@ -183,6 +184,8 @@ We could construct all age and gender combinations, and randomly assign users fr
 This would is an example of a \emph{split plot} design, discussed in Section~\ref{sec:split_plot}.
 If, however, we do not deal with age-gender, but rather with age-country, we may not have enough users in each cell to assign to all site designs. 
 Since we do not want to estimate the effect of age, nor country, but merely balance the design so that age and country effects do not alias the site's effect, we do not actually need all age-country combinations. 
+
+
 
 If we have $k$ designs, we may group ages and countries into $k$ categories each, and each design is seen only once in each age group and once in each country group. 
 This allocation of treatment to blocks is known as a \emph{Latin Square}. 
@@ -242,7 +245,7 @@ The Latin Square design of Table~\ref{tab:latin_square} does just that.
 
 \begin{extra}\noindent
 \begin{enumerate}
-\item If the Latin Square reminds you of Soduko, it should. Soduko is exactly a Latin Square.
+\item If the Latin Square reminds you of Soduko, it should. Soduko is just that!
 \item The Latin Square is a very economical design, and is not used as often as it should be.
 \item If we had reason to believe that different age groups in different countries respond differently to each site (an interaction), then the Latin Square may actually introduce aliasing. 
 \end{enumerate}
@@ -252,7 +255,7 @@ The Latin Square design of Table~\ref{tab:latin_square} does just that.
 
 \subsubsection{Extensions of the Latin Square}
 \begin{enumerate}
-\item \textbf{Latin Hypercube}: When balancing more than variability sources (such as row/column), we will call upon \emph{latin hypercube designs}, \aka \emph{orthogonal latin squares}. \marginnote{Orthogonal Latin Squares}
+\item \textbf{Latin Hypercube}: When balancing more than two non-specific factors, we will call upon \emph{latin hypercube designs}, \aka \emph{orthogonal latin squares}. \marginnote{Orthogonal Latin Squares}
 \item \textbf{Greco-Latin Square}: A latin-hypercube with three variability sources. 
 \end{enumerate}
 
@@ -260,30 +263,20 @@ The Latin Square design of Table~\ref{tab:latin_square} does just that.
 
 
 
-\subsubsection{Incomplete Block Designs}
-Incomplete block designs arise where there are less observations per-block than treatments. 
-A classical example is when blocking with twins.
-There are several approaches to this matter, but we refer the reader to \cite[Sec.4.2]{cox_theory_2000} for details.
-
-
-
 
 \subsubsection{Crossover Design}
 \label{sec:crossover}
-Lets return to the movie rating example (\ref{eg:variance_components}).
-We can easily agree that tastes may vary considerably between individuals. 
-We would like to balance individuals' tastes.
-As previously mentioned, we could opt for a blocking strategy so that we cancel within-subject variability.
-Alternatively, we may balance the viewing periods over subjects. 
-This will not remove within-subject variability, but it will avoid a ``mood bias''.
+Lets return to the web site layout example (\ref{eg:variance_components}).
+Let us also assume that our site has $3$ web pages. A landing page, an information page, and a form to fill. 
+It is possible that the response to a particular page is affected by the previous page presented. 
+This is known as a \emph{carryover effecf}, or \emph{residual effect}, which may bias the main layout effects of interest. \marginnote{Carryover Effect}
 
 The more general phenomenon is dependence in the noise between trials. 
 Consider the same subject undergoing different treatments, or adjacent fields. 
-Clearly, one treatment may affect the response to another treatment. This is known as \emph{carry over}, or \emph{residual effect}. \marginnote{Carry Over Effect}
 \emph{Crossover} designs are such that all possible treatment adjacencies are considered, so that the carry over effect averages out. 
 
 In a \emph{fully randomized crossover design}, each unit is randomly allocated to a sequence of treatments.
-If treatments are combinations of several factors, it is not uncommon to use latin-hypercubes to generate the sequences. Table~\ref{tab:crossover} demonstrates possible sequences for a single, $3$-level factor.
+If treatments are combinations of several factors, it is not uncommon to use Latin Squares to generate the sequences. Table~\ref{tab:crossover} demonstrates the $3!=6$ sequences for our $3$ page website problem.
 \begin{table}[ht]
 \centering
 \begin{tabular}{rlll}
@@ -298,8 +291,8 @@ If treatments are combinations of several factors, it is not uncommon to use lat
   6 & 3 & 2 & 1 \\ 
    \hline
 \end{tabular}
-\label{tab:crossover}
 \caption[Crossover Design]{Crossover design: a balanced sequence of administration of $3$ treatments, generated with the \rcode{des.MOLS()} function of the \rcode{crossdes} \R package. }
+\label{tab:crossover}
 \end{table}
 
 
@@ -692,4 +685,5 @@ See \cite{sacks_design_1989} or \cite{santner_design_2013} for further details.
 
 
 \section{Bibliographic Notes}
-[TODO]
+% Cox and Reid
+% Penn State Stats 503: https://onlinecourses.science.psu.edu/stat503/node/1
