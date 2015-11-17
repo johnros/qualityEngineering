@@ -347,21 +347,28 @@ Allowing $n$ observations per condition, the experiment will include $4n$ observ
 \end{figure}
 With this $2^2$ design, we may recover several effects:
 \begin{description}
-\item [Main effect of A] The effect of varying $A$ from $(-)$ to $(+)$.
-\item [Main effect of B] The effect of varying $B$ from $(-)$ to $(+)$.
-\item The effect of varying both $A$ and $B$ from $AB=(--)$ to $AB=(++)$. 
+\item [Main effect of A] The effect of varying $A$ from $(-)$ to $(+)$, denoted $\tau^A$.
+\item [Main effect of B] The effect of varying $B$ from $(-)$ to $(+)$, denoted $\tau^B$.
+\item [Main effects and interaction] The effect of varying both $A$ and $B$ from $AB=(--)$ to $AB=(++)$, , denoted $\tau^{AB}$.
 \end{description}
 
-We typically denote $\mu_{(1)}$ the expected response for treatment $A=-,B=-$; 
-$\mu_a$ for $A=+,B=-$;
-$\mu_b$ for $A=-,B=+$;
-$\mu_{ab}$ for $A=+,B=+$.
-We can thus identify the following parameters:
-the global mean $\mu$, the main effect of A $\tau^A$, the main effect of B $\tau^B$, and an interaction between A and B $\tau^{AB}$:
+We typically denote
+\begin{table}[H]
+\centering
+\begin{tabular}{|c|c|c|c|}
+\hline Treatment & A & B & Mean \\ 
+\hline 1 & + & - & $\mu_a$ \\ 
+\hline 2 & + & + & $\mu_{ab}$ \\ 
+\hline 3 & - & - & $\mu_{(1)}$ \\ 
+\hline 4 & - & + & $\mu_b$ \\ 
+\hline 
+\end{tabular} 
+\end{table}
+How are these effects related to the mean responses to each treatment?
 \begin{align}
-	\tau^A &:= \frac{1}{2}\left( (\mu_{ab}+\mu_a)/2- (\mu_{(1)}+\mu_b)/2\right), \\
-	\tau^B &:= \frac{1}{2}\left( -(\mu_{ab}+\mu_a)/2 +  (\mu_{(1)}+\mu_b)/2\right), \\
-	\tau^{AB} &:= \frac{1}{4}\left( \mu_{ab} - \mu_a +  \mu_{(1)} - \mu_b \right).	
+	\tau^A &:= \frac{1}{4}\left( (\mu_{ab}+\mu_a)- (\mu_{(1)}+\mu_b)\right), \\
+	\tau^B &:= \frac{1}{4}\left( (\mu_{ab}+\mu_b) - (\mu_{(1)}+\mu_a)  \right), \\
+	\tau^{AB} &:= \frac{1}{4}\left( \mu_{ab} +  \mu_{(1)} -  \mu_a - \mu_b \right).	
 \end{align}
 
 
