@@ -501,7 +501,7 @@ The intensive care example, and the cyber security example, motivate our search 
 I.e., a signal that is manifested in very few of the $p$ CTQs.
 For this purpose, we merely offer several candidate multivariate statistics, with references where appropriate.
 \begin{description}
-\item [Max pooling] Where we control the process using the $\max$ over CTQs. Useful when we expect signal in a handful of CTQs.
+\item [Max pooling] Where we control the process using the $\max$ over CTQs. Useful when we expect signal in a handful of CTQs. This is in fact identical to the mass univariate approach of Section~\ref{sec:mass_univariate}.
 \item [Higher Criticism] Where pooling is performed using the Higher Criticism statistic. Appropriate for an intermediate \emph{rare-weak} sparsity pattern. See details in \citep{jin_cosmological_2005}.
 \item [Skewness Statistic] Where pooling is performed using the empirical third moment. Appropriate for an intermediate sparsity pattern. See details in \citep{jin_cosmological_2005}.
 \end{description}
@@ -545,12 +545,12 @@ where $C$ is the income between two productions halts, i.e., a \emph{cycle};
 $T$ is the cycle duration;
 $n$ is the number of samples per period;
 $\arm$ governs the control limits via $UCL:= \mu_0+ \arm \sigma_{\bar{x}}= \mu_0+ \arm \sigma_x / \sqrt{n}$;
-$h$ is the time interval between sample periods. 
+$h$ is the hours between sample periods. 
 
 We now need to establish how $\expect{C/T}$ is related to $n,\arm,h$. Here is our set of assumptions and notation:
 \begin{enumerate}
 \item When in control (IC), production is centred on $\mu_0$, assumed known. 
-\item When out of control (OC), $\mu_1=\mu_0 \pm \delta \sigma_x$. 
+\item When out of control (OC), $\mu_1=\mu_0 \pm k \sigma_x$. 
 \item When OC, production may proceed (!). 
 \item Search and repair costs are not part of $C$.
 \item OCs occur as a Poisson process, with rate $\lambda$ events per hour. The expected time from a sampling to an OC events is thus 
@@ -559,7 +559,7 @@ We now need to establish how $\expect{C/T}$ is related to $n,\arm,h$. Here is ou
 \end{align} 
 \item The power to detect an OC is 
 \begin{align}
-	\pi:= \Phi(-\arm-\delta/\sqrt{n})+ (1-\Phi(\arm-\delta/\sqrt{n}))
+	\pi:= \Phi(-\arm-k/\sqrt{n})+ (1-\Phi(\arm-k/\sqrt{n}))
 \end{align}
 \item The false alarm rate
 \begin{align}
