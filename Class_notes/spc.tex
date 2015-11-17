@@ -555,20 +555,20 @@ We now need to establish how $\expect{C/T}$ is related to $n,\arm,h$. Here is ou
 \item Search and repair costs are not part of $C$.
 \item OCs occur as a Poisson process, with rate $\lambda$ events per hour. The expected time from a sampling to an OC events is thus 
 \begin{align}
-	\tau := \frac{1-(1+ \lambda h) e^{-\lambda h}}{\lambda(1-e^{-\lambda h})}
+	\tau := \frac{1-(1+ \lambda h) e^{-\lambda h}}{\lambda(1-e^{-\lambda h})}.
 \end{align} 
 \item The power to detect an OC is 
 \begin{align}
-	\pi:= \Phi(-\arm-k/\sqrt{n})+ (1-\Phi(\arm-k/\sqrt{n}))
+	\pi:= \Phi(-\arm-k/\sqrt{n})+ (1-\Phi(\arm-k/\sqrt{n})).
 \end{align}
 \item The false alarm rate
 \begin{align}
-	\alpha:= 2 \Phi(-\arm)
+	\alpha:= 2 \Phi(-\arm).
 \end{align}
 \item Because of the Poisson process assumption,  $\expect{C/T}=\expect{C}/\expect{T}$. 
 \item The expected cycle length:
 \begin{align}
-	\expect{T}= \frac{1}{\lambda}+ \frac{h}{\pi}- \tau  + D
+	\expect{T}= \frac{1}{\lambda}+ \frac{h}{\pi}- \tau  + D.
 \end{align}
 where $\frac{1}{\lambda}$ is time IC;
 $\frac{h}{\pi}- \tau$ is the time the process is OC until detection;
@@ -587,6 +587,8 @@ $(a_1+a_2n)$ is the fixed and variable cost of taking a sample;
 $a_3$ is the cost of finding an assignable cause;
 $a'_3$ is the cost of investigating a false alarm.
 \end{enumerate}
+
+[TODO: add timeline]
 
 Given all the above, we may now plug Eq.(\ref{eq:optimal_design}) into our favourite numerical solver to find the optimal $h,\arm,n$.
 
