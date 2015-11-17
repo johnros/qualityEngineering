@@ -458,11 +458,11 @@ To see this we write the t-statistic in the following weird form:
 	t_t(x)=(\bar{x}_t-\mu_0) (s^2_t(x))^{-1} (\bar{x}_t-\mu_0).
 \end{align}
 This notation readily extends to the multivariate case. 
-For $p$ CTQs, then $\bar{x}_t$ and $\mu_0$ are $p$-length vectors, and $s^2_t(x)$ is replaced with the $p \times p$ matrix $\hat{\Sigma}_t(x)$.
+For $p$ CTQs, then $\bar{x}_t$ and $\mu_0$ are $p$-length vectors, and $s^2_t(x)$ is replaced with the $p \times p$ covariance matrix $\hat{\Sigma}_t(x)$.
 \begin{definition}[Hotteling's \tsq]
 \begin{align}
 \label{eq:hotteling}
-	T^2_t := n (\bar{x}_t-\hat{\mu}_0)' \hat{\Sigma}_t^{-1} (\bar{x}_t-\hat{\mu}_0).
+	T^2_t := n (\bar{x}_t-\hat{\mu}_0)' \hat{\Sigma}^{-1} (\bar{x}_t-\hat{\mu}_0).
 \end{align}
 \end{definition}
 To derive the control limits, we will be assuming that $\x_{it}$ is $p$-variate Gaussian distributed, $\gauss{\mu_0, \Sigma_{p \times p}}$. 
