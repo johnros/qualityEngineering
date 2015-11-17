@@ -248,12 +248,12 @@ Intervals for the other capability indexes, are available in \cite{montgomery_in
 
 \subsection{Testing Hypotheses on Capability}
 Consider a supply contract, which requires production to have $\cp>1.5$. 
-It may easily be the case, that the $\cp>1.5$, even if $\cpHat<1.5$, especially if the sample size is small.
+It may easily be the case, that $\cp>1.5$, even if $\cpHat<1.5$, especially if the sample size is small.
 It thus makes a lot of sense, to design hypothesis tests on process capabilities. 
 We observe that for an i.i.d. sample from a Gaussian population, where $\cpHat$ is estimated with $s$, then
 \begin{align}
 \label{eq:cp_dist}
-	(n-1) \left( \frac{\cp}{\cpHat} \right)^2  \sim \chi^2_{n-1}
+	(n-1) \left( \frac{\cp}{\cpHat} \right)^2  \sim \chi^2_{n-1},
 \end{align} 
 so that $(n-1) \left( \frac{\cp}{\cpHat} \right)^2 $ may serve as test statistic.
 
@@ -305,10 +305,10 @@ Besides mentioning their existence, we will not give them further attention, sin
 \begin{remark}
 At this point, I hope you are wondering why isn't $\pnc$ used as a capability index. 
 Well, it is! 
-1It is simply not called a ``capability index'', simply because the term is reserved to $\cp, \cpk, \cpm$ etc.
+It is simply not called a ``capability index'', simply because the term is reserved to $\cp, \cpk, \cpm$ etc.
 \end{remark}
 
 
 
 \section{Bibliographic Notes}
-[TODO]
+This chapter is based almost entirely on \cite{montgomery_introduction_2007}.
