@@ -12,9 +12,9 @@ Its goal is to \emph{screen} factors with no effect, to estimate effect sizes, a
 
 Roughly speaking, the challenges in designing good experiment are:
 \begin{enumerate}
-\item Efficiency: extract the most information per sample. 
+\item Efficiency: extract the most information per sampled unit.
 \item Signal to noise: remove variability that might mask factor effects.
-\item Bias: avoid uncontrolled factor-effects from being ``absorbed'' into controlled factor effects.
+\item Bias: avoid uncontrolled effects from being ``absorbed'' into controlled ones.
 \end{enumerate}
 
 
@@ -23,8 +23,8 @@ Roughly speaking, the challenges in designing good experiment are:
 
 Before we dig in, several matters should be emphasized:
 \begin{description}
-\item [Randomization] Randomization is fundamental to our purpose. This because the idea of an \emph{effect} implies causality. Any inference we make, is causal, which is the inference we need for controlling a process.
-It is the mechanism of randomization, that allows us to conclude that inferred correlations are causal, and not merely statistical.
+\item [Randomization] Randomization is fundamental to our purpose. This is because the idea of an \emph{effect} implies causality. Any inference we make, is causal, which is the inference we need for controlling a process.
+It is the mechanism of randomization, that allows us to conclude that correlations are causal, and not merely statistical.
 For a treatment of causal inference in \emph{observational data}, i.e., without randomization, see \cite{rosenbaum_observational_2002}.
 
 \item [Pre-experiment] In this text we take it for granted that the purpose of the experiment is well known, and the candidate factors defined. We are fully aware, as should be the reader, that in application this is a non-trivial luxury. Indeed, a lot of planning, and domain-knowledge go into the selection of factors, their candidate levels, etc.
