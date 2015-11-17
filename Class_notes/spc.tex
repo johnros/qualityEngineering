@@ -383,8 +383,8 @@ Observing that when under control then $C_t \sim \gauss{\mu_0, t \sigma_x^2}$, w
 \begin{align}
 \label{eq:cusum_simple_limits}
 \begin{split}
-	UCL &:= \mu_0 + 3 \sigma_{C_t}= \mu_0 + \arm \, \sqrt{t \sigma_x^2},  \\
-	UCL &:= \mu_0 - 3 \sigma_{C_t}= \mu_0 - \arm \, \sqrt{t \sigma_x^2}.
+	UCL &:= \mu_0 + \arm \sigma_{C_t}= \mu_0 + \arm \, \sqrt{t \sigma_x^2},  \\
+	LCL &:= \mu_0 - \arm \sigma_{C_t}= \mu_0 - \arm \, \sqrt{t \sigma_x^2}.
 \end{split}
 \end{align}
 You may encounter these limits in your favourite software (\rcode{qcc} package in \R?), but it less often discussed in the literature. 
