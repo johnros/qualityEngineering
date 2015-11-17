@@ -166,26 +166,67 @@ If you suspect, as you should, that we may reduce variability by grouping types 
 
 
 \subsection{Randomized Block Designs}
-The idea of blocking is to replace the complete \emph{randomization scheme} by a restricted randomization scheme so that variability can be reduced without introducing bias. 
+The idea of \emph{blocking} is to replace the complete randomization scheme by a restricted randomization scheme so that variability can be reduced without introducing bias. 
 The restricted randomization is created by \emph{grouping}, or \emph{blocking} groups of experimental units, and randomizing allocation within the group. 
-
-
-
-
-\subsubsection{Randomized Complete Block Designs (RCB)}
-The simplest of approaches to reducing uncontrollable variability sources is to \emph{block}, or \emph{group} similar observations together. 
-If blocks come in pairs of observations, such as eyes, twins, etc.\, we call the RCB design a \emph{matched pairs design}, which should be familiar to you from the analysis with paired t-tests.\marginnote{Matched Pairs}
-
-In a general \emph{complete block design}, when given $k$ treatments, we form $n$ blocks of $k$ homogenous individuals and randomly assign them to treatments. 
+In our running example, we could reduce the variability of the web site's attributes by showing various sites to the same person- each person would be his own block. This is an example of \emph{crossover} design, discussed in Section~\ref{sec:crossover}.
+Alternatively, we could block individuals along, say, age group. Age would act as a a non-specific factor, and we would then randomly assign user's to sites, only within age groups.
+If each age group has as many users as there are different site designs, this is a \emph{randomized complete block design}.\marginnote{Complete Block Design}
+If there are less users then site designs, this is a \emph{incomplete block design}.
 
 
 
 
 \subsubsection{Latin Square Design}
-When homogenous groups are defined by two qualitative criteria, we would like to create blocks that are balanced, so that the treatment's effect is not biased.
-The following example demonstrates how \emph{latin squares} create blocks that are balanced with respect to these two qualitative criteria (which we do not call ``factors'' since we are not interested in their effects). 
+When homogenous groups are defined by two non-specific factors, we would like to create blocks that are balanced, so that the non-specific factors do not bias effect estiamtes.
+In our running example, non-specific factors may be age and gender. 
+We could construct all age and gender combinations, and randomly assign users from each age-gender to each site design.
+This would is an example of a \emph{split plot} design, discussed in Section~\ref{sec:split_plot}.
+If, however, we do not deal with age-gender, but rather with age-country, we may not have enough users in each cell to assign to all site designs. 
+Since we do not want to estimate the effect of age, nor country, but merely balance the design so that age and country effects do not alias the site's effect, we do not actually need all age-country combinations. 
+If we have $k$ designs, we may group ages and countries into $k$ categories each, and each design is seen only once in each age group and once in each country group. 
+This allocation of treatment to blocks is known as a \emph{Latin Square}. 
+Table~\ref{tab:latin_square} demonstrates a Latin Square for $7$ web site designs, and compares it to a non-balanced allocation of sites to age-country groups. 
+\begin{table}[ht]
+    \begin{minipage}{.5\linewidth}
+        \centering
+		\begin{tabular}{rlllllll}
+		  \hline
+		 & 1 & 2 & 3 & 4 & 5 & 6 & 7 \\ 
+		  \hline
+		1 & 1 & 2 & 3 & 4 & 5 & 6 & 7 \\ 
+		2 & 1 & 2 & 3 & 4 & 5 & 6 & 7 \\ 
+		3 & 1 & 2 & 3 & 4 & 5 & 6 & 7 \\ 
+		4 & 1 & 2 & 3 & 4 & 5 & 6 & 7 \\ 
+		5 & 1 & 2 & 3 & 4 & 5 & 6 & 7 \\ 
+		6 & 1 & 2 & 3 & 4 & 5 & 6 & 7 \\ 
+		7 & 1 & 2 & 3 & 4 & 5 & 6 & 7 \\ 
+		   \hline
+		\end{tabular}
+    \end{minipage}%
+    \begin{minipage}{.5\linewidth}
+      \centering
+		\begin{tabular}{rlllllll}
+		  \hline
+		 & 1 & 2 & 3 & 4 & 5 & 6 & 7 \\ 
+		  \hline
+		1 & 1 & 2 & 3 & 4 & 5 & 6 & 7 \\ 
+		  2 & 2 & 3 & 4 & 5 & 6 & 7 & 1 \\ 
+		  3 & 3 & 4 & 5 & 6 & 7 & 1 & 2 \\ 
+		  4 & 4 & 5 & 6 & 7 & 1 & 2 & 3 \\ 
+		  5 & 5 & 6 & 7 & 1 & 2 & 3 & 4 \\ 
+		  6 & 6 & 7 & 1 & 2 & 3 & 4 & 5 \\ 
+		  7 & 7 & 1 & 2 & 3 & 4 & 5 & 6 \\ 
+		   \hline
+		\end{tabular}
+		\end{minipage} 
+\caption{A $7$-treatment, two-factor design. 
+Left pane is not balanced.
+Right pane is balanced with a Latin Square, generated with the \rcode{MOLS()} function of the \rcode{crossdes} \R package.}
+\label{tab:latin_square}		
+\end{table}
 
 
+The following example makes the same point, with the original agricultural motivation for this design.
 \begin{example}[Agricultural Yield Study]
 \label{eg:latin_square}
 Consider an farmer growing corn.
@@ -196,25 +237,17 @@ He could treat the row and column as two factors, with $7$ levels each, be he do
 He will thus try to look for an allocation of fertilizer to rows and columns so that any row/column effect will be averaged out.
 The Latin Square design of Table~\ref{tab:latin_square} does just that.
 \end{example}
-\begin{table}[ht]
-\centering
-\begin{tabular}{rlllllll}
-  \hline
- & 1 & 2 & 3 & 4 & 5 & 6 & 7 \\ 
-  \hline
-1 & 1 & 2 & 3 & 4 & 5 & 6 & 7 \\ 
-  2 & 2 & 3 & 4 & 5 & 6 & 7 & 1 \\ 
-  3 & 3 & 4 & 5 & 6 & 7 & 1 & 2 \\ 
-  4 & 4 & 5 & 6 & 7 & 1 & 2 & 3 \\ 
-  5 & 5 & 6 & 7 & 1 & 2 & 3 & 4 \\ 
-  6 & 6 & 7 & 1 & 2 & 3 & 4 & 5 \\ 
-  7 & 7 & 1 & 2 & 3 & 4 & 5 & 6 \\ 
-   \hline
-\end{tabular}
-\label{tab:latin_square}
-\caption[Latin Square]{Latin Square: A $7$-factor latin square, generated with the \rcode{MOLS()} function of the \rcode{crossdes} \R package.
-The number in each cell denotes the treatment (the fertilizer in Example~\ref{eg:latin_square}).}
-\end{table}
+
+
+\begin{extra}
+\begin{enumerate}
+\item If the Latin Square reminds you of Soduko, it should. Soduko is exactly a Latin Square.
+\item The Latin Square is a very economical design, and is not used as often as it should be.
+\item If we had reason to believe that different age groups in different countries respond differently to each site (an interaction), then the Latin Square may actually introduce aliasing. 
+\end{enumerate}
+\end{extra}
+
+
 
 \subsubsection{Extensions of the Latin Square}
 \begin{enumerate}
@@ -235,6 +268,7 @@ There are several approaches to this matter, but we refer the reader to \cite[Se
 
 
 \subsubsection{Crossover Design}
+\label{sec:crossover}
 Lets return to the movie rating example (\ref{eg:variance_components}).
 We can easily agree that tastes may vary considerably between individuals. 
 We would like to balance individuals' tastes.
