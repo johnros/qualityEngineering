@@ -121,28 +121,27 @@ This is the \emph{common} variability in the SPC literature.
 \section{Dealing with Variability}
 \label{sec:variance_components}
 
-The idea that random samples come with variability, or noise, should not be new to the reader (but see Extra~\ref{extra:pac_learning} below.)
-In this section, we will try to decompose variability into it sources, and learn several techniques to reduce the noise sources. 
+The idea that random samples come with variability, or noise, should not be new to the reader.
+In this section, we will try to decompose variability into it sources, and learn several techniques to reduce them. 
 Starting with a motivating example.
 
 
 
-\begin{example}[Movie Ratings]
+\begin{example}[Web Design]
 \label{eg:variance_components}
-Consider the problem of ranking movies along their rating.
-For this purpose, individuals are asked to rate each movie they have seen.
-A movie's rating is thus influenced by several factors:
-the movie's quality, 
-the viewer's general tastes, 
-the viewer's particular tastes to that type of movie,
-the viewer's mood at the time of watching,
-other factors.
-How can we accurately rate a movie, in the presence of these variability sources?
-The movie's quality is a controllable input, thus a factor.
-The viewer's strictness is not controllable, but observable, thus may be introduced as a covariate.
-The viewer's affinity to that type of movie is an interaction, since both movie type and viewer, are observable.
-The viewer's mood is unobservable, but we certainly acknowledge its existence. 
-Any other variance source, will be captured by the error term of the model. 
+Consider the problem of optimizing a web site, or user interface, where individuals performance is measured by conversion rate (the probability of a new user to signup, purchase, etc).
+Users' conversion is influenced by several factors:
+The site's attributes,
+the users' attributes, 
+a user's affinity to a particular attributes,  
+a user's mood, 
+and endlessly many other things
+How can we accurately optimize our site, in the presence of these variability sources?
+The site's attributes are the \emph{factors} we want to study.
+The users' attributes are \emph{covariates}. 
+A user's affinity to the site's attributes is an \emph{interaction}. 
+The users' mood is unobservable, thus a \emph{non-specific factor} we will try to either \emph{block} or \emph{balance}.
+Any other variability, will be captured by the \emph{noise} term of the model. 
 \end{example}
 
 Example~\ref{eg:variance_components} teaches us that by an informed experimental design and analysis, we may reduce noise.
