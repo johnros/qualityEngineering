@@ -620,11 +620,11 @@ Usually more sensitive than the range.
 Like the $s$ chart, only in variance-scale.
 \subsection{$p$ and $np$ Chart}
 Where $\bar{x}$ is replaced by the proportion ($p$), or number ($np$), of non-conforming units.
-Appropriate for attributes, i.e., discrete QTCs.
+Appropriate for attributes, i.e., discrete CTQs.
 \subsection{$c$ Chart}
 Like a $np$ chart, but where the number of nonconforming units is replaced with the total number of nonconformances, allowing multiple defects per unit. 
 \subsection{$u$ Chart}
-Like the $c$ chart, but allowing a variable number of units per sample (varying $n$).
+Like the $c$ chart, but allowing a variable number of units per period (varying $n$).
 \subsection{Regression Control Chart}
 In a \emph{regression control chart}, the test statistic can be a regression coefficient. 
 When compounded with multivariate charts, a regression control chart may accommodate several regression  coefficient, or the residuals. 
@@ -633,7 +633,7 @@ When compounded with multivariate charts, a regression control chart may accommo
 
 
 \section[Extensions]{Extensions of Control Charts}
-We have been discussing the simplest of \barxChart chart, for ease of exposition.
+We have been discussing the simplest of \barxChart, for ease of exposition.
 Several immediate extensions are possible.
 The reader is referred to \cite{montgomery_introduction_2007} for details.
 \begin{description}
@@ -645,7 +645,7 @@ Obviously the control limits and the test statistic may need appropriate updates
 
 \item [Running windows] The ideas of pooling information over periods with a MA, EWMA, and CUSUM may be extended to all type of Shewhart charts. 
 Also, there are endlessly many period pooling schemes. 
-You are free to pick a set of weights, or convolve your data with a \emph{causal filter}\footnote{\url{https://en.wikipedia.org/wiki/Causal_filter}} can provide a pooling scheme.
+You are free to pick a set of weights, or convolve your data with a \emph{causal filter}\footnote{\url{https://en.wikipedia.org/wiki/Causal_filter}} to create your favourite pooling scheme.
 
 \item [Multiple Charts] When inspecting a process, rarely does one inspect a single chart at a time. A typical dashboard would include several charts running in parallel, as depicted in Figure~\ref{fig:dashboard}.
 
@@ -662,3 +662,5 @@ You are free to pick a set of weights, or convolve your data with a \emph{causal
 The contents of this chapter is mostly derived from \cite{montgomery_introduction_2007}. 
 For a more mathematically rigorous treatment of the topic see \cite{basseville_detection_1993}.
 For an \R oriented exposition of the topic, see \cite{qiu_introduction_2013}.
+A quick digest review may be found in \cite{natrella_nist/sematech_2010}.
+For multivariate process control, see for example \cite{ge_multivariate_2012}. 
