@@ -417,7 +417,7 @@ This is because $3$ level factors typically appear when aiming at optimizing the
 
 
 \subsection{Fractional Factorial}
-The full factorial designs are the simplest designs to setup and interpret. 
+Full factorial designs are the simplest designs to setup and interpret. 
 A major drawback, are the resources required when $k$ is large. 
 This is where the \emph{fractional factorial}, or \emph{partial factorial} designs kick in.
 The fundamental idea is to design a full factorial, but skip a couple experimental conditions. If conditions to skip are wisely selected, only information on higher order interactions will be compromised.
@@ -425,9 +425,9 @@ The fundamental idea is to design a full factorial, but skip a couple experiment
 
 \begin{example}[From $2^2$ to $2^{(2-1)}$]
 \label{eg:fractional_factorial}
-As a first example, we will try to save some time and money by eliminating particular conditions of the $2^2$ design in Figure~\ref{fig:full_factorial}.
+As a first toy example, we will try to save some time and money by eliminating particular conditions of the $2^2$ design in Figure~\ref{fig:full_factorial}.
 As the name may suggest, a $2^{2-1}$ design, has $2$ experimental conditions in each run. 
-There are thus $\binom{4}{2}=6$ possible eliminations.
+There are thus $\binom{4}{2}=6$ possible eliminations, which are enumerated in Table~\ref{tab:partial_factorial} along with the extractable information in each elimination.
 \begin{table}[ht]
 \begin{tabular}{|p{2.5cm}|p{10cm}|}
 \hline Elimination &  Problem \\ 
@@ -440,8 +440,8 @@ There are thus $\binom{4}{2}=6$ possible eliminations.
 \hline 3,4 &  No information on $a$.\\ 
 \hline 
 \end{tabular} 
-\label{tab:partial_factorial}
 \caption[Aliasing]{Aliasing in a $2^{2-1}$ design: All possible eliminations from the $2^2$ design that lead to a $2^{2-1}$ design.}
+\label{tab:partial_factorial}
 \end{table}
 \end{example}
 
