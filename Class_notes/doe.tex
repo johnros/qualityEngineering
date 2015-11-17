@@ -157,6 +157,13 @@ Gage R\&R experiments consist of performing several \emph{repeat tests}, and dif
 
 
 
+\subsection{Complete Randomized Designs}
+In the simplest of designs, all experimental units are randomly assigned to treatments. 
+Typically easy to implement.
+In Example~\ref{eg:variance_components} this would imply randomly assigning users to interfaces.
+If you suspect, as you should, that we may reduce variability by grouping types of users together, keep reading.
+
+
 
 \subsection{Randomized Block Designs}
 The idea of blocking is to replace the complete \emph{randomization scheme} by a restricted randomization scheme so that variability can be reduced without introducing bias. 
@@ -614,6 +621,10 @@ This is known as \emph{adaptive design}. The crux, as usual, is not inflating th
 \begin{extra}[Active Learning]
 In the machine learning literature, the idea of adaptive design of experiments is known as \emph{active learning}, where the emphasis is less on adaptive-testing, but rather on adaptive-estimation.
 \end{extra}
+
+
+\section{AB Testing}
+[TODO]
 
 
 
