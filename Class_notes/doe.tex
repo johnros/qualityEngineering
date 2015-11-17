@@ -330,16 +330,15 @@ Put differently, he is unable to estimate an interaction.
 \subsection{Full Factorial Designs}
 A \emph{full factorial}, or \emph{complete factorial} design, is one where all factor-level combinations are replicated the same number of times.
 The most common of the full-factorial designs is the $2^k$-design where all combinations of $k$ factors with two levels each are tested in each replication.
-A $2^k$ design with $n$ repeats will necessitate $2^k\times n$ experimental units.
-
 
 
 
 \subsubsection{$2^k$ design}
 Consider two factors denoted $A$ and $B$.
-Adopt the effect coding so that we encode their levels by $-1,1$.
+Adopt the effect coding so that we encode their levels by $\set{-1,1}$.
 The design matrix of a single run is depicted in Figure~\ref{fig:full_factorial} (top right) along with a visualization of the design (top left).
 Allowing $n$ observations per condition, the experiment will include $4n$ observations, which will be randomized between conditions.
+
 \begin{figure}[ht]
 \centering
 \includegraphics[width=0.7\linewidth, height=0.3\textheight]{art/full_factorial}
@@ -347,9 +346,11 @@ Allowing $n$ observations per condition, the experiment will include $4n$ observ
 \label{fig:full_factorial}
 \end{figure}
 With this $2^2$ design, we may recover several effects:
-The effect of varying $A$ from $-$ to $+$: the \emph{main effect of $A$}.
-The effect of varying $B$ from $-$ to $+$: the \emph{main effect of $B$}.
-The effect of varying both $A$ and $B$ from $-$ to $+$. 
+\begin{description}
+\item [Main effect of A] The effect of varying $A$ from $(-)$ to $(+)$.
+\item [Main effect of B] The effect of varying $B$ from $(-)$ to $(+)$.
+\item The effect of varying both $A$ and $B$ from $AB=(--)$ to $AB=(++)$. 
+\end{description}
 
 We typically denote $\mu_{(1)}$ the expected response for treatment $A=-,B=-$; 
 $\mu_a$ for $A=+,B=-$;
