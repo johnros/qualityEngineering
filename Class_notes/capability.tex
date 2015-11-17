@@ -5,7 +5,6 @@
 In a \emph{system capability analysis}, we essentially use statistical tools to measure the variability in a production process.
 This analysis can answer questions that are raised at the measuring, analyzing, and improving stages of the DMAIC cycle. 
 The methods we will discus compare between the processes variability and its specifications. 
-Note, however, that a simple statistical analysis of the production process, without relating to specification, may also qualify as a system capability analysis.
 
 We naturally want production processes that adhere to specifications, and want to quantify the level of adherence.
 The quantification is performed by comparing the variability in a CTQ to the specification.
@@ -21,7 +20,7 @@ When we use the actual time, and ordering of data samples, as in a control chart
  
  
 Because capability analysis, or product specification, is essentially the study of the CTQ's distribution, it can be approached with the aforementioned statistical tools such as univariate summary statistics and visualizations presented in Sections~\ref{sec:summary_statistics} and \ref{sec:visualizations}.
-To test a particular hypothesis want to be tested on the distribution of the CTQ, we may call upon the inference tools from Chapter~\ref{sec:inference}.
+To test a particular hypothesis on the distribution of the CTQ, we may call upon the inference tools from Chapter~\ref{sec:inference}.
 
 
 
@@ -40,7 +39,6 @@ The first, and most basic PCR is the $\cp$ of a particular CTQ.
 \end{align}
 where $\sigma$ is the standard deviation of the CTQ.
 Eq.(\ref{eq:cp}) readily offers an interpretation of the $\cp$: it measures how accurate is our process compared to a 3-sigma process: $\cp=1$ for 3-sigma, $\cp=2$ for 6-sigma, etc.
-
 \end{definition}
 Clearly $\cp$ is a process parameter, that needs to be estimated.
 \begin{definition}[$\cpHat$]
@@ -57,7 +55,7 @@ To explore this relation we introduce the following notation:
 \begin{tcolorbox}
 \footnotesize
 \textbf{Collecting Notation} \newline
-$\targetValue:= (USL+LSL)/2$, the target value. \newline
+$\targetValue$, the target value. \newline
 $\delta:= (USL-LSL)/2$, the specification tolerance. $USL=\targetValue+\delta, LSL=\targetValue-\delta$.  \newline
 $\ctqExpect:= \expect{CTQ}$, the expected CTQ. \newline
 $\pnc:= 1-P(CTQ \in [LSL,USL])$, the probability of non compliance. 
@@ -99,10 +97,8 @@ parameter, new process
 To derive Eq.(\ref{eq:pc_and_pnc}), and thus the ppm column in the table, we had to call upon several assumptions.
 Namely:
 \begin{enumerate}
-\item The process is in statistical control, i.e. $\ctqExpect$ is fixed over time
 \item The CTQ has a normal distribution.
 \item The process is centred, i.e. $\ctqExpect=\targetValue$.
-\item $\targetValue$ is mid-way between LSL and USL.
 \end{enumerate}
 
 
@@ -114,7 +110,7 @@ Namely:
 
 \subsection{Non-Conformance for a Non-Gaussian CTQ}
 The first assumption we will now relax is the Gaussianity of $CTQ$. 
-We start by checking what is the fallout rate, if we were completely wrong about the distribution of the CTQ. 
+We start by checking what is the non compliance rate, if we were completely wrong about the distribution of the CTQ. 
 Chebyshev's inequality provides a universal bound on $\pnc$ for a $\cp=1$ process.
 
 
@@ -208,7 +204,7 @@ An illustration is given in Figure~\ref{fig:cpk}.
 
 
 
-The $\cpk$ index is motivated by conserving the relation between the index and the fallout rate $\pnc$, which is not captured by $\cp$ when the process is not centred. 
+The $\cpk$ index is motivated by conserving the relation between the index and the non-compliance rate $\pnc$, which is not captured by $\cp$ when the process is not centred. 
 Indeed if $\cp$ can be interpreted as ``accuracy compared to a (centred) 3-sigma process'', then $\cpk$ can be interpreted as ``accuracy compared to a (equally non-centred) 3-sigma process''.
 The 3-sigma process is used as a benchmark for historical reasons. 
 In practice, it is actually very common to report the sigma-level as a capability index. This implies the 1-sigma process as a benchmark: $\min\set{\frac{USL-\mu}{\sigma},\frac{\mu-LSL}{\sigma}}$. Three-sigma would thus be reported as $3$, 6-sigma as $6$, etc.
@@ -304,7 +300,7 @@ Besides mentioning their existence, we will not give them further attention, sin
 
 
 \begin{remark}
-At this point, I hope you are wondering why isn't the fallout rate, $\pnc$, not used as a capability index. 
+At this point, I hope you are wondering why isn't $\pnc$ used as a capability index. 
 Well, it is! 
 1It is simply not called a ``capability index'', simply because the term is reserved to $\cp, \cpk, \cpm$ etc.
 \end{remark}
