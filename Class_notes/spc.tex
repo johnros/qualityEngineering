@@ -387,9 +387,9 @@ Observing that when under control then $C_t \sim \gauss{\mu_0, t \sigma_x^2}$, w
 	LCL &:= \mu_0 - \arm \sigma_{C_t}= \mu_0 - \arm \, \sqrt{t \sigma_x^2}.
 \end{split}
 \end{align}
-You may encounter these limits in your favourite software (\rcode{qcc} package in \R?), but it less often discussed in the literature. 
+You may encounter these limits in your favourite software (\rcode{qcc} package in \R), but it less often discussed in the literature. 
 This is because CUSUMs were introduced by \cite{page_continuous_1954}, which offered different control limits. 
-\cite{montgomery_introduction_2007} adopts \citeauthor{page_continuous_1954}'s view and presents limits in two forms: the \emph{decision interval} (DI) form, \aka the \emph{tabular} form, and the graphical form known as a \emph{V-mask}.
+\cite{montgomery_introduction_2007} adopts \citeauthor{page_continuous_1954}'s view and presents limits in two forms: the \emph{decision interval} (DI) form, \aka the \emph{tabular} form, and the graphical form known as a \emph{V-mask}.\marginnote{V-Mask}
 These two control limits are equivalent. Before we present them, we try to offer some intuition for the difference between the limits in Eq.(\ref{eq:cusum_simple_limits}) and those of \cite{page_continuous_1954}.
 
 The fundamental difference between the control limits of \cite{page_continuous_1954}, and the ones presented until now, is that \citeauthor{page_continuous_1954} designed limits for the particular history of each process, while the limits until now, including Eq.(\ref{eq:cusum_simple_limits}) do not adapt to the particular history of the process.
