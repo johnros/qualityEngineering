@@ -211,7 +211,8 @@ In practice, it is actually very common to report the sigma-level as a capabilit
 Three-sigma would thus be reported as $3$, 6-sigma as $6$, etc.
 
 
-Another index, known as $\cpm$, or the \emph{Taguchi capability index}, also deals with the non centring but slightly differently. It is motivated by the observation that for $\ctqExpect=\targetValue$, then $\sigma=\sqrt{\expect{(CTQ-\targetValue)^2}}$. This relation does not hold if $\ctqExpect \not=\targetValue$, which leads us to the following definition:
+Another index, known as $\cpm$, or the \emph{Taguchi capability index}, also deals with the non centring but slightly differently. \marginnote{Taguchi Index}
+It is motivated by the observation that for $\ctqExpect=\targetValue$, then $\sigma=\sqrt{\expect{(CTQ-\targetValue)^2}}$. This relation does not hold if $\ctqExpect \not=\targetValue$, which leads us to the following definition:
 \begin{definition}[$\cpm$]
 \begin{align}
 		\cpm &:= \frac{USL-LSL}{6 \sqrt{\expect{(CTQ-\targetValue)^2}}} \\
@@ -229,7 +230,7 @@ Eq.(\ref{eq:cpm}) readily shows that just like the $\cpk$, then $\cpm \leq \cp$.
 
 
 \subsection{Interval Estimation for Capability Indexes}
-Since the various process capability indexes are merely population parameters, we can also construct confidence intervals (CIs) for them, which may be very informative if sample sizes are small.
+Since the various process capability indexes are merely population parameters, we can also construct confidence intervals (CIs) for them, which are very important for small sample sizes, thus point estimates unreliable.
 The simplest case is that of $\cp$. Being a monotone transformation of $\sigma$, we can call upon confidence intervals for the variance of a normal population, so that with probability $1-\alpha$:
 \begin{align}
 \label{eq:ci_for_cp}
