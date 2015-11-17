@@ -543,10 +543,10 @@ We used the idea of ``balance'' and ``orthogonality'' to avoid bias and unwelcom
 In this section, we try to formalize the notion of a ``good design''.
 We start with some motivating examples.
 
-\begin{example}[Design for non linear regression]
+\begin{example}[Design for linear regression]
 \label{eg:design_linear}
 Figure~\ref{fig:design_linear} demonstrates the effect of the different location of the sampling points ($x$) on the quality of the estimated regression line, in a \textbf{linear} model.
-As the figure depicts, it is preferable to spread the sampling points as far as possible, as intuition may suggest.
+As the figure depicts, and intuition suggests, it is preferable to spread the sampling points as far as possible.
 \begin{figure}[ht]
 \centering
 \includegraphics[height=0.3\textheight]{art/linear}
@@ -562,7 +562,7 @@ As the figure depicts, it is preferable to spread the sampling points as far as 
 \begin{example}[Design for non linear regression]
 \label{eg:design_non_linear}
 Figure~\ref{fig:design_nonlinear} demonstrates the effect of the different location of the sampling points ($x$) on the quality of the estimated regression line, in a \textbf{nonlinear} model.
-The figure is non conclusive as to the best design, but it may seem that unlike the linear case (Example~\ref{eg:design_linear}) optimality is achieved in some non trivial sampling scheme.
+It may seems that unlike the linear case (Example~\ref{eg:design_linear}) optimality is achieved in some intermediate spread of the $x$s.
 \begin{figure}[ht]
 \centering
 \includegraphics[height=0.3\textheight]{art/nonlinear}
