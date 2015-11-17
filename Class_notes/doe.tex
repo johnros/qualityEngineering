@@ -183,9 +183,10 @@ We could construct all age and gender combinations, and randomly assign users fr
 This would is an example of a \emph{split plot} design, discussed in Section~\ref{sec:split_plot}.
 If, however, we do not deal with age-gender, but rather with age-country, we may not have enough users in each cell to assign to all site designs. 
 Since we do not want to estimate the effect of age, nor country, but merely balance the design so that age and country effects do not alias the site's effect, we do not actually need all age-country combinations. 
+
 If we have $k$ designs, we may group ages and countries into $k$ categories each, and each design is seen only once in each age group and once in each country group. 
 This allocation of treatment to blocks is known as a \emph{Latin Square}. 
-Table~\ref{tab:latin_square} demonstrates a Latin Square for $7$ web site designs, and compares it to a non-balanced allocation of sites to age-country groups. 
+Table~\ref{tab:latin_square} demonstrates a Latin Square for $7$ web site designs, and compares it to a non-balanced allocation. 
 \begin{table}[ht]
     \begin{minipage}{.5\linewidth}
         \centering
@@ -239,7 +240,7 @@ The Latin Square design of Table~\ref{tab:latin_square} does just that.
 \end{example}
 
 
-\begin{extra}
+\begin{extra}\noindent
 \begin{enumerate}
 \item If the Latin Square reminds you of Soduko, it should. Soduko is exactly a Latin Square.
 \item The Latin Square is a very economical design, and is not used as often as it should be.
