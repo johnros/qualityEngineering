@@ -455,7 +455,7 @@ Clearly we could set $\alpha^*=1-\sqrt[m]{1-\alpha}$, so that the joint false al
 Hotteling's \tsq statistic is a generalization of the t-test.
 To see this we write the t-statistic in the following weird form:
 \begin{align}
-	t_t(x)=(\bar{x}_t-\mu_0) (s^2_t(x))^{-1} (\bar{x}_t-\mu_0).
+	t^2_t(x)=(\bar{x}_t-\mu_0) (s^2_t(x))^{-1} (\bar{x}_t-\mu_0).
 \end{align}
 This notation readily extends to the multivariate case. 
 For $p$ CTQs, then $\bar{x}_t$ and $\mu_0$ are $p$-length vectors, and $s^2_t(x)$ is replaced with the $p \times p$ covariance matrix $\hat{\Sigma}_t(x)$.
@@ -465,40 +465,20 @@ For $p$ CTQs, then $\bar{x}_t$ and $\mu_0$ are $p$-length vectors, and $s^2_t(x)
 	T^2_t := n (\bar{x}_t-\hat{\mu}_0)' \hat{\Sigma}^{-1} (\bar{x}_t-\hat{\mu}_0).
 \end{align}
 \end{definition}
-To derive the control limits, we will be assuming that $\x_{it}$ is $p$-variate Gaussian distributed, $\gauss{\mu_0, \Sigma_{p \times p}}$. 
-We need to be very clear, however, on how $\mu_0$ and $\Sigma_t^{-1}$ are estimated. 
-We thus consider the following scenario:
-\begin{enumerate}
-\item \tsq is computed at Phase II with a single observation at a time ($n=1$)
-\item $\mu_0,{\Sigma}_t^{-1}$ were estimated from $m$ observations in Phase I.
-\end{enumerate}
-Eq.(\ref{eq:hotteling}) thus yields 
+To derive the control limits, we will be assuming that $\x_{it}$ is $p$-variate Gaussian distributed, $\x_{it}\sim \gauss{\mu_0, \Sigma_{p \times p}}$. 
+The sampling distribution of $T^2_t$ will depend on how $\mu_0$ and $\Sigma_t$ are estimated. 
+In a wide variety of cases, when the number of observations for estimation is much larger then $p^2$, then 
 \begin{align}
-	T^2_t := (x_t-\hat{\mu}_0)' \hat{\Sigma}_t^{-1} (x_t-\hat{\mu}_0).
-\end{align}
-and 
-\begin{align}
-	T^2_t \sim_{H_0} F_{p,m-p} \frac{p(m-1)(m+1)}{m(m-p)} \overset{m \to \infty}{\rightsquigarrow }\chi^2_p.
+	T^2_t \overset{H_0}{\rightsquigarrow }\chi^2_p.
 \end{align}
 We can thus construct the control limit for this scenario:
 \begin{align}
-	UCL:= F_{1-\alpha,p,m-p} \frac{p(m-1)(m+1)}{m(m-p)} \approx \chi^2_{1-\alpha,p}.
+	UCL:= \chi^2_{1-\alpha,p}.
 \end{align}
 Note that the \tsq statistic is \emph{non directional}: it will increase in the presence of both positive and negative drift. 
 
-We may consider the distribution of \tsq under many configurations: where $\mu_0,\hat{\Sigma}_t^{-1}$ are estimated at Phase II, where we take $n$ observation in each period, etc. 
-Conveniently enough, if the estimation of $\mu_0$ and $\Sigma$ is based on many observations (compared to $p$) then under all scenarios
-\begin{align}
-	T^2_t  \rightsquigarrow \chi^2_p,
-\end{align}
-and thus
-\begin{align}
-	UCL \approx \chi^2_{1-\alpha,p}.
-\end{align}
-
-\begin{extra}
-For exact results and references on the various scenarios described, we refer the reader to \cite[Ch.7]{qiu_introduction_2013}.
-\end{extra}
+We may consider the exact distribution of \tsq under many configurations. 
+We opted for the $\chi^2_p$ for ease of exposition. For exact result \cite[Ch.7]{qiu_introduction_2013} should be consulted. 
 
 Since the above limits have an (approximate) type-I error rate of $\alpha$, and the periods are typically independent, then we can readily apply Eq.(\ref{eq:arl_0}) to compute $ARL_0$.
 
