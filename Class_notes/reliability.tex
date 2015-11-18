@@ -26,8 +26,13 @@ This chapter thus introduces both the probability calculus typically used for re
 Let $\x_j \in \set{0,1}, j=1,\dots,p$ denote the state of the $j$'th component of a system, and $x=(x_1,\dots,x_p)$.
 
 \begin{definition}[Structure Function]
-The \emph{structure function}, $\struct=\struct(x):x \mapsto \set{0,1}$, is an indicator function of the state of the system.
+The \emph{structure function}, $\struct=\struct(x):x \mapsto \set{0,1}$, is an indicator function of the state of the system. A failure indicated by $0$. 
 \end{definition}
+
+\begin{remark}[$\Phi$]
+We apologize to the reader for using $\Phi$ to denote both the $\gauss{0,1}$ CDF, and the structure function.
+We do so to stay in accordance with reliability literature, and since no collisions are created in this chapter by doing so.
+\end{remark}
 
 \begin{definition}[Series System]
 A \emph{series system}, or \emph{serial system}, is one where all components need to function for the system to function: $$\struct(x)=\prod_{j=1}^{p}x_j.$$
