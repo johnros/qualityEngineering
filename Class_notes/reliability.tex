@@ -503,19 +503,26 @@ For a more detailed discussion, see \cite{cox_analysis_1984}.
 
 
 \subsection{Choosing the Base Failure Rate}
-Since the failure rate well defines the failure time distribution, and vise-versa, then choosing the base failure rate is the same as assuming the failure time distribution.
+Since the failure rate defines the failure time distribution, and vise-versa, then choosing the base failure rate is the same as assuming the failure time distribution.
 The three possible approaches include:
 \begin{enumerate}
 \item Assume a \textbf{parametric} model, such as exponential times, Weibull times, etc.
-\item Assume a \textbf{semi-parametric} model, which can be simply seen as a flexible class of distributions, that has no particular parametric representation. In reliability analysis, the piece-wise constant hazard is a popular choice.
-\item Do not assume anything on the distribution, known as a \textbf{non-parametric} proach. 
+\item Assume a \textbf{semi-parametric} model, which can be simply seen as a flexible class of distributions, that has no particular parametric representation. In reliability analysis, the \emph{piece-wise constant} hazard is a popular choice.
+\item Do not assume anything on the distribution, known as a \textbf{non-parametric} approach. 
 \end{enumerate}
 If we assume a particular parametric model, then we may gather failure time data, write the likelihood function, and return failure rate estimates, and covariate effects.
 We now focus on the more flexible framework of semi-parametric modelling.
 
 
+\subsection{The Parametric Case}
+A parametric model fitting to failure data, is simply a maximum likelihood problem.
+Example~\ref{eg:likelihood_of_failures} is one such example with exponential distributed failure times. 
 
-\subsection{Piecewise Exponential Class}
+
+
+
+\subsection{The Semi Parametric Case}
+We now relax the explicit model assumption, and adopt a more flexible semi-parametric model class, known as the \emph{piecewise exponential class}.\marginnote{Piecewise Exponenitial}
 Consider the proportional hazard model:
 \begin{align}
 	\hazard{\T|x}{t}:=\hazard{\T|x_0}{t} \times \exp((x-x_0)'\beta).
@@ -544,7 +551,7 @@ It is a rather flexible class of distributions. Figure~\ref{fig:piecewise_expone
 
 \section{Bibliographic Notes}
 An light introductory discussion, may be found in \cite{nahmias_production_2015}. 
-The probabilistic analysis is adapted from \cite{aven_stochastic_1999}.
+The probabilistic analysis in this text is adapted from \cite{aven_stochastic_1999}.
 The seminal reference probably being \cite{barlow_mathematical_1965}.
 The statistical analysis is adapted from German Rodriguez's Generalized-Linear-Models class notes\footnote{\url{http://data.princeton.edu/wws509/notes/c7.pdf}.} and \cite[Ch.8]{natrella_nist/sematech_2010}.
 For more on the statistical analysis, see \cite{cox_analysis_1984}, \cite{kalbfleisch_statistical_2002}, or \cite{klein_survival_2005}.
