@@ -589,6 +589,7 @@ The most natural of designs, which is particularly suitable when we have no a-pr
 As the name suggests, in a space filling design we aim at filling the factor space. Lacking any a-priori information, the filling will typically be as uniform as possible. 
 We note however, that once information on $f(x)$ is made available, then a space filling design is typically sub optimal (see Example~\ref{eg:design_linear}).
 
+
 \begin{extra}[Space Filling and Hashing]
 If you are familiar with the idea of \emph{hashing functions}, then you may see the similarity between space filling and the \emph{uniformity} property of hash functions. 
 For a more rigorous discussion, see \cite{hill_first_1986}.
@@ -601,52 +602,43 @@ We have already noted the the optimality of the design depends on the data gener
 In this section it is made obvious that optimality will also depend on the analysis method we choose.
 
 When estimating the effect of a single continuous factor, we would like a design that gives us the most information per observation on some effect $\beta$. 
-This is the same as minimizing the variance of the estimator, $\min \{Var(\hat{\beta})\}$, with respect to the design.
-
-When generalizing to several continuous factors, with an effect vector $\beta$ of dimension $p$, matters are more subtle.
-This is because, having several parameters, we may consider several target criteria such as
-minimal average variance, or minimal worst-case variance.
-Matters further complicate when effect estimates are correlated, as will be promptly explained. 
-
-
-\begin{definition}[Error Covariance Matrix]
-For a $p$-vector of effects $\beta$, we define the $p \times p$ \emph{error covariance} matrix $M(\hat{\beta},\beta)$ to be 
+This is the same as minimizing the variance of the estimator, $\min \{Var[\hat{\beta}]\}$, with respect to the design.
+In the case of linear regression with a single coefficient we know that 
 \begin{align}
-	M(\hat{\beta},\beta)_{i,j}:= \expect{(\hat{\beta}_i-\beta_i)((\hat{\beta}_j-\beta_j))}  
+	Var[\hat{\beta}] &= \frac{\sigma^2_\varepsilon}{\sum_{i=1}^{n}(x_i-\bar{x})^2}.
 \end{align}
-\end{definition}
-Denoting $M=M(\hat{\beta},\beta)$, we readily note that for unbiased $\hat{\beta}$, then the diagonal of $M$ is simply the variances of $\hat{\beta}$, and the off-diagonal are the covariances. 
-We also remark that if $p=1$, then $M$ is merely the scalar variance. 
-
-We now try to generalize the idea of ``minimal variance'' to the multivariate case. 
-
+Minimizing $Var[\hat{\beta}]$ is thus the same as spreading the $x$'s as far as possible, in accordance with the intuition from Example~\ref{eg:design_linear}.
+Now recall that in a multivariate linear regression problem with an $n \times p$ design matrix, then 
+\begin{align}
+	Var[\hat{\beta}] &= \sigma^2_\varepsilon (X'X)^{-1}.
+\end{align}
+In this multivariate case, there may be several notions of ``maximal spread''. 
+Denoting $M:= (X'X)^{-1}$, we can define:
 \begin{definition}[A-Optimality]
-	A design is said to be \emph{A optimal} if it minimizes the trace of $M$.
+	A design is said to be \emph{A optimal} if it minimizes the average univariate variance.
+	Formally: $\min \set{\Tr(M)}$.
 \end{definition}
-A-optimality has an intuitive interpretation: since the average variance is proportional to the trace, then A-optimality is actually minimizing the average variance over effects.
-
-Alas, A-optimality does not account for covariances. 
+A-optimality does not account for covariances. 
 In an extreme scenario, if we have several copies of the same variable, the more copies we have, the more importance that variable will be given by A-optimality.
 The most popular optimality criterion is known as \emph{D-optimality}, and does not suffer from this phenomenon.
-
 \begin{definition}[D-Optimality]
-	A design is said to be \emph{D optimal} if it minimizes the determinant of $M$.
+	A design is said to be \emph{D optimal} if it minimizes the volume of the confidence region for $\beta$. 
+	Formally: $\min \set{\det(M)}$.
 \end{definition}
-If you are familiar with the geometrical interpretation of the determinant, this definition may not surprise you. 
-If not, then one way to think of D-optimality is via confidence regions.
-D-optimality has the property that in the multivariate Gaussian case, a D-optimal design will return confidence regions for $\beta$ with smallest volume. 
+
+Both A-optimality and D-optimality implicitly target linear models, such as in Example~\ref{eg:design_linear}, because they aim at spreading the $x$'s. From Example~\ref{eg:design_non_linear} we know this to be sub-optimal doe non-linear designs. 
+For non-linear designs, one may opt for space filing designs (\ref{sec:space_filling}), or consult \cite{pukelsheim_optimal_1993}. 
+
 
 
 \begin{extra}[Other Optimality Criteria]
-There are as many optimality criteria as there are matrix norms. 
-For a more detailed review, see \cite{wikipedia_optimal_2015}.
+There are as many optimality criteria as there are matrix norms. For a more detailed review, see \cite{wikipedia_optimal_2015}.
+For a mathematical rigorous, and through treatment, see \cite{pukelsheim_optimal_1993}.
 \end{extra}
 
-The non-linear model example (\ref{eg:design_non_linear}) suggests that the optimal design may depend on the underlying (unknown) effect $\beta$. 
-This is obviously bad news since if we had knowledge of $\beta$, we would not need an experiment to estimate it. 
-There are, however, some good news.
-First, for linear models and least-squares estimate, then $M$ will not depend\footnote{This is known as the \emph{equivariant in law} property.} on $\beta$, and neither will the optimal design. 
-Second, when $M$ does depend on $\beta$, we will simply do some initial small experiment, and then optimize the design based on initial results. 
+
+
+
 
 
 
@@ -711,3 +703,4 @@ See \cite{sacks_design_1989} or \cite{santner_design_2013} for further details.
 \section{Bibliographic Notes}
 % Cox and Reid
 % Penn State Stats 503: https://onlinecourses.science.psu.edu/stat503/node/1
+% optimal designs Pukel...
