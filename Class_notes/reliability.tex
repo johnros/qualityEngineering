@@ -63,13 +63,13 @@ A reliability diagram of a parallel system is given in Figure~\ref{fig:parallel_
 A \emph{k-out-of-p} system is one where at least $k+1$ components need to fail for the system to fail:
 $$\struct(x)=\indicator{\sum_{j=1}^{p} x_j \geq k}.$$
 \end{definition}
-A reliability diagram of a k-our-of-p system is not provided, since it is not very friendly.
+A reliability diagram of a k-out-of-p system is not provided, since it is not very friendly.
 
 
 
 
 \begin{definition}[Monotone System]
-A system is said to be \emph{monotone} if $\struct(x_1,\dots,\x_p)$ is non decreasing in all is components.
+A system is said to be \emph{monotone} if $\struct(x_1,\dots,x_p)$ is non decreasing in all components.
 \end{definition}
 The definition of monotonicity captures the idea that you cannot improve a system's state by breaking components.
 This seems rather natural (I am still looking for a counter example).
@@ -106,7 +106,7 @@ $$ S_\struct= \sum_{i=k}^{p} \binom{n}{i} p^i (1-p)^{n-i} .$$
 
 \begin{extra}[Reliability analysis of complex systems]
 Except for simple systems, of the type we presented, the computation of the reliability of a complex system may be a formidable task. 
-For complicated real-life systems, \emph{mix-cut--max-flow} algorithms, or \emph{inclusion-exclusion} type algorithms are emplyed. 
+For complicated real-life systems, \emph{min-cut--max-flow} algorithms, or \emph{inclusion-exclusion} type algorithms are employed. 
 For more details, see \cite{aven_stochastic_1999}.
 \end{extra}
 
@@ -127,7 +127,7 @@ In order to identify the weakest link we require some measure of reliability imp
 
 
 \begin{definition}[Improvement potential]
-The \emph{improvement potential} is defined as the change in a systems reliability, if we could force a component to function indefinitely.
+The \emph{improvement potential} is defined as the change in a system's reliability, if we could force a component to function indefinitely.
 Formally, we denote $\Phi^{(j)}$ to be a system where component $j$ cannot fail. 
 We then define the improvement potential with respect to component $j$ to be 
 \begin{align}
@@ -138,7 +138,7 @@ We then define the improvement potential with respect to component $j$ to be
 
 
 \begin{definition}[Birenbaum's measure]
-\emph{Birenbaum's measure} is defined as the change in a systems reliability, if we infinitesimally improve the reliability of component $j$.
+\emph{Birenbaum's measure} is defined as the change in a system's reliability, if we infinitesimally improve the reliability of component $j$.
 Formally 
 \begin{align}
 	I_j: =\frac{\partial}{\partial p_j} S_{\Phi}.
@@ -181,16 +181,16 @@ The survival function of a random variable $\T$ at a point $t$ is given by
 \end{align}
 \end{definition}
 By definition, it follows that if $\T_j$ is the time to failure of component $j$, then $p_j(t)=\survive{\T_j}{t}$.
-Our notation bot $S_\struct$ also becomes clear, since it $\T_\struct$ is the time to failure of a structure $\Phi$, then we may write $S_\struct(t)=\survive{\T_\struct}{t}$.
+If $\T_\struct$ is the time to failure of a system $\Phi$, then we may write $S_\struct(t)=\survive{\T_\struct}{t}$.
 
 
 \begin{example}[Survival of a series system]
-For a series system $\struct$, the reliability of the system at time $t$ is given by $$\survive{\Phi}{t}=\prod_{j=1}^{p} p_j(t)$$.
+For a series system $\struct$, the reliability of the system at time $t$ is given by $$\survive{\Phi}{t}=\prod_{j=1}^{p} p_j(t).$$
 \end{example}
 
 
 \begin{example}[Survival of a parallel system]
-For a series system $\struct$, the reliability of the system at time $t$ is given by $$\survive{\Phi}{t}=\prod_{j=1}^{p} p_j(t)$$.
+For a parallel system $\struct$, the reliability of the system at time $t$ is given by $$\survive{\Phi}{t}=1- \prod_{j=1}^{p} (1-p_j(t))= \coprod_{j=1}^p p_j(t).$$
 \end{example}
 
 
@@ -229,7 +229,7 @@ The failure rate of a series system of independent components $\Phi$ is given by
 \end{align}
 \end{theorem}
 The proof is immediate using the cumulative risk.
-The failure rate of a parallel system, does not admit such a nice closed form.
+The failure rate of a parallel system, does not admit such a nice closed form as we will soon see in Example~\ref{eg:failure_parallel}.
 
 
 
@@ -248,15 +248,17 @@ so that
 \end{align}
 \end{example}
 The exponential is the only distribution with constant hazard which makes it very easy to analyze.
-The constant hazard is due to the \emph{memoryless} property; think what the memoryless property implies on Eq.(\ref{eq:hazard}).
+The constant hazard is due to the \emph{memoryless} property. Look at Eq.(\ref{eq:hazard}) and think why.
 
+% [HW: prove that memory less is sufficient]
 
 
 \begin{example}[Failure rate of a series of exponential components]
 The failure rate of a series system $\Phi$, of $p$ independent components each with exponentially distributed failure times, is simply 
 \begin{align}
-	\hazard{\Phi}{t}= p \lambda, \forall t \geq 0
+	\hazard{\Phi}{t}= \sum_{j=1}^{p} \lambda_j, \forall t \geq 0
 \end{align}
+where $\lambda_j=\lambda_j(t)$ is the rate of each component.
 \end{example}
 This is obviously the simplest system possible for reliability analysis, which stems from the fact that a minimum of exponentials is exponential with the sum of rates.
 
@@ -275,7 +277,8 @@ The failure rate is given by
 \end{align}
 \end{example}
 Why is Example~\ref{eg:failure_parallel} so important?
-Because it a very simple example in which the failure rate is no longer \textbf{non-monotone}, as depicted in Figure~\ref{fig:hazard_non_monotone}. 
+Because it demonstrates that even in a simple system, with the simplest components, the reliability is not so simple to compute (as a function of the components' reliability). 
+Indeed, even though the hazards are fixed, the system's hazard is non monotone in time (Figure~\ref{fig:hazard_non_monotone}). 
 
 
 \begin{figure}[ht]
