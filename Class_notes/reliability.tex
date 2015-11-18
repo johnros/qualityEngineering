@@ -469,7 +469,11 @@ For models for stress, voltage, humidity, and other life accelerating covariates
 
 
 \subsection{Proportional Hazard Models}
-The \emph{proportional hazard}, or \emph{proportional risk} class of models, assumes that covariates multiply not survival times, but rather failure rates: 
+The \emph{proportional hazard}, or \emph{proportional risk} class of models, assumes that covariates multiply not time, but rather failure rates. 
+Put differently, accelerated life acts linearly on time, thus non-linearly on hazards. Proportional hazards acts linear on hazards, thus non linearly on time. 
+Qualitatively, both either accelerate or decelerate time. Quantitatively, the exact amount of acceleration/deceleration may differ. 
+
+Formally
 \begin{align}
 	\hazard{\T|x}{t}:=\hazard{\T|x_0}{t} \times \exp((x-x_0)'\beta) ,
 \end{align}
@@ -480,12 +484,12 @@ The implied survival function satisfies $$ \survive{\T|x}{t}=\survive{\T|x_0}{t}
 In our two group example, a proportion hazard thus implies that group $x=1$ has $\exp(\beta)$ times more probability of surviving until time $t$ then group $x=0$. 
 
 
-We may now ask ourselves, which of our favourite failure time distribution functions posses the accelerated life and the proportional hazard property. It turns out that the Weibull class is the only distribution with both properties.
-We now explain for the particular instance of the exponential failure time distribution, which is part of the Weibull class.
+
 \begin{example}[Accelerated life and proportional hazard in the exponential class]
 Recall that the exponential distribution has a fixed failure rate (over time). 
 If you change factors so that the \textbf{hazard doubles} (proportional hazard), it is still constant in time, thus exponentially distributed. 
 If you accelerate life so that the \textbf{rate doubles} (accelerated life), it is still constant in time, thus exponentially distributed. 
+The exponential distribution assumption is thus closed under the various time rescaling.
 \end{example}
 
 %[HW: prove this for Weibull ]
