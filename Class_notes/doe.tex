@@ -600,9 +600,10 @@ For a more rigorous discussion, see \cite{hill_first_1986}.
 We have already noted the the optimality of the design depends on the data generating process.
 In this section it is made obvious that optimality will also depend on the analysis method we choose.
 
-When estimating the effect of a single continuous factor, we would like a design that gives us the most information per observation. This is the same as minimizing the variance of the estimator: $\min \{Var(\hat{\beta})\}$.
+When estimating the effect of a single continuous factor, we would like a design that gives us the most information per observation on some effect $\beta$. 
+This is the same as minimizing the variance of the estimator, $\min \{Var(\hat{\beta})\}$, with respect to the design.
 
-When generalizing to several continuous factors, with several effect, matters are more subtle.
+When generalizing to several continuous factors, with an effect vector $\beta$ of dimension $p$, matters are more subtle.
 This is because, having several parameters, we may consider several target criteria such as
 minimal average variance, or minimal worst-case variance.
 Matters further complicate when effect estimates are correlated, as will be promptly explained. 
