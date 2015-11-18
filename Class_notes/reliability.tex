@@ -406,11 +406,11 @@ The probabilistic analysis of the previous section is great fun and all, but lik
 This is where data, and statistics come in.
 Indeed, given any particular probabilistic model, we may write the likelihood problem, and call upon maximum likelihood principles for estimation.
 
-Failure data and models introduces particular statistical difficulties:
+Failure data and models introduces particular statistical challenges:
 \begin{description}
 \item [Identifiability] It is typically hard, if not impossible, to estimate the reliability of particular components, from the reliability of the whole system. 
 \item [Censoring] a major concern with reliability data, is that in any finite length experiment, some events will just not have happened yet; their failure time will thus be censored. Ironically- the more reliable a component, the less data we will have to estimate its reliability. 
-\item [Extrapolating from lab to life] Once estimated reliability in a lab, we would like to extrapolate findings into real-life operating conditions.
+\item [Lab versus real-life conditions] Reliable components take very long time to fail. We much rather extrapolate from harsh lab conditions to real-life operating conditions. This requires the introduction of covariates. 
 \item [Failure Distribution] like any statistical model, we will need to commit to some failure time sampling distribution.
 \end{description}
 
@@ -439,10 +439,6 @@ Example~\ref{eg:likelihood_of_failures} teaches us that unless further assumptio
 
 
 \subsection{Censor Events}
-The problem of censoring, which in an extreme case may lead us to having no failure time data at all, will be approached in several ways. The first, will be an explicit modelling of censoring events.
-The second, will be to introduce covariates, or factors in the DOE parlance, so that failure rates can be extrapolated from lab conditions, to operating conditions.
-
-
 [TODO]
 
 
@@ -450,21 +446,23 @@ The second, will be to introduce covariates, or factors in the DOE parlance, so 
 
 
 \subsection{Accelerated Life Models}
-The \emph{accelerated life} model is very popular for very reliable components. This is because it may take forever to produce defect. We thus ``accelerate'' their life, by testing them under extreme conditions, and then scale back to the regular operating environment.
+The \emph{accelerated life} model is very popular for very reliable components. This is because it may take forever to produce defect. We thus ``accelerate'' life, by testing under extreme conditions, and then scale back to the regular operating environments.
 
-An accelerate life mode assumes that the effect of covariates are \textbf{multiplicative}. For this reason, a change in a covariate multiplies fail rates, as ``fast forwarding'' time would. 
-Such models imply that 
-\begin{align}
-	\log \T = x'\beta + \varepsilon \Leftrightarrow \T = \exp(x'\beta) \times \T_0.
-\end{align}
-If $\T_1$ has $x_1'\beta=1$ , and $\T_2$ has $x_2'\beta=\gamma$, then 
-\begin{align}
-\survive{\T_2}{t}=\survive{\T_1}{t/\gamma},
-\end{align}
-which gives the model its name.
+An accelerate life mode assumes that covariates rescale time. 
+For instance, the lab may produce conditions where time (assumingly) moves ten times as fast than in real-life operating conditions.
 
-Popular accelerated time models include, that capture effects of temperature include the \emph{Arrhenius model}, and the \emph{Eyring model}.\marginnote{Arrhenius \\ Eyring}
+Formally if $\T_1$ is the time to failure under conditions $x_1$ , and $\T_2$ under conditions $x_2$. 
+And the covariates effects are such that $x_1' \beta=1$ and $x_2' \beta=\gamma$,  then 
+\begin{align}
+	\survive{\T_2}{t}=\survive{\T_1}{t/\gamma},
+\end{align}
+meaning that the conditions $x_2$ are such that time is accelerated by $1/\gamma$ compared to conditions $x_1$.
+
+
+\begin{extra}
+Popular accelerated time models that capture effects of temperature include the \emph{Arrhenius model}, and the \emph{Eyring model}.\marginnote{Arrhenius \\ Eyring}
 For models for stress, voltage, humidity, and other life accelerating covariates, see \cite[Sec.8.1.5]{natrella_nist/sematech_2010}
+\end{extra}
 
 
 
