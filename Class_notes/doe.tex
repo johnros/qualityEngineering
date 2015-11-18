@@ -654,8 +654,8 @@ Interestingly, the initial application of a sequential design was not in drug te
 
 The problem with sequential testing, is the \emph{type-I error inflation}, which is simply a \emph{multiplicity problem}. \marginnote{Multiplicity}
 To see this, think about an endless sequential experiment. Also assume the null hypothesis is true. 
-Can we agree that a regular (non sequential) experiment will not reject $H_0$? 
-Can we also agree that a sequential experiment will necessarily reject $H_0$ at some stage?
+Because of consistency, then a regular (non sequential) experiment will not reject $H_0$?
+But if the test is sequential, the type-I error of endlessly many tests at level $\alpha$ each, will certainly be making more than $\alpha$ mistakes (unless dependence is perfect).
 
 In it simplest version, a sequential design allows early stopping for rejection of the null, or for futility (non-rejection). 
 In more elaborate schemes then not only is early stopping allowed, but also the redesign of the experiment. 
@@ -667,8 +667,16 @@ In the machine learning literature, the idea of adaptive design of experiments i
 \end{extra}
 
 
-\section{AB Testing}
-[TODO]
+\section{$A\backslash B$ Testing}
+Our web-site optimization example is interesting not only because it accommodates so many DOE practices, but it is also a practical problem of great interest.
+For historical reasons, the experimentation with several web-site layouts is not called a factorial experiment (which it is), but rather an \emph{$A\backslash B$-test}.
+
+Some particular characteristics of $A\backslash B$ testing include:
+\begin{enumerate}
+\item Users come by the millions. Sample size is rarely an issue, so that avoiding bias is more important than avoiding variability.
+\item Browser cookies, or login details define blocks. Technology permits to optimize the size for each block separately. If blocking is to very specific subgroups (female users, running Linux, that purchased on Amazon, etc.), then sample size, and thus variability, may become an issue again.
+\item Sites have many layout parameters (locations, colours, sizes,...). Studying all these combinations may result on a formidable task (full factorial?!?).
+\end{enumerate}
 
 
 
@@ -690,9 +698,9 @@ This is what \emph{computer experiments} are all about.
 The wind design example (\ref{eg:wings}) demonstrates the following points:
 \begin{enumerate}
 \item Computer experiments are essentially numerical solutions to complicated systems of equations.
-\item Because solutions take a lot of time, only a small finite set of values may be evaluated. 
+\item Because solutions take a lot of time, only a small finite set of factor levels may be evaluated. 
 \item The ``response'' to each treatment, is deterministic. 
-\item The problem of interest is in reconstructing the response at non measured factor values, so that optimal values may be identified. 
+\item The problem of interest is in reconstructing the response at non measured factor levels, so that optimal values may be identified. 
 \end{enumerate}
 It is thus not uncommon to call upon DOE theory for choosing the factor combinations to be experimented with. Space filling designs (Sec.~\ref{sec:space_filling}) being a particularly prevalent choice. 
 The analysis of computer experiment is very different than real-life experiment since we have no noise component. 
@@ -701,6 +709,11 @@ See \cite{sacks_design_1989} or \cite{santner_design_2013} for further details.
 
 
 \section{Bibliographic Notes}
-% Cox and Reid
-% Penn State Stats 503: https://onlinecourses.science.psu.edu/stat503/node/1
-% optimal designs Pukel...
+For an overview of DOE see \cite{cox_theory_2000}, \cite{mason_statistical_2003}, \cite{everitt_cambridge_2010}. 
+Another nice and freely available resource is a Penn State course on the topic\footnote{\url{https://onlinecourses.science.psu.edu/stat503/node/1}}. 
+Some seminal references in the field include \cite{fisher_design_1960} and \cite{box_statistics_1978}.
+For causal inference in non-designed experiments see \cite{rosenbaum_observational_2002}. 
+For optimal designs see \cite{pukelsheim_optimal_1993}.
+For analysis of data: linear models, ANOVA, etc.\ there are endlessly many books. This author's recommendations include \cite{hocking_analysis_1985}, \cite{greene_econometric_2003}. 
+For the relation between factorial designs and coding theory in computer science, see \cite{hill_first_1986}. 
+For design and analysis of computer experiments, see \cite{sacks_design_1989} or \cite{santner_design_2013}.
