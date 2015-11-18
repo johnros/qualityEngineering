@@ -394,7 +394,7 @@ For two independent random variables, $\x$ and $\y$, both in the IFR ageing clas
 
 
 \begin{example}[IFR of Gamma]
-The Gamma (and thus the Erlang) distribution is in the IFR aging class, since it is the sum of exponentials, each in the IFR class.
+The Gamma (and thus the Erlang) distribution is in the IFR aging class, since it is the sum of exponentials, each with constant failure rates, thus each IFR.
 \end{example}
 
 
@@ -404,9 +404,9 @@ The Gamma (and thus the Erlang) distribution is in the IFR aging class, since it
 \section{Statistical Analysis}
 The probabilistic analysis of the previous section is great fun and all, but like any probabilistic problem, is has to be calibrated to real life. 
 This is where data, and statistics come in.
-Indeed, given any particular probabilistic model, we may write the likelihood problem, and call upon maximum likelihood principles.
+Indeed, given any particular probabilistic model, we may write the likelihood problem, and call upon maximum likelihood principles for estimation.
 
-The particular problems of failure data, we will have to work our way through are:
+Failure data and models introduces particular statistical difficulties:
 \begin{description}
 \item [Identifiability] It is typically hard, if not impossible, to estimate the reliability of particular components, from the reliability of the whole system. 
 \item [Censoring] a major concern with reliability data, is that in any finite length experiment, some events will just not have happened yet; their failure time will thus be censored. Ironically- the more reliable a component, the less data we will have to estimate its reliability. 
