@@ -223,6 +223,7 @@ Eq.(\ref{eq:cumhazrd}) readily shows that a distribution is well defined by its 
 
 
 \begin{theorem}[Failure rate of a series system]
+\label{thm:ifr_closure}
 The failure rate of a series system of independent components $\Phi$ is given by the sum of the failure rates of its components
 \begin{align}
 	\hazard{\Phi}{t}= \sum_{j=1}^{p} \hazard{\T_j}{t}
@@ -338,8 +339,7 @@ Our goal will ultimately be to understand the ageing of a whole system, as a fun
 \begin{definition}[IFR]
 We call a failure time distribution to be in the \emph{increasing failure rate} (IFR) ageing class, if it has a non decreasing failure rate.
 \end{definition}
-
-Clearly IFR is not a strong enough notion of reliability, since we know from Example~\ref{eg:failure_parallel}, that two IFR components in parallel, are not an IFR system.
+We know from Example~\ref{eg:failure_parallel}, that two IFR components in parallel, are not an IFR system.
 
 
 \begin{definition}[IFRA]
@@ -374,7 +374,11 @@ This should be contrasted with the IFR property, which is not conserved, as demo
 If the independent components of a monotone system are IFRA, then so is the whole system.
 \end{theorem}
 
-
+\begin{remark}[IFR closure for series systems]
+Series systems are a extremely small and particular subset of monotone systems.
+It does provide, however, an example of systems where not only IFRA is preserved, but also the stronger IFR.
+This statement follows immediately from Theorem~\ref{thm:ifr_closure} and the fact that a sum of monotone functions is monotone.
+\end{remark}
 
 \begin{extra}[IFR and log-concave]
 The IFR requirement, is essentially the same as log-concavity of the density function.
