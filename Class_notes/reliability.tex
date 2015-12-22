@@ -608,6 +608,7 @@ We simply take the log of the survival times, and assuming the particular distri
 
 
 \begin{example}[Accelerated life with Gaussian noise]
+\label{eg:accelerated_gaussian}
 The maximum likelihood estimation of $\beta$ when assuming that $\varepsilon_i \sim \gauss{0,\sigma^2}$, collapses to a simple linear regression when the dependent variable is simply $\log t_i$.
 \end{example}
 
@@ -619,6 +620,7 @@ This approach is known as \emph{Tobit} regression.
 
 
 \begin{example}[Accelerated life with extreme value noise]
+\label{eg:accelerated_exponential}
 Assuming that the density of $\varepsilon$ is given by 
 $$
 	\density(\varepsilon)=e^{(\varepsilon-e^\varepsilon)}, 
@@ -658,6 +660,7 @@ If $\gamma=1/2$, this means that at any point in time, group $x_i=1$ suffers hal
 
 Now for the general case
 \begin{align}
+\label{eq:proportional_hazard}
 	\hazard{\T|x}{t}:=\hazard{\T|x_0}{t} \times \exp((x-x_0)'\beta) ,
 \end{align}
 where $x_0$ is some baseline condition with $\hazard{\T|x_0}{t}$ baseline hazard rate.
@@ -694,8 +697,11 @@ For a more detailed discussion, see \cite{cox_analysis_1984}.
 
 
 \subsection{Choosing the Base Failure Rate}
-Since the failure rate defines the failure time distribution, and vise-versa, then choosing the base failure rate is the same as assuming the failure time distribution.
-The three possible approaches include:
+In all the above models, we are free to choose the base failure rate: 
+$\survive{\T_1}{t}$ in Eq.(\ref{eq:accelerated_life}), or
+$\varepsilon$ in Eq.(\ref{eq:estimating_accelerated_life}), or 
+$\hazard{\T|x_0}{t}$ in Eq.(\ref{eq:proportional_hazard}).
+Three possible approaches include:
 \begin{enumerate}
 \item Assume a \textbf{parametric} model, such as exponential times, Weibull times, etc.
 \item Assume a \textbf{semi-parametric} model, which can be simply seen as a flexible class of distributions, that has no particular parametric representation. In reliability analysis, the \emph{piece-wise constant} hazard is a popular choice.
@@ -707,13 +713,13 @@ We now focus on the more flexible framework of semi-parametric modelling.
 
 \subsection{The Parametric Case}
 A parametric model fitting to failure data, is simply a maximum likelihood problem.
-Example~\ref{eg:likelihood_of_failures} is one such example with exponential distributed failure times. 
+Examples \ref{eg:likelihood_of_failures}, \ref{eg:accelerated_gaussian}, and \ref{eg:accelerated_exponential} demonstrate this. 
 
 
 
 
 \subsection{The Semi Parametric Case}
-We now relax the explicit model assumption, and adopt a more flexible semi-parametric model class, known as the \emph{piecewise exponential class}.\marginnote{Piecewise Exponenitial}
+We now relax the explicit failure time distribution assumption, and adopt a more flexible semi-parametric distribution class, known as the \emph{piecewise exponential class}.\marginnote{Piecewise Exponenitial}
 Consider the proportional hazard model:
 \begin{align}
 	\hazard{\T|x}{t}:=\hazard{\T|x_0}{t} \times \exp((x-x_0)'\beta).
@@ -723,9 +729,11 @@ A flexible, yet not too flexible assumptions, is that the failure rate is consta
 \begin{align}
 	\hazard{0}{t}=h_j \quad \text{if} \quad t\in [\tau_{j-1},\tau_j)
 \end{align}
-This class of distributions clearly has $2J$ parameters: $(\tau_1,\dots,\tau_J,h_1,\dots,h_J)$.
-We are free to choose $J$. Large $J$ are very flexible classes, but will require a lot of failure data to estimate.
-Small $J$ are less flexible, but more easily estimable. At the limits, wen $J=1$, we are back to the exponential failure times. 
+This class of distributions has roughly $2J$ parameters: $(\tau_1,\dots,\tau_J,h_1,\dots,h_J)$.
+We are free to choose $J$. 
+Large $J$ are very flexible classes, but will require a lot of failure data to estimate.
+Small $J$ are less flexible, but more easily estimable. 
+At the limits, when $J=1$, we are back to exponential failure times. 
 
 Since the failure rate is piece-wise constant, the distribution class is known as \emph{piece-wise exponential}.\marginnote{Piecewise Exponential}
 It is a rather flexible class of distributions. Figure~\ref{fig:piecewise_exponential} depicts the approximation of the Weibull survival function, using a piece-wise constant hazard function, with $J=3$ and appropriate selected parameters.
@@ -737,7 +745,7 @@ It is a rather flexible class of distributions. Figure~\ref{fig:piecewise_expone
 \end{figure}
 
 
-
+I will not discuss how to choose $J$, but merely note, that once $J$ has been chosen, the estimation of the failure rate can again be done using a maximum likelihood approach.
 
 
 \section{Collecting the pieces}
@@ -756,6 +764,8 @@ There is obviously an interplay between the above stages:
 In the statistical analysis, we want the least possible set of assumptions;
 For the probabilistic analysis, the more we can assume, the more we can say about the system as a whole.
 \end{remark}
+
+
 
 \begin{remark}[What is a component?]
 The notion of a ``system'' and a ``component'' is not well defined.
