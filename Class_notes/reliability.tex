@@ -745,7 +745,15 @@ It is a rather flexible class of distributions. Figure~\ref{fig:piecewise_expone
 \end{figure}
 
 
-I will not discuss how to choose $J$, but merely note, that once $J$ has been chosen, the estimation of the failure rate can again be done using a maximum likelihood approach.
+The piecewise-constant hazard model is very convenient to analyze under the proportional hazard assumption:
+\begin{align}
+	\hazard{x}{t} = \hazard{x_0}{t} e^{(x-x_0)'\beta} = h_j e^{(x-x_0)'\beta}.
+\end{align}
+There are $p+2J$ parameters to estimate.
+This can be done directly using maximum likelihood, or by casting the problem as several separate Poisson regression problem. 
+This has the benefit that the problem may be immediately solved with any statistical software suite, with existing numerical solvers.
+We will currently not pursue this avenue, and refer the reader to the bibliographic notes.
+
 
 
 \section{Collecting the pieces}
