@@ -98,6 +98,9 @@ This is the \emph{common} variability in the SPC literature.
 \item [Covariate]  An uncontrollable variable that influences the response but is unaffected by any other experimental factors.
 \Aka an \emph{exogenous} variable in the econometric literature.
 
+\item [Non Specific Factor] A variable that we suspect to affect the response, but we can only vaguely define, thus impossible to measure. As a consequence, we will not care to study its effect, but rather just remove it (e.g. by blocking). 
+
+
 \item [Design]  Complete specification of experimental test runs, including blocking, randomization, repeat tests, replication, and the assignment of factor–level combinations to experimental units.
 
 \item [Blocking]  Blocking, or \emph{grouping}, is an experimental design technique that removes excess variation by grouping experimental units or test runs so that those units or test runs within a block are more homogeneous than those in different blocks. Blocking attributes are also known as \emph{non specific factors}.\marginnote{Non Specific Factors}
@@ -661,10 +664,29 @@ In it simplest version, a sequential design allows early stopping for rejection 
 In more elaborate schemes then not only is early stopping allowed, but also the redesign of the experiment. 
 This is known as \emph{adaptive design}. The crux, as usual, is not inflating the type-I error, or introducing bias, by redesigning.\marginnote{Adaptive Design}
 
-
 \begin{extra}[Active Learning]
 In the machine learning literature, the idea of adaptive design of experiments is known as \emph{active learning}, where the emphasis is less on adaptive-testing, but rather on adaptive-estimation.
 \end{extra}
+
+
+
+
+\subsection{Pooled Designs}
+\emph{Pooled designs}, \aka as \emph{group testing} appears when it is cheaper to measure the response for a group of experimental units simultaneously, rather then for each single one. 
+It originated in the context of identifying soldiers with syphilis in WWII. It was the Harvard Economist Robert Dorfman that suggested \cite{dorfman_detection_1943} that one may mix blood samples from several soldiers and then repeat the same in the subgroups that show the presence of syphilis. 
+The method became immensely popular in the DNA analysis age, where technology allows biologists to test for the presence of particular protein in a sample from a group of cells (e.g. a blood sample). 
+
+Pooled designs broadly classify into two classes: 
+\begin{description}
+\item [Adaptive group testing] Where the groupings, and the groups to be tested depend on the previous results in the same experiment (see also \emph{adaptive designs}).
+\item [Non-adaptive group testing] Where the experiment consists of sequential group tests, but the design is fixed independently of the experimental results. 
+\end{description}
+
+
+\begin{extra}[Bloom filters]
+If you are familiar with data structures and particularly \emph{Bloom Filters}, then you will probably note that a Bloom filter is a data structure that groups objects in a way that facilitates lookup using group testing. 
+\end{extra}
+
 
 
 \section{$A\backslash B$ Testing}

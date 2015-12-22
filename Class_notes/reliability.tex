@@ -104,6 +104,56 @@ $$ S_\struct= \sum_{i=k}^{p} \binom{n}{i} p^i (1-p)^{n-i} .$$
 \end{example}
 
 
+
+\subsubsection{State enumeration method}
+To compute the reliability of more complex structures, one may use the state \emph{state enumeration method}. 
+This method simply relies on summation of the probabilities of the states for which the system functions.
+$$ S_\struct= \sum_{x} \Phi(x) P(\x=x).$$
+
+
+\subsubsection{Factoring method}
+The \emph{factoring method}, \aka \emph{pivot-decomposition method}, relies on two ingredients: 
+(a) conditioning on the state of some components greatly simplifies the structure, and
+(b) the total probability argument.
+Combining the two we have:
+$$ S_\struct= p_j  S_{\struct|x_j=1} + (1-p_j) S_{\struct|x_j=0}   .$$
+The following example demonstrates the power of the factoring method.
+
+\begin{example}[Bridge Structure]
+\label{eg:bridge}
+Consider structure in Figure~\ref{fig:bridge}.
+To compute the reliability, we will call upon the factoring method while conditioning on the state of component $3$:
+$$ S_\struct= p_3  S_{\struct|x_3=1} + (1-p_3) S_{\struct|x_3=0}   .$$
+Now note that when $x_3=1$ then we have a series structure of parallel structures, while when $x_3=0$ we have a parallel structure of series structures.:
+\begin{align*}
+	S_{\struct|x_3=1} &= (p_1 \coprod p_2) (p_4 \coprod p_5)\\
+	S_{\struct|x_3=0} &=  p_1 p_4 \coprod p_2 p_5 \\
+	S_\struct &= p_3  (p_1 \coprod p_2) (p_4 \coprod p_5) + (1-p_3) (p_1 p_4 \coprod p_2 p_5).
+\end{align*}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.5\linewidth]{art/bridge}
+\caption{Structure of a bridge system. Source: \cite[Fig.2.5]{aven_stochastic_1999}}
+\label{fig:bridge}
+\end{figure}
+
+\end{example}
+Example~\ref{eg:bridge} demonstrates a single application of the factoring method. Clearly, it can be applied recursively for more complicated systems.
+
+The example also demonstrates a more general principle. Namely, that redundancy is preferable at the component level, and not at the system's level.
+Put differently- when designing a backup, and the resources allow a fill copy of the original system, we are better of by designing a component-wise backup, than a single backup system.
+Put formally:
+\begin{theorem}[Component-wise redundancy]
+For a monotone structure $\Phi$, 
+\begin{align}
+	S_{\struct(x \coprod y)} \geq S_{\struct(x)} \coprod S_{\struct(y)}
+\end{align}
+where $x \coprod y$ denotes a component-wise backup: $(x_1 \coprod y_1,\dots,x_p \coprod y_p)$.
+\end{theorem}
+
+
+
 \begin{extra}[Reliability analysis of complex systems]
 Except for simple systems, of the type we presented, the computation of the reliability of a complex system may be a formidable task. 
 For complicated real-life systems, \emph{min-cut--max-flow} algorithms, or \emph{inclusion-exclusion} type algorithms are employed. 
@@ -374,11 +424,14 @@ This should be contrasted with the IFR property, which is not conserved, as demo
 If the independent components of a monotone system are IFRA, then so is the whole system.
 \end{theorem}
 
-\begin{remark}[IFR closure for series systems]
+
+\begin{cor}[IFR closure for series systems]
+\label{cor:ifr_series}
 Series systems are a extremely small and particular subset of monotone systems.
 It does provide, however, an example of systems where not only IFRA is preserved, but also the stronger IFR.
 This statement follows immediately from Theorem~\ref{thm:ifr_closure} and the fact that a sum of monotone functions is monotone.
-\end{remark}
+\end{cor}
+
 
 \begin{extra}[IFR and log-concave]
 The IFR requirement, is essentially the same as log-concavity of the density function.
@@ -388,14 +441,28 @@ See \cite{bagnoli_log-concave_2005}.
 
 
 
+
+Now consider a two-component system, where one component kicks-in when the first fails.
+We will call this an \emph{offline backup}.\marginnote{Offline Backup}
+The survival times of the components in an offline backup system are clearly dependent. 
+It turns out that for such a system of IFR components, does conserve the IFR property, as seen in the following theorem.
 \begin{theorem}[Convolution of IFR]
+\label{thm:ifr_convolution}
 For two independent random variables, $\x$ and $\y$, both in the IFR ageing class, then so is $\x+\y$.
 \end{theorem}
+
 
 
 \begin{example}[IFR of Gamma]
 The Gamma (and thus the Erlang) distribution is in the IFR aging class, since it is the sum of exponentials, each with constant failure rates, thus each IFR.
 \end{example}
+
+\begin{example}[Series system of offline backups]
+What can we say about the ageing class of a series systems of offline backup systems? 
+It turns out that if the components are IFR, then so will the whole system.
+This is immediate from Corollary~\ref{cor:ifr_series} and Theorem~\ref{thm:ifr_convolution}.
+\end{example}
+
 
 
 
@@ -438,8 +505,63 @@ Example~\ref{eg:likelihood_of_failures} teaches us that unless further assumptio
 
 
 
-\subsection{Censor Events}
-[TODO]
+\subsection{Censored Events}
+Consider several components being analyze for their reliability. 
+Ironically, we actually want them to fail. If they do not, they do not convey information on their reliability.
+In the event that a component has not failed, we clearly cannot register its failure time. Omitting this component from the sample will upward bias the estimated reliability.
+These events are called \emph{censored} observations. 
+There are several types of censoring which depend on the design of the study and the type of event recorded. 
+They are all dealt with careful though on the sampling distribution of the data, and the probability of a censoring event. 
+
+Design considerations:
+\begin{description}
+\item [Type I] occurs when the design is such that the sampling time is fixed a-priori. This implies that the number of failures (thus censoring) events is random. 
+\item [Type II] occurs when the design is such that the number of failures (thus censoring) is fixed a-priori. This implies that the sampling duration is random.
+\end{description}
+If all we know on a censored event is that the actual lifetime is larger then the observation period, we call this a \emph{non-informative} censoring. 
+Both designs will then lead to the same modelling of the censoring event, which is now describe.
+
+The likelihood function of non-censored events is given by
+\begin{align}
+	\lik_i=\density_\T(t_i)= \survive{\T}{t_i} \hazard{\T}{t_i},
+\end{align}
+and the likelihood of a censored event, under the \emph{non-informative} assumption, is given by 
+\begin{align}
+	\lik_i=\survive{\T}{t_i} .
+\end{align}
+Unifying the two cases assuming independent observations, using an indicator for censoring, $c_i$, and taking logs we have
+\begin{align}
+	\loglik &=\log \lik\\ 
+	&= \log \prod_{i=1}^{n} \lik_i \\
+	&= \log \prod_{i=1}^{n} \survive{\T}{t_i} \hazard{\T}{t_i}^{c_i} \\
+	&= \sum_{i=1}^{n} [c_i \log \hazard{\T}{t_i} - \cuhazard{\T}{t_i}]. \label{eq:censored_likelihood}
+\end{align}
+
+
+\begin{example}[Censored exponential lifetimes]
+Recalling that the failure rates of exponential lifetimes are fixed, we have that the likelihood of censored exponential lifetimes is given by 
+$$
+	\sum_{i=1}^{n} [c_i \log \lambda - \lambda t_i].
+$$
+The maximum likelihood estimator of $\lambda$ is thus
+\begin{align}
+	\estim{\lambda}= \frac{\sum c_i}{\sum t_i}. \label{eq:censored_ml}
+\end{align}
+Eq.(\ref{eq:censored_ml}) lends itself to a nice interpretation.
+The nominator is the total number of failures.
+The denominator is the total \emph{exposure time}. 
+The estimated failure rate is thus the number of failures per unit of exposure time. 
+\end{example}
+
+
+
+
+\begin{extra}
+The previous result is obvious is you consider failures as events which come as a Poisson process, which is implied from the exponential times assumption. 
+The process is run for $\sum t_i$ time, and the total event count is $\sum c_i$. 
+The trivial estimator for the rate of the process, is $\sum c_i/\sum t_i$.
+\end{extra}
+
 
 
 
@@ -449,14 +571,63 @@ Example~\ref{eg:likelihood_of_failures} teaches us that unless further assumptio
 The \emph{accelerated life} model is very popular for very reliable components. This is because it may take forever to produce defect. We thus ``accelerate'' life, by testing under extreme conditions, and then scale back to the regular operating environments.
 
 An accelerate life mode assumes that covariates rescale time. 
-For instance, the lab may produce conditions where time (assumingly) moves ten times as fast than in real-life operating conditions.
+For instance, the lab may produce conditions where time advances ten times faster than in real-life operating conditions.
+To introduce the model, we start with a simple two group example.
+\begin{example}[Two group accelerated life]
+Consider two groups indexed by a single dummy variable $x_i \in \set{0,1}$.
+Assuming an accelerated life effect we have
+$$
+	\survive{x_i=1}{t}=\survive{x_i=0}{t/exp(\beta)}=\survive{x_i=0}{t/\gamma}, 
+$$
+where $\gamma$ is simply shorthand notation for $exp(\beta)$. 
+If $\gamma=1/2$, this means that time for group $x_i=1$ advances twice as fast as for group $x_i=0$.
+\end{example}
 
-Formally if $\T_1$ is the time to failure under conditions $x_1$ , and $\T_2$ under conditions $x_2$. 
-And the covariates effects are such that $x_1' \beta=1$ and $x_2' \beta=\gamma$,  then 
+We now generalize the idea for multiple covariates.
+If $\T_1$ is the time to failure under conditions $x_1$ , and $\T_2$ under conditions $x_2$. 
+And the covariates' effects are such that $x_1' \beta=1$ and $x_2' \beta=\log \gamma$,  then 
 \begin{align}
+\label{eq:accelerated_life}
 	\survive{\T_2}{t}=\survive{\T_1}{t/\gamma},
 \end{align}
 meaning that the conditions $x_2$ are such that time is accelerated by $1/\gamma$ compared to conditions $x_1$.
+
+
+An equivalent formulation of an accelerated life model is the following:
+\begin{align}
+\label{eq:estimating_accelerated_life}
+	\log \T_i = x_i'\beta + \varepsilon_i
+\end{align}
+for some error term $\varepsilon_i$. 
+For the above interpretation, we again denote $x_i'\beta= \log \gamma_i$, and infer that $x_i$ accelerates time by $1/\gamma_i$. 
+This formulation is more tractable for mathematical manipulation, but conceals the nice interpretation which motivates the model's name.
+
+Eq.(\ref{eq:estimating_accelerated_life}) readily reveals how we can easily estimate the effects ($\beta$) of an accelerate life model.
+We simply take the log of the survival times, and assuming the particular distribution of $\varepsilon$, we may estimate $\beta$ using maximum likelihood.
+
+
+
+\begin{example}[Accelerated life with Gaussian noise]
+The maximum likelihood estimation of $\beta$ when assuming that $\varepsilon_i \sim \gauss{0,\sigma^2}$, collapses to a simple linear regression when the dependent variable is simply $\log t_i$.
+\end{example}
+
+
+\begin{extra}[Tobit regression]
+Assuming $\varepsilon_i \sim \gauss{0,\sigma^2}$, as in the previous example, implies that failure times are \emph{log normal} distributed. 
+This approach is known as \emph{Tobit} regression.
+\end{extra}
+
+
+\begin{example}[Accelerated life with extreme value noise]
+Assuming that the density of $\varepsilon$ is given by 
+$$
+	\density(\varepsilon)=e^{(\varepsilon-e^\varepsilon)}, 
+$$
+which is known as an \emph{extreme value distribution}, then failure times have an exponential distribution, and estimation of $\beta$ collapses to an exponential regression problem.
+\end{example}
+
+
+
 
 
 \begin{extra}
@@ -471,34 +642,54 @@ For models for stress, voltage, humidity, and other life accelerating covariates
 \subsection{Proportional Hazard Models}
 The \emph{proportional hazard}, or \emph{proportional risk} class of models, assumes that covariates multiply not time, but rather failure rates. 
 Put differently, accelerated life acts linearly on time, thus non-linearly on hazards. Proportional hazards acts linear on hazards, thus non linearly on time. 
-Qualitatively, both either accelerate or decelerate time. Quantitatively, the exact amount of acceleration/deceleration may differ. 
+Qualitatively, both either accelerate or decelerate time. 
+Quantitatively, the exact amount of acceleration/deceleration may differ. 
 
-Formally
+Starting with a two group example
+\begin{example}[Proportional hazards in a two group model]
+Consider two groups indexed by a single dummy variable $x_i \in \set{0,1}$.
+Assuming proportional hazard effect we have
+$$
+	\hazard{x_i=1}{t}=\hazard{x_i=0}{t} e^\beta, 
+$$
+where $\gamma$ is simply shorthand notation for $e^\beta$. 
+If $\gamma=1/2$, this means that at any point in time, group $x_i=1$ suffers half the risk of group $x_i=0$.
+\end{example}
+
+Now for the general case
 \begin{align}
 	\hazard{\T|x}{t}:=\hazard{\T|x_0}{t} \times \exp((x-x_0)'\beta) ,
 \end{align}
 where $x_0$ is some baseline condition with $\hazard{\T|x_0}{t}$ baseline hazard rate.
-To fix idea, let $x \in \set{0,1}$ be a group indicator, in which case $\hazard{\T|x=1}{t} = \hazard{\T|x=0}{t} \exp(\beta)$, so that $\exp(\beta)$ can be interpreted as the \emph{relative risk}.\marginnote{Relative Risk}
-
-The implied survival function satisfies $$ \survive{\T|x}{t}=\survive{\T|x_0}{t} \times \exp((x-x_0)'\beta).$$
-In our two group example, a proportion hazard thus implies that group $x=1$ has $\exp(\beta)$ times more probability of surviving until time $t$ then group $x=0$. 
-
+The implied survival function satisfies 
+$$ \survive{\T|x}{t}=\survive{\T|x_0}{t}^{\exp((x-x_0)'\beta)}.$$
+In our two group example, with $\gamma=1/2$, a proportion hazard thus implies that group $x=1$'s survival probability is the square of group $x=0$. 
 
 
-\begin{example}[Accelerated life and proportional hazard in the exponential class]
+
+
+
+
+\begin{example}[Accelerated life and proportional hazard for exponential failure times]
 Recall that the exponential distribution has a fixed failure rate (over time). 
-If you change factors so that the \textbf{hazard doubles} (proportional hazard), it is still constant in time, thus exponentially distributed. 
-If you accelerate life so that the \textbf{rate doubles} (accelerated life), it is still constant in time, thus exponentially distributed. 
-The exponential distribution assumption is thus closed under the various time rescaling.
+If take a power (proportional hazard), it is still constant in time, thus exponentially distributed. 
+If you accelerate time, it is still constant in time, thus exponentially distributed. 
+The exponential distribution assumption is thus closed under the two time rescalings.
 \end{example}
 
 %[HW: prove this for Weibull ]
+
+
+
+
 
 \begin{extra}[General Hazard Rate Model]
 The effects of covariates on the failure time distribution, may be modelled in many ways. 
 The two models presented are probably the most popular, but may certainly be extended. 
 For a more detailed discussion, see \cite{cox_analysis_1984}.
 \end{extra}
+
+
 
 
 
@@ -545,6 +736,32 @@ It is a rather flexible class of distributions. Figure~\ref{fig:piecewise_expone
 \label{fig:piecewise_exponential}
 \end{figure}
 
+
+
+
+
+\section{Collecting the pieces}
+In this chapter we have seen the probabilistic reliability analysis, where we assumed components' reliabilities are known. 
+We then proceeded to the statistical problem of estimating reliabilities from failure data.
+We now glue collect these pieces to sketch a realistic analysis workflow, which would look roughly as follows:
+\begin{enumerate}
+\item Estimate reliability parameters by collecting component-wise failure data. Data is collected in a lab so that you may accelerate time and rescale to realistic operating conditions.
+\item Perform the probabilistic analysis of the whole system using the estimated parameters.
+\end{enumerate}
+
+
+
+\begin{remark}[Interplay between probability and statistics]
+There is obviously an interplay between the above stages:
+In the statistical analysis, we want the least possible set of assumptions;
+For the probabilistic analysis, the more we can assume, the more we can say about the system as a whole.
+\end{remark}
+
+\begin{remark}[What is a component?]
+The notion of a ``system'' and a ``component'' is not well defined.
+Indeed, for some purposes you may consider a system, as a component in a larger system.
+For the statistical problem, a component is probably the smallest unit you can collect data on. At times, the smallest unit, may be the system as a whole.
+\end{remark}
 
 
 
