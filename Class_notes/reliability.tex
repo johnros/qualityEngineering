@@ -820,6 +820,34 @@ We will thus typically be interested in the above performance measures for in so
 The typical approach for this is to study the limit of the performance measure, which implies the system has reached it's steady state. Formally, this means studying $\lim_{t \to \infty}$ of the above measures. 
 
 
+We now start with the analysis of a \emph{single component} system, which we later complicate into \emph{multiple component systems}. 
+The required theory is that of stochastic processes, in particular \emph{counting processes}. 
+The reader is referred to the bibliographic notes for rigorous proofs and details. 
+
+\subsection{Single component systems}
+For a single component, $\Phi_t=\x(t)$. 
+If the component fails, it is replaced or repaired. 
+We denote by $T_k$ and $R_k$ and the (random) time of the $k$'th run, and repair, respectively.
+We assume $T_k \sim F$ and $R_k \sim G$, independent.
+
+\begin{definition}[MTTF]
+We denote by $\mu_F=\expect{T_k}$, the \emph{mean time to failure} (MTTF).
+\end{definition}
+
+
+\begin{definition}[MTTR]
+We denote by $\mu_G=\expect{R_k}$, the \emph{mean time to repair} (MTTR).
+\end{definition}
+
+Obviously, MTTR and MTTF are important characteristics of the single-component system.
+
+
+
+
+\subsection{Multiple component systems}
+[TODO]
+
+
 
 \section{Bibliographic Notes}
 An light introductory discussion, may be found in \cite{nahmias_production_2015}. 
