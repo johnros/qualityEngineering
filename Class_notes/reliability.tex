@@ -851,6 +851,45 @@ We also denote the time to the $n$'th repair by
 	S^\circ_n:= \sum_{k=1}^{n} (T_k+R_k)
 \end{align}
 
+Denoting by $H^{(n)}$ the distribution of $S_n$ we have that 
+\begin{align}
+	H^{(n)}(t)= F \conv (F \conv G)^{\conv (n-1)}
+\end{align}
+Similarly
+\begin{align}
+	H^{\circ(n)}(t)= (F \conv G)^{\conv (n)}
+\end{align}
+
+\begin{theorem}[Exact point availability]
+	Denoting by $M^\circ(t)$ the expected number of repairs until time $t$ we have that
+\begin{align}
+	A(t)=(1-F(t)) + (1-F(t)) \conv M^\circ(t).
+\end{align}
+\end{theorem}
+But perhaps a more interesting and intuitive result regards the availability at the steady state of the system
+\begin{theorem}[Stable point availability]
+As $t \to \infty$
+\begin{align}
+	A(t) \to \frac{\mu_F}{\mu_F+\mu_G}.
+\end{align}
+\end{theorem}
+
+
+
+
+%\begin{theorem}
+%Denote the expected number of failures until time $t$ by $M(t)=M([0,t])$. 
+%We have that 
+%\begin{align}
+%	M(t) = \sum_{n=1}^{\infty} H^{(n)}(t).
+%\end{align}
+%\end{theorem}
+
+
+
+
+
+
 
 
 \subsection{Multiple component systems}
