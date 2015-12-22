@@ -127,5 +127,6 @@
 \contentsline {definition}{\numberline {47}Definition\thmtformatoptarg {Interval downtime}}{79}{definition.47}
 \contentsline {definition}{\numberline {48}Definition\thmtformatoptarg {MTTF}}{79}{definition.48}
 \contentsline {definition}{\numberline {49}Definition\thmtformatoptarg {MTTR}}{79}{definition.49}
-\contentsline {theorem}{\numberline {8.4.1}Theorem\thmtformatoptarg {Exact point availability}}{80}{theorem.8.4.1}
-\contentsline {theorem}{\numberline {8.4.2}Theorem\thmtformatoptarg {Stable point availability}}{80}{theorem.8.4.2}
+\contentsline {theorem}{\numberline {8.4.1}Theorem\thmtformatoptarg {Stable point availability}}{80}{theorem.8.4.1}
+\contentsline {theorem}{\numberline {8.4.2}Theorem\thmtformatoptarg {Stable failures per unit of time}}{80}{theorem.8.4.2}
+\contentsline {theorem}{\numberline {8.4.3}Theorem\thmtformatoptarg {Limiting unavailability}}{80}{theorem.8.4.3}

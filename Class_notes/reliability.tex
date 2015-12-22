@@ -860,13 +860,6 @@ Similarly
 	H^{\circ(n)}(t)= (F \conv G)^{\conv (n)}
 \end{align}
 
-\begin{theorem}[Exact point availability]
-	Denoting by $M^\circ(t)$ the expected number of repairs until time $t$ we have that
-\begin{align}
-	A(t)=(1-F(t)) + (1-F(t)) \conv M^\circ(t).
-\end{align}
-\end{theorem}
-But perhaps a more interesting and intuitive result regards the availability at the steady state of the system
 \begin{theorem}[Stable point availability]
 As $t \to \infty$
 \begin{align}
@@ -874,7 +867,21 @@ As $t \to \infty$
 \end{align}
 \end{theorem}
 
+\begin{theorem}[Stable failures per unit of time]
 
+As $t \to \infty$, then with probability one
+\begin{align}
+	\frac{N_t}{t} \to \frac{1}{\mu_F+\mu_g}
+\end{align}
+\end{theorem}
+
+\begin{theorem}[Limiting unavailability]
+As $t \to \infty$, then with probability one
+\begin{align}
+	\frac{Y_t}{t} \to 1-\frac{\mu_F}{\mu_F+\mu_G} 
+\end{align}
+	
+\end{theorem}
 
 
 %\begin{theorem}
