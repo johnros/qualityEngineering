@@ -841,6 +841,15 @@ We denote by $\mu_G=\expect{R_k}$, the \emph{mean time to repair} (MTTR).
 
 Obviously, MTTR and MTTF are important characteristics of the single-component system.
 
+We denote the time to the $n$'th failure by 
+\begin{align}
+	S_n:= T_1 + \sum_{k=1}^{n-1} (R_k+T_{k+1})
+\end{align}
+where $S_0=0$ by convention.
+We also denote the time to the $n$'th repair by 
+\begin{align}
+	S^\circ_n:= \sum_{k=1}^{n} (T_k+R_k)
+\end{align}
 
 
 
