@@ -766,7 +766,6 @@ We now glue collect these pieces to sketch a realistic analysis workflow, which 
 \end{enumerate}
 
 
-
 \begin{remark}[Interplay between probability and statistics]
 There is obviously an interplay between the above stages:
 In the statistical analysis, we want the least possible set of assumptions;
@@ -781,6 +780,44 @@ Indeed, for some purposes you may consider a system, as a component in a larger 
 For the statistical problem, a component is probably the smallest unit you can collect data on. At times, the smallest unit, may be the system as a whole.
 \end{remark}
 
+
+
+
+\section{Repairable systems}
+In this section we return the a probabilistic analysis.
+Unlike the previous sections, we now study systems which may be repaired after they fail.
+We will thus want to study the state of the system at time $t$.
+This state may depend on the number of failures and repairs performed on the system up to $t$.
+
+We start with the introduction of some quantities of interest.
+\begin{definition}[Point availability]
+The point availability at time $t$, denoted $A(t)$ is defined as 
+\begin{align}
+	A(t):= \expect{\Phi_t}=P(\Phi_t=1) .
+\end{align}
+\end{definition}
+
+\begin{definition}[Interval reliability]
+When considering the availability in some time interval $J$, and denoting by $N_J$ the number of system failures in the interval, we may study
+\begin{align}
+	P(N_j\leq k) &\\
+	M(J) &:= \expect{N_j} \\
+	A(J) &:= P(\Phi_t=1), \forall t \in J.
+\end{align}
+\end{definition}
+
+
+\begin{definition}[Interval downtime]
+Denoting by $Y_J=\int_J (1-\Phi_t) dt$ the downtime during interval $J$, we may study
+\begin{align}
+	P(Y_j \leq y) &	\\
+	A^D := \frac{\expect{Y_J}}{|J|}
+\end{align}
+\end{definition}
+
+\paragraph{Limiting measures} The particular time $t$, or interval $J$ are usually not of real importance in the sense that all times and intervals are equally important.
+We will thus typically be interested in the above performance measures for in some \emph{steady state} of the systems, so that the measure is representative of all $t$ (or $J$), and thus no longer depends on $t$ (or $J$).
+The typical approach for this is to study the limit of the performance measure, which implies the system has reached it's steady state. Formally, this means studying $\lim_{t \to \infty}$ of the above measures. 
 
 
 
