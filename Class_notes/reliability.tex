@@ -144,7 +144,8 @@ Now note that when $x_3=1$ then we have a series structure of parallel structure
 	S_{\struct|x_3=0} &=  p_1 p_4 \coprod p_2 p_5,
 \end{align*}
 so that 
-$$ 	S_\struct = p_3  (p_1 \coprod p_2) (p_4 \coprod p_5) + (1-p_3) (p_1 p_4 \coprod p_2 p_5).
+$$ 	
+	S_\struct = p_3  (p_1 \coprod p_2) (p_4 \coprod p_5) + (1-p_3) (p_1 p_4 \coprod p_2 p_5).
 $$
 \begin{figure}[ht]
 \centering
@@ -152,7 +153,6 @@ $$
 \caption{Structure of a bridge system. Source: \cite[Fig.2.5]{aven_stochastic_1999}}
 \label{fig:bridge}
 \end{figure}
-
 \end{example}
 Example~\ref{eg:bridge} demonstrates a single application of the factoring method. Clearly, it can be applied recursively for more complicated systems.
 
@@ -302,10 +302,10 @@ The failure rate of a parallel system, does not admit such a nice closed form as
 
 \begin{example}[Exponential Hazard]
 The simplest distribution when discussing hazards is the exponential.
-Recalling
+Recalling the for non-negative $t$:
 \begin{align}
-	\pdf{\T}{t}= \lambda \exp(-\lambda t) \indicator{t \geq 0} \\
-	\cdf{\T}{t}= (1-\exp(-\lambda t)) 
+	\pdf{\T}{t}= \lambda \exp(-\lambda t), \\
+	\cdf{\T}{t}= 1-\exp(-\lambda t),
 \end{align}
 so that 
 \begin{align}
@@ -344,7 +344,7 @@ The failure rate is given by
 \end{example}
 Why is Example~\ref{eg:failure_parallel} so important?
 Because it demonstrates that even in a simple system, with the simplest components, the reliability is not so simple to compute (as a function of the components' reliability). 
-Indeed, even though the hazards are fixed, the system's hazard is non monotone in time (Figure~\ref{fig:hazard_non_monotone}). 
+Indeed, even though the component-wise hazards are fixed in time, the system's hazard is not fixed, and not even monotone in time (Figure~\ref{fig:hazard_non_monotone}). 
 
 
 \begin{figure}[ht]
@@ -359,16 +359,16 @@ Indeed, even though the hazards are fixed, the system's hazard is non monotone i
 
 
 \begin{example}[Weibull Hazard]
-The Weibull distribution is very common in reliability analysis, and can be constructed by 
+The Weibull distribution is very common in reliability analysis since it is tractable generalization of the exponential distribution with many nice properties. It can be constructed by 
 $\T := \lambda \U^{1/k}$, where $\U \sim \exp(1)$. 
-Recalling
+This implies that for non negative $t$:
 \begin{align}
-	\pdf{\T}{t} &= \frac{k}{\lambda}\left(\frac{\T}{\lambda} \right)^{k-1} \exp\left(-\frac{\T}{\lambda} \right)^k  \indicator{\T\geq 0} \\
-	\cdf{\T}{t} &= 1 - \exp \left(-\frac{\T}{\lambda} \right)^k 
+	\pdf{\T}{t} &= \frac{k}{\lambda}\left(\frac{\T}{\lambda} \right)^{k-1} \exp\left(-\frac{\T}{\lambda} \right)^k, \\
+	\cdf{\T}{t} &= 1 - \exp \left(-\frac{\T}{\lambda} \right)^k,
 \end{align}
 so that 
 \begin{align}
-	\survive{\T}{t} &= \exp \left(-\frac{\T}{\lambda} \right)^k \\
+	\survive{\T}{t} &= \exp \left(-\frac{\T}{\lambda} \right)^k, \\
 	\hazard{\T}{t} &= \frac{k}{\lambda} \left(\frac{\T}{\lambda} \right)^{k-1} .
 \end{align}
 \end{example}
