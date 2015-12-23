@@ -404,7 +404,6 @@ Our goal will ultimately be to understand the ageing of a whole system, as a fun
 \begin{definition}[IFR]
 We call a failure time distribution to be in the \emph{increasing failure rate} (IFR) ageing class, if it has a non decreasing failure rate.
 \end{definition}
-We know from Example~\ref{eg:failure_parallel}, that two IFR components in parallel, are not an IFR system.
 
 
 \begin{definition}[IFRA]
@@ -416,7 +415,6 @@ $\cuhazard{\T}{t}/t$ is non decreasing in $t$.
 We call a failure time distribution to be in the \emph{new better then used} (NBU) ageing class, if 
 $\survive{\T}{t_1+t_2} \leq \survive{\T}{t_2} \survive{\T}{t_1}$.
 \end{definition}
-
 
 \begin{definition}[NBUE]
 Define the \emph{expected residual life}, $\mu(t)$, to be 
@@ -433,26 +431,20 @@ $IFR \Rightarrow IFRA \Rightarrow NBU \Rightarrow NBUE. $
 
 
 The following theorem states a relation between the ageing properties of particular components, and that of the whole system. In particular it states that for the (very wide) class of monotone systems, then the IFRA property is conserved. 
-This should be contrasted with the IFR property, which is not conserved, as demonstrated by Example~\ref{eg:failure_parallel}.
+This should be contrasted with the IFR property, which is not conserved, as demonstrated by the parallel system in  Example~\ref{eg:failure_parallel}.
 \begin{theorem}[IFRA closure theorem]
 \label{thm:ifra_closure}
 If the independent components of a monotone system are IFRA, then so is the whole system.
 \end{theorem}
 
 
-\begin{cor}[IFR closure for series systems]
-\label{cor:ifr_series}
 Series systems are a extremely small and particular subset of monotone systems.
 It does provide, however, an example of systems where not only IFRA is preserved, but also the stronger IFR.
-This statement follows immediately from Theorem~\ref{thm:ifr_closure} and the fact that a sum of monotone functions is monotone.
+The following corollary follows immediately from Theorem~\ref{thm:ifr_closure} and the fact that a sum of monotone functions is monotone.
+\begin{cor}[IFR closure for series systems]
+\label{cor:ifr_series}
+A series system of independent IFR components is IFR.
 \end{cor}
-
-
-\begin{extra}[IFR and log-concave]
-The IFR requirement, is essentially the same as log-concavity of the density function.
-This immediately implies many properties of the class.
-See \cite{bagnoli_log-concave_2005}.
-\end{extra}
 
 
 
@@ -465,11 +457,17 @@ It turns out that for such a system of IFR components, does conserve the IFR pro
 \label{thm:ifr_convolution}
 For two independent random variables, $\x$ and $\y$, both in the IFR ageing class, then so is $\x+\y$.
 \end{theorem}
+The theorem is called the convolution theorem, because the distribution of a sum of independent random variables, is the convolution of their distributions.
 
 
+\begin{extra}[IFR and log-concave]
+The IFR requirement, is essentially the same as log-concavity of the density function.
+This immediately implies many properties of the class, including the convolution theorem above.
+See \cite{bagnoli_log-concave_2005}.
+\end{extra}
 
 \begin{example}[IFR of Gamma]
-The Gamma (and thus the Erlang) distribution is in the IFR aging class, since it is the sum of exponentials, each with constant failure rates, thus each IFR.
+The Gamma (and thus the Erlang) distribution is in the IFR aging class, since it is the sum of exponentials, each IFR.
 \end{example}
 
 \begin{example}[Series system of offline backups]
@@ -491,8 +489,8 @@ Indeed, given any particular probabilistic model, we may write the likelihood pr
 Failure data and models introduces particular statistical challenges:
 \begin{description}
 \item [Identifiability] It is typically hard, if not impossible, to estimate the reliability of particular components, from the reliability of the whole system. 
-\item [Censoring] a major concern with reliability data, is that in any finite length experiment, some events will just not have happened yet; their failure time will thus be censored. Ironically- the more reliable a component, the less data we will have to estimate its reliability. 
-\item [Lab versus real-life conditions] Reliable components take very long time to fail. We much rather extrapolate from harsh lab conditions to real-life operating conditions. This requires the introduction of covariates. 
+\item [Censoring] A major concern with reliability data, is that in any finite length experiment, some events will just not have happened yet; their failure time will thus be \emph{censored}. Ironically- the more reliable a component, the less data we will have to estimate its reliability. 
+\item [Lab versus real-life conditions] Reliable components take very long time to fail. We will thus extrapolate from harsh lab conditions to real-life operating conditions. This requires the introduction of covariates. 
 \item [Failure Distribution] like any statistical model, we will need to commit to some failure time sampling distribution.
 \end{description}
 
@@ -534,7 +532,7 @@ Design considerations:
 \item [Type II] occurs when the design is such that the number of failures (thus censoring) is fixed a-priori. This implies that the sampling duration is random.
 \end{description}
 If all we know on a censored event is that the actual lifetime is larger then the observation period, we call this a \emph{non-informative} censoring. 
-Both designs will then lead to the same modelling of the censoring event, which is now describe.
+Both designs will then lead to the same modelling of the censoring event, which is now described.
 
 The likelihood function of non-censored events is given by
 \begin{align}
@@ -636,6 +634,7 @@ This approach is known as \emph{Tobit} regression.
 
 \begin{example}[Accelerated life with extreme value noise]
 \label{eg:accelerated_exponential}
+\marginnote{Extreme Value Distribution}
 Assuming that the density of $\varepsilon$ is given by 
 $$
 	\density(\varepsilon)=e^{(\varepsilon-e^\varepsilon)}, 
@@ -661,15 +660,16 @@ The \emph{proportional hazard}, or \emph{proportional risk} class of models, ass
 Put differently, accelerated life acts linearly on time, thus non-linearly on hazards. Proportional hazards acts linear on hazards, thus non linearly on time. 
 Qualitatively, both either accelerate or decelerate time. 
 Quantitatively, the exact amount of acceleration/deceleration may differ. 
+The choice between these models typically depends on the underlying physical theory, and on the ease of computation and interpretation.
 
 Starting with a two group example
 \begin{example}[Proportional hazards in a two group model]
 Consider two groups indexed by a single dummy variable $x_i \in \set{0,1}$.
 Assuming proportional hazard effect we have
 $$
-	\hazard{x_i=1}{t}=\hazard{x_i=0}{t} e^\beta, 
+	\hazard{x_i=1}{t}=\hazard{x_i=0}{t} e^\beta= =\hazard{x_i=0}{t} \gamma, 
 $$
-where $\gamma$ is simply shorthand notation for $e^\beta$. 
+where $\gamma$ is again shorthand notation for $e^\beta$. 
 If $\gamma=1/2$, this means that at any point in time, group $x_i=1$ suffers half the risk of group $x_i=0$.
 \end{example}
 
@@ -679,8 +679,11 @@ Now for the general case
 	\hazard{\T|x}{t}:=\hazard{\T|x_0}{t} \times \exp((x-x_0)'\beta) ,
 \end{align}
 where $x_0$ is some baseline condition with $\hazard{\T|x_0}{t}$ baseline hazard rate.
-The implied survival function satisfies 
-$$ \survive{\T|x}{t}=\survive{\T|x_0}{t}^{\exp((x-x_0)'\beta)}.$$
+
+Proportional hazard models imply the following relation between survival functions
+\begin{align}
+	\survive{\T|x}{t}=\survive{\T|x_0}{t}^{\exp((x-x_0)'\beta)}.
+\end{align}
 In our two group example, with $\gamma=1/2$, a proportion hazard thus implies that group $x=1$'s survival probability is the square of group $x=0$. 
 
 
