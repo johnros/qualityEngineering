@@ -884,15 +884,6 @@ As $t \to \infty$, then with probability one
 \end{theorem}
 
 
-%\begin{theorem}
-%Denote the expected number of failures until time $t$ by $M(t)=M([0,t])$. 
-%We have that 
-%\begin{align}
-%	M(t) = \sum_{n=1}^{\infty} H^{(n)}(t).
-%\end{align}
-%\end{theorem}
-
-
 
 
 
@@ -900,7 +891,14 @@ As $t \to \infty$, then with probability one
 
 
 \subsection{Multiple component systems}
-[TODO]
+We will now want to study the availability of a system of multiple repairable components.
+The performance of the single-component system still apply, but the analysis now has to account for the fact that the state of the systems depends on the state of $n$ repairable components, assumingly independent.
+By indexing the components with $i$, we denote $T_{i,k}, R_{i,k}$ for the uptime and repair time of the $k$'th failure of the $i$'th component. Their distributions are $F_i$ and $G_i$ respectively.
+The system failures up to time $t$ is still $N(t)$, but not we also allow for component-wise processes $N_i(t)$, with expectations $M(t)$, and $M_i(t)$.
+
+Denoting $A_i(t)$ the availability of component $i$ at time $t$, $A(t)$ the n-vector of reliabilities, and $A_\Phi(t)$ the whole system's reliability. 
+
+[TODO:Complete from  \cite[Sec.4.3]{aven_stochastic_1999}]
 
 
 
