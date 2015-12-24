@@ -363,8 +363,8 @@ The Weibull distribution is very common in reliability analysis since it is trac
 $\T := \lambda \U^{1/k}$, where $\U \sim \exp(1)$. 
 This implies that for non negative $t$:
 \begin{align}
-	\pdf{\T}{t} &= \frac{k}{\lambda}\left(\frac{\T}{\lambda} \right)^{k-1} \exp\left(-\frac{\T}{\lambda} \right)^k, \\
-	\cdf{\T}{t} &= 1 - \exp \left(-\frac{\T}{\lambda} \right)^k,
+	\pdf{\T}{t} &= \frac{k}{\lambda}\left(\frac{\T}{\lambda} \right)^{k-1} e^{-(\T/\lambda)^k}, \\
+	\cdf{\T}{t} &= 1 - e^{-(\T/\lambda)^k},
 \end{align}
 so that 
 \begin{align}
