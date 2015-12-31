@@ -268,7 +268,7 @@ The \emph{hazard function}, or \emph{failure rate}, of a random variable $\T$ at
 \begin{align}
 	\hazard{\T}{t} &:= \lim_{dt\to 0}\frac{P( \T \in [t,t+dt)|\T \geq t )}{dt} \label{eq:hazard}\\
 	&= \frac{\pdf{\T}{t}}{\survive{\T}{t}} \\
-	&= \frac{\partial}{\partial t}\log \survive{\T}{t}.
+	&= - \frac{\partial}{\partial t}\log \survive{\T}{t} . \label{eq:survival_to_hazard}
 \end{align}
 \end{definition}
 
@@ -304,12 +304,12 @@ The failure rate of a parallel system, does not admit such a nice closed form as
 The simplest distribution when discussing hazards is the exponential.
 Recalling the for non-negative $t$:
 \begin{align}
-	\pdf{\T}{t}= \lambda \exp(-\lambda t), \\
-	\cdf{\T}{t}= 1-\exp(-\lambda t),
+	\pdf{\T}{t}= \lambda e^{-\lambda t}, \\
+	\cdf{\T}{t}= 1-e^{-\lambda t},
 \end{align}
 so that 
 \begin{align}
-	\survive{\T}{t} &= \exp(-\lambda t), \\
+	\survive{\T}{t} &= e^{-\lambda t}, \\
 	\hazard{\T}{t} &= \lambda.
 \end{align}
 \end{example}
@@ -410,11 +410,15 @@ We call a failure time distribution to be in the \emph{increasing failure rate} 
 We call a failure time distribution to be in the \emph{increasing failure rate average} (IFRA) ageing class, if 
 $\cuhazard{\T}{t}/t$ is non decreasing in $t$.
 \end{definition}
+The intuition underlying IFRA relies on understanding $\cuhazard{\T}{t}/t$, which can be seen as the average risk from ignition to time $t$. 
+IFRA thus means that even if the risk decreases at some point in time, the average risk still increases. 
+
 
 \begin{definition}[NBU]
 We call a failure time distribution to be in the \emph{new better then used} (NBU) ageing class, if 
 $\survive{\T}{t_1+t_2} \leq \survive{\T}{t_2} \survive{\T}{t_1}$.
 \end{definition}
+
 
 \begin{definition}[NBUE]
 Define the \emph{expected residual life}, $\mu(t)$, to be 
@@ -423,6 +427,7 @@ $$\mu(t):= \expect{\T-t|\T>t}.$$
 We call a failure time distribution to be in the \emph{new better then used in expectation} (NBUE) ageing class, if 
 $\mu(t) \leq \mu(0)$.
 \end{definition}
+NBUE can be easily understood, since it means that a component's expected life is maximal when it is brand new. 
 
 
 \begin{theorem}
@@ -581,43 +586,50 @@ The trivial estimator for the rate of the process, is $\sum c_i/\sum t_i$.
 
 
 \subsection{Accelerated Life Models}
-The \emph{accelerated life} model is very popular for very reliable components. This is because it may take forever to produce defect. We thus ``accelerate'' life, by testing under extreme conditions, and then scale back to the regular operating environments.
-
-An accelerate life mode assumes that covariates rescale time. 
+An \emph{accelerate life} model assumes that covariates rescale time. 
 For instance, the lab may produce conditions where time advances ten times faster than in real-life operating conditions.
 To introduce the model, we start with a simple two group example.
 \begin{example}[Two group accelerated life]
-Consider two groups indexed by a single dummy variable $x_i \in \set{0,1}$.
+\label{eg:two_group_accelerated_life}
+Consider two groups indexed by a single dummy variable $x \in \set{0,1}$.
 Assuming an accelerated life effect we have
 $$
-	\survive{x_i=1}{t}=\survive{x_i=0}{t/exp(\beta)}=\survive{x_i=0}{t/\gamma}, 
+	\survive{\T|x=1}{t} = \survive{\T|x = 0}{t/exp(\beta)} = \survive{\T|x = 0}{t/\gamma}, 
 $$
 where $\gamma$ is simply shorthand notation for $exp(\beta)$. 
-If $\gamma=1/2$, this means that time for group $x_i=1$ advances twice as fast as for group $x_i=0$.
+If $\gamma=1/2$, this means that time for group $x=1$ advances twice as fast as for group $x_i=0$.
 \end{example}
 
 We now generalize the idea for multiple covariates.
-If $\T_1$ is the time to failure under conditions $x_1$ , and $\T_2$ under conditions $x_2$. 
-And the covariates' effects are such that $x_1' \beta=1$ and $x_2' \beta=\log \gamma$,  then 
+If $\T_1$ is the (random) time to failure under conditions $x_1=(x_{1,1},\dots,x_{1,p})$ , and $\T_0$ under conditions $x_0=(x_{0,1},\dots,x_{0,p})$, we have
 \begin{align}
 \label{eq:accelerated_life}
-	\survive{\T_2}{t}=\survive{\T_1}{t/\gamma},
+	\survive{\T_1}{t}=\survive{\T_0}{t/\gamma},
 \end{align}
-meaning that the conditions $x_2$ are such that time is accelerated by $1/\gamma$ compared to conditions $x_1$.
+where $\gamma= e^{(x_1-x_0)' \beta}$, meaning that the conditions $x_1$ are such that time is accelerated by $1/\gamma$ compared to the base conditions $x_0$.
+Example \ref{eg:two_group_accelerated_life} is recovered by setting $x_1=1$ and $x_0=0$. 
+If $\gamma>1$, time under conditions $x_1$ advances slower than under $x_0$, and the product is expected to live longer. 
+The converse holds if $\gamma<1$.
 
 
-An equivalent formulation of an accelerated life model is the following:
+An equivalent formulation of an accelerated life model, which also explains the appearance of the exponent in the time rescaling, is the following 
 \begin{align}
 \label{eq:estimating_accelerated_life}
-	\log \T_i = x_i'\beta + \varepsilon_i
+	\log \T_i = x_i'\beta + \varepsilon_i,
 \end{align}
 for some error term $\varepsilon_i$. 
-For the above interpretation, we again denote $x_i'\beta= \log \gamma_i$, and infer that $x_i$ accelerates time by $1/\gamma_i$. 
+For interpretation, we again denote $e^{x_i'\beta}= \gamma_i$, and infer that $x_i$ accelerates time by $1/\gamma_i$ compared to some base rate where $e^{x_i'\beta}= 1$.
 This formulation is more tractable for mathematical manipulation, but conceals the nice interpretation which motivates the model's name.
 
 Eq.(\ref{eq:estimating_accelerated_life}) readily reveals how we can easily estimate the effects ($\beta$) of an accelerate life model.
-We simply take the log of the survival times, and assuming the particular distribution of $\varepsilon$, we may estimate $\beta$ using maximum likelihood.
+We simply take the log of the survival times ($\log t_i$), and assuming the particular distribution of $\varepsilon_i$, we may estimate $\beta$ using maximum likelihood.
 
+For future use, we also note that the relation between hazed function under the accelerated life assumption is given by
+\begin{align}
+\label{eq:hazard_accelerated_life}
+		\hazard{\T|x=x_1}{t}=\hazard{\T|x=x_0}{t/\gamma}/ \gamma
+\end{align}
+where as usual $\gamma=e^{(x_1-x_0)'\beta}$.
 
 
 \begin{example}[Accelerated life with Gaussian noise]
@@ -632,7 +644,7 @@ This approach is known as \emph{Tobit} regression.
 \end{extra}
 
 
-\begin{example}[Accelerated life with extreme value noise]
+\begin{extra}[Accelerated life with extreme value noise]
 \label{eg:accelerated_exponential}
 \marginnote{Extreme Value Distribution}
 Assuming that the density of $\varepsilon$ is given by 
@@ -640,9 +652,7 @@ $$
 	\density(\varepsilon)=e^{(\varepsilon-e^\varepsilon)}, 
 $$
 which is known as an \emph{extreme value distribution}, then failure times have an exponential distribution, and estimation of $\beta$ collapses to an exponential regression problem.
-\end{example}
-
-
+\end{extra}
 
 
 
@@ -655,47 +665,93 @@ For models for stress, voltage, humidity, and other life accelerating covariates
 
 
 
+
 \subsection{Proportional Hazard Models}
 The \emph{proportional hazard}, or \emph{proportional risk} class of models, assumes that covariates multiply not time, but rather failure rates. 
 Put differently, accelerated life acts linearly on time, thus non-linearly on hazards. Proportional hazards acts linear on hazards, thus non linearly on time. 
-Qualitatively, both either accelerate or decelerate time. 
-Quantitatively, the exact amount of acceleration/deceleration may differ. 
+Qualitatively, both either accelerate (decelerate) time. 
+Quantitatively, the exact amount of acceleration (deceleration) may differ. 
 The choice between these models typically depends on the underlying physical theory, and on the ease of computation and interpretation.
 
 Starting with a two group example
 \begin{example}[Proportional hazards in a two group model]
-Consider two groups indexed by a single dummy variable $x_i \in \set{0,1}$.
+\label{eg:two_group_proportional_hazard}
+Consider two groups indexed by a single dummy variable $x \in \set{0,1}$.
 Assuming proportional hazard effect we have
 $$
-	\hazard{x_i=1}{t}=\hazard{x_i=0}{t} e^\beta= =\hazard{x_i=0}{t} \gamma, 
+	\hazard{\T|x=1}{t}=\hazard{\T|x=0}{t} e^\beta=\hazard{\T|x=0}{t} \gamma, 
 $$
-where $\gamma$ is again shorthand notation for $e^\beta$. 
-If $\gamma=1/2$, this means that at any point in time, group $x_i=1$ suffers half the risk of group $x_i=0$.
+where $\gamma$ is again shorthand notation for $e^\beta$.
+If $\gamma=1/2$, this means that at any point in time, group $x=1$ suffers half the risk of group $x=0$.
 \end{example}
 
-Now for the general case
+
+Now for the general case, which compares the risk function under conditions $x=x_1$ to the risk under some base operating conditions $x=x_0$.
 \begin{align}
 \label{eq:proportional_hazard}
-	\hazard{\T|x}{t}:=\hazard{\T|x_0}{t} \times \exp((x-x_0)'\beta) ,
+	\hazard{\T|x_1}{t}:=\hazard{\T|x_0}{t} e^{(x_1-x_0)'\beta} = \hazard{\T|x_0}{t} \gamma ,
 \end{align}
-where $x_0$ is some baseline condition with $\hazard{\T|x_0}{t}$ baseline hazard rate.
+where $\hazard{\T|x_0}{t}$ is some assumed baseline hazard rate, and $\gamma$ is short notation for $e^{(x_1-x_0)'\beta}$.
+Example \ref{eg:two_group_proportional_hazard} is recovered by setting $x_1=1$ and $x_0=0$.
 
-Proportional hazard models imply the following relation between survival functions
+
+The linear rescaling of the risk in the proportional hazard model, implies the following relation between survival functions
 \begin{align}
-	\survive{\T|x}{t}=\survive{\T|x_0}{t}^{\exp((x-x_0)'\beta)}.
+\label{eq:survival_proportional_hazard}
+	\survive{\T|x_1}{t}=\survive{\T|x_0}{t}^{\exp((x_1-x_0)'\beta)}.
 \end{align}
-In our two group example, with $\gamma=1/2$, a proportion hazard thus implies that group $x=1$'s survival probability is the square of group $x=0$. 
+To see this recall Eq.(\ref{eq:survival_to_hazard}):
+\begin{align*}
+\hazard{\T|x_1}{t} 
+&=  - \frac{\partial}{\partial t} \log \survive{\T|x_1}{t}  \\
+&= - \frac{\partial}{\partial t} \log \survive{\T|x_0}{t}^{\exp((x_1-x_0)'\beta)} \\
+&= e^{(x_1-x_0)'\beta} - \frac{\partial}{\partial t}  \log \survive{\T|x_0}{t} \\
+&=  \hazard{\T|x_0}{t} e^{(x_1-x_0)'\beta} 
+\end{align*}
+as required.
 
 
 
 
+\begin{example}[Comparing survival rates in the two group model]
+\label{eg:two_groups_two_time_scalings}
+We now compare the proportional hazard assumption, versus the accelerated time assumption in the simple two group model. 
+Under the accelerated time model, we have (by assumption):
+$\survive{\T|x=1}{t} = \survive{\T|x = 0}{t/\gamma}$. 
+Under the proportional hazard model, we have (by Eq.(\ref{eq:survival_proportional_hazard})) 
+$	\survive{\T|x=1}{t}=(\survive{\T|x=0}{t})^{\gamma}$.
+To visualize the difference between the groups we choose some arbitrary distribution (Weibull) and rescale it with $\gamma=2$ under the different models. 
+The result is depicted in Figure~\ref{fig:time_rescaling}, from which we see that the same assumed effect $\gamma=e^\beta=2$, acts in opposite directions under the different models. 
+This is also evident when examining the simple exponential case, using Eq.(\ref{eq:proportional_hazard}) and Eq.(\ref{eq:hazard_accelerated_life}): under the proportional hazard the risk increases, whereas under accelerated time the risk decreases.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[height=0.3\textheight]{art/survivals}
+\caption{}
+\label{fig:time_rescaling}
+\end{figure}
+\end{example}
+Example~\ref{eg:two_groups_two_time_scalings}  demonstrates that the different models rescale time in different ways (and even in opposite directions!). 
+The example may help you in interpreting the coefficients ($\beta$) of the model you chose. 
+In particular it means that a factor with a positive effect ($\hat{\beta}>0$) means accelerated ageing under proportional hazard, and decelerated ageing under accelerated time.
 
 
 \begin{example}[Accelerated life and proportional hazard for exponential failure times]
 Recall that the exponential distribution has a fixed failure rate (over time). 
-If take a power (proportional hazard), it is still constant in time, thus exponentially distributed. 
-If you accelerate time, it is still constant in time, thus exponentially distributed. 
-The exponential distribution assumption is thus closed under the two time rescalings.
+Using Eq.(\ref{eq:hazard_accelerated_life}) for the accelerated life, and Eq.(\ref{eq:proportional_hazard}) for the proportional hazards, we see that the hazard after any such time rescaling, is still constant in time. 
+The exponential distribution, rescaled under any of these models, will still return an exponential distribution.
+To se why this is not trivial, you can you your favourite (non negative, continuous) distribution, and check if the hazard function remains in the same class of distributions after a proportional hazard or accelerated life rescaling of time.
+\end{example}
+
+
+\begin{example}[Two groups with exponential baseline]
+To demonstrate the previous example, we return to our two group model.
+We assume: 
+(a) a proportional hazard effect.
+(b) an exponential failure time distribution as baseline.
+From (b) we have that $\T_{x=0}\sim exp(\lambda) \Rightarrow \hazard{\T|x=0}{t}=\lambda$. 
+From (a) we have that $\hazard{\T|x=1}{t}=\gamma \hazard{\T|x=0}{t}= \gamma \lambda \Rightarrow \T_{x=1}\sim exp(\gamma \lambda) $.
+We may now collect survival data under the two operating condition, and estimate $(\gamma, \lambda)$, say, with a maximum likelihood estimator. 
 \end{example}
 
 %[HW: prove this for Weibull ]
@@ -716,7 +772,7 @@ For a more detailed discussion, see \cite{cox_analysis_1984}.
 
 \subsection{Choosing the Base Failure Rate}
 In all the above models, we are free to choose the base failure rate: 
-$\survive{\T_1}{t}$ in Eq.(\ref{eq:accelerated_life}), or
+$\survive{\T_0}{t}$ in Eq.(\ref{eq:accelerated_life}), or
 $\varepsilon$ in Eq.(\ref{eq:estimating_accelerated_life}), or 
 $\hazard{\T|x_0}{t}$ in Eq.(\ref{eq:proportional_hazard}).
 Three possible approaches include:
@@ -740,18 +796,19 @@ Examples \ref{eg:likelihood_of_failures}, \ref{eg:accelerated_gaussian}, and \re
 We now relax the explicit failure time distribution assumption, and adopt a more flexible semi-parametric distribution class, known as the \emph{piecewise exponential class}.\marginnote{Piecewise Exponenitial}
 Consider the proportional hazard model:
 \begin{align}
-	\hazard{\T|x}{t}:=\hazard{\T|x_0}{t} \times \exp((x-x_0)'\beta).
+	\hazard{\T|x_1}{t}:=\hazard{\T|x_0}{t} \times \exp((x_1-x_0)'\beta).
 \end{align}
-The model clearly requires some baseline failure rate $\hazard{0}{t}=\hazard{\T|x_0}{t}$.
+The model clearly requires some baseline failure rate $\hazard{\T|x_0}{t}$.
 A flexible, yet not too flexible assumptions, is that the failure rate is constant in some time intervals:
 \begin{align}
 	\hazard{0}{t}=h_j \quad \text{if} \quad t\in [\tau_{j-1},\tau_j)
 \end{align}
-This class of distributions has roughly $2J$ parameters: $(\tau_1,\dots,\tau_J,h_1,\dots,h_J)$.
+This class of distributions has $J(J-1)$ parameters: $(\tau_1,\dots,\tau_{J-1},h_1,\dots,h_J)$.
 We are free to choose $J$. 
 Large $J$ are very flexible classes, but will require a lot of failure data to estimate.
-Small $J$ are less flexible, but more easily estimable. 
+Small $J$ are less flexible, but require less data to estimate. 
 At the limits, when $J=1$, we are back to exponential failure times. 
+At the other limit, where $J \to \infty$, we have an absurdly flexible distribution class, which requires impossibly large amounts of data to estimate.
 
 Since the failure rate is piece-wise constant, the distribution class is known as \emph{piece-wise exponential}.\marginnote{Piecewise Exponential}
 It is a rather flexible class of distributions. Figure~\ref{fig:piecewise_exponential} depicts the approximation of the Weibull survival function, using a piece-wise constant hazard function, with $J=3$ and appropriate selected parameters.
@@ -829,7 +886,7 @@ When considering the availability in some time interval $J$, and denoting by $N_
 Denoting by $Y_J=\int_J (1-\Phi_t) dt$ the downtime during interval $J$, we may study
 \begin{align}
 	P(Y_j \leq y) &	\\
-	A^D := \frac{\expect{Y_J}}{|J|}
+	A^D(J) := \frac{\expect{Y_J}}{|J|}
 \end{align}
 \end{definition}
 
@@ -859,24 +916,6 @@ We denote by $\mu_G=\expect{R_k}$, the \emph{mean time to repair} (MTTR).
 
 Obviously, MTTR and MTTF are important characteristics of the single-component system.
 
-We denote the time to the $n$'th failure by 
-\begin{align}
-	S_n:= T_1 + \sum_{k=1}^{n-1} (R_k+T_{k+1})
-\end{align}
-where $S_0=0$ by convention.
-We also denote the time to the $n$'th repair by 
-\begin{align}
-	S^\circ_n:= \sum_{k=1}^{n} (T_k+R_k)
-\end{align}
-
-Denoting by $H^{(n)}$ the distribution of $S_n$ we have that 
-\begin{align}
-	H^{(n)}(t)= F \conv (F \conv G)^{\conv (n-1)}
-\end{align}
-Similarly
-\begin{align}
-	H^{\circ(n)}(t)= (F \conv G)^{\conv (n)}
-\end{align}
 
 \begin{theorem}[Stable point availability]
 As $t \to \infty$
@@ -893,10 +932,10 @@ As $t \to \infty$, then with probability one
 \end{align}
 \end{theorem}
 
-\begin{theorem}[Limiting unavailability]
+\begin{theorem}[Stable unavailability]
 As $t \to \infty$, then with probability one
 \begin{align}
-	\frac{Y_t}{t} \to 1-\frac{\mu_F}{\mu_F+\mu_G} 
+	A^D([0,t])=\frac{Y_t}{t} \to \frac{\mu_G}{\mu_F+\mu_G} 
 \end{align}
 	
 \end{theorem}
