@@ -350,12 +350,12 @@ Allowing $n$ observations per condition, the experiment will include $4n$ observ
 \end{figure}
 With this $2^2$ design, we may recover several effects:
 \begin{description}
-\item [Main effect of A] The effect of varying $A$ from $(-)$ to $(+)$, denoted $\tau^A$.
-\item [Main effect of B] The effect of varying $B$ from $(-)$ to $(+)$, denoted $\tau^B$.
-\item [Main effects and interaction] The effect of varying both $A$ and $B$ from $AB=(--)$ to $AB=(++)$, , denoted $\tau^{AB}$.
+\item [Main effect of A] The effect of varying $A$ from $(-)$ to $(+)$.
+\item [Main effect of B] The effect of varying $B$ from $(-)$ to $(+)$.
+\item [Main effects and interaction] The effect of varying both $A$ and $B$ from $AB=(--)$ to $AB=(++)$.
 \end{description}
 
-We typically denote
+We typically denote the (mean) response for each treatment by the $\mu_{\smiley}$ notation, where $\smiley$ encodes the applied treatment by stating the conditions that were at their $+$ state:
 \begin{table}[H]
 \centering
 \begin{tabular}{|c|c|c|c|}
@@ -367,14 +367,6 @@ We typically denote
 \hline 
 \end{tabular} 
 \end{table}
-How are these effects related to the mean responses to each treatment?
-\begin{align}
-	\tau^A &:= \frac{1}{4}\left( (\mu_{ab}+\mu_a)- (\mu_{(1)}+\mu_b)\right), \\
-	\tau^B &:= \frac{1}{4}\left( (\mu_{ab}+\mu_b) - (\mu_{(1)}+\mu_a)  \right), \\
-	\tau^{AB} &:= \frac{1}{4}\left( \mu_{ab} +  \mu_{(1)} -  \mu_a - \mu_b \right).	
-\end{align}
-
-
 
 \marginnote{Interaction}
 
@@ -451,7 +443,7 @@ There are thus $\binom{4}{2}=6$ possible eliminations, which are enumerated in T
 The lesson from Example~\ref{eg:fractional_factorial} is that in a fractional factorial our savings in time and money, come at the cost of the information that can be drawn from the experiment.
 The idea behind partial factorial experiments, is that by an informed choice of the conditions skipped, we can choose what information to give up. The information lost, is known as the \emph{alias structure}.\marginnote{Alias Structure}
 
-In practice, we will rarely do the actual elimination of conditions, but rather revert to pre-selected designs. 
+In practice, we will rarely go over all the $\binom{2^k}{2^p}$ possible eliminations of conditions, but rather revert to pre-selected designs. 
 Table~\ref{tab:partial_factorial_ii}, generated with the \rcode{FrF2()} in the \rcode{FrF2} \R package, is an optimal $2^{5-2}$ design.
 Using the \rcode{design.info()} function of that same package, we know that the aliasing structure of this design is
 $a=bd=ce, b=ad, c=ae, d=ab, e=ac$.
@@ -480,11 +472,9 @@ We will not go into the details of how the aliasing structure is computed, but r
 
 
 \begin{definition}[Resolution of a Design]
-\sout{As we have already seen, there are $\binom{2^k}{2^{k-p}}$ possible eliminations that convert a $2^k$ design to a $2^{k-p}$ design.
-We call the \emph{resolution of the design}, the lowest order effect that is aliased. 
-In Table~\ref{tab:partial_factorial_ii}, the resolution is 1, making it a rather unattractive design. 
-Resolutions below 3 typically considered not informative, and above 5, considered wasteful.
-}\end{definition}
+In previous versions of this text I defined the \emph{resolution} of a design. 
+Since my definition was wrong, you are kindly asked to ignore it.
+\end{definition}
 
 \begin{tcolorbox}
 \paragraph{My mistake!}
@@ -509,7 +499,15 @@ For each age and country combination (full factorial blocking) we can randomly a
 This combination of a factorial design for blocking, is known as a \emph{split plot}, or \emph{split unit} design.
 For more on split plots see \cite[Sec.6.4]{cox_theory_2000}.
 
+\subsection{Summary of Discrete Factors}
+In this section we dealt with discrete factors, typically taking two possible values.
+These appeared for several purposes. 
+The most obvious way, was to define treatments: in full factorial, and fractional factorial designs, the treatments are decomposed into their defining factors. 
+Decomposing treatments to their factors allowed us to be more economical in our designs (think why?).
+Factors were, however, also encountered when reducing variability. 
+When used for defining blocks, or groups, we called these non-specific factors simply because all we required for grouping was some vague notion of homogeneity within a block, and not an explicit definition of the factor that defines the blocks. 
 
+In the next section, we extend from discrete factors to continuous factors.
 
 \section{Continuous Factors}
 When dealing with \emph{continuous factors}, or \emph{quantitative factors}, we have many more analysis strategies than when dealing with qualitative factors.
@@ -544,7 +542,7 @@ Focusing on the design principles, we may note the following particularities of 
 
 
 
-\subsection{Optimal Designs}
+\section{Optimal Designs}
 % 1D least squares example
 % pD least squares example
 % logistic regression example

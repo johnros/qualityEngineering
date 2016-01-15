@@ -359,7 +359,8 @@ Indeed, even though the component-wise hazards are fixed in time, the system's h
 
 
 \begin{example}[Weibull Hazard]
-The Weibull distribution is very common in reliability analysis since it is tractable generalization of the exponential distribution with many nice properties. It can be constructed by 
+The Weibull distribution is very common in reliability analysis since it is tractable generalization of the exponential distribution with many nice properties. 
+It can be constructed by 
 $\T := \lambda \U^{1/k}$, where $\U \sim \exp(1)$. 
 This implies that for non negative $t$:
 \begin{align}
@@ -368,7 +369,7 @@ This implies that for non negative $t$:
 \end{align}
 so that 
 \begin{align}
-	\survive{\T}{t} &= \exp \left(-\frac{\T}{\lambda} \right)^k, \\
+	\survive{\T}{t} &= e^ {-(\T/\lambda )^k}, \\
 	\hazard{\T}{t} &= \frac{k}{\lambda} \left(\frac{\T}{\lambda} \right)^{k-1} .
 \end{align}
 \end{example}

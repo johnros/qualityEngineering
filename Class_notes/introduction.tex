@@ -230,7 +230,7 @@ Assuming all components have the same fallout rate, we omit the index $j$ in $\a
 The failure probability $\alpha$ is implied by the CTQs, and its specification limits (USL, LSL). 
 Denoting the target value of the CTQ by $\targetValue$, then $USL=\targetValue + \delta$ and $LSL=T-\delta$.
 Three-sigma means that the production variability, $\sigma$, is small enough so that $$3 \sigma = \delta.$$
-Assuming $$CTQ \sim \gauss{\targetValue,\sigma},$$ we can compute:
+Assuming $$CTQ \sim \gauss{\targetValue, \sigma^2},$$ we can compute:
 \begin{align}
 \label{eq:3_sigma}
 	\alpha &= 1-P(LSL<CTQ<USL) \\ 
