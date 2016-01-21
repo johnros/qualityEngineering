@@ -443,7 +443,7 @@ There are thus $\binom{4}{2}=6$ possible eliminations, which are enumerated in T
 The lesson from Example~\ref{eg:fractional_factorial} is that in a fractional factorial our savings in time and money, come at the cost of the information that can be drawn from the experiment.
 The idea behind partial factorial experiments, is that by an informed choice of the conditions skipped, we can choose what information to give up. The information lost, is known as the \emph{alias structure}.\marginnote{Alias Structure}
 
-In practice, we will rarely go over all the $\binom{2^k}{2^p}$ possible eliminations of conditions, but rather revert to pre-selected designs. 
+In practice, we will rarely go over all the $\binom{2^k}{2^k-2^{k-p}}$ possible eliminations of conditions, but rather revert to pre-selected designs. 
 Table~\ref{tab:partial_factorial_ii}, generated with the \rcode{FrF2()} in the \rcode{FrF2} \R package, is an optimal $2^{5-2}$ design.
 Using the \rcode{design.info()} function of that same package, we know that the aliasing structure of this design is
 $a=bd=ce, b=ad, c=ae, d=ab, e=ac$.
