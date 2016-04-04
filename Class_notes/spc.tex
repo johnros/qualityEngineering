@@ -15,8 +15,15 @@ We start with the \emph{Shewhart control chart}, in which each value is charted 
 
 
 
+\section{The Run Chart}
+The simplest possible control chart is the \emph{run chart}, in which each measured CTQ is simply plotted against the time of measurement.
+If strong anomalies exist, or temporal patterns, they may be already visible in the run-chart.
+On the down-side, the run-chart is essentially a statistical test based on a single observation at a time.
+Knowledge of statistical hypothesis testing suggest we can do better. 
+Enter the \barxChart. 
 
-\section[The \barxChart]{A soft start. The \barxChart}
+
+\section[The \barxChart]{The \barxChart}
 \sectionmark{\barxChart}
 
 
@@ -25,7 +32,7 @@ The chart borrows its name from the fact that it is essentially a visualization 
 The chart is also augmented with visual aids that help in determining if the process is \emph{in control}, i.e., if it is consistent with its own history. 
 
 \begin{remark}[Control Charts and Capability Analysis]
-While seemingly very similar ideas, we note that control charts have no information on the specifications of the process, merely on its own history.
+While seemingly very similar ideas, there is a fundamental difference between capability analysis and process control:  while process control compares to the \emph{past}, capability analysis compares to \emph{specification}.
 Process capability and control charting ideas may be compounded, as we explain in Chapter~\ref{sec:advanced_capability_analysis}.
 \end{remark}
 
@@ -256,10 +263,6 @@ When several periods are pooled together, we will no longer call this  ``Shewhar
 The following charts have a continuous flavour. As such, it is both favourable, and common, to compute them using one observation at a time, meaning that $n=1$. 
 \end{remark}
 
-
-
-\subsection{Run Test Chart}
-[TODO]
 
 
 
@@ -509,6 +512,25 @@ For this purpose, we merely offer several candidate multivariate statistics, wit
 \end{description}
 
 
+
+
+\section{The p-value chart}
+The basic construction of the previous control charts was to choose some test statistic that is sensitive to the signal (read-alternative hypothesis) we seek, derive its sampling distribution, and plot it against some control limits. 
+From the hypothesis testing literature we know that we can test hypotheses using some test-statistic, or convert the statistic to p-value scale and make the same inference. 
+This idea can carry to control charts.
+
+Figure~\ref{fig:p-value-chart} demonstrates a control chart based on the p-value at each period.
+These charts have the advantage that once the p-values have been computed, the control limits are fixed (for example at $0.05$).
+They are always in the same scale, regardless of the underlying process and test statistic. 
+In this sense, the p-value charts unify all other control charts (with some exceptions, admittedly). 
+The caveat, as in statistical hypothesis testing, is that computing the p-value may be a formidable task. 
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.7\linewidth]{art/p-value-chart}
+\caption{A p-value control chart. Source: \cite{li_using_2012}.}
+\label{fig:p-value-chart}
+\end{figure}
 
 
 
