@@ -65,7 +65,7 @@ With our new notation Eq.(\ref{eq:cp}) is now $\cp=\frac{\delta}{3 \sigma}$.
 Assuming $CTQ \sim \gauss{\mu, \sigma^2}$, and that the process is centred so that $\ctqExpect=\targetValue$, then $\cp$ is related to $\pnc$ via
 \begin{align}
 \label{eq:pc_and_pnc}
-	\pnc= 2\, \Phi(-3 \cp)
+	\pnc(\cp) = 2\, \Phi(-3 \cp)
 \end{align}
 As a sanity check, we check this relation for a 3-sigma process.
 A 3-sigma process implies that $\cp=1$, and Eq.(\ref{eq:pc_and_pnc}) returns $\pnc=0.0027$, as we have already seen in the introduction (Section~\ref{sec:six_sigma}).
@@ -111,7 +111,7 @@ Namely:
 \subsection{Non-Conformance for a Non-Gaussian CTQ}
 The first assumption we will now relax is the Gaussianity of $CTQ$. 
 We start by checking what is the non compliance rate, if we were completely wrong about the distribution of the CTQ. 
-Chebyshev's inequality provides a universal bound on $\pnc$.
+Chebyshev's inequality will be useful.
 
 
 \begin{theorem}[Chebyshev's inequality]
@@ -156,13 +156,15 @@ This means that a 3-sigma process, assumingly with $2,700 ppm$, may actually hav
 %Again we see that if we wrongly assumed normality, we may have many more non-compliances than we thought. Then again, both Chebyshev and Vysochanskij–Petunin are very loose bounds. 
 %They should thus be seen as a worst-case, while reality is not as bad.
 
-The moral of the story is that by assuming the correct distribution of the CTQ, we may save a lot of resources. 
-We can assume normality, as we typically do, but there are other alternatives:
+The moral of the story is that by assuming the correct distribution of the CTQ, we may save a lot of resources, since we will not need to tune the production process to some worst-case scenario, but rather to the exact properties of our production process. 
+We can assume normality, as we typically do, but there are other alternatives that may help us to preserve the important relation between $\cp$ and $\pnc$:
 \begin{enumerate}
 \item Transformations: it is quite possible that the CTQ is not Gaussian in its original scale, but it is Gaussian in a different scale. You should always inspect a QQnorm (Sec. \ref{sec:qqplot}) plot after a $log$ or $sqrt$ transformation.
-\item Assume a different distribution: We derived $\pnc(\cp)$ (eq.~\ref{eq:pc_and_pnc}) under a normality assumption, but it may certainly be derived for different distributions. 
+\item Assume a different distribution: We derived $\pnc(\cp)$ (Eq.~\ref{eq:pc_and_pnc}) under a normality assumption, but it may certainly be derived for any other distribution you are willing to assume. 
 \item The denominator of $\cp$ is a range that leaves $0.00135$ probability of the Gaussian tail outside the range. 
-When relaxing the normality assumption, $\sigma$ is no longer related to the tail probability as it was before. We may still, however, directly plug $CTQ_{0.00135}$ and $CTQ_{1-0.00135}$ quantiles to get a CPR in the same spirit of the $\cp$. This is known as the $\cpq$ index we now define.
+When relaxing the normality assumption, $\sigma$ is no longer related to the tail probability as it was before. We may still, however, directly plug $CTQ_{0.00135}$ and $CTQ_{1-0.00135}$ quantiles to get a CPR in the same spirit of the $\cp$. This is known as the $\cpq$ index we now define. It is immediate to verify that $\pnc(\cpq)$ is \emph{always} $2,700ppm$.
+The only difficulty may be in estimating $CTQ_{0.00135}$ and $CTQ_{1-0.00135}$. 
+
 \end{enumerate}
 
 \begin{definition}[$\cpq$]
@@ -178,10 +180,11 @@ When relaxing the normality assumption, $\sigma$ is no longer related to the tai
 
 \subsection{Process Capability of a Non-Centred Process}
 We will now relax the assumption of $\ctqExpect=\targetValue$.
+Again, this will break the relation between $\pnc$ and $\cp$ Eq.~\ref{eq:pc_and_pnc}), even for a normally distributed CTQ.
 
 \begin{definition}[$\cpk$]
 \begin{align}
-	\cpk:= \min\set{\cpu,\cpl}
+	\cpk:= \min\set{\cpu,\cpl},
 \end{align}
 where $\cpu:= \frac{USL- \ctqExpect}{3 \sigma}$ and $\cpl:= \frac{\ctqExpect-LSL}{3 \sigma}$.
 \end{definition}
@@ -206,6 +209,7 @@ An illustration is given in Figure~\ref{fig:cpk}.
 
 The $\cpk$ index is motivated by conserving the relation between the index and the non-compliance rate $\pnc$, which is not captured by $\cp$ when the process is not centred. 
 Indeed if $\cp$ can be interpreted as ``accuracy compared to a (centred) 3-sigma process'', then $\cpk$ can be interpreted as ``accuracy compared to a (non-centred) 3-sigma process''.
+
 The 3-sigma process is used as a benchmark for historical reasons. 
 In practice, it is actually very common to report the sigma-level as a capability index: $\min\set{\frac{USL-\mu}{\sigma},\frac{\mu-LSL}{\sigma}}$, which can be seen as PCR with respect to a 1-sigma process.
 Three-sigma would thus be reported as $3$, 6-sigma as $6$, etc.
@@ -221,7 +225,7 @@ It is motivated by the observation that for $\ctqExpect=\targetValue$, then $\si
 \end{align}
 \end{definition}
 Eq.(\ref{eq:cpm}) readily shows that just like the $\cpk$, then $\cpm \leq \cp$. 
-
+[TODO: relation between $\cpm$ and $\pnc$]
 
 
 
@@ -230,8 +234,8 @@ Eq.(\ref{eq:cpm}) readily shows that just like the $\cpk$, then $\cpm \leq \cp$.
 
 
 \subsection{Interval Estimation for Capability Indexes}
-Since the various process capability indexes are merely population parameters, we can also construct confidence intervals (CIs) for them, which are very important for small sample sizes, thus point estimates unreliable.
-The simplest case is that of $\cp$. Being a monotone transformation of $\sigma$, we can call upon confidence intervals for the variance of a normal population, so that with probability $1-\alpha$:
+Since the various process capability indexes are merely population parameters, we can also construct confidence intervals (CIs) for them, which are very important for small sample sizes, where point estimates unreliable.
+We will only present the simplest case of $\cp$, but results are available for all other PCRs. Being a monotone transformation of $\sigma$, we can call upon confidence intervals for the variance of a normal population, so that with probability $1-\alpha$:
 \begin{align}
 \label{eq:ci_for_cp}
 	\cp \in \left[ 
@@ -239,23 +243,27 @@ The simplest case is that of $\cp$. Being a monotone transformation of $\sigma$,
 		\cpHat \sqrt{\frac{\chi^2_{1-\alpha/2,n-1}}{n-1}}
 	\right],
 \end{align}
-where $\cpHat = \frac{USL-LSL}{6 s}$.
-This equation is simply derived from Eq.(\ref{eq:cp_dist}).
+where 
+\begin{align}
+\label{eq:cpHat}
+\cpHat = \frac{USL-LSL}{6 s}.
+\end{align}
+Eq.(\ref{eq:ci_for_cp}) is simply derived from Eq.(\ref{eq:cp_dist}).
 Intervals for the other capability indexes, are available in \cite{montgomery_introduction_2007} and references therein. 
 
 
 
 
-\subsection{Testing Hypotheses on Capability}
+\subsection{Testing Hypotheses on Capability Ratios}
 Consider a supply contract, which requires production to have $\cp>1.5$. 
 It may easily be the case, that $\cp>1.5$, even if $\cpHat<1.5$, especially if the sample size is small.
 It thus makes a lot of sense, to design hypothesis tests on process capabilities. 
-We observe that for an i.i.d. sample from a Gaussian population, where $\cpHat$ is estimated with $s$, then
+We observe that for an i.i.d. sample from a Gaussian population, and when $\cp$ is estimated as in Eq.(\ref{eq:cpHat}), then
 \begin{align}
 \label{eq:cp_dist}
-	(n-1) \left( \frac{\cp}{\cpHat} \right)^2  \sim \chi^2_{n-1},
+	(n-1) \left( \frac{\cp}{\cpHat} \right)^2  \sim \chi^2_{n-1}.
 \end{align} 
-so that $(n-1) \left( \frac{\cp}{\cpHat} \right)^2 $ may serve as test statistic.
+Eq.(\ref{eq:cp_dist}) and a little algebra gives us the rejection limits, were we to use $\cpHat$ as test statistic.
 
 \begin{example}[$\cp$ test for 6-sigma compliance]
 \begin{align*}
@@ -263,13 +271,13 @@ so that $(n-1) \left( \frac{\cp}{\cpHat} \right)^2 $ may serve as test statistic
 	H_1:\cp &> 2 \\
 	(n-1) \left( \frac{2}{\cpHat} \right)^2  &\overset{H_0}{\sim} \chi^2_{n-1}
 \end{align*}
-so that the $1-\alpha$ rejection region in $\cpHat$ scale is 
+so that the $1-\alpha$ test using $\cpHat$ is 
 \begin{align*}
-	\cpHat > \sqrt{\frac{4 (n-1)}{\chi^2_{n-1,\alpha}}} .
+	\text{reject if } \cpHat > \sqrt{\frac{4 (n-1)}{\chi^2_{n-1,\alpha}}} .
 \end{align*}
 \end{example}
 Note that we should not be testing this hypothesis with the confidence interval in Eq.(\ref{eq:ci_for_cp}) because this particular hypothesis is directional.
-Now for a more general case:
+Now for the more general tests:
 \begin{align*}
 	H_0: \cp \leq a; 
 	H_1:\cp > a 
@@ -284,20 +292,42 @@ Now for a more general case:
 \end{align*}
 
 
+\begin{think}
+Look at the relation between the hypotheses tested and the direction of the rejection region.
+Do you see why the confidence interval corresponds (only) to the two-directional hypothesis test?
+\end{think}
 
 
 
 
 
+\subsection{Other estimators of the $\cp$}
+The first $\cp$ estimator we proposed used $s$ to estimate the $\sigma$ (Eq.\ref{eq:cpHat}).
+While a seemingly very natural estimator, historically, $\sigma$ was more often estimated using the (scaled) range of the data:
+ $\range{x}:= \max\set{x}-\min\set{x}$ (Definition~\ref{def:range}).
+The range is indeed a scale summary, and may be easier to compute than $s$ is a computer is not around. 
 
+The $\cp$ estimator in Eq.(\ref{eq:cpHat}) is actually known as the $\hat{P}_p$ \emph{performance index}.\marginnote{Performance Index}
+It was promoted in $1991$ by the Automotive Industry Action Group (AIAG) as a capability estimator which is informative even if the process is out of control.
+This is quite surprising as we already know that $s$ is \textbf{not} a robust location measure. 
+It is true, however, that estimating $\sigma$ with $\range{x}$ is very sensitive to the existence of defects, while $s$ less so.
 
+If robustness is indeed of interest, i.e., if we want to estimate the process capability in the presence of defects, one may consider the following truly \textbf{robust} capability estimators:
+\begin{align}
+\label{eq:robust_capability}
+\cpHat &:= \frac{USL-LSL}{6 MAD(x)} \\
+\cpkHat &:= \min\set{\frac{USL- x_{0.5}}{3 MAD(x)},\frac{x_{0.5}-LSL}{3 MAD(x)}}, \\
+\cpmHat &= \frac{\cpHat}{\sqrt{1+(\frac{x_{0.5}-\targetValue}{MAD(x)})^2}}. 
+\end{align}
 
+When using a robust capacity estimator, attention should be paid to its interpretation. 
+The production may actually be out of control, so these indexes measure not the capacity of the actual process, but rather the \emph{potential capacity}, once the process will be brought into control.
 
 
 
 
 \subsection{Process Performance Indices}
-Process \emph{performance} indices measure compliance to specification of a process out of statistical control. 
+Process \emph{performance} indices measure compliance to specification of a process \emph{out} of statistical control. 
 These include the $\pp$ and $\ppk$ indices. 
 Besides mentioning their existence, we will not give them further attention, since we adopt \cite{montgomery_introduction_2007}'s view that their use is strongly discouraged. 
 

@@ -82,7 +82,7 @@ or required levels and that the variability around these desired levels is minim
 \item [Fallout] The same as non-conformity.
 \item [Defect] A non-conformity that is serious enough to affect the use of the product.
 \item [DPMO] Defect per million opportunities. 
-\item [PPM] Parts per million. Interchangeable with DPMO.
+\item [PPM] Parts per million. The same as DPMO.
 \end{description}
 
 
@@ -92,15 +92,13 @@ or required levels and that the variability around these desired levels is minim
 \label{sec:terminology_statistical}
 \begin{description}
 \item [Exploratory Data Analysis (EDA)] An assumption free quantitative inspection of data; ``Story telling''; no inference.
-\item [Inference] Data analysis with the intention of generalizing from a sample to a population.
+\item [Inference] Data analysis with the intention of generalizing from a sample to a population. Inclues hypothesis testing, parameter estimation, confidence estimation, prediction, and others.
 \item [Causal Inference] Inference, with the intention of claiming causal relations between quantities under study.
 \item [Predictive Analytics] Data analysis with the intention of making predictions with future data. Can be seen as inference, without aiming at causality.
 \item [Design of experiments (DOE)]  By far the best and most established way for causal inference. The \emph{random assignment} of units to groups allows to interpret statistical correlations as causal.
-\item [Statistical Process Control (SPC)] Data analysis with the intention of identifying anomalous behaviour with respect to history\footnote{Akin to \emph{anomaly detection}, or \emph{novelty detection}, in the machine learning literature.}. 
+\item [Statistical Process Control (SPC)] Data analysis with the intention of identifying anomalous behaviour with respect to history. \Aka \emph{anomaly detection}, or \emph{novelty detection}, in the machine learning literature.. 
 \item [Computer Simulation] Well, just what the name implies. 
-\item [Control Chart] A graphic visualization of the historical evolution of one (or several) CTQs. 
-\item [(Un)Controllable Inputs] Each process has inputs that affect the behaviour of the CTQ. Some are controllable, and some are not.
-\item [Factorial Design] In the language of DOE, controllable inputs are \emph{factors}. A factorial design, is an experiment where factors are varied in order to study their effect on the CTQ.
+\item [Control Chart] A graphic visualization of the historical evolution of one (or several) CTQs.  Typically augmented with some graphic decision criteria. 
 \item [Off/On-line process control] SPC can be performed on or off line. 
 On-line, a.k.a. \emph{in-process control},  meaning control happens as the process evolves, and off-line meaning before it starts or after it has finished.
 \item [Engineering control] A.k.a. \emph{automatic control}, or \emph{feedback control}. SPC that triggers an intervention that keeps the process in control.
@@ -115,7 +113,7 @@ On-line, a.k.a. \emph{in-process control},  meaning control happens as the proce
 \begin{table}[H]
 \footnotesize
 \begin{timeline}{1875}{1948}{2cm}{2cm}{12cm}{12cm}
-\entry{1875}{Frederick W. Taylor introduces ``Scientific Management''}
+\entry{1875}{Frederick W. Taylor introduces ``Scientific Management''.}
 \entry{1900}{Henry Ford refines the assembly line to refine productivity and quality.}
 \entry{1907}{AT\&T begins systematic inspections.}
 \plainentry{1908}{W.S. Gosset publishes the t-test.}
@@ -174,7 +172,7 @@ As usual, we collect recurring ideas:
 \subsection{Zero Defects Program (ZD)}
 Quoting \cite{wikipedia_zero_2015}:
 \begin{quote}
-\dots a management-led program to eliminate defects in industrial production that enjoyed brief popularity in American industry from 1964 to the early 1970's. Quality expert Philip Crosby later incorporated it into his "Absolutes of Quality Management" and it enjoyed a renaissance in the American automobile industry, as a performance goal more than as a program, in the 1990s. Although applicable to any type of enterprise, it has been primarily adopted within supply chains wherever large volumes of components are being purchased (common items such as nuts and bolts are good examples).
+\dots a management-led program to eliminate defects in industrial production that enjoyed brief popularity in American industry from 1964 to the early 1970's. Quality expert Philip Crosby later incorporated it into his ``Absolutes of Quality Management'' and it enjoyed a renaissance in the American automobile industry, as a performance goal more than as a program, in the 1990s. Although applicable to any type of enterprise, it has been primarily adopted within supply chains wherever large volumes of components are being purchased (common items such as nuts and bolts are good examples).
 \end{quote}
 
 
@@ -229,24 +227,25 @@ Assuming all components have the same fallout rate, we omit the index $j$ in $\a
 
 The failure probability $\alpha$ is implied by the CTQs, and its specification limits (USL, LSL). 
 Denoting the target value of the CTQ by $\targetValue$, then $USL=\targetValue + \delta$ and $LSL=T-\delta$.
-Three-sigma means that the production variability, $\sigma$, is small enough so that $$3 \sigma = \delta.$$
+Three-sigma means that the production variability, $\sigma$, is small enough so that $$3 \sigma < \delta.$$
 Assuming $$CTQ \sim \gauss{\targetValue, \sigma^2},$$ we can compute:
 \begin{align}
 \label{eq:3_sigma}
-	\alpha &= 1-P(LSL<CTQ<USL) \\ 
-	& = 1-P(|CTQ| < \delta) \\ 
-	&= 1- P(|CTQ| < 3 \sigma )= 0.0027.
+	\alpha & = 1-P(LSL<CTQ<USL) = & \\ 
+	& 1-P(|CTQ| < \delta) < & \text{assuming } 3\sigma capability\\ 
+	& 1- P(|CTQ| < 3 \sigma ) = & \text{assuming normality} \\ 
+	& 0.0027 .&
 \end{align}
 The 3-sigma quality guarantee is also known as $2,700$ defective parts per million (ppm) for now obvious reasons.\marginnote{PPM}
-Plugging the 3-sigma performance in Eq.(\ref{eq:failure_rate}) returns
+Plugging the $3\sigma$ performance in Eq.(\ref{eq:failure_rate}) returns
 \begin{align*}
-	P(\text{3-sigma failure}) &< 1-(1-0.0027)^m
+	P(failure) &< 1-(1-0.0027)^m
 \end{align*}
 Figure~\ref{fig:3_sigma_failure_proability} illustrates the probability of failure against the number of components. 
 For simple devices, the 3-sigma criterion may suffice. 
 But now imagine the number of components in a car, a cellular phone, \dots. The 3-sigma rule is just not good enough. 
 This is where 6-sigma requirement comes along. It implies that the production is process is so accurate that 
-$$6 \sigma = \delta.$$
+$$6 \sigma < \delta.$$
 Updating Eq.(\ref{eq:3_sigma}) we get that the defective \emph{ppm} of 6-sigma is $0.002$. 
 This is obviously excellent news, except for the typically tremendous effort involved in achieving this level of quality.
 
