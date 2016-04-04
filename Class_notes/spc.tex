@@ -243,6 +243,51 @@ See \url{http://www.quinn-curtis.com/spcnamedrulesets.htm} for a quick review.
 
 
 
+
+
+\section{Shewhart Charts With Other Test Statistics}
+
+We have been focusing on the \barxChart for ease of exposition. There are, however, many cases where the mean is not an appropriate test statistic.
+Examples include:
+\begin{enumerate}
+\item A discrete CTQ, where only the number of non-compliances can be counted. 
+\item Where the departure from statistical control is not only a shift in $\mu$.
+\end{enumerate}
+
+The following charts are designed for those cases. 
+Practically all of the ideas presented for the \barxChart may be adapted to these other test statistics after appropriate adaptations. 
+The reader is referred to \cite{montgomery_introduction_2007} for the details. 
+
+\label{sec:other_control_charts}
+\subsection{$R$ Chart}
+Where $\bar{x}$ is replaced by the range, $\max_i\set{x_{i,t}}-\min_i\set{x_{i,t}}$.
+Sensitive to variability changes. 
+Popularized by its ease of implementation, in the pre-computer age. 
+\subsection{$s$ Chart}
+Where $\bar{x}$ is replaced by $s$. 
+Sensitive to variability changes. 
+This is an important and useful chart which we will revisit in Section~\ref{sec:multivarite_s}.
+\subsection{$s^2$ Chart}
+Like the $s$ chart, only in variance-scale.
+\subsection{$p$ and $np$ Chart}
+Where $\bar{x}$ is replaced by the proportion ($p$), or number ($np$), of non-conforming units.
+Appropriate for attributes, i.e., discrete CTQs.
+\subsection{$c$ Chart}
+Like a $np$ chart, but where the number of nonconforming units is replaced with the total number of nonconformances, allowing multiple defects per unit. 
+\subsection{$u$ Chart}
+Like the $c$ chart, but allowing a variable number of units per period (varying $n$).
+\subsection{Regression Control Chart}
+In a \emph{regression control chart}, the test statistic can be a regression coefficient. 
+When compounded with multivariate charts, a regression control chart may accommodate several regression  coefficient, or the residuals. 
+
+
+
+
+
+
+
+
+
 \section{Pooling Information Over Periods}
 \sectionmark{Pooling Periods}
 \label{sec:running_windows}
@@ -424,7 +469,7 @@ False alarm rates and ARLs should be computed mutatis mutandis.
 
 
 
-\section[Multivariate]{Multivariate Control Charts}
+\section[Multivariate]{Multivariate Control Charts for Location}
 \label{sec:multivariate}
 % Wishart
 % Srivastava Du
@@ -487,7 +532,7 @@ Since the above limits have an (approximate) type-I error rate of $\alpha$, and 
 
 
 
-\subsection{Other Multivariate Statistics}
+\section[Multivariate extensions]{Multivariate Control- Extensions}
 
 Hotelling's \tsq is perhaps the first and most natural multivariate test statistic.
 There are, however, circumstances where we can choose a better statistic.
@@ -514,23 +559,42 @@ We would like a multivariate version of the s chart to monitor the health of our
 
 
 Based on these examples, we list cases where \tsq is a bad choice. Appropriate test statistics for these cases are discussed in the following sections.
-\begin{enumerate}
-
-\item The signal we seek is not in the mean of the CTQ but rather in its variance, such as Example~\ref{eg:irrigation}. Put differently, we actually want a multivariate version of the $s$ chart and not the \barxChart. 
-
-\item The signal we seek is expected to exist in a small subset of coordinates, like in the cyber-security example (\ref{eg:cyber}). This is known as a \emph{sparse signal}, unlike the \emph{dense signal} targeted by the \tsq. \marginnote{Sparse Signal}
-
-\item \tsq is incomputable. From Eq.\ref{eq:hotteling} we see that computing \tsq required the inversion of the covariance matrix. Often this is an impossible task. We call this a \emph{high-dimensional problem}.
-\end{enumerate}
-
-
-
-For this purpose, we merely offer several candidate multivariate statistics, with references where appropriate.
 \begin{description}
-\item [Max pooling] Where we control the process using the $\max$ over CTQs. Useful when we expect signal in a handful of CTQs. This is in fact identical to the mass univariate approach of Section~\ref{sec:mass_univariate}.
-\item [Higher Criticism] Where pooling is performed using the Higher Criticism statistic. Appropriate for an intermediate \emph{rare-weak} sparsity pattern. See details in \citep{jin_cosmological_2005}.
-\item [Skewness Statistic] Where pooling is performed using the empirical third moment. Appropriate for an intermediate sparsity pattern. See details in \citep{jin_cosmological_2005}.
+
+\item [Multivariate $s$ chart] The signal we seek is not in the mean of the CTQ but rather in its variance, such as Example~\ref{eg:irrigation}. Put differently, we actually want a multivariate version of the $s$ chart and not the \barxChart. 
+
+\item [Sprase signal] The signal we seek is expected to exist in a small subset of coordinates, like in the cyber-security example (\ref{eg:cyber}). This is known as a \emph{sparse signal}, unlike the \emph{dense signal} targeted by the \tsq. \marginnote{Sparse Signal}
+
+\item [High dimension] \tsq is incomputable. From Eq.\ref{eq:hotteling} we see that computing \tsq required the inversion of the covariance matrix. Often this is an impossible task. We call this a \emph{high-dimensional problem}.
 \end{description}
+
+
+
+
+\subsection{Mutivariate $s$ chart}
+\label{sec:multivarite_s}
+
+As discussed in the vine health example (Example \ref{eg:irrigation}), there are cases where the out-of-control behaviour is manifested in the covariance between CTQs, and not in their mean.
+As discussed in the Exploratory Data Analysis section (\ref{sec:exploratory}), the most popular measure of multivariate relation is the covariance matrix (Definition~\ref{def:covariance}).
+
+
+
+
+\subsection{Sparse Signals}
+
+
+
+
+\subsection{High-Dimensional Control Charts}
+
+
+
+%For this purpose, we merely offer several candidate multivariate statistics, with references where appropriate.
+%\begin{description}
+%\item [Max pooling] Where we control the process using the $\max$ over CTQs. Useful when we expect signal in a handful of CTQs. This is in fact identical to the mass univariate approach of Section~\ref{sec:mass_univariate}.
+%\item [Higher Criticism] Where pooling is performed using the Higher Criticism statistic. Appropriate for an intermediate \emph{rare-weak} sparsity pattern. See details in \citep{jin_cosmological_2005}.
+%\item [Skewness Statistic] Where pooling is performed using the empirical third moment. Appropriate for an intermediate sparsity pattern. See details in \citep{jin_cosmological_2005}.
+%\end{description}
 
 
 
@@ -636,43 +700,6 @@ $a'_3$ is the cost of investigating a false alarm.
 [TODO: add timeline]
 
 Given all the above, we may now plug Eq.(\ref{eq:optimal_design}) into our favourite numerical solver to find the optimal $h,\arm,n$.
-
-
-
-\section{Shewhart Charts With Other Test Statistics}
-
-We have been focusing on the \barxChart for ease of exposition. There are, however, many cases where the mean is not an appropriate test statistic.
-Examples include:
-\begin{enumerate}
-\item A discrete CTQ, where only the number of non-compliances can be counted. 
-\item Where the departure from statistical control is not only a shift in $\mu$.
-\end{enumerate}
-
-The following charts are designed for those cases. 
-Practically all of the ideas presented for the \barxChart may be adapted to these other test statistics after appropriate adaptations. 
-The reader is referred to \cite{montgomery_introduction_2007} for the details. 
-
-\label{sec:other_control_charts}
-\subsection{$R$ Chart}
-Where $\bar{x}$ is replaced by the range, $\max_i\set{x_{i,t}}-\min_i\set{x_{i,t}}$.
-Sensitive to variability changes. 
-Popularized by its ease of implementation, in the pre-computer age. 
-\subsection{$s$ Chart}
-Where $\bar{x}$ is replaced by $s$. 
-Sensitive to variability changes. 
-Usually more sensitive than the range.
-\subsection{$s^2$ Chart}
-Like the $s$ chart, only in variance-scale.
-\subsection{$p$ and $np$ Chart}
-Where $\bar{x}$ is replaced by the proportion ($p$), or number ($np$), of non-conforming units.
-Appropriate for attributes, i.e., discrete CTQs.
-\subsection{$c$ Chart}
-Like a $np$ chart, but where the number of nonconforming units is replaced with the total number of nonconformances, allowing multiple defects per unit. 
-\subsection{$u$ Chart}
-Like the $c$ chart, but allowing a variable number of units per period (varying $n$).
-\subsection{Regression Control Chart}
-In a \emph{regression control chart}, the test statistic can be a regression coefficient. 
-When compounded with multivariate charts, a regression control chart may accommodate several regression  coefficient, or the residuals. 
 
 
 
