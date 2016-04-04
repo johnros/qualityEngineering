@@ -694,16 +694,16 @@ It may be less obvious, but for the mass-univariate test in Section~\ref{sec:mas
 \subsection{Temporal Pooling of Multivariate Charts}
 The basic problem: can we gain power by pooling some multivariate statistic over several periods?
 Sure!
-The most basic way to do so:
-\begin{definition}[Moving sum Hotelling]
-The \emph{moving sum Hotelling} chart in a window of $w$ periods ending at $t$, is defined as
+A basic way to do so:
+\begin{definition}[Moving Sum Hotelling]
+The \emph{Moving Sum Hotelling} chart in a window of $w$ periods ending at $t$, is defined as
 \begin{align}
 	M_t:= T^2(X_t)+\dots+T^2(X_{t-w+1})
 \end{align}
 where \tsq is Hotelling's test statistic $X_t$ is the matrix of $n$ samples of $p$ measurements at period $t$. 
 \end{definition}
 
-Since $T^2(X_t)$ is approximately $\chi^2_p$ distributed, periods are independent, and sums of Chi-square distributions are still Chi-square, with the summed degrees of freedom, we have that 
+Since $T^2(X_t)$ is approximately $\chi^2_p$ distributed, periods are independent, and sums of Chi-square distributions are still Chi-square with the summed degrees of freedom\footnote{Trust me on this one.}, we have that for a process in control
 \begin{align}
 	M_t \sim \chi^2_{wp}.
 \end{align}
@@ -720,14 +720,13 @@ Can you derive their control limits?
 
 
 \section{The p-value chart}
-The basic construction of the previous control charts was to choose some test statistic that is sensitive to the signal  we seek (read-alternative hypothesis). We then derive its sampling distribution, and plot it against some control limits. 
-From the hypothesis testing literature we know that we can convert the test statistic to a p-value and make the same inference. 
+The basic construction of the previous control charts was to choose some test statistic that is sensitive to the signal  we seek. We then derive its sampling distribution, and plot it against some control limits. 
+From the hypothesis testing literature we know that we can convert the test statistic to a p-value and make the exact same inference. 
 This idea can carry to control charts.
 
 Figure~\ref{fig:p-value-chart} demonstrates a control chart based on the p-value at each period.
-These charts have the advantage that once the p-values have been computed, the control limits are fixed (for example at $0.05$).
-They are always in the same scale, regardless of the underlying process and test statistic. 
-In this sense, the p-value charts unify all other control charts (with some exceptions, admittedly). 
+These charts have the advantage that once the p-values have been computed, the control limits are trivial (for example $0.05$ as in the figure).
+The p-value charts unify all other control charts (with some exceptions, admittedly). 
 The caveat, as in statistical hypothesis testing, is that computing the p-value may be a formidable task. 
 
 \begin{figure}[t]
