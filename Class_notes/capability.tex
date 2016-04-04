@@ -39,6 +39,12 @@ The first, and most basic PCR is the $\cp$ of a particular CTQ.
 \end{align}
 where $\sigma$ is the standard deviation of the CTQ.
 Eq.(\ref{eq:cp}) readily offers an interpretation of the $\cp$: it measures how accurate is our process compared to a 3-sigma process: $\cp=1$ for 3-sigma, $\cp=2$ for 6-sigma, etc.
+
+\begin{think}
+Can you design a process capability index with a 6-sigma baseline? 
+\end{think}
+
+
 \end{definition}
 Clearly $\cp$ is a process parameter, that needs to be estimated.
 \begin{definition}[$\cpHat$]
@@ -47,10 +53,10 @@ Clearly $\cp$ is a process parameter, that needs to be estimated.
 \end{align}
 where $\hat{\sigma}$ is some estimate of the standard deviation of the CTQ.
 \end{definition}
-The most natural $\hat{\sigma}$ is the sample standard deviation $s$, but we will explore other options in the following.
+The most natural $\hat{\sigma}$ is the sample standard deviation $s$, but we will explore other options in Section~\ref{sec:cp_estimators}.
 
 
-There is a relation between $C_p$ and the probability of non-conformance. 
+The design of $\cp$ rests on its relation to the probability non-conformance. 
 To explore this relation we introduce the following notation:
 \begin{tcolorbox}
 \footnotesize
@@ -306,6 +312,8 @@ Do you see why the confidence interval corresponds (only) to the two-directional
 
 
 \subsection{Other estimators of process capability}
+\label{sec:cp_estimators}
+
 The first $\cp$ estimator we proposed used $s$ to estimate the $\sigma$ (Eq.\ref{eq:cpHat}).
 While a seemingly very natural estimator, it is actually not the standard in the quality engineering community. 
 The scaled range (Def~\ref{def:range}) of the data is more often recommended: 
