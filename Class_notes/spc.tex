@@ -672,22 +672,22 @@ where $D$ is $\hat{\Sigma}$ with zeroes in all off-diagonal entries. Put differe
 \end{definition}
 Changing from matrix notation to sum notation, we see that 
 \begin{align}
-	 	T^{SD}(x) := n \sum_{j=1}^p (\bar{x}_j - \hat{\mu}_{0,j})^2 D^{-1}_{jj} .
+	 	T^{SD}(x) = n \sum_{j=1}^p (\bar{x}_j - \hat{\mu}_{0,j})^2 D^{-1}_{jj} .
 \end{align}
 But wait! 
 $D^{-1}_{jj}$ is just the variance of the $j$'th coordinate: $\frac{1}{Var(x_{1,j},\dots,x_{n,j})}$.
 This is rather good news, since it means that Eq.(\ref{eq:srivastava_du}) is nothing but the sum of the squared univariate t-statistics over the $p$ coordinates:
 \begin{align}
-	 	T^{SD}(x) :=  \sum_{j=1}^p \frac{(\bar{x}_j - \hat{\mu}_{0,j})^2}{\var{\bar{x}_j}}  .
+	 	T^{SD}(x) =  \sum_{j=1}^p \frac{(\bar{x}_j - \hat{\mu}_{0,j})^2}{\var{\bar{x}_j}}  .
 \end{align}
-We now see that a way to deal with the high-dimension, is to perform $p$ marginal tests, and then aggregate them.
+We now see that a way to deal with the high-dimension, is to pool together $p$ univariate tests.
 Denoting the t-statistic of the $j$'th coordinate by $t_j:= \frac{(\bar{x}_j - \hat{\mu}_{0,j})^2}{\var{\bar{x}_j}}$ we can now easily design many high dimensional signal detectors in the form of
 \begin{align}
 	 	T(x) :=  f(t_1,\dots,t_p) .
 \end{align}
 where $f$ is some distance function\footnote{A norm function to be more precise.}.
 Clearly, for $T^{SD}$ we need to set $f(t_1,\dots,t_p) = \normII{(t_1,\dots,t_p)}^2$.
-It may be less obvious, but for the mass-univariate test in Section~\ref{sec:mass_univariate} we need to use $f(t_1,\dots,t_p)=\max\set{t_1,\dots,t_p}$.
+It may be less obvious, but for the mass-univariate test in Section~\ref{sec:mass_univariate} we only need to use $f(t_1,\dots,t_p)=\max\set{t_1,\dots,t_p}$.
 
 
 
