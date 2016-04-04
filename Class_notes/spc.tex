@@ -533,6 +533,10 @@ For exact result \cite[Ch.7]{qiu_introduction_2013} should be consulted.
 \end{remark}
 
 
+
+
+
+
 \section[Multivariate extensions]{Multivariate Control- Extensions}
 
 Hotelling's \tsq is perhaps the first and most natural multivariate test statistic.
@@ -544,7 +548,7 @@ There are, however, circumstances where we can choose a better statistic.
 Consider a server farm. 
 All servers dump their status into logs. These include CPU loads, temperature, network I/O, etc.
 The administrator is worried about an imminent attack, and is thus parsing the logs for CTQs, and inspecting the on-line status on his dashboard.
-He knows that the cyber-attacker is no amateur, so that if any fingerprint is left in the logs, it will be very subtle and manifested in very few CTQs\footnote{Clearly, these are not called CTQs, in this context. We are simply adhering to notation.}.
+He knows that the cyber-attacker is no amateur, so that if any fingerprint is left in the logs, it will be very subtle and manifested in very few CTQs\footnote{Clearly, these are not called CTQs, in this context. We are simply adhering to quality engineering terminology.}.
 \end{example}
 
 
@@ -552,19 +556,19 @@ He knows that the cyber-attacker is no amateur, so that if any fingerprint is le
 \label{eg:irrigation}
 Consider vine crops.
 The crops are monitored for their health.
-The health measurements (CTQs) may vary considerably due to irrigation, weather, etc.
+The health measurements (CTQs) may be considerably affected by irrigation, weather, etc.
 An unhealthy vine is thus one that behaves differently than the rest. 
-The ``signal'' we seek is thus not in the mean CTQ of the vine, but rather in its correlation with others. 
-We would like a multivariate version of the s chart to monitor the health of our vines.  
+The signal for out-of-control we seek is thus not in the mean CTQ of the vine, but rather in its correlation with others. 
+We would like a multivariate version of the $s$ chart to monitor the health of our vines.  
 \end{example}
 
 
-Based on these examples, we list cases where \tsq is a bad choice. Appropriate test statistics for these cases are discussed in the following sections.
+Based on these examples, we list cases where \tsq is a \textbf{bad} choice. Appropriate test statistics for these cases are discussed in the following sections.
 \begin{description}
 
 \item [Multivariate $s$ chart] The signal we seek is not in the mean of the CTQ but rather in its variance, such as Example~\ref{eg:irrigation}. Put differently, we actually want a multivariate version of the $s$ chart and not the \barxChart. 
 
-\item [Sprase signal] The signal we seek is expected to exist in a small subset of coordinates, like in the cyber-security example (\ref{eg:cyber}). This is known as a \emph{sparse signal}, unlike the \emph{dense signal} targeted by the \tsq. \marginnote{Sparse Signal}
+\item [Sprase signal] The signal we seek is expected to exist in a small subset of the $p$ coordinates, like in the cyber-security example (\ref{eg:cyber}). This is known as a \emph{sparse signal}, unlike the \emph{dense signal} targeted by the \tsq. \marginnote{Sparse Signal}
 
 \item [High dimension] \tsq is incomputable. From Eq.\ref{eq:hotteling} we see that computing \tsq required the inversion of the covariance matrix. Often this is an impossible task. We call this a \emph{high-dimensional problem}.
 \end{description}
