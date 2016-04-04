@@ -92,10 +92,12 @@ The empirical maximum and minimum are then $x_{1.0}$ and $x_{0.0}$, respectively
 \begin{definition}[The Median Absolute Deviation- MAD]
 \label{def:mad}
 \begin{align}
-	MAD(x):= \set{|x_i-x_{0.5}|}_{0.5} 
+	MAD(x):= c \set{|x_i-x_{0.5}|}_{0.5} 
 \end{align}
+where $c$ is some constant.
+In the \R function \rcode{mad()}, $c$ is set at $1.4826$ so that it estimates $\sigma$ in a Gaussian population. 
 \end{definition}
-Note that the MAD may be sometimes scaled by $1.4826$, so that it estimates $\sigma$. Such is the behaviour of the \R function \rcode{mad()}. 
+
 
 
 After summaries of scale, we move to summaries of \emph{skewness}, or \emph{asymmetry}.

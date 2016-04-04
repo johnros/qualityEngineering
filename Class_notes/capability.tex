@@ -301,26 +301,29 @@ Do you see why the confidence interval corresponds (only) to the two-directional
 
 
 
-\subsection{Other estimators of the $\cp$}
+\subsection{Other estimators of process capability}
 The first $\cp$ estimator we proposed used $s$ to estimate the $\sigma$ (Eq.\ref{eq:cpHat}).
-While a seemingly very natural estimator, historically, $\sigma$ was more often estimated using the (scaled) range of the data:
- $\range{x}:= \max\set{x}-\min\set{x}$ (Definition~\ref{def:range}).
-The range is indeed a scale summary, and may be easier to compute than $s$ is a computer is not around. 
+While a seemingly very natural estimator, it is actually not the standard in the quality engineering community. 
+The scaled range (Def~\ref{def:range}) of the data is more often recommended: 
+\begin{align}
+	\cpHat &:= \frac{USL-LSL}{6 \, \range{x}/d_2} \\
+\end{align}
+where $d_2$ is some scaling constant so that the range actually estimates $\sigma$. 
+It may be surprising that $\range{x}$ is preferred over $s$ to estimate $\sigma$. This is indeed a particularity of capability indexes, and it is justified by that fact that $\range{x}$ is very sensitive. 
+Unlike $s$, any single defect in the production will increase $\range{x}$, thus lower $\cpHat$. 
 
-The $\cp$ estimator in Eq.(\ref{eq:cpHat}) is actually known as the $\hat{P}_p$ \emph{performance index}.\marginnote{Performance Index}
+
+The $\cp$ estimator in Eq.(\ref{eq:cpHat}), using $s$ to estimate $\sigma$, is actually known as the $\hat{P}_p$ \emph{performance index}.\marginnote{Performance Index}
 It was promoted in $1991$ by the Automotive Industry Action Group (AIAG) as a capability estimator which is informative even if the process is out of control.
-This is quite surprising as we already know that $s$ is \textbf{not} a robust location measure. 
-It is true, however, that estimating $\sigma$ with $\range{x}$ is very sensitive to the existence of defects, while $s$ less so.
-
-If robustness is indeed of interest, i.e., if we want to estimate the process capability in the presence of defects, one may consider the following truly \textbf{robust} capability estimators:
+If robustness is indeed of interest, i.e., if we want to estimate the process capability in the presence of defects, one may consider the following truly robust capability estimators:
 \begin{align}
 \label{eq:robust_capability}
-\cpHat &:= \frac{USL-LSL}{6 MAD(x)} \\
-\cpkHat &:= \min\set{\frac{USL- x_{0.5}}{3 MAD(x)},\frac{x_{0.5}-LSL}{3 MAD(x)}}, \\
-\cpmHat &= \frac{\cpHat}{\sqrt{1+(\frac{x_{0.5}-\targetValue}{MAD(x)})^2}}. 
+& \cpHat := \frac{USL-LSL}{6 MAD(x)} \\
+& \cpkHat := \min\set{\frac{USL- x_{0.5}}{3 MAD(x)},\frac{x_{0.5}-LSL}{3 MAD(x)}}, \\
+& \cpmHat := \frac{\cpHat}{\sqrt{1+(\frac{x_{0.5}-\targetValue}{MAD(x)})^2}}. 
 \end{align}
 
-When using a robust capacity estimator, attention should be paid to its interpretation. 
+When using a robust capability estimator, attention should be paid to its interpretation. 
 The production may actually be out of control, so these indexes measure not the capacity of the actual process, but rather the \emph{potential capacity}, once the process will be brought into control.
 
 
