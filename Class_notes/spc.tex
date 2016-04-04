@@ -133,21 +133,22 @@ The curious reader is referred to \cite{wikipedia_receiver_2015} for more inform
 \end{extra}
 
 
-An important related quantity is the \emph{average run length} (ARL), which is the expected number of periods between two crossings of control limits, i.e., the expected periods between alarms. \marginnote{ARL}
+A very important quantity is the \emph{average run length} (ARL), which is the expected number of periods between two crossings of control limits, i.e., the expected periods between alarms. \marginnote{ARL}
 We denote by $ARL_0$ the ARL when the process is under statistical control, and $ARL_1$ otherwise\footnote{Note that it is implied that the process has a \emph{stable} distribution, even though it is out if control.}. 
-For Shewhart charts, where $\bar{x}_t$ are typically statistically independent, then clearly the number of periods until a crossing is geometrically distributed. Using the expectation of a geometric random variable we can conclude that 
+For Shewhart charts, where $\bar{x}_t$ are statistically independent and $\alpha_t,\pi_t$ fixed in time, then clearly the number of periods until a crossing is geometrically distributed. Using the expectation of a geometric random variable we can conclude that 
 \begin{align}
 	ARL_0=1/\alpha \label{eq:arl_0}, \\
 	ARL_1=1/\pi \label{eq:arl_1}.
 \end{align}
-Clearly we can convert to time units by multiplying the ARL by the duration of sampling interval.
+ARL is measured in periods. 
+We can convert to time units by multiplying the ARL by the duration of sampling interval ($h$).
 This is known as the \emph{average time to signal} (ATS).\marginnote{ATS}
 It is quite common to design a control chart so that it achieves a particular $ATS_0$.
 
-\begin{remark}[ARLs more important than type-I errors]
+\begin{remark}[ARL more important than type-I error]
 In the case of Shewhart charts, there is a simple mapping between ARL and type I error rates.
 This need not be the case for general control charts. 
-Since type I errors are guaranteed if the process runs long enough, then it is actually the ARL that is more informative than type-I errors.
+Since type I errors will occur with certainty if the process runs long enough, then it is actually the ARL that is more informative than type-I errors when designing a control chart.
 \end{remark}
 
 
@@ -160,11 +161,13 @@ Here are some action courses:
 \item Increase $\arm$. This is the same as shrinking the rejection region: 
 it will decrease the false alarm rate, at the cost of power.
 \item Increase $n$. Brilliant! Statistically, there is nothing to lose. It may, however, cost time and money.
-\item Increase the sampling frequency. Brilliant again! Nothing to lose, except time and money...
+\item Increase the sampling frequency $h$. Brilliant again! Nothing to lose, except time and money.
 \item Change the sampling scheme within period. We elaborate on this in Section~\ref{sec:rational_grouping}.
 \item Add other stopping rules: 
-this acts just like growing the rejection region. It will increase power, at the cost of type I error. We elaborate in Section~\ref{sec:stopping_rules}.
-\item Pool together more time points or more CTQs. We elaborate on this in sections \ref{sec:running_windows} and  \ref{sec:multivariate}, respectively. 
+this acts just like growing the rejection region. It will increase power, at the cost of type I error. 
+We elaborate in Section~\ref{sec:stopping_rules}.
+\item Pool together more periods. See Section~\ref{sec:running_windows}.
+\item Measure many CTQs simultaneously. See Section~\ref{sec:multivariate}. 
 \end{enumerate}
 
 
