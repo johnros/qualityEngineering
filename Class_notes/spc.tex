@@ -240,8 +240,6 @@ See \url{http://www.quinn-curtis.com/spcnamedrulesets.htm} for a quick review.
 \end{extra}
 
 
-% TODO: Yoav and Kling paper.
-
 
 
 
@@ -489,21 +487,44 @@ Since the above limits have an (approximate) type-I error rate of $\alpha$, and 
 
 
 
-\subsection{Other Pooling Statistics}
-Hotteling's \tsq implicitly targets a weak signal on many coordinates. 
-In the signal detection literature, this is known as a \emph{dense} signal.
-In our intensive care unit example (Example~\ref{eg:intensive}), it may be the case that a patient's deterioration is mildly manifested in many CTQs. It may however, be the case, that deterioration is manifested in a small subset of CTQs.
-This is further emphasized in Example~\ref{eg:cyber}.
+\subsection{Other Multivariate Statistics}
+
+Hotelling's \tsq is perhaps the first and most natural multivariate test statistic.
+There are, however, circumstances where we can choose a better statistic.
+
 
 \begin{example}[Cyber Monitoring System]
 \label{eg:cyber}
-Consider a server farm. All servers dump their status into logs. These include CPU loads, temperature, network I/O, etc.
+Consider a server farm. 
+All servers dump their status into logs. These include CPU loads, temperature, network I/O, etc.
 The administrator is worried about an imminent attack, and is thus parsing the logs for CTQs, and inspecting the on-line status on his dashboard.
 He knows that the cyber-attacker is no amateur, so that if any fingerprint is left in the logs, it will be very subtle and manifested in very few CTQs\footnote{Clearly, these are not called CTQs, in this context. We are simply adhering to notation.}.
 \end{example}
 
-The intensive care example, and the cyber security example, motivate our search for a statistic, that unlike Hotteling's \tsq, is sensitive to \emph{sparse} signals. \marginnote{Sparse Signal}
-I.e., a signal that is manifested in very few of the $p$ CTQs.
+
+\begin{example}[Vine Health]
+\label{eg:irrigation}
+Consider vine crops.
+The crops are monitored for their health.
+The health measurements (CTQs) may vary considerably due to irrigation, weather, etc.
+An unhealthy vine is thus one that behaves differently than the rest. 
+The ``signal'' we seek is thus not in the mean CTQ of the vine, but rather in its correlation with others. 
+We would like a multivariate version of the s chart to monitor the health of our vines.  
+\end{example}
+
+
+Based on these examples, we list cases where \tsq is a bad choice. Appropriate test statistics for these cases are discussed in the following sections.
+\begin{enumerate}
+
+\item The signal we seek is not in the mean of the CTQ but rather in its variance, such as Example~\ref{eg:irrigation}. Put differently, we actually want a multivariate version of the $s$ chart and not the \barxChart. 
+
+\item The signal we seek is expected to exist in a small subset of coordinates, like in the cyber-security example (\ref{eg:cyber}). This is known as a \emph{sparse signal}, unlike the \emph{dense signal} targeted by the \tsq. \marginnote{Sparse Signal}
+
+\item \tsq is incomputable. From Eq.\ref{eq:hotteling} we see that computing \tsq required the inversion of the covariance matrix. Often this is an impossible task. We call this a \emph{high-dimensional problem}.
+\end{enumerate}
+
+
+
 For this purpose, we merely offer several candidate multivariate statistics, with references where appropriate.
 \begin{description}
 \item [Max pooling] Where we control the process using the $\max$ over CTQs. Useful when we expect signal in a handful of CTQs. This is in fact identical to the mass univariate approach of Section~\ref{sec:mass_univariate}.
