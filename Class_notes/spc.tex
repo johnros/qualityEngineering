@@ -179,15 +179,19 @@ We elaborate in Section~\ref{sec:stopping_rules}.
 Ceteris paribus, $\arm$ governs the tradeoff between type I and type II errors, or sensitivity versus specificity.
 It is very common to set $\arm=3$. 
 For a normally distributed CTQ, this implies $2,700$ false alarms per million periods. 
-This also implies an $ARL_0$ of $1/\alpha \approx 370$ periods, which is conveniently, about a year when sampling once a day.
+This also implies an $ARL_0$ of $1/\alpha \approx 370$ periods, which is conveniently, about a year if sampling once a day.
 We may obviously, discard this $\arm=3$ convention, and directly set UCL and LCL so they guarantee some desirable false alarm rate, or ARL.
 
-If normality of $\bar{x}_t$ can be assumed, then one may estimate $\sigma$ from phase I, and set LCL and UCL by finding the $\arm$ that solves $2\Phi(-\arm)=\alpha$.
+If normality of $\bar{x}_t$ can be assumed, then one may estimate $\sigma$ from phase I, and set LCL and UCL by finding the $\arm$ that solves $2\Phi(-\arm)=\alpha$, for some desired $\alpha$. 
 If normality cannot be assumed, there are many ways to go about. Here are some options:
 \begin{enumerate}
+\item If some other distribution can be assumed then problem solved.
+We may compute the false alarm rate of particular limits either analytically, or computationally (by simulation).
 \item Increase $n$: even if $\x_{it}$ is non normal, for large enough $n$, then $\bar{x}_t$ will be via the central limit theorem (CLT).
-\item Use empirical quantiles: If phase I was returned enough data, then we may estimate $\x_{\alpha/2}$ and $\x_{1-\alpha/2}$ using the empirical quantiles of phase I. The false alarm rate will be $\alpha$ since $P(\x \not \in [\hat{\x}_{\alpha/2},\hat{\x}_{1-\alpha/2}]) \approx \alpha$.
-\item If some other distribution can be assumed then we may compute the false alarm rate of particular limits either analytically, or computationally (by simulation).
+\item Use empirical quantiles: If phase I has returned enough data, then we may estimate 
+$\x_{\alpha/2}$ and $\x_{1-\alpha/2}$ using the empirical quantiles of phase I. 
+The false alarm rate will be $\alpha$ since $P(\x \not \in [\hat{\x}_{\alpha/2},\hat{\x}_{1-\alpha/2}]) \approx \alpha$.
+This is a \textbf{super practical} way to go about. The only downside of this avenue, is that you do not always have enough in-control data from phase I.
 \end{enumerate}
 
 
@@ -196,7 +200,8 @@ If normality cannot be assumed, there are many ways to go about. Here are some o
 \subsection{Rational Groupings}
 \label{sec:rational_grouping}
 Recall that at each period we compute the average of $n$ samples. 
-How should we draw these samples? 
+To fix ideas, think of a period being a day of production. 
+How should we draw samples in this period? 
 At the same time from the same machine?
 At different times from the same machine?
 Many configurations are possible, and the correct approach depends on the type of out-of-control behaviour one seeks. 
@@ -217,7 +222,7 @@ Quoting \cite{montgomery_introduction_2007}'s words of caution:
 The assumption that we may only create alarms if $\bar{x}$ exceeds some control limits is needlessly restrictive.
 A first relaxation is by allowing multiple control regions.
 It is quite common to define \emph{warning limits} and \emph{action limits}. Each may have its own alarm rate.
-We may even change the sapling scheme if limits are breached. Increasing the sampling rate once the warning limits have been breached is known as \emph{adaptive sampling}, or \emph{variable sampling}.\marginnote{Adaptive Sampling}
+We may even change the sapling scheme if limits are breached. Increasing the sampling rate once the warning limits have been breached is known as \emph{adaptive sampling}, or \emph{variable sampling}, and it is a very efficient way to go about. \marginnote{Adaptive Sampling}
 
 
 
@@ -225,7 +230,7 @@ Another approach is to define multiple sets of stopping rules.
 Here is an example:
 \begin{enumerate}
 \item One or more points outside of the 3-sigma control limits.
-\item Two of three consecutive points outside the 2-sigma warning limits but still inside the 3-sigma control limits.
+\item Two of three consecutive points outside the 2-sigma limits but still inside the 3-sigma control limits.
 \item Four of five consecutive points beyond the 1-sigma limits.
 \item A run of 8 consecutive points on one side of the centerline.
 \end{enumerate}
@@ -238,11 +243,13 @@ As a quick exercise, we may compute $\alpha$  for $m$ independent rules, each wi
 	\alpha=1-(1-\alpha^*)^m.
 \end{align}
 Having 4 rules, like WECO, each at $\alpha^*=0.0027$ implies that we actually have $\alpha=0.01$ and $ARL_0 \approx 93$. For daily sampling of an in-control process, this means an alarm every quarter, and not every year. 
+The good news is the analysis in Eq.(\ref{eq:multiplicity_in_spc}) does not apply to WECO, because the rules not independent but rather highly dependent. 
+A can compute the $ARO_0$ of WECO in a quick simulation.
 
 \begin{extra}[Stopping Rules]
 There are many sets of stopping rules. 
 These include WECO, Nelson, AIAG, Juran, Hughes, Duncan, Gitlow, Westgard, and more. 
-See \url{http://www.quinn-curtis.com/spcnamedrulesets.htm} for a quick review.
+See \url{http://www.quinn-curtis.com/spcnamedrulesets.htm} for a review.
 \end{extra}
 
 
@@ -257,7 +264,7 @@ We have been focusing on the \barxChart for ease of exposition. There are, howev
 Examples include:
 \begin{enumerate}
 \item A discrete CTQ, where only the number of non-compliances can be counted. 
-\item Where the departure from statistical control is not only a shift in $\mu$.
+\item Where the departure from statistical control is not only a shift in $\mu$. 
 \end{enumerate}
 
 The following charts are designed for those cases. 
@@ -267,24 +274,25 @@ The reader is referred to \cite{montgomery_introduction_2007} for the details.
 \label{sec:other_control_charts}
 \subsection{$R$ Chart}
 Where $\bar{x}$ is replaced by the range, $\max_i\set{x_{i,t}}-\min_i\set{x_{i,t}}$.
-Sensitive to variability changes. 
-Popularized by its ease of implementation, in the pre-computer age. 
+This chart is sensitive to many changes in the distribution of the CTQ; the variance in particular. 
 \subsection{$s$ Chart}
 Where $\bar{x}$ is replaced by $s$. 
 Sensitive to variability changes. 
 This is an important and useful chart which we will revisit in Section~\ref{sec:multivarite_s}.
 \subsection{$s^2$ Chart}
 Like the $s$ chart, only in variance-scale.
+\subsection{Regression Control Chart}
+In a \emph{regression control chart}, the test statistic can be a regression coefficient. 
+When compounded with multivariate charts, a regression control chart may accommodate several regression  coefficient, or the residuals. 
+This is very useful if you allow the distribution of the CTQ to vary with some covariate, and you want to detect a change in this relation. 
+To fix ideas, think that your CTQ depends on the temperature at the time of production. The distribution of the CTQ will thus vary with the temperature, but the break in their relation is cause for alarm.
 \subsection{$p$ and $np$ Chart}
 Where $\bar{x}$ is replaced by the proportion ($p$), or number ($np$), of non-conforming units.
-Appropriate for attributes, i.e., discrete CTQs.
+Appropriate for attributes, i.e., categorical CTQs.
 \subsection{$c$ Chart}
 Like a $np$ chart, but where the number of nonconforming units is replaced with the total number of nonconformances, allowing multiple defects per unit. 
 \subsection{$u$ Chart}
 Like the $c$ chart, but allowing a variable number of units per period (varying $n$).
-\subsection{Regression Control Chart}
-In a \emph{regression control chart}, the test statistic can be a regression coefficient. 
-When compounded with multivariate charts, a regression control chart may accommodate several regression  coefficient, or the residuals. 
 
 
 
@@ -298,8 +306,8 @@ When compounded with multivariate charts, a regression control chart may accommo
 \sectionmark{Pooling Periods}
 \label{sec:running_windows}
 
-Assume an out-of-control process is simply a mild shift of the controlled-process.
-This shift may be hard to detect in Shewhart chart, especially if $n$ is not too large (as seen in Figure~\ref{fig:power_function}).  
+Assume an out-of-control process is a very mild shift of the mean controlled-process ($\mu$).
+A power analysis may suggest that this shift is hard to detect, especially if $n$ is not too large (as seen in Figure~\ref{fig:power_function}).  
 If the shift persists over periods, we may gain power, i.e., sensitivity, by pooling several periods together. 
 We now present several ways to pool information from history. These are typically applied in Phase II, where out-of-control processes are expected to have only mild shifts, and not major ones as in Phase I. 
 
@@ -321,14 +329,14 @@ The following charts have a continuous flavour. As such, it is both favourable, 
 
 One way to pool information from different periods is by a \emph{moving average}.
 \begin{definition}[MA]
-The \emph{moving average} (MA) in a window $w$, at period $t$, is defined as
+The \emph{moving average} (MA) in a window of $w$ periods ending at period $t$, is defined as
 \begin{align}
 	M_t:= \frac{x_t+\dots+x_{t-w+1}}{w}.
 \end{align}
 \end{definition}
 Assuming $x_t \sim \gauss{\mu, \sigma_x^2}$ then clearly 
 \begin{align}
-	M_t \sim \gauss{\mu, \frac{\sigma_x^2}{w}}.
+	M_t \sim \gauss{\mu, \sigma^2_{M_t}=\frac{\sigma_x^2}{w}}.
 \end{align}
 
 The control limits on $M_t$ are typically
@@ -336,7 +344,7 @@ The control limits on $M_t$ are typically
 	UCL &:= \mu_0 + \arm \sigma_{M_t}= \mu_0 + \arm \, \frac{\sigma_x}{\sqrt{w}}, \\
 	LCL &:= \mu_0 - \arm \sigma_{M_t}= \mu_0 - \arm \, \frac{\sigma_x}{\sqrt{w}}.
 \end{align}
-The false alarm rate of this criterion is trivially $\alpha=0.0027$. 
+For $\arm=3$ the false alarm rate of this criterion is trivially $\alpha=0.0027$. 
 The $ARL_0$ is no longer simple to compute. 
 This is because the pooling of periods has compromised independence between periods, and Eqs.(\ref{eq:arl_0},\ref{eq:arl_1}) are no longer valid. 
 Do not despair as the ARL may still be computed. 
@@ -359,7 +367,7 @@ You can always use simulation to compute it, or try using the \rcode{spc} \R pac
 We are free to choose the magnitude of $w$. 
 If $w$ is too small, there is no real pooling from history. At the limit, where $w=1$, we are back to the classical Shewhart chart. 
 If $w$ is too large, then each new observation has very small importance, and it may take a long time to detect a shift.
-Which is the right intermediate value of $w$, is left for you to decide.
+Which is the right intermediate value of $w$, is left for you to decide, possibly using a power analysis as a function of $w$. 
 
 
 
@@ -379,16 +387,16 @@ For a fixed $\lambda \in [0,1]$, the \emph{exponentially weighted moving average
 \end{definition}
 By recursive substitution, we have 
 \begin{align}
-	z_t &= \lambda \sum_{j=0}^{t-1} (1-\lambda)^j x_{t-j} + (1-\lambda)^t z_0,
+	z_t &= \lambda \sum_{j=0}^{t-1} (1-\lambda)^j x_{t-j} + (1-\lambda)^t z_0.
 \end{align}
-and 
+Assuming $x_t \sim \gauss{\mu, \sigma_x^2}$ then  
 \begin{align}
 \label{eq:ewma_variance}
 	z_t &\sim \gauss{\mu_0,	\sigma^2_{z_t} }, \\
 	\sigma^2_{z_t} &= \sigma^2_x \left( \frac{\lambda}{2-\lambda} \right)(1-(1-\lambda)^{2t}).
 \end{align}
 Eq.(\ref{eq:ewma_variance}) may be used to construct control limits for EWMA.
-It is however, more economic to observe that for large $\lambda$ and $t$: $(1-(1-\lambda)^{2t}) \approx 1$ so that we may use 
+It is however, more economic to observe that for large $t$ then  $(1-(1-\lambda)^{2t}) \approx 1$ so that we may use 
 \begin{align}
 \begin{split}
 \label{eq:ewma_variance_approximate}
@@ -418,10 +426,6 @@ Large $\lambda$ gives more importance to the present. At the limit, $\lambda=1$,
 
 
 
-\subsection{Filtered Derivative Chart}
-[TODO]
-
-
 \subsection[CUSUM]{CUSUM Chart}
 The \emph{cumulative sum} chart is similar to the EWMA in that it pools information from the history. 
 The CUSUM simply sums all past deviations from the centre line.
@@ -429,28 +433,32 @@ If the process is in control, deviation will cancel each other, and their sum wi
 If the process is out of control, a drift will appear. 
 The statistic to be plotted is 
 \begin{align}
-	C_t:= \sum_{j=0}^{t}(x_j-\mu_0)=C_{t-1}+ (x_t-\mu_0)
+	C_t:= \sum_{j=0}^{t}(x_j-\mu_0) = C_{t-1}+ (x_t-\mu_0).
 \end{align} 
-Observing that when under control then $C_t \sim \gauss{\mu_0, t \sigma_x^2}$, we could set 
+Assuming $x_t \sim \gauss{\mu, \sigma_x^2}$ then if under control then $C_t \sim \gauss{\mu_0, t \sigma_x^2}$, we could thus set 
 \begin{align}
 \label{eq:cusum_simple_limits}
 \begin{split}
 	UCL &:= \mu_0 + \arm \sigma_{C_t}= \mu_0 + \arm \, \sqrt{t \sigma_x^2},  \\
-	LCL &:= \mu_0 - \arm \sigma_{C_t}= \mu_0 - \arm \, \sqrt{t \sigma_x^2}.
+	LCL &:= \mu_0 - \arm \sigma_{C_t}= \mu_0 - \arm \, \sqrt{t \sigma_x^2},
 \end{split}
 \end{align}
+and $\arm=3$ as usual. 
+You may encounter these limits in your favourite software (\rcode{qcc} package in \R), but it less often discussed in the literature. \cite{montgomery_introduction_2007} for example discuses very different limits. The discrepancy is explained in the following Extra Info. 
 
 \begin{extra}
-You may encounter these limits in your favourite software (\rcode{qcc} package in \R), but it less often discussed in the literature. 
-This is because CUSUMs were introduced by \cite{page_continuous_1954}, which offered different control limits. 
+CUSUMs were introduced by \cite{page_continuous_1954}. 
 \cite{montgomery_introduction_2007} adopts \citeauthor{page_continuous_1954}'s view and presents limits in two forms: the \emph{decision interval} (DI) form, \aka the \emph{tabular} form, and the graphical form known as a \emph{V-mask}.\marginnote{V-Mask}
-These two control limits are equivalent. Before we present them, we try to offer some intuition for the difference between the limits in Eq.(\ref{eq:cusum_simple_limits}) and those of \cite{page_continuous_1954}.
+These two control limits are equivalent. 
 The fundamental difference between the control limits of \cite{page_continuous_1954}, and the ones presented until now, is that \citeauthor{page_continuous_1954} designed limits for the particular history of each process, while the limits until now, including Eq.(\ref{eq:cusum_simple_limits}) do not adapt to the particular history of the process.
 As such, \citeauthor{page_continuous_1954}'s control limits are said to be \emph{adaptive}.\marginnote{Adaptive Contol Limits}
-%TODO: explain V-mask and tabular
+The limits in \cite{page_continuous_1954} are far from intuitive. 
+This author has found \cite{ritov_decision_1990} to be the best explanation of \cite{page_continuous_1954}, but do not expect an easy reading...
 \end{extra}
 
 
+\subsection{Filtered Derivative Chart}
+[TODO]
 
 
 
