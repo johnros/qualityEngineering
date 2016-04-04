@@ -599,9 +599,7 @@ The \emph{Frobenius norm}, \aka the \emph{Hilbert-Schmidt norm}, can be defined 
 
 \begin{extra}[Frobenius matrix norm]
 Another definition of the Frobenius matrix norm is via its singular values:
-\begin{align}
-	\normF{A}:= \sqrt{\sum \sigma_i}
-\end{align}
+$ 	\normF{A}:= \sqrt{\sum \sigma_i}, $
 where $\sigma_i$ is the singular values of matrix $A$.
 \end{extra}
 
@@ -615,6 +613,23 @@ Since a matrix defines a \emph{weighted graph} (and vise-versa), \aka a \emph{ne
 
 
 \subsection{Sparse Signals}
+
+We have already claimed that if signal exists only in a small subset of coordinates, i.e., it is sparse, we can do better than \tsq, at least in the sense of power.
+The mass-univariate test is an example which is preferred over \tsq is the signal is sparse.
+
+
+
+\begin{extra}[Sparse Signal Detectors]
+
+The fundamental idea for constructing sparse signal detectors is to compute some test statistic for each of the $p$ coordinates, and then test for the existence of signal in any of them. 
+Denoting $x_{i,j,t}$ be the $i$'th measurement of attribute $j$ in period $t$.
+Now omitting the period index $t$ for brevity, we denote $z_j=z_j(x_{1,j},\dots,x_{n,j})$ be the z-score of the $j$ coordinate at period $t$. 
+If there is no signal in any coordinate then all the $z_j$ should be distributed $\gauss{0,1}$ (that is their null distribution, right?)
+If a signal exists, then the $z_j$ will not look like a sample from the $\gauss{0,1}$ distribution. 
+We now see that detecting a sparse signal, is ultimately the same as the goodness of fit problems of Section~\ref{sec:gof}, where we test if $(z_1,\dots,z_p)$ looks like a $p$-sized sample from the $\gauss{0,1}$ distribution.
+
+\end{extra}
+
 
 
 
