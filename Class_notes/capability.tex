@@ -225,7 +225,11 @@ It is motivated by the observation that for $\ctqExpect=\targetValue$, then $\si
 \end{align}
 \end{definition}
 Eq.(\ref{eq:cpm}) readily shows that just like the $\cpk$, then $\cpm \leq \cp$. 
-[TODO: relation between $\cpm$ and $\pnc$]
+
+\begin{think}
+What is the relation between $\cpm$ and $\pnc$?
+\end{think}
+
 
 
 
@@ -314,8 +318,8 @@ Unlike $s$, any single defect in the production will increase $\range{x}$, thus 
 
 
 The $\cp$ estimator in Eq.(\ref{eq:cpHat}), using $s$ to estimate $\sigma$, is actually known as the $\hat{P}_p$ \emph{performance index}.\marginnote{Performance Index}
-It was promoted in $1991$ by the Automotive Industry Action Group (AIAG) as a capability estimator which is informative even if the process is out of control.
-If robustness is indeed of interest, i.e., if we want to estimate the process capability in the presence of defects, one may consider the following truly robust capability estimators:
+It was promoted in $1991$ by the Automotive Industry Action Group (AIAG) as a capability estimator which is informative even in the presence of defects.
+If robustness is indeed desirable, one may consider the following estimators:
 \begin{align}
 \label{eq:robust_capability}
 & \cpHat := \frac{USL-LSL}{6 MAD(x)} \\
@@ -328,11 +332,6 @@ The production may actually be out of control, so these indexes measure not the 
 
 
 
-
-\subsection{Process Performance Indices}
-Process \emph{performance} indices measure compliance to specification of a process \emph{out} of statistical control. 
-These include the $\pp$ and $\ppk$ indices. 
-Besides mentioning their existence, we will not give them further attention, since we adopt \cite{montgomery_introduction_2007}'s view that their use is strongly discouraged. 
 
 
 \begin{remark}
