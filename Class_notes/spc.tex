@@ -18,7 +18,7 @@ We start with the \emph{Shewhart control chart}, in which each value is charted 
 \section{The Run Chart}
 The simplest possible control chart is the \emph{run chart}, in which each measured CTQ is simply plotted against the time of measurement.
 If strong anomalies exist, or temporal patterns, they may be already visible in the run-chart.
-On the down-side, the run-chart is essentially a statistical test based on a single observation at a time.
+On the down-side, the run-chart is essentially a statistical test to detect out-of-control behaviour based on a single observation at a time.
 Knowledge of statistical hypothesis testing suggest we can do better. 
 Enter the \barxChart. 
 
@@ -32,14 +32,14 @@ The chart borrows its name from the fact that it is essentially a visualization 
 The chart is also augmented with visual aids that help in determining if the process is \emph{in control}, i.e., if it is consistent with its own history. 
 
 \begin{remark}[Control Charts and Capability Analysis]
-While seemingly very similar ideas, there is a fundamental difference between capability analysis and process control:  while process control compares to the \emph{past}, capability analysis compares to \emph{specification}.
+While seemingly very similar ideas, there is a fundamental difference between capability analysis and process control:  process control compares to the \emph{past}, capability analysis compares to \emph{specification}.
 Process capability and control charting ideas may be compounded, as we explain in Chapter~\ref{sec:advanced_capability_analysis}.
 \end{remark}
 
 
 An illustration of a \barxChart is given in Figure~\ref{fig:bar_x_chart}. 
-The ingredients of this chart are the centerline, lower and upper control limits (LCL, UCL), and $\bar{x}_t$ evolving in time. 
-If at each period $t=1,\dots,\tau$ we compute the average of $n$ samples, we denote $$\bar{x}_t:=1/n \sum_{i=1}^n x_{it}.$$
+The ingredients of this chart are the \emph{centerline}, lower and upper control limits (\emph{LCL, UCL}), and the statistic $\bar{x}_t$ evolving in time. 
+If at each period $t=1,\dots,\tau$ we compute the average of the $n$ samples of the period. We denote $$\bar{x}_t:=1/n \sum_{i=1}^n x_{it}.$$
 
 \begin{figure}[ht]
 \centering
@@ -60,16 +60,18 @@ where $\mu_0$ denotes the in-control mean of the process.
 Notation originates from treating the in-control process as a null hypothesis, as it should be thought of.
 
 
-If it is unclear to you, how may we compute the grand average of a process that is still evolving and has not finished, you are right! We thus introduce the idea of \emph{Phase I} and \emph{Phase II}. \marginnote{Phase I/II}
-Initially we assume the process it out of control, we identify and remove assignable causes of variation, until we are left with a ``well-behaved'' subset of data points, we believe to be in-control. We call this Phase I, and we use it to initialize required quantities such as the centre line. 
+\paragraph{Phase I/II} If it is unclear to you, how may we compute the grand average of a process that is still evolving and has not finished, you are right! We thus introduce the idea of \emph{Phase I} and \emph{Phase II}. 
+Initially we assume the process it out of control, we identify and remove assignable causes of variation, until we are left with a ``well-behaved'' subset of data points, we believe to be in-control. We call this Phase I, and we use it to initialize required quantities such as the centre line $(\hat{\mu}_0)$. 
 Eq.(\ref{eq:centerline}) thus implies that in Phase I we were left with $\tau$ samples assumingly in statistical control.
 After the chart has been calibrated, and major assignable sources of variability removed, we can finally start monitoring the process, known as Phase II.
 
+\bigskip
 
-
+Back to the design decisions we make when designing a control chart.
 \begin{tcolorbox}[breakable]
-\paragraph{Other design decisions}
+\paragraph{Design decisions}
 \begin{enumerate}
+\item Centerline.
 \item Upper and lower confidence limits: UCL and LCL (do not confuse with USL and LSL!).
 \item Sample size in each sample, denoted $n$.
 \item The within period sampling scheme, known as \emph{rational groupings}.
@@ -78,9 +80,8 @@ After the chart has been calibrated, and major assignable sources of variability
 \end{enumerate}
 \end{tcolorbox}
 
-
 These design decisions ultimately govern the error rates of the chart, which in turn, incur financial costs. 
-For now we will restrict attention to type I/II error rates, until Section~\ref{sec:economical_considerations} where we consider these choices as economical optimization problems.
+For now we will restrict attention to type I/II error rates, until Section~\ref{sec:economical_considerations} where we consider these choices as an economical optimization problem.
 
 For ease of exposition, control chart design is demonstrated for the \barxChart, but equally applies to other control charts, presented in Section~\ref{sec:other_control_charts}.
 We start by a type I error rate analysis. 
@@ -88,21 +89,14 @@ Denote $\alpha_t$ the false alarm probability at period $t$.
 How do our design choices affect $\alpha_t$?
 \begin{align}
 	\alpha_t &:= 1-P_{H_0}(\bar{x}_t \in [LCL,UCL]) \\
-	&= 2 P_{H_0}(\bar{x}_t<LCL) \\
+	&= 2 P_{H_0}(\bar{x}_t < LCL) \\
 	&= 2 P_{H_0}(Z<\frac{LCL-\mu}{\sigma_{\bar{x}}}) \\
 	&= 2 P_{H_0}(Z < -\arm) \\
 	&= 2 \Phi(-L)
 \end{align}
-The above follows from assuming that $UCL:=\mu_0 + \arm \sigmabar, LCL:= \mu_0 - \arm \sigmabar$, $\x_{it}\sim \gauss{\mu,\sigma^2}$, and denoting $\sigmabar:= \frac{\sigma}{\sqrt{n}}$.
+The above follows from assuming that $UCL:=\mu_0 + \arm \sigmabar, LCL:= \mu_0 - \arm \sigmabar$, $\x_{it}\sim \gauss{\mu,\sigma^2}$, and $\sigmabar$ being the standard deviation of the statistic being monitored; In this case, $\sigmabar=\frac{\sigma}{\sqrt{n}}$.
 A typical design choice is $\arm=3$, known as \emph{3-sigma control limits}, implying a false alarm rate of $\alpha_t=0.0027$.\marginnote{3-Sigma Control Limits}
 Since we assumed the process is fixed over time, then so is $\alpha_t$ and we can simply write $\alpha_t=\alpha$.
-
-\begin{remark}[3-Sigma Control Limits vs. 3-Sigma Capability]
-Do not confuse these two similar ideas.
-3-Sigma Control Limits is a statement on the false alarm rate of a process with respect to its own \textbf{history}.
-3-Sigma Capability is a statement on the non-compliance rate of a process with respect to its \textbf{specification}.
-\end{remark}
-
 
 A power analysis for our design choices follows the same lines.
 Denote by $H_1$ the out-of-control distribution,  $\beta_t$ the type-II error rate, and $\pi_t=1-\beta_t$ the power, at period $t$.
@@ -112,8 +106,8 @@ We then have
 \end{align}
 and the rest follow from the distribution of $\bar{x}_t$ when the process is out of control.
 Since the out-of-control shift is (asumingly) stable, we can again omit the time index and write $\pi=\pi_t$.
-Assuming the out-of-control process is a shift of magnitude $k \sigma$, i.e.: $\x \sim_{H_1} \gauss{\mu_1,\sigma^2}; \mu_1=\mu_0+ k \sigma$, we plot in Figure~\ref{fig:power_function}, the detection power of a 3-sigma \barxChart, as a function of $k$. 
-This is known in the statistical literature as a \emph{power function}, and in the engineering literature as the \emph{operator characteristic} (OC), or \emph{true positive rate operator characteristic}.\marginnote{Operator Characteristic}
+Assuming the out-of-control process is a shift of magnitude $k \sigma$, i.e.: $\x \sim_{H_1} \gauss{\mu_1,\sigma^2}; \mu_1=\mu_0+ k \sigma$, we plot in Figure~\ref{fig:power_function}, the detection power of a 3-sigma \barxChart as a function of $k$. 
+This is known in the statistical literature as a \emph{power function}, and in the engineering literature as the \emph{operator characteristic curve} (OC).\marginnote{Operator Characteristic}
 
 
 \begin{figure}[h]
@@ -122,6 +116,15 @@ This is known in the statistical literature as a \emph{power function}, and in t
 \caption[Power Function]{Power function of the 3-sigma \barxChart with $n=5,10,20$ and $\mu_1=\mu_0 + k \sigma$.}
 \label{fig:power_function}
 \end{figure}
+
+\begin{remark}[3-Sigma Control Limits vs. 3-Sigma Capability]
+Do not confuse these two similar ideas.
+3-Sigma Control Limits is a statement on the false alarm rate. It tells you nothing on the probability of non-compliance. 
+3-Sigma Capability is a statement on the probability of a unit to be defect. 
+Monitoring production via its capability is very rare, as we would like the alarms to sounds long before defect units leave the production line.
+\end{remark}
+
+
 
 \begin{extra}[Operator Characteristics]
 Many operator characteristics have been proposed to study the performance of control charts, statistical tests, or binary classifiers in general.
