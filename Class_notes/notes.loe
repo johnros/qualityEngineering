@@ -49,25 +49,26 @@
 \contentsline {extra}{\numberline {8}Extra Info}{46}{extra.8}
 \contentsline {example}{\numberline {2}Example\thmtformatoptarg {Intensive Care Unit}}{47}{example.2}
 \contentsline {definition}{\numberline {24}Definition\thmtformatoptarg {Hotteling's $T^2$ }}{47}{definition.24}
+\contentsline {remark}{\numberline {8}Remark}{48}{remark.8}
 \contentsline {example}{\numberline {3}Example\thmtformatoptarg {Cyber Monitoring System}}{48}{example.3}
 \contentsline {example}{\numberline {4}Example\thmtformatoptarg {Vine Health}}{48}{example.4}
-\contentsline {definition}{\numberline {25}Definition\thmtformatoptarg {Operator (matrix) norm}}{49}{definition.25}
+\contentsline {definition}{\numberline {25}Definition\thmtformatoptarg {Operator (matrix) norm}}{48}{definition.25}
 \contentsline {definition}{\numberline {26}Definition\thmtformatoptarg {Frobenius (matrix) norm}}{49}{definition.26}
 \contentsline {extra}{\numberline {9}Extra Info\thmtformatoptarg {Frobenius matrix norm}}{49}{extra.9}
 \contentsline {extra}{\numberline {10}Extra Info\thmtformatoptarg {Matrices and graphs}}{49}{extra.10}
 \contentsline {extra}{\numberline {11}Extra Info\thmtformatoptarg {Sparse Signal Detectors}}{49}{extra.11}
-\contentsline {think}{\numberline {\let \autodot \@empty }Think about it!}{50}{thmt@dummyctr.dummy.54}
-\contentsline {definition}{\numberline {27}Definition\thmtformatoptarg {Srivastava-Du statistic}}{50}{definition.27}
+\contentsline {think}{\numberline {\let \autodot \@empty }Think about it!}{49}{thmt@dummyctr.dummy.55}
+\contentsline {definition}{\numberline {27}Definition\thmtformatoptarg {Srivastava-Du statistic}}{49}{definition.27}
 \contentsline {definition}{\numberline {28}Definition\thmtformatoptarg {Moving sum Hotelling}}{50}{definition.28}
-\contentsline {think}{\numberline {\let \autodot \@empty }Think about it!}{50}{thmt@dummyctr.dummy.57}
-\contentsline {remark}{\numberline {8}Remark\thmtformatoptarg {Economical Design of Control Charts}}{51}{remark.8}
+\contentsline {think}{\numberline {\let \autodot \@empty }Think about it!}{50}{thmt@dummyctr.dummy.58}
+\contentsline {remark}{\numberline {9}Remark\thmtformatoptarg {Economical Design of Control Charts}}{51}{remark.9}
 \addvspace {10\p@ }
 \contentsline {example}{\numberline {5}Example\thmtformatoptarg {Web Design}}{55}{example.5}
 \contentsline {example}{\numberline {6}Example\thmtformatoptarg {Agricultural Yield Study}}{56}{example.6}
 \contentsline {extra}{\numberline {12}Extra Info}{57}{extra.12}
-\contentsline {remark}{\numberline {9}Remark\thmtformatoptarg {Screening Experiments}}{59}{remark.9}
-\contentsline {remark}{\numberline {10}Remark\thmtformatoptarg {Intermediate Factor Levels}}{60}{remark.10}
-\contentsline {remark}{\numberline {11}Remark\thmtformatoptarg {Crossed Treatments}}{60}{remark.11}
+\contentsline {remark}{\numberline {10}Remark\thmtformatoptarg {Screening Experiments}}{59}{remark.10}
+\contentsline {remark}{\numberline {11}Remark\thmtformatoptarg {Intermediate Factor Levels}}{60}{remark.11}
+\contentsline {remark}{\numberline {12}Remark\thmtformatoptarg {Crossed Treatments}}{60}{remark.12}
 \contentsline {example}{\numberline {7}Example\thmtformatoptarg {From $2^2$ to $2^{2-1}$}}{60}{example.7}
 \contentsline {definition}{\numberline {29}Definition\thmtformatoptarg {Resolution of a Design}}{61}{definition.29}
 \contentsline {extra}{\numberline {13}Extra Info\thmtformatoptarg {Coding Theory}}{61}{extra.13}
@@ -81,12 +82,12 @@
 \contentsline {extra}{\numberline {17}Extra Info\thmtformatoptarg {Bloom filters}}{65}{extra.17}
 \contentsline {example}{\numberline {10}Example\thmtformatoptarg {Designing Wings}}{66}{example.10}
 \addvspace {10\p@ }
-\contentsline {remark}{\numberline {12}Remark\thmtformatoptarg {Approximate Power Calculations}}{68}{remark.12}
-\contentsline {remark}{\numberline {13}Remark\thmtformatoptarg {Redundancy}}{69}{remark.13}
-\contentsline {remark}{\numberline {14}Remark\thmtformatoptarg {No Free Lunch}}{69}{remark.14}
+\contentsline {remark}{\numberline {13}Remark\thmtformatoptarg {Approximate Power Calculations}}{68}{remark.13}
+\contentsline {remark}{\numberline {14}Remark\thmtformatoptarg {Redundancy}}{69}{remark.14}
+\contentsline {remark}{\numberline {15}Remark\thmtformatoptarg {No Free Lunch}}{69}{remark.15}
 \addvspace {10\p@ }
 \contentsline {definition}{\numberline {32}Definition\thmtformatoptarg {Structure Function}}{70}{definition.32}
-\contentsline {remark}{\numberline {15}Remark\thmtformatoptarg {$\Phi $}}{70}{remark.15}
+\contentsline {remark}{\numberline {16}Remark\thmtformatoptarg {$\Phi $}}{70}{remark.16}
 \contentsline {definition}{\numberline {33}Definition\thmtformatoptarg {Series System}}{70}{definition.33}
 \contentsline {definition}{\numberline {34}Definition\thmtformatoptarg {Parallel System}}{70}{definition.34}
 \contentsline {definition}{\numberline {35}Definition\thmtformatoptarg {k-out-of-p System}}{71}{definition.35}
@@ -137,8 +138,8 @@
 \contentsline {example}{\numberline {30}Example\thmtformatoptarg {Accelerated life and proportional hazard for exponential failure times}}{82}{example.30}
 \contentsline {example}{\numberline {31}Example\thmtformatoptarg {Two groups with exponential baseline}}{83}{example.31}
 \contentsline {extra}{\numberline {24}Extra Info\thmtformatoptarg {General Hazard Rate Model}}{83}{extra.24}
-\contentsline {remark}{\numberline {16}Remark\thmtformatoptarg {Interplay between probability and statistics}}{84}{remark.16}
-\contentsline {remark}{\numberline {17}Remark\thmtformatoptarg {What is a component?}}{84}{remark.17}
+\contentsline {remark}{\numberline {17}Remark\thmtformatoptarg {Interplay between probability and statistics}}{84}{remark.17}
+\contentsline {remark}{\numberline {18}Remark\thmtformatoptarg {What is a component?}}{84}{remark.18}
 \contentsline {definition}{\numberline {49}Definition\thmtformatoptarg {Point availability}}{85}{definition.49}
 \contentsline {definition}{\numberline {50}Definition\thmtformatoptarg {Interval reliability}}{85}{definition.50}
 \contentsline {definition}{\numberline {51}Definition\thmtformatoptarg {Interval downtime}}{85}{definition.51}
