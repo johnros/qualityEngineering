@@ -510,7 +510,7 @@ For $p$ CTQs, then $\bar{x}_t$ and $\mu_0$ are $p$-length vectors, and $s^2_t(x)
 \begin{definition}[Hotteling's \tsq]
 \begin{align}
 \label{eq:hotteling}
-	T^2_t := n (\bar{x}_t-\hat{\mu}_0)' \hat{\Sigma}^{-1} (\bar{x}_t-\hat{\mu}_0).
+	T^2(x_t) := n (\bar{x}_t-\hat{\mu}_0)' \hat{\Sigma}^{-1} (\bar{x}_t-\hat{\mu}_0).
 \end{align}
 \end{definition}
 To derive the control limits, we will be assuming that $\x_{it}$ is $p$-variate Gaussian distributed, $\x_{it}\sim \gauss{\mu_0, \Sigma_{p \times p}}$. 
@@ -687,17 +687,30 @@ It may be less obvious, but for the mass-univariate test in Section~\ref{sec:mas
 
 
 
+\subsection{Temporal Pooling of Multivariate Charts}
+The basic problem: can we gain power by pooling some multivariate statistic over several periods?
+Sure!
+The most basic way to do so:
+\begin{definition}[Moving sum Hotelling]
+The \emph{moving sum Hotelling} chart in a window of $w$ periods ending at $t$, is defined as
+\begin{align}
+	M_t:= T^2(X_t)+\dots+T^2(X_{t-w+1})
+\end{align}
+where \tsq is Hotelling's test statistic $X_t$ is the matrix of $n$ samples of $p$ measurements at period $t$. 
+\end{definition}
 
+Since $T^2(X_t)$ is approximately $\chi^2_p$ distributed, periods are independent, and sums of Chi-square distributions are still Chi-square, with the summed degrees of freedom, we have that 
+\begin{align}
+	M_t \sim \chi^2_{wp}.
+\end{align}
+This readily suggests that the UCL for this chart is $\chi^2_{1-\alpha,wp}$. 
 
+\begin{think}
+Is the moving sum Hotelling a Shewhart chart? 
+Can you design more multivariate charts with period pooling? 
+Can you derive their control limits?
+\end{think}
 
-
-
-%For this purpose, we merely offer several candidate multivariate statistics, with references where appropriate.
-%\begin{description}
-%\item [Max pooling] Where we control the process using the $\max$ over CTQs. Useful when we expect signal in a handful of CTQs. This is in fact identical to the mass univariate approach of Section~\ref{sec:mass_univariate}.
-%\item [Higher Criticism] Where pooling is performed using the Higher Criticism statistic. Appropriate for an intermediate \emph{rare-weak} sparsity pattern. See details in \citep{jin_cosmological_2005}.
-%\item [Skewness Statistic] Where pooling is performed using the empirical third moment. Appropriate for an intermediate sparsity pattern. See details in \citep{jin_cosmological_2005}.
-%\end{description}
 
 
 
