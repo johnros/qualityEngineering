@@ -636,6 +636,17 @@ We now see that detecting a sparse signal, is ultimately the same as the goodnes
 
 \subsection{High-Dimensional Control Charts}
 
+By \emph{high dimension} we don't mean that $p$ is very large but rather the it is larger then $n$.
+This means that in each period we many observations, but we have ever more coordinates in the CTQ.
+To fix ideas, imagine that in the intensive care unit, in each of $n=10$ measurements per day, we take $p=100$ different measurements such as pulse, temperature, etc.
+
+The problem in high-dimension is that we cannot properly estimate the covariance. 
+For reasons we will not dive into, the most common manifestation is that the covariance matrix $\hat{\Sigma}$ in Eq.(\ref{eq:hotteling}) is not invertible so that \tsq is not only inefficient, but  cannot even be computed!
+
+\begin{think}
+How many free parameters are in the covariance between $p$ measurements?
+How many observations we would thus need to estimate this covariance?
+\end{think} 
 
 
 %For this purpose, we merely offer several candidate multivariate statistics, with references where appropriate.
