@@ -590,7 +590,7 @@ The most popular matrix norms include:
 \begin{definition}[Operator norm]
 Operator norm views the matrix as a the linear function it represents, so that the distance of a matrix from the origin is captured by the displacement this linear function causes upon its (normalized) inputs.
 \begin{align}
-	\norm{A}_{Op}:= \sup_x \set{\norm{Ax}; \norm{x}=1}
+	\norm{A}_{Op}:= \sup_x \set{\normII{Ax}; \normII{x}=1}
 \end{align}
 \end{definition}
 
@@ -620,7 +620,7 @@ Since a matrix defines a \emph{weighted graph} (and vise-versa), \aka a \emph{ne
 \subsection{Sparse Signals}
 
 We have already claimed that if signal exists only in a small subset of coordinates, i.e., it is sparse, we can do better than \tsq, at least in the sense of power.
-The mass-univariate test is an example which is preferred over \tsq is the signal is sparse.
+The mass-univariate test and chart (Section~\ref{sec:mass_univariate}) is an example which is preferred over \tsq if the signal is sparse.
 
 
 
@@ -641,17 +641,17 @@ We now see that detecting a sparse signal, is ultimately the same as the goodnes
 
 \subsection{High-Dimensional Control Charts}
 
-By \emph{high dimension} we don't mean that $p$ is very large but rather the it is larger then $n$.
-This means that in each period we many observations, but we have ever more coordinates in the CTQ.
-To fix ideas, imagine that in the intensive care unit, in each of $n=10$ measurements per day, we take $p=100$ different measurements such as pulse, temperature, etc.
+\emph{High dimension} does not mean that $p$ is very large but rather the it is larger then $n$.
+To fix ideas, imagine that in the intensive care unit of Example~\ref{eg:intensive}, in each of $n=10$ measurements per day, we take $p=100$ different measurements such as pulse, temperature, etc.
 
 
 The problem in high-dimension is that we cannot properly estimate the covariance. 
-For reasons we will not dive into, the most common manifestation is that the covariance matrix $\hat{\Sigma}$ in Eq.(\ref{eq:hotteling}) is not invertible so that \tsq is not only inefficient, but cannot even be computed!
-The fundamental idea to deal with the high-dimension is, well, to ignore the covariance.
+For reasons we will not elaborate on, the most common manifestation is that the covariance matrix $\hat{\Sigma}$ in Eq.(\ref{eq:hotteling}) is not invertible so that \tsq is not only inefficient, but cannot even be computed!
+The fundamental idea to deal with the high-dimension is, well, to ignore the covariance \dots
+
 Two matters need to be considered when doing so:
-(i) Is the type I error rate conserved?
-(ii) Is power lost?
+Is the type I error rate conserved?
+Is power lost?
 The answer to the first is- yes, but some corrections are required.
 The answer to the second is- yes, but hopefully not too much.
 
@@ -663,21 +663,20 @@ How many observations we would thus need to estimate this covariance?
 
 
 An example of a ``covariance agnostic'' signal detector, adapted from \cite{srivastava_test_2008}, is the following \footnote{I have simplified the actual statistic, so the reader is enouraged to read the reference before using the statistic.}:
-\begin{definition}[Srivastava-Du statistic]
+\begin{definition}[Simplified Srivastava-Du Statistic]
 \begin{align}
 \label{eq:srivastava_du}
 	 	T^{SD}(x) := n (\bar{x}-\hat{\mu}_0)' D^{-1} (\bar{x}-\hat{\mu}_0),
 \end{align}
-where $D$ is $\hat{\Sigma}$ with zeroes in all off-diagonal entries. Put differently, $T^{SD}$ is the same as \tsq in Eq.(\ref{eq:hotteling}) under an independence assumption.
+where $D$ is $\hat{\Sigma}$ with zeroes in all off-diagonal entries. Put differently, $T^{SD}$ is the same as \tsq in Eq.(\ref{eq:hotteling}) after forcing independence.
 \end{definition}
 Changing from matrix notation to sum notation, we see that 
 \begin{align}
-	 	T^{SD}(x) := n \sum_{j=1}^p (\bar{x}_j - \hat{\mu}_{0,j})^2 D^{-1}_{j,j} .
+	 	T^{SD}(x) := n \sum_{j=1}^p (\bar{x}_j - \hat{\mu}_{0,j})^2 D^{-1}_{jj} .
 \end{align}
 But wait! 
-$D^{-1}_{j,j}$ is just $\frac{1}{Var(x_{1,j},\dots,x_{n,j})}$!
-Why is this exciting? 
-Because it means that Eq.(\ref{eq:srivastava_du}) is nothing but the sum of the squared univariate t-statistics over the $p$ coordinates:
+$D^{-1}_{jj}$ is just the variance of the $j$'th coordinate: $\frac{1}{Var(x_{1,j},\dots,x_{n,j})}$.
+This is rather good news, since it means that Eq.(\ref{eq:srivastava_du}) is nothing but the sum of the squared univariate t-statistics over the $p$ coordinates:
 \begin{align}
 	 	T^{SD}(x) :=  \sum_{j=1}^p \frac{(\bar{x}_j - \hat{\mu}_{0,j})^2}{\var{\bar{x}_j}}  .
 \end{align}
