@@ -533,6 +533,24 @@ For exact result \cite[Ch.7]{qiu_introduction_2013} should be consulted.
 \end{remark}
 
 
+\subsection{Drill Down}
+Your control chart just went outside the control limits and an alarm has been rung.
+The next natural question- what made the process go out of control?
+In the univariate case, you should call your specialists team. 
+In the multivariate case, there is another analysis stage you can/should do: drill down.
+By this we mean that we look an each of the $p$ processes separately to see which processes triggered the alarm.
+
+The most natural way to drill-down, is to look at the raw univariate processes and see if any is out of the control limits.
+Is it possible that a Hotelling alarm was sounded, but no single process seems out of control.
+Absolutely! 
+This was the whole point for which we used a multivariate control: because the signal is so mild that any single process had no power.
+
+\begin{extra}
+In the electrical engineering literature, the ``drill down'' is also known as \emph{signal identification} that follows the initial \emph{signal detection}. 
+In the analysis of variance literature (ANOVA) this is a \emph{post-hoc} test that follows an \emph{omnibus test}.
+In the multiple testing literature, this is simply a multiple test. 
+\end{extra}
+
 
 
 
@@ -746,7 +764,8 @@ The caveat, as in statistical hypothesis testing, is that computing the p-value 
 [TODO: rewrite]
 
 
-Up until now, our design of control charts was driven by type-I error rates, and ARLs. Economical consideration were merely implied.
+Up until now, our design of control charts was driven by type-I error rates, and ARLs. 
+Economical consideration were merely implied.
 In this section, economical consideration take the driver's seat. 
 We present a toy model, to demonstrate the economical optimization of design parameters in a \barxChart. 
 Before beginning, a few remarks are in order. 
@@ -772,12 +791,34 @@ Our target function is optimizing the expected income per hour, with respect to 
 \label{eq:optimal_design}
 	\max_{n,\arm,h}\set{\expect{C/T}}
 \end{align}
-where $C$ is the income between two productions halts, i.e., a \emph{cycle};
+where $C$ is the income between two productions
+ halts, i.e., a \emph{cycle};
 $T$ is the cycle duration;
 $n$ is the number of samples per period;
 $\arm$ governs the control limits via $UCL:= \mu_0+ \arm \sigma_{\bar{x}}= \mu_0+ \arm \sigma_x / \sqrt{n}$;
 $h$ is the hours between sample periods. 
 
+Denoting by IC and OC the system In Control and Out of Control, respectively, then the parameters governing the solution are:
+\begin{description}
+\item[Income IC] Net income per production cycle when IC. Denoted $V_0$.
+\item[Income OC] Net income per production cycle when OC. Denoted $V_1$.
+\item[Fixed sample cost] Fixed cost of a sampling period. Denoted $a_1$. 
+\item[Variable sample cost] Variable cost of a sample. Denoted $a_2$.
+\item[Cost of True Positive] The cost to investigate and find an assignable cause; $a_3$.
+\item[Cost of False Posotive] The cost to investigate a false alarm; $a'_3$.
+\end{description}
+
+
+\begin{think}
+How will the optimal $n,L,h$ change if the parameters of the problems are changed?
+If $V_1$ is increased?
+If $a3$ is decreased?
+\end{think}
+
+For the purpose of this course, we will content ourselves with the above informal sensitivity analysis.
+For completeness, the precise optimization problem is given in the next Extra Info.
+
+\begin{extra}
 We now need to establish how $\expect{C/T}$ is related to $n,\arm,h$. Here is our set of assumptions and notation:
 \begin{enumerate}
 \item When in control (IC), production is centred on $\mu_0$, assumed known. 
@@ -810,18 +851,16 @@ $D$ is a fixed time to identify the assignable cause.
 	V_1 \left(\frac{h}{\pi}- \tau  + D  \right) - 
 	a_3 -
 	\frac{a'_3 e^{-\lambda h}}{1-e^{-\lambda h}} -
-	(a_1+a_2n)\frac{\expect{T}}{h}
+	(a_1+a_2n)\frac{\expect{T}}{h}.
 \end{align*}
-where $V_0$ is the net income per cycle when IC;
-$V_1$ is the net income when OC;
-$(a_1+a_2n)$ is the fixed and variable cost of taking a sample;
-$a_3$ is the cost of finding an assignable cause;
-$a'_3$ is the cost of investigating a false alarm.
 \end{enumerate}
+
+Given all the above, we may now plug Eq.(\ref{eq:optimal_design}) into our favourite numerical solver to find the optimal $h,\arm,n$.
 
 [TODO: add timeline]
 
-Given all the above, we may now plug Eq.(\ref{eq:optimal_design}) into our favourite numerical solver to find the optimal $h,\arm,n$.
+\end{extra}
+
 
 
 
