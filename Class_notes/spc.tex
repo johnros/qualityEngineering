@@ -583,7 +583,9 @@ We would like a multivariate version of the $s$ chart to monitor the health of o
 \end{example}
 
 
-Based on these examples, we list cases where \tsq is a \textbf{bad} choice. Appropriate test statistics for these cases are discussed in the following sections.
+Based on these examples, we list cases where \tsq is a \textbf{bad} choice. 
+Appropriate test statistics for these cases are discussed in the following sections.
+As we will see, the way to deal with many of the problem that arise with multivariate data, is to construct $p$ \textbf{univariate} tests, and them combine them; even at the cost of ignoring the correlations between coordinates, which originally motivated the design of \tsq. 
 \begin{description}
 
 \item [Multivariate $s$ chart] The signal we seek is not in the mean of the CTQ but rather in its variance, such as Example~\ref{eg:irrigation}. Put differently, we actually want a multivariate version of the $s$ chart and not the \barxChart. 
@@ -680,7 +682,7 @@ To fix ideas, imagine that in the intensive care unit of Example~\ref{eg:intensi
 
 The problem in high-dimension is that we cannot properly estimate the covariance. 
 For reasons we will not elaborate on, the most common manifestation is that the covariance matrix $\hat{\Sigma}$ in Eq.(\ref{eq:hotteling}) is not invertible so that \tsq is not only inefficient, but cannot even be computed!
-The fundamental idea to deal with the high-dimension is, well, to ignore the covariance \dots
+The fundamental idea to deal with the high-dimension is, well, to \textbf{ignore the covariance} \dots
 
 Two matters need to be considered when doing so:
 Is the type I error rate conserved?
@@ -695,53 +697,55 @@ How many observations we would thus need to estimate this covariance?
 
 
 
-An example of a ``covariance agnostic'' signal detector, adapted from \cite{srivastava_test_2008}, is the following \footnote{I have simplified the actual statistic, so the reader is enouraged to read the reference before using the statistic.}:
+An example of a ``covariance ignoring'' signal detector, adapted from \cite{srivastava_test_2008}, is the following \footnote{I have simplified the actual statistic, so the reader is enouraged to read the reference before using the statistic.}:
 \begin{definition}[Simplified Srivastava-Du Statistic]
 \begin{align}
 \label{eq:srivastava_du}
 	 	T^{SD}(x) := n (\bar{x}-\hat{\mu}_0)' D^{-1} (\bar{x}-\hat{\mu}_0),
 \end{align}
-where $D$ is $\hat{\Sigma}$ with zeroes in all off-diagonal entries. Put differently, $T^{SD}$ is the same as \tsq in Eq.(\ref{eq:hotteling}) after forcing independence.
+where $D$ is $\hat{\Sigma}$ with zeroes in all off-diagonal entries. Put differently, $T^{SD}$ is the same as \tsq in Eq.(\ref{eq:hotteling}) after forcing independence between coordinates.
 \end{definition}
 Changing from matrix notation to sum notation, we see that 
 \begin{align}
 	 	T^{SD}(x) = n \sum_{j=1}^p (\bar{x}_j - \hat{\mu}_{0,j})^2 D^{-1}_{jj} .
 \end{align}
 But wait! 
-$D^{-1}_{jj}$ is just the variance of the $j$'th coordinate: $\frac{1}{Var(x_{1,j},\dots,x_{n,j})}$.
-This is rather good news, since it means that Eq.(\ref{eq:srivastava_du}) is nothing but the sum of the squared univariate t-statistics over the $p$ coordinates:
+$D^{-1}_{jj}$ is just the inverse variance of the $j$'th coordinate: $\frac{1}{Var(x_{1,j},\dots,x_{n,j})}$.
+This is rather good news, since it means that Eq.(\ref{eq:srivastava_du}) is nothing but the sum of the squared \textbf{univariate} t-statistics over the $p$ coordinates:
 \begin{align}
 	 	T^{SD}(x) =  \sum_{j=1}^p \frac{(\bar{x}_j - \hat{\mu}_{0,j})^2}{\var{\bar{x}_j}}  .
 \end{align}
+
 We now see that a way to deal with the high-dimension, is to pool together $p$ univariate tests.
 Denoting the t-statistic of the $j$'th coordinate by $t_j:= \frac{(\bar{x}_j - \hat{\mu}_{0,j})^2}{\var{\bar{x}_j}}$ we can now easily design many high dimensional signal detectors in the form of
 \begin{align}
+\label{eq:marginal_test}
 	 	T(x) :=  f(t_1,\dots,t_p) .
 \end{align}
-where $f$ is some distance function\footnote{A norm function to be more precise.}.
+where $f$ is some function measuring distance from the $\mu_0$ vector.
 Clearly, for $T^{SD}$ we need to set $f(t_1,\dots,t_p) = \normII{(t_1,\dots,t_p)}^2$.
-It may be less obvious, but for the mass-univariate test in Section~\ref{sec:mass_univariate} we only need to use $f(t_1,\dots,t_p)=\max\set{t_1,\dots,t_p}$.
 
+\begin{think}
+Can you sugges other $f(t_1,\dots,t_p)$ functions that can make good signal detectors?
+\end{think}
 
 
 
 \subsection{Sparse Signals}
 
 We have already claimed that if signal exists only in a small subset of coordinates, i.e., it is \emph{sparse}, we can do better than \tsq, at least in the sense of power.
-The mass-univariate test and chart (Section~\ref{sec:mass_univariate}) is an example of an alternative to \tsq if the signal is sparse.
+The way to design detectors for sparse signals, relies on the idea of computing coordinate-wise tests, and pooling them together, as in Eq.(\ref{eq:marginal_test}). 
+The mass-univariate test and chart (Section~\ref{sec:mass_univariate}) is an example of an alternative to \tsq if the signal is sparse. 
+It is constructed using 
+$f(t_1,\dots,t_p)=\max\set{t_1,\dots,t_p}$.
+
+
+\begin{think}
+Can you suggest other $f(t_1,\dots,t_p)$ functions that can make good signal detectors, if you assume the signal is ``hiding'' only in a small subset of coordinates?
+\end{think}
 
 
 
-\begin{extra}[Sparse Signal Detectors]
-
-The fundamental idea for constructing sparse signal detectors is to compute some test statistic for each of the $p$ coordinates, and then test for the existence of signal in any of them. 
-Denoting $x_{i,j,t}$ be the $i$'th measurement of attribute $j$ in period $t$.
-Now omitting the period index $t$ for brevity, we denote $z_j=z_j(x_{1,j},\dots,x_{n,j})$ be the z-score of the $j$ coordinate at period $t$. 
-If there is no signal in any coordinate then all the $z_j$ should be distributed $\gauss{0,1}$ (that is their null distribution, right?)
-If a signal exists, then the $z_j$ will not look like a sample from the $\gauss{0,1}$ distribution. 
-We now see that detecting a sparse signal, is ultimately the same as the goodness of fit problems of Section~\ref{sec:gof}, where we test if $(z_1,\dots,z_p)$ looks like a $p$-sized sample from the $\gauss{0,1}$ distribution.
-
-\end{extra}
 
 
 
@@ -751,15 +755,15 @@ We now see that detecting a sparse signal, is ultimately the same as the goodnes
 
 
 \subsection{Temporal Pooling of Multivariate Charts}
-The basic problem: can we gain power by pooling some multivariate statistic over several periods?
+The basic problem: can we gain power by pooling multivariate data over several periods?
 Sure!
-A basic way to do so:
+
 \begin{definition}[Moving Sum Hotelling]
 The \emph{Moving Sum Hotelling} chart in a window of $w$ periods ending at $t$, is defined as
 \begin{align}
 	M_t:= T^2(X_t)+\dots+T^2(X_{t-w+1})
 \end{align}
-where \tsq is Hotelling's test statistic $X_t$ is the matrix of $n$ samples of $p$ measurements at period $t$. 
+where \tsq is Hotelling's test statistic $X_t$ is the matrix of $n$ samples on $p$ measurements at period $t$. 
 \end{definition}
 
 Since $T^2(X_t)$ is approximately $\chi^2_p$ distributed, periods are independent, and sums of Chi-square distributions are still Chi-square with the summed degrees of freedom\footnote{Trust me on this one.}, we have that for a process in control
@@ -803,9 +807,6 @@ A p-value control chart. Source: \cite{li_using_2012}.}
 \section{Economical Design of Control Charts}
 \label{sec:economical_considerations}
 
-[TODO: rewrite]
-
-
 Up until now, our design of control charts was driven by type-I error rates, and ARLs. 
 Economical consideration were merely implied.
 In this section, economical consideration take the driver's seat. 
@@ -833,8 +834,7 @@ Our target function is optimizing the expected income per hour, with respect to 
 \label{eq:optimal_design}
 	\max_{n,\arm,h}\set{\expect{C/T}}
 \end{align}
-where $C$ is the income between two productions
- halts, i.e., a \emph{cycle};
+where $C$ is the income between two productions halts, i.e., a \emph{cycle};
 $T$ is the cycle duration;
 $n$ is the number of samples per period;
 $\arm$ governs the control limits via $UCL:= \mu_0+ \arm \sigma_{\bar{x}}= \mu_0+ \arm \sigma_x / \sqrt{n}$;
@@ -843,18 +843,18 @@ $h$ is the hours between sample periods.
 Denoting by IC and OC the system In Control and Out of Control, respectively, then the parameters governing the solution are:
 \begin{description}
 \item[Income IC] Net income per production cycle when IC. Denoted $V_0$.
-\item[Income OC] Net income per production cycle when OC. Denoted $V_1$.
-\item[Fixed sample cost] Fixed cost of a sampling period. Denoted $a_1$. 
-\item[Variable sample cost] Variable cost of a sample. Denoted $a_2$.
+\item[Income OC] Net income per production cycle when OC, after accounting for recall, legal damages, etc. Denoted $V_1$.
+\item[Fixed sample cost] Fixed cost of sampling. Denoted $a_1$. 
+\item[Variable sample cost] Variable cost sampling. Denoted $a_2$.
 \item[Cost of True Positive] The cost to investigate and find an assignable cause; $a_3$.
-\item[Cost of False Posotive] The cost to investigate a false alarm; $a'_3$.
+\item[Cost of False Positive] The cost to investigate a false alarm; $a'_3$.
 \end{description}
 
 
 \begin{think}
 How will the optimal $n,L,h$ change if the parameters of the problems are changed?
 If $V_1$ is increased?
-If $a3$ is decreased?
+If $a_3$ is decreased?
 \end{think}
 
 For the purpose of this course, we will content ourselves with the above informal sensitivity analysis.
