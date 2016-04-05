@@ -588,9 +588,10 @@ Based on these examples, we list cases where \tsq is a \textbf{bad} choice. Appr
 
 \item [Multivariate $s$ chart] The signal we seek is not in the mean of the CTQ but rather in its variance, such as Example~\ref{eg:irrigation}. Put differently, we actually want a multivariate version of the $s$ chart and not the \barxChart. 
 
-\item [Sprase signal] The signal we seek is expected to exist in a small subset of the $p$ coordinates, like in the cyber-security of Example~\ref{eg:cyber}. This is known as a \emph{sparse signal}, unlike the \emph{dense signal} targeted by the \tsq. \marginnote{Sparse Signal}
-
 \item [High dimension] \tsq is simply incomputable. From Eq.(\ref{eq:hotteling}) we see that computing \tsq required the inversion of the covariance matrix. Often this is an impossible task. We call this a \emph{high-dimensional problem}.
+
+\item [Sparse signal] The signal we seek is expected to exist in a small subset of the $p$ coordinates, like in the cyber-security of Example~\ref{eg:cyber}. This is known as a \emph{sparse signal}, unlike the \emph{dense signal} targeted by the \tsq. \marginnote{Sparse Signal}
+
 \end{description}
 
 
@@ -669,26 +670,6 @@ Since a matrix defines a \emph{weighted graph} (and vise-versa), \aka a \emph{ne
 
 
 
-\subsection{Sparse Signals}
-
-We have already claimed that if signal exists only in a small subset of coordinates, i.e., it is sparse, we can do better than \tsq, at least in the sense of power.
-The mass-univariate test and chart (Section~\ref{sec:mass_univariate}) is an example which is preferred over \tsq if the signal is sparse.
-
-
-
-\begin{extra}[Sparse Signal Detectors]
-
-The fundamental idea for constructing sparse signal detectors is to compute some test statistic for each of the $p$ coordinates, and then test for the existence of signal in any of them. 
-Denoting $x_{i,j,t}$ be the $i$'th measurement of attribute $j$ in period $t$.
-Now omitting the period index $t$ for brevity, we denote $z_j=z_j(x_{1,j},\dots,x_{n,j})$ be the z-score of the $j$ coordinate at period $t$. 
-If there is no signal in any coordinate then all the $z_j$ should be distributed $\gauss{0,1}$ (that is their null distribution, right?)
-If a signal exists, then the $z_j$ will not look like a sample from the $\gauss{0,1}$ distribution. 
-We now see that detecting a sparse signal, is ultimately the same as the goodness of fit problems of Section~\ref{sec:gof}, where we test if $(z_1,\dots,z_p)$ looks like a $p$-sized sample from the $\gauss{0,1}$ distribution.
-
-\end{extra}
-
-
-
 
 
 \subsection{High-Dimensional Control Charts}
@@ -740,6 +721,32 @@ Denoting the t-statistic of the $j$'th coordinate by $t_j:= \frac{(\bar{x}_j - \
 where $f$ is some distance function\footnote{A norm function to be more precise.}.
 Clearly, for $T^{SD}$ we need to set $f(t_1,\dots,t_p) = \normII{(t_1,\dots,t_p)}^2$.
 It may be less obvious, but for the mass-univariate test in Section~\ref{sec:mass_univariate} we only need to use $f(t_1,\dots,t_p)=\max\set{t_1,\dots,t_p}$.
+
+
+
+
+\subsection{Sparse Signals}
+
+We have already claimed that if signal exists only in a small subset of coordinates, i.e., it is \emph{sparse}, we can do better than \tsq, at least in the sense of power.
+The mass-univariate test and chart (Section~\ref{sec:mass_univariate}) is an example of an alternative to \tsq if the signal is sparse.
+
+
+
+\begin{extra}[Sparse Signal Detectors]
+
+The fundamental idea for constructing sparse signal detectors is to compute some test statistic for each of the $p$ coordinates, and then test for the existence of signal in any of them. 
+Denoting $x_{i,j,t}$ be the $i$'th measurement of attribute $j$ in period $t$.
+Now omitting the period index $t$ for brevity, we denote $z_j=z_j(x_{1,j},\dots,x_{n,j})$ be the z-score of the $j$ coordinate at period $t$. 
+If there is no signal in any coordinate then all the $z_j$ should be distributed $\gauss{0,1}$ (that is their null distribution, right?)
+If a signal exists, then the $z_j$ will not look like a sample from the $\gauss{0,1}$ distribution. 
+We now see that detecting a sparse signal, is ultimately the same as the goodness of fit problems of Section~\ref{sec:gof}, where we test if $(z_1,\dots,z_p)$ looks like a $p$-sized sample from the $\gauss{0,1}$ distribution.
+
+\end{extra}
+
+
+
+
+
 
 
 
