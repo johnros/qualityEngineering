@@ -113,7 +113,9 @@ This is known in the statistical literature as a \emph{power function}, and in t
 \begin{figure}[h]
 \centering
 \includegraphics[height=0.3\textheight]{art/power_function.pdf}
-\caption[Power Function]{Power function of the 3-sigma \barxChart with $n=5,10,20$ and $\mu_1=\mu_0 + k \sigma$.}
+\caption[Power Function]{
+\footnotesize
+Power function of the 3-sigma \barxChart with $n=5,10,20$ and $\mu_1=\mu_0 + k \sigma$.}
 \label{fig:power_function}
 \end{figure}
 
@@ -557,7 +559,7 @@ In the multiple testing literature, this is simply a multiple test.
 
 \section[Multivariate extensions]{Multivariate Control- Extensions}
 
-Hotelling's \tsq is perhaps the first and most natural multivariate test statistic.
+Hotelling's \tsq is perhaps the first and most used multivariate test statistic.
 There are, however, circumstances where we can choose a better statistic.
 
 
@@ -605,16 +607,9 @@ To do so, we recall that in vector spaces, \emph{norm functions} measure distanc
 This idea may be generalized to matrix spaces. By using \emph{matrix norms} each matrix is summarized into a single number which can be interpreted as its distance from the origin (a matrix of zeroes).
 The most popular matrix norms include:
 
-\begin{definition}[Operator norm]
-Operator norm views the matrix as a the linear function it represents, so that the distance of a matrix from the origin is captured by the displacement this linear function causes upon its (normalized) inputs.
-\begin{align}
-	\norm{A}_{Op}:= \sup_x \set{\normII{Ax}; \normII{x}=1}
-\end{align}
-\end{definition}
-
 
 \begin{definition}[Frobenius (matrix) norm]
-The \emph{Frobenius norm}, \aka the \emph{Hilbert-Schmidt norm}, views the matrix as a square of numbers and is defined as follows:
+The \emph{Frobenius norm}, \aka the \emph{Hilbert-Schmidt norm}, or \emph{Schur norm}, views the matrix as a square of numbers and is defined as follows:
 \begin{align}
 	\normF{A}:= \sqrt{\sum_{i,j} a_{i,j}^2} = \sqrt{\Tr(A'A)}
 \end{align}
@@ -625,6 +620,45 @@ Another definition of the Frobenius matrix norm is via its singular values:
 $ 	\normF{A}:= \sqrt{\sum \sigma_i}, $
 where $\sigma_i$ is the singular values of matrix $A$.
 \end{extra}
+
+
+
+\begin{definition}[Operator $p$-norm]
+Operator norm views the matrix as a the linear function it represents, so that the distance of a matrix from the origin is captured by the displacement this linear function causes upon its (normalized) inputs.
+Because it is induced by a vector norm, it is also known as an \emph{induced norm}.\marginnote{Induced norm}
+To define the \emph{matrix} $p$-norm, we recall the $p$-norm of a \emph{vector} $a$:
+\begin{align}
+	\norm{a}_p:= (\sum |a_j|^p)^{1/p}
+\end{align}
+
+
+\begin{align}
+	\norm{A}_{Op}:= \sup_x \set{\normII{Ax}; \normII{x}=1}
+\end{align}
+\end{definition}
+
+Figure~\ref{fig:operator_norm} depicts the operator norm of a matrix operating on $\reals^3$. 
+
+\begin{figure}
+\centering
+\includegraphics[width=0.7\linewidth]{art/operator_norm}
+\caption{
+\footnotesize
+On the left: the unit circle in $\reals^3$. 
+On the right: the ellipse is the image of the unit circle after transformed by matrix $A$. The operator norm is the distance between the origin and the furthest point on the ellipse. 
+\newline Source: \cite{meyer_matrix_2001}.}
+\label{fig:operator_norm}
+\end{figure}
+
+
+\begin{definition}[Spectral norm]
+[TODO]
+\begin{align}
+	\norm{A}_{Spec}:= 	
+\end{align}
+\end{definition}
+
+
 
 
 \begin{extra}[Matrices and graphs]
@@ -750,7 +784,8 @@ The caveat, as in statistical hypothesis testing, is that computing the p-value 
 \begin{figure}[t]
 \centering
 \includegraphics[width=0.7\linewidth]{art/p-value-chart}
-\caption{A p-value control chart. Source: \cite{li_using_2012}.}
+\caption{\footnotesize
+A p-value control chart. Source: \cite{li_using_2012}.}
 \label{fig:p-value-chart}
 \end{figure}
 
