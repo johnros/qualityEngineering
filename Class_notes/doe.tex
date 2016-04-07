@@ -3,18 +3,21 @@
 
 This chapter is devoted to the matter of designing experiments, and follows the lines of \cite{cox_theory_2000}.
 A control chart may be seen as an on-line experiment alerting us when the milk goes sour, but it will not tell us why. 
-When designing a product (remember DFSS \ref{sec:dfss}), or once a control chart has signalled an alert, we will want to know what has influences our production, and how to remove variability.
-In our SPC terminology, we will want to know what are the \emph{causal} \emph{effects} of our \emph{controllable inputs} (or \emph{factors}), on our \emph{CTQ} (or \emph{response}). 
+When designing a product (remember DFSS \ref{sec:dfss}), or once a control chart has signalled an alert, we will want to know what \emph{controllable inputs} influence our process, and how to reduce its variability.
+In our SPC terminology, we will want to know what are the \emph{causal} \emph{effects} of our controllable inputs (\emph{factors}), on our \emph{CTQ} (\emph{response}). 
 The theory of discovering these effects is the theory of \emph{design of experiments} (DOE).
-Its goal is to \emph{screen} factors with no effect, to estimate effect sizes, and find optimal factor-level combinations, and remove assignable variability; all these as efficiently as possibly.
-
+Its goal is to \emph{screen} factors with no effect, 
+to estimate effect sizes, 
+find optimal factor-level combinations, 
+and remove assignable variability; 
+all these as efficiently as possibly.
 
 
 Roughly speaking, the challenges in designing good experiment are:
 \begin{enumerate}
 \item Efficiency: extract the most information per sampled unit.
-\item Signal to noise: remove variability that might mask factor effects.
-\item Bias: avoid uncontrolled effects from being ``absorbed'' into controlled ones.
+\item Signal to noise: reduce variability to reveal factor effects.
+\item Bias: correctly identify the (causal) effect of each factor, without ``absorbing'' other effects.
 \end{enumerate}
 
 
@@ -23,23 +26,31 @@ Roughly speaking, the challenges in designing good experiment are:
 
 Before we dig in, several matters should be emphasized:
 \begin{description}
-\item [Randomization] Randomization is fundamental to our purpose. This is because the idea of an \emph{effect} implies causality. Any inference we make, is causal, which is the inference we need for controlling a process.
-It is the mechanism of randomization, that allows us to conclude that correlations are causal, and not merely statistical.
+\item [Randomization] is the random assignment of units to treatments. 
+It is fundamental to our purpose because the idea of an \emph{effect} implies \emph{causality}. 
+Since we seek to intervene in the production to reduce variability, we only care about causal effects. 
+It is the mechanism of \emph{randomization}, that allows us to conclude that the correlations we find are indeed causal, and not merely statistical.
 For a treatment of causal inference in \emph{observational data}, i.e., without randomization, see \cite{rosenbaum_observational_2002}.
 
-\item [Pre-experiment] In this text we take it for granted that the purpose of the experiment is well known, and the candidate factors defined. We are fully aware, as should be the reader, that in application this is a non-trivial luxury. Indeed, a lot of planning, and domain-knowledge go into the selection of factors, their candidate levels, etc.
+\item [Pre-experiment] In this text we take it for granted that the purpose of the experiment is well known, and the candidate factors defined. 
+We are fully aware, as should be the reader, that in application this is a non-trivial luxury. 
+Indeed, a lot of meetings, planning, and expertise go into the selection of factors, their candidate levels, etc.
 
-\item [Power Analysis] Part of the pre-experiment may include a power analysis. The pre-experiment power analysis will typically be very approximate, and rely on many assumptions. It is still important, as it gives an idea of the feasibility of an experiment, and avoids wasting resources.
+\item [Power Analysis] Part of the pre-experiment may include a power analysis. 
+The pre-experiment power analysis will typically be very approximate, and rely on many assumptions. 
+It is still important, as it gives an idea of the feasibility of an experiment, and avoids wasting resources.
 
-\item [No Textbook Solution] We will present many design ideas and principles, yet it should be emphasized that real life problems rarely obey text-books. You should thus feel free, and even obliged, to think about your particular problem and adapt the experiment as you best see fit. 
+\item [No Textbook Solution] We will present many design ideas and principles, yet in real life problems rarely obey text-books.
+You should thus feel free, and even obliged, to think about your particular problem and adapt the experiment as you best see fit. 
 
 \item[Data Analysis]
 In this text, we only discuss the \textbf{design} of the experiment, and not the \textbf{analysis} of the data.
 This is a non-standard choice as DOE is typically presented alongside the \emph{analysis of variance} (ANOVA) framework.\marginnote{ANOVA}
-We decouple the two since: 
-\cite{cox_theory_2000} do so, 
-these are two different thing, and finally because the ANOVA framework may be easily replaced by the framework of \emph{linear models}, \emph{mixed models}, \emph{variance components}, and possibly others. 
-There is a vast literature focusing on the analysis method. \marginnote{Linear Models, \\ Mixed Models, Variance Components}
+We decouple the two for several reasons. 
+First, because \cite{cox_theory_2000} do so. 
+Second, because these are two different thing.
+The ANOVA framework may be replaced by the framework of \emph{linear models}, \emph{mixed models}, \emph{variance components}, and possibly others analysis frameworks. 
+There is a vast literature focusing on the analysis.
 If asked, this author may recommend \cite{hocking_analysis_1985}, which presents both the ANOVA terminology, and the linear models terminology.
 That book, however, may be hard to come by, so feel free to ask me for other references if required.
 
@@ -56,64 +67,74 @@ That book, however, may be hard to come by, so feel free to ask me for other ref
 The following list is compiled from \cite{mason_statistical_2003}. Many, if not most of the following terms, originate in R.A. Fisher's seminal book ``The Design of Experiments'' \citep{fisher_design_1960}. As usual, when old ideas get new names, we try to emphasize this in the text.
 
 
+\begin{tcolorbox}[breakable]
 
 \begin{description}
 
-\item [Experimental Unit]  Entity on which a measurement or an observation is made;
-sometimes refers to the actual measurement or observation.
+\item [Design]  Complete specification of experimental test runs, including blocking, randomization, repeat tests, replication, and the assignment of factor–level combinations to experimental units.
+
+\item [Experimental Unit]  Entity on which a measurement or an observation is made.
+
 \item [Homogenous Experimental Unit] Units that are as uniform as possible on all characteristics that could affect the response.
 
-\item [Factors]  A controllable experimental variable that is thought to influence the response. In the language of SPC: \emph{a controllable input}.
+\item [Factors]  A controllable experimental variable that is thought to influence the response. 
+In the language of SPC: \emph{a controllable input}.
 
 \item [Level] Specific value of a factor.
 
-\item[Treatment] The particular factor-level combination applied to an experimental unit. \Aka \emph{manipulation}, or \emph{cell}.
+\item[Treatment] The particular factor-level combination applied to an experimental unit. 
+\Aka \emph{manipulation}, or \emph{cell}.
 
-\item [Factor Encodings] The numerical encoding of factor levels.
-Of minor importance for designing. Of major importance for analysis.
+\item [Factor Encodings] 
+The numerical encoding of factor levels.
+Of minor importance for designing. 
+Of major importance for analysis.
 Two level factor encodings include:
-\begin{enumerate}
-\item Effect coding: where levels are encoded with $\set{-1,1}$.
-\item Dummy coding: where levels are encoded with $\set{0,1}$.
-\end{enumerate}
-
-\item [Experimental Region] All possible factor–level combinations for which experimentation is possible. \Aka \emph{factor space}, and \emph{design region}.
+	\begin{enumerate}
+	\item Effect coding: where levels are encoded with $\set{-1,1}$.
+	\item Dummy coding: where levels are encoded with $\set{0,1}$.
+	\end{enumerate}
 
 \item [Design Matrix] A matrix description of an experiment that is useful for constructing and analyzing experiments.
 
-\item [Response] The CTQ in the SPC literature. 
+\item [Response] 
+The CTQ in the SPC literature. 
+The $y$ variable in the regression literature. 
+The \emph{response} in the DOE literature. 
 
 \item [Main Effect] Change in the expected response between two factor–levels.  
 We emphasize that effects, unlike simple population parameters, imply a causal relationship.
-Part of the \emph{assignable causes} in the SPC literature.
+Akin to the \emph{assignable causes} in the SPC literature, and $\beta$'s in the regression literature. 
 
 \item [Interaction] Existence of joint factor effects in which the effect of each factor depends on the levels of the other factors.
 Part of the \emph{assignable causes} in the SPC literature.
 
-\item [Noise] \Aka \emph{error}. The part of the response that cannot be attributed to any factors.
-This is the \emph{common} variability in the SPC literature.
+\item [Noise] \Aka \emph{error}. 
+The variability in the response that cannot be attributed to any factor.
+This is the \emph{common} variability in the SPC literature, and the $\varepsilon$ in the regression literature. 
 
-\item [Replication] Repetition of an entire experiment or a portion of an experiment under two or more sets of conditions.
+\item [Replication] A single repetition of an entire experiment, i.e., a single measurement of the response in all experimental conditions.
 
-\item [Covariate]  An uncontrollable variable that influences the response but is unaffected by any other experimental factors.
-\Aka an \emph{exogenous} variable in the econometric literature.
+\item [Repeats] Repeated measurements on the response under the same conditions, i.e., under the same treatment. \Aka \emph{repeat tests}.
 
-\item [Non Specific Factor] A variable that we suspect to affect the response, but we can only vaguely define, thus impossible to measure. As a consequence, we will not care to study its effect, but rather just remove it (e.g. by blocking). 
+\item [Covariate]  An variable that influences the response but is unaffected by any other experimental factors.
+We cannot change at will, but we can \emph{control/account for them}. 
 
-
-\item [Design]  Complete specification of experimental test runs, including blocking, randomization, repeat tests, replication, and the assignment of factor–level combinations to experimental units.
+\item [Non Specific Factor] A variable that we suspect to affect the response, but we can only vaguely define, thus impossible to measure. 
+As a consequence, we will not care to study its effect, but rather just remove it (e.g. by blocking). 
+Think of ``life style'' as an example of a non-specific factor.
 
 \item [Blocking]  Blocking, or \emph{grouping}, is an experimental design technique that removes excess variation by grouping experimental units or test runs so that those units or test runs within a block are more homogeneous than those in different blocks. Blocking attributes are also known as \emph{non specific factors}.\marginnote{Non Specific Factors}
+The blocking in the design needs to be accounted at the time of the data analysis.
 
 \item [Confounding] When the design is such that several effects cannot be told apart. \Aka \emph{aliasing}.
 
-\item [Repeat Tests] Two or more observations that have the same levels for all the factors, i.e., receive the same treatment.
+\item [Balance] A vaguely defined concept, capturing symmetry in the combinatorial design of the experiment. 
+In its simplest interpretation, a design where an equal number of units is assigned to each treatment.
 
-\item [Balance] Some symmetry in the combinatorial design of the experiment. In its simplest interpretation, a design where an equal number of units is assigned to each treatment.
-
-\item [Orthogonality]  Special simplifications of analysis and achievement of efficiency consequent on such \emph{balance}.
 \end{description}
 
+\end{tcolorbox}
 
 
 
