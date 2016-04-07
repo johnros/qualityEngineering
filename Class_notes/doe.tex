@@ -246,19 +246,15 @@ To solve this, we could give each subject all $5$ diets.
 Each subject would act as his own block.
 Diet effect would be analyzed within subjects, and hopefully, having removed the variability between subjects, the diet effect would reveal itself. 
 
-
-Lets return to the web site layout example (\ref{eg:variance_components}).
-Let us also assume that our site has $3$ web pages. 
-A landing page, an information page, and a form to fill. 
-It is possible that the response to a particular page is affected by the previous page presented. 
+Enter a new problem. 
+What if the response to a particular diet is affect by the previous diet.
 This is known as a \emph{carryover effecf}, or \emph{residual effect}, which may bias the main layout effects of interest. \marginnote{Carryover Effect}
+If all subject receive diet B after A, then the estimated effect of B will be biased by the carryover effect of A. 
+A way to ``average out'' this carryover effect is to balance the treatment sequences. 
+If each subject is randomly assigned to one of the $5!$ diet arrangements this balance would be achieved.
 
-The more general phenomenon is dependence in the noise between trials. 
-Consider the same subject undergoing different treatments, or adjacent fields. 
-\emph{Crossover} designs are such that all possible treatment adjacencies are considered, so that the carry over effect averages out. 
-
-In a \emph{fully randomized crossover design}, each unit is randomly allocated to a sequence of treatments.
-If treatments are combinations of several factors, it is not uncommon to use Latin Squares to generate the sequences. Table~\ref{tab:crossover} demonstrates the $3!=6$ sequences for our $3$ page website problem.
+The idea of administering all treatments to each unit, in a random sequence that balances carryover effects is known as a \emph{fully randomized crossover design}.
+Table~\ref{tab:crossover} demonstrates the $3!=6$ sequences for a $3$ treatment problem.
 \begin{table}[ht]
 \centering
 \begin{tabular}{rlll}
