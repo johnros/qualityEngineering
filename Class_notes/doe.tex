@@ -224,92 +224,8 @@ A good blocking strategy is such where blocks are very homogenous within themsel
 \begin{think}
 With twins, you can have a complete block design comparing only two treatments. 
 How would you go about to compare $3$ treatments?
-And $8$ treatments?
+And treatments?
 \end{think}
-
-
-
-\subsubsection{Latin Square Design}
-When homogenous groups are defined by two non-specific factors, we would like to create blocks that are balanced, so that the non-specific factors do not bias effect estiamtes.
-In our running example, non-specific factors may be age and gender. 
-We could construct all age and gender combinations, and randomly assign users from each age-gender to each site design.
-This would is an example of a \emph{split plot} design, discussed in Section~\ref{sec:split_plot}.
-If, however, we do not deal with age-gender, but rather with age-country, we may not have enough users in each cell to assign to all site designs. 
-Since we do not want to estimate the effect of age, nor country, but merely balance the design so that age and country effects do not alias the site's effect, we do not actually need all age-country combinations. 
-
-
-
-If we have $k$ designs, we may group ages and countries into $k$ categories each, and each design is seen only once in each age group and once in each country group. 
-This allocation of treatment to blocks is known as a \emph{Latin Square}. 
-Table~\ref{tab:latin_square} demonstrates a Latin Square for $7$ web site designs, and compares it to a non-balanced allocation. 
-\begin{table}[ht]
-    \begin{minipage}{.5\linewidth}
-        \centering
-		\begin{tabular}{rlllllll}
-		  \hline
-		 & 1 & 2 & 3 & 4 & 5 & 6 & 7 \\ 
-		  \hline
-		1 & 1 & 2 & 3 & 4 & 5 & 6 & 7 \\ 
-		2 & 1 & 2 & 3 & 4 & 5 & 6 & 7 \\ 
-		3 & 1 & 2 & 3 & 4 & 5 & 6 & 7 \\ 
-		4 & 1 & 2 & 3 & 4 & 5 & 6 & 7 \\ 
-		5 & 1 & 2 & 3 & 4 & 5 & 6 & 7 \\ 
-		6 & 1 & 2 & 3 & 4 & 5 & 6 & 7 \\ 
-		7 & 1 & 2 & 3 & 4 & 5 & 6 & 7 \\ 
-		   \hline
-		\end{tabular}
-    \end{minipage}%
-    \begin{minipage}{.5\linewidth}
-      \centering
-		\begin{tabular}{rlllllll}
-		  \hline
-		 & 1 & 2 & 3 & 4 & 5 & 6 & 7 \\ 
-		  \hline
-		1 & 1 & 2 & 3 & 4 & 5 & 6 & 7 \\ 
-		  2 & 2 & 3 & 4 & 5 & 6 & 7 & 1 \\ 
-		  3 & 3 & 4 & 5 & 6 & 7 & 1 & 2 \\ 
-		  4 & 4 & 5 & 6 & 7 & 1 & 2 & 3 \\ 
-		  5 & 5 & 6 & 7 & 1 & 2 & 3 & 4 \\ 
-		  6 & 6 & 7 & 1 & 2 & 3 & 4 & 5 \\ 
-		  7 & 7 & 1 & 2 & 3 & 4 & 5 & 6 \\ 
-		   \hline
-		\end{tabular}
-		\end{minipage} 
-	\caption{A $7$-treatment, two-factor design. 
-	Left pane is not balanced.
-	Right pane is balanced with a Latin Square, generated with the \rcode{MOLS()} function of the \rcode{crossdes} \R package.}
-	\label{tab:latin_square}		
-\end{table}
-
-
-The following example makes the same point, with the original agricultural motivation for this design.
-\begin{example}[Agricultural Yield Study]
-\label{eg:latin_square}
-Consider an farmer growing corn.
-He wishes to study the effect of $7$ candidate fertilizers (single factor with $7$ levels).
-He is aware that the location of the plot may affect yield, due to slightly different sunlight, irrigation, altitude, etc.
-He thus assumes he has to deal with two extra variance sources: row and column of the plot. 
-He could treat the row and column as two factors, with $7$ levels each, be he does not care to estimate the row/column effect, but merely to avoid bias.
-He will thus try to look for an allocation of fertilizer to rows and columns so that any row/column effect will be averaged out.
-The Latin Square design of Table~\ref{tab:latin_square} does just that.
-\end{example}
-
-
-\begin{extra}\noindent
-\begin{enumerate}
-\item If the Latin Square reminds you of Soduko, it should. Soduko is just that!
-\item The Latin Square is a very economical design, and is not used as often as it should be.
-\item If we had reason to believe that different age groups in different countries respond differently to each site (an interaction), then the Latin Square may actually introduce aliasing. 
-\end{enumerate}
-\end{extra}
-
-
-
-\subsubsection{Extensions of the Latin Square}
-\begin{enumerate}
-\item \textbf{Latin Hypercube}: When balancing more than two non-specific factors, we will call upon \emph{latin hypercube designs}, \aka \emph{orthogonal latin squares}. \marginnote{Orthogonal Latin Squares}
-\item \textbf{Greco-Latin Square}: A latin-hypercube with three variability sources. 
-\end{enumerate}
 
 
 
@@ -549,6 +465,15 @@ For each age and country combination (full factorial blocking) we can randomly a
 This combination of a factorial design for blocking, is known as a \emph{split plot}, or \emph{split unit} design.
 For more on split plots see \cite[Sec.6.4]{cox_theory_2000}.
 
+
+
+
+
+
+
+
+
+
 \subsection{Summary of Discrete Factors}
 In this section we dealt with discrete factors, typically taking two possible values.
 These appeared for several purposes. 
@@ -558,6 +483,99 @@ Factors were, however, also encountered when reducing variability.
 When used for defining blocks, or groups, we called these non-specific factors simply because all we required for grouping was some vague notion of homogeneity within a block, and not an explicit definition of the factor that defines the blocks. 
 
 In the next section, we extend from discrete factors to continuous factors.
+
+
+%\section{Specialized blocking techniques}
+%
+%\subsubsection{Latin Square Design}
+%[TODO: put section in context- variance? bias? economy?]
+%When homogenous groups are defined by two non-specific factors, we would like to create blocks that are balanced, so that the non-specific factors do not bias effect estiamtes.
+%In our running example, non-specific factors may be age and gender. 
+%We could construct all age and gender combinations, and randomly assign users from each age-gender to each site design.
+%This would is an example of a \emph{split plot} design, discussed in Section~\ref{sec:split_plot}.
+%If, however, we do not deal with age-gender, but rather with age-country, we may not have enough users in each cell to assign to all site designs. 
+%Since we do not want to estimate the effect of age, nor country, but merely balance the design so that age and country effects do not alias the site's effect, we do not actually need all age-country combinations. 
+%
+%
+%
+%If we have $k$ designs, we may group ages and countries into $k$ categories each, and each design is seen only once in each age group and once in each country group. 
+%This allocation of treatment to blocks is known as a \emph{Latin Square}. 
+%Table~\ref{tab:latin_square} demonstrates a Latin Square for $7$ web site designs, and compares it to a non-balanced allocation. 
+%\begin{table}[ht]
+%    \begin{minipage}{.5\linewidth}
+%        \centering
+%		\begin{tabular}{rlllllll}
+%		  \hline
+%		 & 1 & 2 & 3 & 4 & 5 & 6 & 7 \\ 
+%		  \hline
+%		1 & 1 & 2 & 3 & 4 & 5 & 6 & 7 \\ 
+%		2 & 1 & 2 & 3 & 4 & 5 & 6 & 7 \\ 
+%		3 & 1 & 2 & 3 & 4 & 5 & 6 & 7 \\ 
+%		4 & 1 & 2 & 3 & 4 & 5 & 6 & 7 \\ 
+%		5 & 1 & 2 & 3 & 4 & 5 & 6 & 7 \\ 
+%		6 & 1 & 2 & 3 & 4 & 5 & 6 & 7 \\ 
+%		7 & 1 & 2 & 3 & 4 & 5 & 6 & 7 \\ 
+%		   \hline
+%		\end{tabular}
+%    \end{minipage}%
+%    \begin{minipage}{.5\linewidth}
+%      \centering
+%		\begin{tabular}{rlllllll}
+%		  \hline
+%		 & 1 & 2 & 3 & 4 & 5 & 6 & 7 \\ 
+%		  \hline
+%		1 & 1 & 2 & 3 & 4 & 5 & 6 & 7 \\ 
+%		  2 & 2 & 3 & 4 & 5 & 6 & 7 & 1 \\ 
+%		  3 & 3 & 4 & 5 & 6 & 7 & 1 & 2 \\ 
+%		  4 & 4 & 5 & 6 & 7 & 1 & 2 & 3 \\ 
+%		  5 & 5 & 6 & 7 & 1 & 2 & 3 & 4 \\ 
+%		  6 & 6 & 7 & 1 & 2 & 3 & 4 & 5 \\ 
+%		  7 & 7 & 1 & 2 & 3 & 4 & 5 & 6 \\ 
+%		   \hline
+%		\end{tabular}
+%		\end{minipage} 
+%	\caption{A $7$-treatment, two-factor design. 
+%	Left pane is not balanced.
+%	Right pane is balanced with a Latin Square, generated with the \rcode{MOLS()} function of the \rcode{crossdes} \R package.}
+%	\label{tab:latin_square}		
+%\end{table}
+%
+%
+%The following example makes the same point, with the original agricultural motivation for this design.
+%\begin{example}[Agricultural Yield Study]
+%\label{eg:latin_square}
+%Consider an farmer growing corn.
+%He wishes to study the effect of $7$ candidate fertilizers (single factor with $7$ levels).
+%He is aware that the location of the plot may affect yield, due to slightly different sunlight, irrigation, altitude, etc.
+%He thus assumes he has to deal with two extra variance sources: row and column of the plot. 
+%He could treat the row and column as two factors, with $7$ levels each, be he does not care to estimate the row/column effect, but merely to avoid bias.
+%He will thus try to look for an allocation of fertilizer to rows and columns so that any row/column effect will be averaged out.
+%The Latin Square design of Table~\ref{tab:latin_square} does just that.
+%\end{example}
+%
+%
+%\begin{extra}\noindent
+%\begin{enumerate}
+%\item If the Latin Square reminds you of Soduko, it should. Soduko is just that!
+%\item The Latin Square is a very economical design, and is not used as often as it should be.
+%\item If we had reason to believe that different age groups in different countries respond differently to each site (an interaction), then the Latin Square may actually introduce aliasing. 
+%\end{enumerate}
+%\end{extra}
+%
+%
+%
+%\subsubsection{Extensions of the Latin Square}
+%\begin{enumerate}
+%\item \textbf{Latin Hypercube}: When balancing more than two non-specific factors, we will call upon \emph{latin hypercube designs}, \aka \emph{orthogonal latin squares}. \marginnote{Orthogonal Latin Squares}
+%\item \textbf{Greco-Latin Square}: A latin-hypercube with three variability sources. 
+%\end{enumerate}
+
+
+
+
+
+
+
 
 \section{Continuous Factors}
 When dealing with \emph{continuous factors}, or \emph{quantitative factors}, we have many more analysis strategies than when dealing with qualitative factors.
