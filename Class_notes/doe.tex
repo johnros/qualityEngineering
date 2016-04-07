@@ -193,11 +193,15 @@ If you suspect, as you should, that in both examples we may reduce variability b
 
 
 
+
+
+
 \subsection{Randomized Block Designs}
 The idea of \emph{blocking} is to replace the complete randomization scheme by a restricted randomization scheme so that variability can be reduced without introducing bias. 
 The restricted randomization is created by \emph{grouping}, or \emph{blocking} groups of experimental units, and randomizing allocation within the group. 
 
-In the twins example, nature has provided us with natural blocks of two. If comparing two treatments, we would naturally randomize treatments within twin-pair. 
+In the twins example, nature has provided us with natural blocks of two. 
+If comparing two treatments, we would naturally randomize treatments within twin-pair. 
 This is known as a \emph{randomized complete block design}. \marginnote{Complete Block Design}
 If we had three treatments, or more, to compare, we cannot completely randomize. This is knows as an \emph{incomplete block design}. 
 There are several approaches to incomplete block designs, but we refer the reader to \cite[Sec.4.2]{cox_theory_2000} for details.
@@ -234,8 +238,18 @@ And treatments?
 
 \subsubsection{Crossover Design}
 \label{sec:crossover}
+
+Return to the diet comparison of Example~\ref{eg:twins}. 
+Now assume that $5$ diets are being compared so the twins trick will no longer work.
+If the response of different people to the diets is strongly affected by genetics \andor lifestyle, it may be the case that by (randomly) assigning diets to individuals the diets effect will be completely masked by the variability between subjects. 
+To solve this, we could give each subject all $5$ diets. 
+Each subject would act as his own block.
+Diet effect would be analyzed within subjects, and hopefully, having removed the variability between subjects, the diet effect would reveal itself. 
+
+
 Lets return to the web site layout example (\ref{eg:variance_components}).
-Let us also assume that our site has $3$ web pages. A landing page, an information page, and a form to fill. 
+Let us also assume that our site has $3$ web pages. 
+A landing page, an information page, and a form to fill. 
 It is possible that the response to a particular page is affected by the previous page presented. 
 This is known as a \emph{carryover effecf}, or \emph{residual effect}, which may bias the main layout effects of interest. \marginnote{Carryover Effect}
 
