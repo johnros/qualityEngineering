@@ -171,7 +171,7 @@ If the site's attributes affect differently users with different attributes, we 
 Consider the problem of comparing two nutrition diets. 
 Clearly, the effect of a diet on life expectancy strongly interacts with both genetics and life style. 
 It would be thus very nice if we could block experimental units, so that each block has a homogenous genetics and life-style. 
-That is why twins are so popular when designing experiments!
+That is why \textbf{twins} are so popular when designing experiments!
 \end{example}
 
 
@@ -188,7 +188,8 @@ Gage R\&R experiments are aimed at measuring the precision of an experiment, i.e
 In the simplest of designs, all experimental units are randomly assigned to treatments. 
 This is typically easy to implement.
 In Example~\ref{eg:variance_components} this would imply randomly assigning users to interfaces.
-If you suspect, as you should, that we may reduce variability by grouping types of users together, keep reading.
+In Example~\ref{eg:twins} this would mean ignoring the fact that the experimental units come in naturally blocked groups of two, and randomly assigning all people to treatments. 
+If you suspect, as you should, that in both examples we may reduce variability by grouping units together, keep reading.
 
 
 
@@ -196,22 +197,34 @@ If you suspect, as you should, that we may reduce variability by grouping types 
 The idea of \emph{blocking} is to replace the complete randomization scheme by a restricted randomization scheme so that variability can be reduced without introducing bias. 
 The restricted randomization is created by \emph{grouping}, or \emph{blocking} groups of experimental units, and randomizing allocation within the group. 
 
-In our running example, we could reduce the variability of the web site's attributes by showing various sites to the same person- each person would be his own block. This is an example of \emph{crossover} design, discussed in Section~\ref{sec:crossover}.
-
-Alternatively, we could block individuals along, say, using the age covariate. 
-We would then randomly assign users to layouts, only within age groups, so that all layouts are presented to each age-group. 
-If each age group has as many users as there are different site designs, this is a \emph{randomized complete block design}.\marginnote{Complete Block Design}
-If there are more layouts than users in each age group, we cannot randomize all layouts within all age groups. 
-This would require an \emph{incomplete block design}.
+In the twins example, nature has provided us with natural blocks of two. If comparing two treatments, we would naturally randomize treatments within twin-pair. 
+This is known as a \emph{randomized complete block design}. \marginnote{Complete Block Design}
+If we had three treatments, or more, to compare, we cannot completely randomize. This is knows as an \emph{incomplete block design}. 
 There are several approaches to incomplete block designs, but we refer the reader to \cite[Sec.4.2]{cox_theory_2000} for details.
 
-The reader may have noticed by now that blocking is done in order to great homogenous groups, thus reducing the variability in measured response. 
-One can block using either factors, covariates, or non-specific factors. 
+\begin{remark}[Paired sample]
+While we try to avoid matter of data-analysis, it should be obvious to the reader that a two-group randomized block design should be analyzed as a \textbf{paired sample}. 
+\end{remark}
+
+In our web-design example nature has not provided natural homogenous blocks, but we can create them ourselves. 
+We could block individuals along, say, the age covariate. 
+We would then randomly assign users to layouts, only \textbf{within} age groups, so that all layouts are presented to each age-group. 
+If each age group has as many users as there are different site designs, this is a randomized complete block design. 
+If there are more layouts than users per age group, this is an incomplete block design. 
+Another idea is to use each user as his own block, by introducing a temporal dimension to the experiment.
+We could show all layouts to the same person. 
+This particular type of blocking is known as a \emph{crossover} design, discussed in Section~\ref{sec:crossover}.
+
+In summary, blocking is done in order to create homogenous groups.  
+One can block in along factors, covariates, or non-specific factors. 
+One can then compare treatments only within blocks (e.g. the paired sample t-test), thus gaining accuracy by avoiding the variability between blocks. 
+A good blocking strategy is such where blocks are very homogenous within themselves, but very different between themselves, at least with respect to the response being studied. 
 
 
 \begin{think}
 With twins, you can have a complete block design comparing only two treatments. 
-How would you go about to compare three treatments?
+How would you go about to compare $3$ treatments?
+And $8$ treatments?
 \end{think}
 
 
