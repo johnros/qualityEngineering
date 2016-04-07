@@ -13,18 +13,7 @@ and remove assignable variability;
 all these as efficiently as possibly.
 
 
-Roughly speaking, the challenges in designing good experiment are:
-\begin{enumerate}
-\item Efficiency: extract the most information per sampled unit.
-\item Signal to noise: reduce variability to reveal factor effects.
-\item Bias: correctly identify the (causal) effect of each factor, without ``absorbing'' other effects.
-\end{enumerate}
-
-
-
-
-
-Before we dig in, several matters should be emphasized:
+Several matters should be emphasized:
 \begin{description}
 \item [Randomization] is the random assignment of units to treatments. 
 It is fundamental to our purpose because the idea of an \emph{effect} implies \emph{causality}. 
@@ -59,16 +48,27 @@ That book, however, may be hard to come by, so feel free to ask me for other ref
 
 
 
+Roughly speaking, the challenges in designing good experiment are:
+\begin{enumerate}
+\item Efficiency: extract the most information per sampled unit.
+\item Signal to noise: reduce variability to reveal factor effects.
+\item Bias: correctly identify the (causal) effect of each factor, without ``absorbing'' other effects.
+\end{enumerate}
+After establishing the required terminology, we will discuss design methods that deal with reduction of the noise, so that factor effects can be better detected and estimated (Section~\ref{sec:variance_components}).
+We will then discuss the efficiency of designs. 
+In particular, how to represent different treatments in a way that allows a single experimental condition, to be informative not only on itself, but also on other experimental conditions (Section~\ref{sec:factorial_design}).
+
 
 
 
 
 \section{Terminology}
-The following list is compiled from \cite{mason_statistical_2003}. Many, if not most of the following terms, originate in R.A. Fisher's seminal book ``The Design of Experiments'' \citep{fisher_design_1960}. As usual, when old ideas get new names, we try to emphasize this in the text.
+Many, if not most of the following terms, originate in R.A. Fisher's seminal book ``The Design of Experiments'' \citep{fisher_design_1960}. 
+As such, the DOE literature is rich in agricultural terms, due to its historical origins.
+When old ideas get new names, we try to emphasize this in the text.
 
 
 \begin{tcolorbox}[breakable]
-
 \begin{description}
 
 \item [Design]  Complete specification of experimental test runs, including blocking, randomization, repeat tests, replication, and the assignment of factor–level combinations to experimental units.
@@ -124,7 +124,7 @@ We cannot change at will, but we can \emph{control/account for them}.
 As a consequence, we will not care to study its effect, but rather just remove it (e.g. by blocking). 
 Think of ``life style'' as an example of a non-specific factor.
 
-\item [Blocking]  Blocking, or \emph{grouping}, is an experimental design technique that removes excess variation by grouping experimental units or test runs so that those units or test runs within a block are more homogeneous than those in different blocks. Blocking attributes are also known as \emph{non specific factors}.\marginnote{Non Specific Factors}
+\item [Blocking]  Blocking, or \emph{grouping}, is an experimental design technique that removes excess variation by grouping experimental units or test runs so that those units or test runs within a block are more homogeneous than those in different blocks. Blocking attributes are also known as \emph{non specific factors}.
 The blocking in the design needs to be accounted at the time of the data analysis.
 
 \item [Confounding] When the design is such that several effects cannot be told apart. \Aka \emph{aliasing}.
@@ -145,32 +145,23 @@ In its simplest interpretation, a design where an equal number of units is assig
 \section{Dealing with Variability}
 \label{sec:variance_components}
 
-The idea that random samples come with variability, or noise, should not be new to the reader.
+The idea that random samples come with (common causes of) variability, i.e. noise, should not be new to the reader.
 In this section, we will try to decompose variability into it sources, and learn several techniques to reduce them. 
-Starting with a motivating example.
+Starting with a motivating example, which you should use to fix ideas as you progress along this chapter. 
 
 
 
 \begin{example}[Web Design]
 \label{eg:variance_components}
-Consider the problem of optimizing a web site, or user interface, where individuals performance is measured by conversion rate (the probability of a new user to signup, purchase, etc).
-Users' conversion is influenced by several factors:
-The site's attributes,
-the users' attributes, 
-a user's affinity to a particular attributes,  
-a user's mood, 
-and endlessly many other things
-How can we accurately optimize our site, in the presence of these variability sources?
-The site's attributes are the \emph{factors} we want to study.
+Consider the problem of optimizing a web site, where individuals performance is measured by conversion rate (the probability of a new user to signup, purchase, etc).
+In the DOE language, the conversion is the \emph{response}.
+A user (or ip address) is an \emph{experimental unit}.
+The site's attributes are the \emph{factors}.
+A particular site's design, i.e. a combination of factors, is the \emph{treatment}.
 The users' attributes are \emph{covariates}. 
-A user's affinity to the site's attributes is an \emph{interaction}. 
-The users' mood is unobservable, thus a \emph{non-specific factor} we will try to either \emph{block} or \emph{balance}.
-Any other variability, will be captured by the \emph{noise} term of the model. 
+The user's life-style, a \emph{non-specific factor}.
+If the site's attributes affect differently users with different attributes, we say there is an \emph{interaction}.
 \end{example}
-
-
-In this chapter we will learn many principled methods for the efficient design of experiments which allow us to remove effect-masking variability, avoid bias, and reduce costs.
-You may, and should, think of this web design problem as we advance, since all the methods presented may be applied to it.
 
 
 
@@ -325,6 +316,7 @@ If treatments are combinations of several factors, it is not uncommon to use Lat
 
 
 \section{Factorial Designs}
+\label{sec:factorial_design}
 Until now we discussed some arbitrary set of treatments.
 It is quite common, is not certain, that the many treatments are merely combination of a small number of \emph{factors} with a small number of \emph{levels} each.
 This means that we may decompose treatment effect into the (partial) sums of the effects of underlying factors, which would make both the design more economical, and the analysis easier to interpret.
