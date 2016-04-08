@@ -466,18 +466,6 @@ We will not go into the details of how the aliasing structure is computed, but r
 
 
 
-\begin{definition}[Resolution of a Design]
-In previous versions of this text I defined the \emph{resolution} of a design. 
-Since my definition was wrong, you are kindly asked to ignore it.
-\end{definition}
-
-\begin{tcolorbox}
-\paragraph{My mistake!}
-The previous definition is plain wrong. 
-It is thus removed from the course's syllabus until I update it.
-\end{tcolorbox}
-
-
 
 \begin{extra}[Coding Theory]
 There is a close relationship between design of experiments and coding theory in computer science. 
@@ -485,33 +473,19 @@ A possible reference on the matter is \cite{hill_first_1986}, or \cite{hedayat_o
 \end{extra}
 
 
-
-\subsection{Split Plot Design}
-\label{sec:split_plot}
-Revisiting our web site layout problem:
-We want to block along age and country. 
-For each age and country combination (full factorial blocking) we can randomly assign users to site layouts. 
-This combination of a factorial design for blocking, is known as a \emph{split plot}, or \emph{split unit} design.
-For more on split plots see \cite[Sec.6.4]{cox_theory_2000}.
-
-
-
+%
+%\subsection{Split Plot Design}
+%\label{sec:split_plot}
+%Revisiting our web site layout problem:
+%We want to block along age and country. 
+%For each age and country combination (full factorial blocking) we can randomly assign users to site layouts. 
+%This combination of a factorial design for blocking, is known as a \emph{split plot}, or \emph{split unit} design.
+%For more on split plots see \cite[Sec.6.4]{cox_theory_2000}.
+%
 
 
 
 
-
-
-
-\subsection{Summary of Discrete Factors}
-In this section we dealt with discrete factors, typically taking two possible values.
-These appeared for several purposes. 
-The most obvious way, was to define treatments: in full factorial, and fractional factorial designs, the treatments are decomposed into their defining factors. 
-Decomposing treatments to their factors allowed us to be more economical in our designs (think why?).
-Factors were, however, also encountered when reducing variability. 
-When used for defining blocks, or groups, we called these non-specific factors simply because all we required for grouping was some vague notion of homogeneity within a block, and not an explicit definition of the factor that defines the blocks. 
-
-In the next section, we extend from discrete factors to continuous factors.
 
 
 %\section{Specialized blocking techniques}
@@ -610,19 +584,24 @@ In the next section, we extend from discrete factors to continuous factors.
 When dealing with \emph{continuous factors}, or \emph{quantitative factors}, we have many more analysis strategies than when dealing with qualitative factors.
 No matter the analysis strategy, it is still important of choosing the right factor level combinations to study.
 
-Clearly, we cannot identify nonlinearities when sampling a factor only a two levels.
+\subsection{Central Composite Design}
+\label{sec:central_composite}
+
+Clearly, we cannot identify non-linear factor effects when sampling a factor only at two levels.
 We may thus opt for a full $3^k$ factorial design to fit a non-linear surface to the data.
 The factor encoding would typically be $\{-1,0,1\}$,
-A full $3^k$ factorial design may however be needlessly expensive. 
-A more common approach in industrial application is the \emph{central composite design}, where a $2^k$ design is augmented with well chosen sampling points. \marginnote{Central Composite Design}
+A full $3^k$ factorial design may however be needlessly expensive, if many factor actually have linear effects.
+A more common approach in industrial application is the \emph{central composite design}, where a $2^k$ design is augmented with well chosen sampling points. 
+Unlike the previous factorial designs, this design is sequential: 
+first screen the non-interacting factors, then augment the design for better estimation of the interactions and non-linearities. 
 For more details see \cite[Sec.6.6]{cox_theory_2000}
 
 
-\subsection{Response Surface Methdology}
+\subsection{Response Surface Methodology}
 \label{sec:response_surface}
-As the name suggests, \emph{response surface methdology} deals with the estimation of the response surface to the levels of continuous factors.
-Response surfaces are typically assume to be (approximately) quadratic, and experimentation typically conducted in stages. First screening factors, then fitting a surface, and finding optimal factor levels.
 
+As the name suggests, \emph{response surface methdology} deals with the estimation of the response surface to the levels of continuous factors.
+The response surface methodology is similar to the Central Composite Design of Section~\ref{sec:central_composite}, except that it is aimed at finding an optimal combination of factor level, instead of estimating their effects. 
 
 
 \subsection{Taguchi Methods}
