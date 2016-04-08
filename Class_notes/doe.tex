@@ -152,7 +152,7 @@ Starting with a motivating example, which you should use to fix ideas as you pro
 
 
 \begin{example}[Web Design]
-\label{eg:variance_components}
+\label{eg:web_design}
 Consider the problem of optimizing a web site, where individuals performance is measured by conversion rate (the probability of a new user to signup, purchase, etc).
 In the DOE language, the conversion is the \emph{response}.
 A user (or ip address) is an \emph{experimental unit}.
@@ -167,7 +167,7 @@ If the site's attributes affect differently users with different attributes, we 
 
 
 \begin{example}[Two Competing Diets]
-\label{eg:twins}
+\label{eg:diets}
 Consider the problem of comparing two nutrition diets. 
 Clearly, the effect of a diet on life expectancy strongly interacts with both genetics and life style. 
 It would be thus very nice if we could block experimental units, so that each block has a homogenous genetics and life-style. 
@@ -187,8 +187,8 @@ Gage R\&R experiments are aimed at measuring the precision of an experiment, i.e
 \subsection{Completely Randomized Designs}
 In the simplest of designs, all experimental units are randomly assigned to treatments. 
 This is typically easy to implement.
-In Example~\ref{eg:variance_components} this would imply randomly assigning users to interfaces.
-In Example~\ref{eg:twins} this would mean ignoring the fact that the experimental units come in naturally blocked groups of two, and randomly assigning all people to treatments. 
+In Example~\ref{eg:web_design} this would imply randomly assigning users to interfaces.
+In Example~\ref{eg:diets} this would mean ignoring the fact that the experimental units come in naturally blocked groups of two, and randomly assigning all people to treatments. 
 If you suspect, as you should, that in both examples we may reduce variability by grouping units together, keep reading.
 
 
@@ -239,21 +239,21 @@ And treatments?
 \subsubsection{Crossover Design}
 \label{sec:crossover}
 
-Return to the diet comparison of Example~\ref{eg:twins}. 
+Return to the diet comparison of Example~\ref{eg:diets}. 
 Now assume that $5$ diets are being compared so the twins trick will no longer work.
 If the response of different people to the diets is strongly affected by genetics \andor lifestyle, it may be the case that by (randomly) assigning diets to individuals the diets effect will be completely masked by the variability between subjects. 
 To solve this, we could give each subject all $5$ diets. 
 Each subject would act as his own block.
 Diet effect would be analyzed within subjects, and hopefully, having removed the variability between subjects, the diet effect would reveal itself. 
 
-Enter a new problem. 
-What if the response to a particular diet is affect by the previous diet.
-This is known as a \emph{carryover effecf}, or \emph{residual effect}, which may bias the main layout effects of interest. \marginnote{Carryover Effect}
+Enter a new complication. 
+What if the response to a particular diet is affected by the previous diet?
+This is known as a \emph{carryover effect}, or \emph{residual effect}, which may bias the main layout effects of interest. \marginnote{Carryover Effect}
 If all subject receive diet B after A, then the estimated effect of B will be biased by the carryover effect of A. 
 A way to ``average out'' this carryover effect is to balance the treatment sequences. 
 If each subject is randomly assigned to one of the $5!$ diet arrangements this balance would be achieved.
 
-The idea of administering all treatments to each unit, in a random sequence that balances carryover effects is known as a \emph{fully randomized crossover design}.
+The idea of administering all treatments to each unit, in a random sequence that balances carryover effects is known as a \emph{fully randomized crossover design}. \marginnote{Fully Randomized Crossover}
 Table~\ref{tab:crossover} demonstrates the $3!=6$ sequences for a $3$ treatment problem.
 \begin{table}[ht]
 \centering
@@ -280,9 +280,28 @@ Table~\ref{tab:crossover} demonstrates the $3!=6$ sequences for a $3$ treatment 
 
 \section{Factorial Designs}
 \label{sec:factorial_design}
-Until now we discussed some arbitrary set of treatments.
-It is quite common, is not certain, that the many treatments are merely combination of a small number of \emph{factors} with a small number of \emph{levels} each.
-This means that we may decompose treatment effect into the (partial) sums of the effects of underlying factors, which would make both the design more economical, and the analysis easier to interpret.
+
+
+\begin{example}[Web design revisited]
+\label{eg:web_design_II}
+Back to the web-design from Example~\ref{eg:web_design}, assume now that treatments, i.e. layouts, differ in the location of a button, the colour of the heading and the size of the logo. 
+If each has two possible levels, we deal with $8$ different layouts. 
+\end{example}
+
+
+\begin{example}[Diets revisited]
+\label{eg:diets_II}
+Back to the diets from Example~\ref{eg:diets}, assume now that treatments, i.e. diet, differ in the type of bread, the type of drink, and the amount of condiment. 
+If each has two possible levels, we deal with $8$ different layouts. 
+\end{example}
+
+
+
+The previous section has dealt with the removal of unwanted variability that masked treatment effects.
+We now shift our focus to treatments that are defined as combinations of a small number of \emph{factors} with a small number of \emph{levels} each, as seen in Examples \ref{eg:web_design_II} and \ref{eg:diets_II}.
+This means that we may decompose a treatment effect into the effects of underlying factors, which would make both the design more economical, and the analysis easier to interpret.
+
+
 
 We will now present several designs for factorial experiments.
 Recall that factors define treatments. The noise reducing and bias avoiding methods of Section~\ref{sec:variance_components} may thus be compounded with the treatment generating methods of this section.
