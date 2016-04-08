@@ -298,9 +298,13 @@ If each has two possible levels, we deal with $8$ different layouts.
 
 
 The previous section has dealt with the removal of unwanted variability that masked treatment effects.
-We now shift our focus to treatments that are defined as combinations of a small number of \emph{factors} with a small number of \emph{levels} each, as seen in Examples \ref{eg:web_design_II} and \ref{eg:diets_II}.
+We now shift our focus to treatments that are defined as combinations of a small number of \emph{factors} with a small number of \emph{levels} each.
 This means that we may decompose a treatment effect into the effects of underlying factors, which would make both the design more economical, and the analysis easier to interpret.
 
+Demonstrating the idea on Example~\ref{eg:web_design_II}, it means that instead of estimating the effect of the $8$ layouts, we estimate the effect of each of the $3$ factors. 
+This is useful because given a budget, say, $64$ observations, without the factor decomposition, we would have $8$ observations for each layout. 
+Using the factor decomposition, and an appropriate design, we may have $32$ observation for each factor level.
+Clearly, this is more economical.
 
 
 We will now present several designs for factorial experiments.
