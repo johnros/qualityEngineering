@@ -636,21 +636,18 @@ Log variability ($\log s$) is thus often used as the response.
 
 
 \section{Optimal Designs}
-% 1D least squares example
-% pD least squares example
-% logistic regression example
-
 
 Our discussion until now has been informal with respect to the desirable qualities of a design. 
 We used the idea of ``balance'' and ``orthogonality'' to avoid bias and unwelcome variability.
 In this section, we try to formalize the notion of a ``good design''.
 We start with some motivating examples.
 
+
 \begin{example}[Design for linear regression]
 \label{eg:design_linear}
 Figure~\ref{fig:design_linear} demonstrates the effect of the different location of the sampling points ($x$) on the quality of the estimated regression line.
 In a \textbf{linear} model, the figure depict and intuition suggests, that it is preferable to spread the sampling points as far as possible.
-\begin{figure}[ht]
+\begin{figure}[h]
 \centering
 \includegraphics[height=0.3\textheight]{art/linear}
 \caption[Design for Linear Models]{
@@ -667,7 +664,7 @@ Design for linear regression. Different panels show different designs. True func
 \label{eg:design_non_linear}
 Figure~\ref{fig:design_nonlinear} demonstrates the effect of the different location of the sampling points ($x$) on the quality of the estimated regression line, in a \textbf{nonlinear} model.
 It may seems that unlike the linear case (Example~\ref{eg:design_linear}) optimality is achieved in some intermediate spread of the $x$s.
-\begin{figure}[ht]
+\begin{figure}[h]
 \centering
 \includegraphics[height=0.3\textheight]{art/nonlinear}
 \caption[Design for Non Linear Models]{Design for non linear regression. Different panels show different designs. True function as a dashed line. Estimated function as a full line.}
@@ -682,7 +679,8 @@ It may seems that unlike the linear case (Example~\ref{eg:design_linear}) optima
 Now for some facts, supported by the previous examples:
 \begin{enumerate}
 \item The idea of ``balancing'' as a design criterion is very useful with discrete factors, but limited with continuous factors. 
-\item The optimal design may depend on the unknown generative model. Luckily, for linear models, this is not the case, and an optimal design will be so for all values of the generative parameter.
+\item For continuous factors with linear effects, the optimal design implies spreading the sampled factors levels as much as possible. 
+\item For non-linear models, the optimal design may depend on the unknown true effects. 
 \end{enumerate}
 
 
@@ -702,9 +700,6 @@ For a more rigorous discussion, see \cite{hill_first_1986}.
 
 
 \subsection{Covariance Optimality}
-We have already noted the the optimality of the design depends on the data generating process.
-In this section it is made obvious that optimality will also depend on the analysis method we choose.
-
 When estimating the effect of a single continuous factor, we would like a design that gives us the most information per observation on some effect $\beta$. 
 This is the same as minimizing the variance of the estimator, $\min \{Var[\hat{\beta}]\}$, with respect to the design.
 In the case of linear regression with a single coefficient we know that 
@@ -719,18 +714,18 @@ Now recall that in a multivariate linear regression problem with an $n \times p$
 In this multivariate case, there may be several notions of ``maximal spread''. 
 Denoting $M:= (X'X)^{-1}$, we can define:
 \begin{definition}[A-Optimality]
-	A design is said to be \emph{A optimal} if it minimizes the average univariate variance.
+	A design is said to be \emph{A-optimal} if it minimizes the average univariate variance.
 	Formally: $\min \set{\Tr(M)}$.
 \end{definition}
 A-optimality does not account for covariances. 
 In an extreme scenario, if we have several copies of the same variable, the more copies we have, the more importance that variable will be given by A-optimality.
 The most popular optimality criterion is known as \emph{D-optimality}, and does not suffer from this phenomenon.
 \begin{definition}[D-Optimality]
-	A design is said to be \emph{D optimal} if it minimizes the volume of the confidence region for $\beta$. 
+	A design is said to be \emph{D-optimal} if it minimizes the volume of the confidence region for $\beta$. 
 	Formally: $\min \set{\det(M)}$.
 \end{definition}
 
-Both A-optimality and D-optimality implicitly target linear models, such as in Example~\ref{eg:design_linear}, because they aim at spreading the $x$'s. From Example~\ref{eg:design_non_linear} we know this to be sub-optimal doe non-linear designs. 
+Both A-optimality and D-optimality implicitly target linear models, such as in Example~\ref{eg:design_linear}, because they aim at spreading the $x$'s. From Example~\ref{eg:design_non_linear} we know this to be sub-optimal for non-linear models. 
 For non-linear designs, one may opt for space filing designs (\ref{sec:space_filling}), or consult \cite{pukelsheim_optimal_1993}. 
 
 
@@ -764,6 +759,9 @@ But if the test is sequential, the type-I error of endlessly many tests at level
 In it simplest version, a sequential design allows early stopping for rejection of the null, or for futility (non-rejection). 
 In more elaborate schemes then not only is early stopping allowed, but also the redesign of the experiment. 
 This is known as \emph{adaptive design}. The crux, as usual, is not inflating the type-I error, or introducing bias, by redesigning.\marginnote{Adaptive Design}
+
+We also remind the reader that we already met two sequential designs, aimed at estimating factor effects, and optimizing factor-level combinations.
+These were the Central Composite Design (Section~\ref{sec:central_composite}) and Response Surface Methdology (Section~\ref{sec:response_surface}).
 
 \begin{extra}[Active Learning]
 In the machine learning literature, the idea of adaptive design of experiments is known as \emph{active learning}, where the emphasis is less on adaptive-testing, but rather on adaptive-estimation.
