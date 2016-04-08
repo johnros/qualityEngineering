@@ -307,13 +307,9 @@ Using the factor decomposition, and an appropriate design, we may have $32$ obse
 Clearly, this is more economical.
 
 
-
-We will now present several designs for factorial experiments.
-Recall that factors define treatments. The noise reducing and bias avoiding methods of Section~\ref{sec:variance_components} may thus be compounded with the treatment generating methods of this section.
-
-It should be emphasized that a factorial design is better than $k$ experiments with one factor at a time. This is because:
+Importantly, a factorial design is better than $k$ experiments with one factor at a time. This is because:
 \begin{enumerate}
-\item Factorial experiments are make better (statistical) use of each sample unit for estimating main effects.
+\item Factorial experiments make better (statistical) use of each sample unit for estimating main effects.
 \item Factorial experiments allow the estimation of interactions between factors. 
 \end{enumerate}
 A classical illustration of the second point, is given in Figure~\ref{fig:one_factor_at_a_time}.
@@ -339,10 +335,10 @@ The most common of the full-factorial designs is the $2^k$-design where all comb
 \subsubsection{$2^k$ design}
 Consider two factors denoted $A$ and $B$.
 Adopt the effect coding so that we encode their levels by $\set{-1,1}$.
-The design matrix of a single run is depicted in Figure~\ref{fig:full_factorial} (top right) along with a visualization of the design (top left).
+The design matrix of a single replication is depicted in Figure~\ref{fig:full_factorial} (top right) along with a visualization of the design (top left).
 Allowing $n$ observations per condition, the experiment will include $4n$ observations, which will be randomized between conditions.
 
-\begin{figure}[ht]
+\begin{figure}[H]
 \centering
 \includegraphics[width=0.7\linewidth, height=0.3\textheight]{art/full_factorial}
 \caption[Full Factorial Design]{Full factorial designs: $2^2$ and $2^3$. \newline \url{http://chemwiki.ucdavis.edu/Analytical_Chemistry/Analytical_Chemistry_2.0/14_Developing_a_Standard_Method}}
@@ -354,6 +350,8 @@ With this $2^2$ design, we may recover several effects:
 \item [Main effect of B] The effect of varying $B$ from $(-)$ to $(+)$.
 \item [Main effects and interaction] The effect of varying both $A$ and $B$ from $AB=(--)$ to $AB=(++)$.
 \end{description}
+
+
 
 We typically denote the (mean) response for each treatment by the $\mu_{\smiley}$ notation, where $\smiley$ encodes the applied treatment by stating the conditions that were at their $+$ state:
 \begin{table}[H]
