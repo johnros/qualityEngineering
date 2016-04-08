@@ -575,6 +575,15 @@ A possible reference on the matter is \cite{hill_first_1986}, or \cite{hedayat_o
 
 
 
+\subsection{Plackett-Burman design}
+\label{sec:plackett_burman}
+
+A \emph{Plackett-Burman Design} is a design optimized for \textbf{screening} factors. 
+To do so, the number of treatments per replication is set at a power of $4$ (unlike a power of $2$ for full factorial and fractional factorial), so that each combination of each \textbf{pair} of factors appears twice, in each replication.
+It is a very economical design when studying the main effects of many factors. 
+
+
+
 
 
 
@@ -604,14 +613,22 @@ As the name suggests, \emph{response surface methdology} deals with the estimati
 The response surface methodology is similar to the Central Composite Design of Section~\ref{sec:central_composite}, except that it is aimed at finding an optimal combination of factor level, instead of estimating their effects. 
 
 
+
+
 \subsection{Taguchi Methods}
 \emph{Taguchi methods} is a collective name for the philosophy, design, and analysis methods in industrial applications promoted by Genichi Taguchi in 1970's Japan.
-Focusing on the design principles, we may note the following particularities of Taguchi's method:
+Focusing on the design principles, we summarize Taguchi's emphasis:
+
 \begin{enumerate}
-\item Achieving low variability is more challenging then achieving a target value. 
-\item Factors which can be controlled in a lab, but not in production, are deliberately varied. Typically with split plot  designs (\ref{sec:split_plot}).
-\item Systematic use of latin hypercubes to study main effects and two-way interactions. Particularly \emph{Plackett–Burman designs}.\marginnote{Plackett Burman Design}
-\item Log variability ($\log s$) is often used as the response.
+
+\item Achieving low variability is no-less important, and more challenging then achieving a target value. 
+Log variability ($\log s$) is thus often used as the response.
+
+\item Factors which can be controlled only in a lab, but not in production, are deliberately varied in the lab. 
+%Typically with split plot designs (\ref{sec:split_plot}).
+
+\item An ample use of Plackett–Burman designs (Section~\ref{sec:plackett_burman}), and its extensions, to screen large numbers of factors. 
+
 \end{enumerate}
 
 
@@ -631,12 +648,13 @@ We start with some motivating examples.
 
 \begin{example}[Design for linear regression]
 \label{eg:design_linear}
-Figure~\ref{fig:design_linear} demonstrates the effect of the different location of the sampling points ($x$) on the quality of the estimated regression line, in a \textbf{linear} model.
-As the figure depicts, and intuition suggests, it is preferable to spread the sampling points as far as possible.
+Figure~\ref{fig:design_linear} demonstrates the effect of the different location of the sampling points ($x$) on the quality of the estimated regression line.
+In a \textbf{linear} model, the figure depict and intuition suggests, that it is preferable to spread the sampling points as far as possible.
 \begin{figure}[ht]
 \centering
 \includegraphics[height=0.3\textheight]{art/linear}
-\caption[Design for Linear Models]{Design for linear regression. Different panels show different designs. True function as a dashed line. Estimated function as a full line.}
+\caption[Design for Linear Models]{
+Design for linear regression. Different panels show different designs. True function as a dashed line. Estimated function as a full line.}
 \label{fig:design_linear}
 \end{figure}
 \end{example}
