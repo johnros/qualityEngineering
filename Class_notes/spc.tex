@@ -692,7 +692,7 @@ Since a matrix defines a \emph{weighted graph} (and vise-versa), \aka a \emph{ne
 
 \subsection{High-Dimensional Control Charts}
 
-\emph{High dimension} does not mean that $p$ is very large but rather the it is larger then $n$.
+\emph{High dimension} does not mean that $p$ is very large but rather the it is larger then $n$, or $\tau$. 
 To fix ideas, imagine that in the intensive care unit of Example~\ref{eg:intensive}, in each of $n=10$ measurements per day, we take $p=100$ different measurements such as pulse, temperature, etc.
 
 
@@ -703,11 +703,11 @@ The fundamental idea to deal with the high-dimension is, well, to \textbf{ignore
 Two matters need to be considered when doing so:
 Is the type I error rate conserved?
 Is power lost?
-The answer to the first is- yes, but some corrections are required.
+The answer to the first is- yes.
 The answer to the second is- yes, but hopefully not too much.
 
 \begin{think}
-How many free parameters are in the covariance between $p$ measurements?
+How many free parameters are in the covariance matrix of $p$ measurements?
 How many observations we would thus need to estimate this covariance?
 \end{think} 
 
@@ -717,32 +717,33 @@ An example of a ``covariance ignoring'' signal detector, adapted from \cite{sriv
 \begin{definition}[Simplified Srivastava-Du Statistic]
 \begin{align}
 \label{eq:srivastava_du}
-	 	T^{SD}(x) := n (\bar{x}-\hat{\mu}_0)' D^{-1} (\bar{x}-\hat{\mu}_0),
+	 	T^{SD}(x) := n (\bar{x}-\mu_0)' D^{-1} (\bar{x}-\mu_0),
 \end{align}
-where $D$ is $\hat{\Sigma}$ with zeroes in all off-diagonal entries. Put differently, $T^{SD}$ is the same as \tsq in Eq.(\ref{eq:hotteling}) after forcing independence between coordinates.
+where $D$ is $\hat{\Sigma}$ with zeroes in all off-diagonal entries. 
 \end{definition}
+From Eq.(\ref{eq:srivastava_du}) we see that $T^{SD}$ is the same as Hotellig's \tsq in Eq.(\ref{eq:hotteling}) after forcing independence between coordinates.
 Changing from matrix notation to sum notation, we see that 
 \begin{align}
-	 	T^{SD}(x) = n \sum_{j=1}^p (\bar{x}_j - \hat{\mu}_{0,j})^2 D^{-1}_{jj} .
+	 	T^{SD}(x) = n \sum_{j=1}^p (\bar{x}_j - \mu_{0,j})^2 D^{-1}_{jj} .
 \end{align}
 But wait! 
-$D^{-1}_{jj}$ is just the inverse variance of the $j$'th coordinate: $\frac{1}{Var(x_{1,j},\dots,x_{n,j})}$.
+$D^{-1}_{jj}=(\Sigma_{jj})^{-1}$ is just the inverse variance of the $j$'th coordinate: $\frac{1}{Var(x_{1,j},\dots,x_{n,j})}$.
 This is rather good news, since it means that Eq.(\ref{eq:srivastava_du}) is nothing but the sum of the squared \textbf{univariate} t-statistics over the $p$ coordinates:
 \begin{align}
-	 	T^{SD}(x) =  \sum_{j=1}^p \frac{(\bar{x}_j - \hat{\mu}_{0,j})^2}{\var{\bar{x}_j}}  .
+	 	T^{SD}(x) =  \sum_{j=1}^p \frac{(\bar{x}_j - \mu_{0,j})^2}{\var{\bar{x}_j}}  .
 \end{align}
 
 We now see that a way to deal with the high-dimension, is to pool together $p$ univariate tests.
-Denoting the t-statistic of the $j$'th coordinate by $t_j:= \frac{(\bar{x}_j - \hat{\mu}_{0,j})^2}{\var{\bar{x}_j}}$ we can now easily design many high dimensional signal detectors in the form of
+Denoting the z-statistic of the $j$'th coordinate by $z_j:= \frac{(\bar{x}_j - \mu_{0,j})^2}{\var{\bar{x}_j}}$ we can now easily design many high dimensional signal detectors in the form of
 \begin{align}
 \label{eq:marginal_test}
-	 	T(x) :=  f(t_1,\dots,t_p) .
+	 	T(x) :=  f(z_1,\dots,z_p) .
 \end{align}
 where $f$ is some function measuring distance from the $\mu_0$ vector.
-Clearly, for $T^{SD}$ we need to set $f(t_1,\dots,t_p) = \normII{(t_1,\dots,t_p)}^2$.
+Clearly, for $T^{SD}$ we need to set $f(z_1,\dots,z_p) = \normII{(z_1,\dots,z_p)}^2$.
 
 \begin{think}
-Can you sugges other $f(t_1,\dots,t_p)$ functions that can make good signal detectors?
+Can you sugges other $f(z_1,\dots,z_p)$ functions that can make good signal detectors?
 \end{think}
 
 
@@ -753,11 +754,11 @@ We have already claimed that if signal exists only in a small subset of coordina
 The way to design detectors for sparse signals, relies on the idea of computing coordinate-wise tests, and pooling them together, as in Eq.(\ref{eq:marginal_test}). 
 The mass-univariate test and chart (Section~\ref{sec:mass_univariate}) is an example of an alternative to \tsq if the signal is sparse. 
 It is constructed using 
-$f(t_1,\dots,t_p)=\max\set{t_1,\dots,t_p}$.
+$f(z_1,\dots,z_p)=\max\set{z_1,\dots,z_p}$.
 
 
 \begin{think}
-Can you suggest other $f(t_1,\dots,t_p)$ functions that can make good signal detectors, if you assume the signal is ``hiding'' only in a small subset of coordinates?
+Can you suggest other $f(z_1,\dots,z_p)$ functions that can make good signal detectors, if you assume the signal is ``hiding'' only in a small subset of coordinates?
 \end{think}
 
 
