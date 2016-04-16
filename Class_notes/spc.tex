@@ -191,8 +191,8 @@ We elaborate in Section~\ref{sec:stopping_rules}.
 Ceteris paribus, $\arm$ governs the tradeoff between type I and type II errors, or sensitivity versus specificity.
 It is very common to set $\arm=3$. 
 For a normally distributed CTQ, this implies $2,700$ false alarms per million periods. 
-This also implies an $ARL_0$ of $1/\alpha \approx 370$ periods, which is conveniently, about a year if sampling once a day.
-We may obviously, discard this $\arm=3$ convention, and directly set UCL and LCL so they guarantee some desirable false alarm rate, or ARL.
+This also implies an $ARL_0$ of $1/\alpha \approx 370$ periods, which is conveniently, roughly one year if sampling once a day.
+We may obviously, discard this $\arm=3$ convention, and directly set UCL and LCL so they guarantee some desirable false alarm rate, or ARLs.
 
 \begin{extra}[Non Normal CTQ]
 If normality of $\bar{x}_t$ can be assumed, then one may estimate $\mu_0$ and $\sigmabar$ from phase I, and set LCL and UCL by finding the $\arm$ that solves $2\Phi(-\arm)=\alpha$, for some desired $\alpha$. 
@@ -213,6 +213,7 @@ This is a \textbf{super practical} way to go about. The only downside of this av
 
 \subsection{Rational Groupings}
 \label{sec:rational_grouping}
+
 Recall that at each period we compute the average of $n$ samples. 
 To fix ideas, think of a period being a day of production. 
 How should we draw samples in this period? 
@@ -234,20 +235,20 @@ Quoting \cite{montgomery_introduction_2007}'s words of caution:
 \label{sec:stopping_rules}
 
 The assumption that we may only create alarms if $\bar{x}$ exceeds some control limits is needlessly restrictive.
-A first relaxation is by allowing multiple control regions.
+A first relaxation is by allowing multiple regions.
 It is quite common to define \emph{warning limits} and \emph{action limits}. Each may have its own alarm rate.
-We may even change the sapling scheme if limits are breached. Increasing the sampling rate once the warning limits have been breached is known as \emph{adaptive sampling}, or \emph{variable sampling}, and it is a very efficient way to go about. \marginnote{Adaptive Sampling}
-
-
-
+We may even change the sapling scheme if limits are breached. Increasing the sampling rate once the warning limits have been breached is known as \emph{adaptive sampling}, or \emph{variable sampling}, and it is a very efficient way to detect anomalies. \marginnote{Adaptive Sampling}
 Another approach is to define multiple sets of stopping rules.
-Here is an example:
+\begin{tcolorbox}[breakable]
+\paragraph{WECO Rules}
 \begin{enumerate}
 \item One or more points outside of the 3-sigma control limits.
 \item Two of three consecutive points outside the 2-sigma limits but still inside the 3-sigma control limits.
 \item Four of five consecutive points beyond the 1-sigma limits.
 \item A run of 8 consecutive points on one side of the centerline.
 \end{enumerate}
+\end{tcolorbox}
+
 The above set of rules is known as the Western Electric Rules, \aka, the \emph{WECO} rules.\marginnote{WECO}
 Augmenting the set of rules is the same as increasing a rejection region. It adds more sensitivity, at the cost of false alarms. If the rules are properly selected, the gain in sensitivity is worth the increase in false alarms.
 
@@ -300,6 +301,11 @@ In a \emph{regression control chart}, the test statistic can be a regression coe
 When compounded with multivariate charts, a regression control chart may accommodate several regression  coefficient, or the residuals. 
 This is very useful if you allow the distribution of the CTQ to vary with some covariate, and you want to detect a change in this relation. 
 To fix ideas, think that your CTQ depends on the temperature at the time of production. The distribution of the CTQ will thus vary with the temperature, but the break in their relation is cause for alarm.
+\subsection{Derivative Chart}
+If the break of control has occurred between periods (``the night shift guys broke it!''), the change in an \barxChart may carry more information (i.e., more power) than the value of $\bar{x}_t$ itself.
+We can thus chart, not $\bar{x}_t$ itself, but rather, the \emph{change} in $\bar{x}_t$ between periods. 
+It is quite possible $\bar{x}_t$ seems perfectly ok, but that $\bar{x}_t-\bar{x}_{t-1}$ seems highly irregular. 
+Generalizing this idea, we can monitoring the \emph{derivative} of some statistic to detect this kinds of changes. 
 \subsection{$p$ and $np$ Chart}
 Where $\bar{x}$ is replaced by the proportion ($p$), or number ($np$), of non-conforming units.
 Appropriate for attributes, i.e., categorical CTQs.
@@ -310,11 +316,6 @@ Like the $c$ chart, but allowing a variable number of units per period (varying 
 
 
 
-\subsection{Derivative Chart}
-If the break of control has occurred between periods (``the night shift guys broke it!''), the change in an \barxChart may carry more information (i.e., more power) than the value of $\bar{x}_t$ itself.
-We can thus chart, not $\bar{x}_t$ itself, but rather, the \emph{change} in $\bar{x}_t$ between periods. 
-It is quite possible $\bar{x}_t$ seems perfectly ok, but that $\bar{x}_t-\bar{x}_{t-1}$ seems highly irregular. 
-Generalizing this idea, we can monitoring the \emph{derivative} of some statistic to detect this kinds of changes. 
 
 
 \section{Pooling Information Over Periods}
@@ -346,18 +347,18 @@ One way to pool information from different periods is by a \emph{moving average}
 \begin{definition}[MA]
 The \emph{moving average} (MA) in a window of $w$ periods ending at period $t$, is defined as
 \begin{align}
-	M_t:= \frac{x_t+\dots+x_{t-w+1}}{w}.
+	M_t:= \frac{\bar{x}_t+\dots+\bar{x}_{t-w+1}}{w}.
 \end{align}
 \end{definition}
-Assuming $x_t \sim \gauss{\mu, \sigma_x^2}$ then clearly 
+Assuming $x_{i,t} \sim \gauss{\mu, \sigma_x^2}$ then clearly 
 \begin{align}
-	M_t \sim \gauss{\mu, \sigma^2_{M_t}=\frac{\sigma_x^2}{w}}.
+	M_t \sim \gauss{\mu, \sigma^2_{M_t}=\frac{\sigmabar^2}{w}}.
 \end{align}
 
 The control limits on $M_t$ are typically
 \begin{align}
-	UCL &:= \mu_0 + \arm \sigma_{M_t}= \mu_0 + \arm \, \frac{\sigma_x}{\sqrt{w}}, \\
-	LCL &:= \mu_0 - \arm \sigma_{M_t}= \mu_0 - \arm \, \frac{\sigma_x}{\sqrt{w}}.
+	UCL &:= \mu_0 + \arm \sigma_{M_t}= \mu_0 + \arm \, \frac{\sigmabar}{\sqrt{w}}, \\
+	LCL &:= \mu_0 - \arm \sigma_{M_t}= \mu_0 - \arm \, \frac{\sigmabar}{\sqrt{w}}.
 \end{align}
 For $\arm=3$ the false alarm rate of this criterion is trivially $\alpha=0.0027$. 
 The $ARL_0$ is no longer simple to compute. 
@@ -391,13 +392,13 @@ Which is the right intermediate value of $w$, is left for you to decide, possibl
 
 \subsection{Exponentially Weighted Moving Average Chart (EWMA)}
 \sectionmark{EWMA}
-The moving average gives all observations the same importance. 
+The moving average gives all observations in the window the same importance. 
 We want to change this, giving more importance to new observations so that we may capture drifts quickly when they occur. 
 The \emph{Exponentially Weighted Moving Average} (EWMA), \aka the \emph{geometric moving average} (GMA), does just that. \marginnote{GMA}
 \begin{definition}[EWMA]
 For a fixed $\lambda \in [0,1]$, the \emph{exponentially weighted moving average} (EWMA) is defined as 
 \begin{align}
-	z_t &:= \lambda x_t + (1-\lambda) z_{t-1}
+	z_t &:= \lambda x_t + (1-\lambda) z_{t-1}.
 \end{align}
 \end{definition}
 By recursive substitution, we have 
@@ -408,7 +409,7 @@ Assuming $x_t \sim \gauss{\mu, \sigma_x^2}$ then
 \begin{align}
 \label{eq:ewma_variance}
 	z_t &\sim \gauss{\mu_0,	\sigma^2_{z_t} }, \\
-	\sigma^2_{z_t} &= \sigma^2_x \left( \frac{\lambda}{2-\lambda} \right)(1-(1-\lambda)^{2t}).
+	\sigma^2_{z_t} &= \sigmabar^2 \left( \frac{\lambda}{2-\lambda} \right)(1-(1-\lambda)^{2t}).
 \end{align}
 Eq.(\ref{eq:ewma_variance}) may be used to construct control limits for EWMA.
 It is however, more economic to observe that for large $t$ then  $(1-(1-\lambda)^{2t}) \approx 1$ so that we may use 
@@ -437,10 +438,6 @@ Large $\lambda$ gives more importance to the present. At the limit, $\lambda=1$,
 
 
 
-
-
-
-
 \subsection[CUSUM]{CUSUM Chart}
 The \emph{cumulative sum} chart is similar to the EWMA in that it pools information from the history. 
 The CUSUM simply sums all past deviations from the centre line.
@@ -450,12 +447,12 @@ The statistic to be plotted is
 \begin{align}
 	C_t:= \sum_{j=0}^{t}(x_j-\mu_0) = C_{t-1}+ (x_t-\mu_0).
 \end{align} 
-Assuming $x_t \sim \gauss{\mu, \sigma_x^2}$ then if under control then $C_t \sim \gauss{\mu_0, t \sigma_x^2}$, we could thus set 
+Assuming $x_t \sim \gauss{\mu, \sigmabar^2}$ then if under control then $C_t \sim \gauss{\mu_0, t \sigmabar^2}$, we could thus set 
 \begin{align}
 \label{eq:cusum_simple_limits}
 \begin{split}
-	UCL &:= \mu_0 + \arm \sigma_{C_t}= \mu_0 + \arm \, \sqrt{t \sigma_x^2},  \\
-	LCL &:= \mu_0 - \arm \sigma_{C_t}= \mu_0 - \arm \, \sqrt{t \sigma_x^2},
+	UCL &:= \mu_0 + \arm \sigma_{C_t}= \mu_0 + \arm \, \sqrt{t \sigmabar^2},  \\
+	LCL &:= \mu_0 - \arm \sigma_{C_t}= \mu_0 - \arm \, \sqrt{t \sigmabar^2},
 \end{split}
 \end{align}
 and $\arm=3$ as usual. 
@@ -510,15 +507,15 @@ Clearly we could set $\alpha^*=1-\sqrt[p]{1-\alpha}$, so that the joint false al
 
 
 \subsection{Hotteling's \tsq}
-Hotteling's \tsq statistic is a generalization of the t-test.
-To see this we write the t-statistic in the following weird form:
+Hotteling's \tsq statistic is a generalization of the t-test due to \cite{hotelling_generalization_1931}.
+To emphasize the relation to the t-test we write the classical t-statistic in the following weird form:
 \begin{align}
-	t^2(x_t)=(\bar{x}_t-\mu_0) (s^2_t(x))^{-1} (\bar{x}_t-\mu_0).
+	t^2(x_t)=(\bar{x}_t-\mu_0) (s^2(x))^{-1} (\bar{x}_t-\mu_0).
 \end{align}
 This notation readily extends to the multivariate case. 
-For $p$ CTQs, then $\bar{x}_t$ and $\mu_0$ are $p$-length vectors, and $s^2_t(x)$ is replaced with the $p \times p$ covariance matrix $\hat{\Sigma}(x)$.
-Both typically estimated from Phase I. 
-\begin{definition}[Hotteling's \tsq]
+For $p$ CTQs, then $\bar{x}_t$ and $\mu_0$ are $p$-length vectors, and $s^2(x)$ is replaced with the $p \times p$ covariance matrix $\hat{\Sigma}(x)$.
+Both $\mu_0$ and $\Sigma$ can be estimated from Phase I. 
+\begin{definition}[Hotteling's \tsq statistic]
 \begin{align}
 \label{eq:hotteling}
 	T^2(x_t) := n (\bar{x}_t-\hat{\mu}_0)' \hat{\Sigma}^{-1} (\bar{x}_t-\hat{\mu}_0).
