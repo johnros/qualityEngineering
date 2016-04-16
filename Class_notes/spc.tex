@@ -39,7 +39,7 @@ Process capability and control charting ideas may be compounded, as we explain i
 
 An illustration of a \barxChart is given in Figure~\ref{fig:bar_x_chart}. 
 The ingredients of this chart are the \emph{centerline} ($\mu_0$), lower and upper control limits (\emph{LCL, UCL}), and the statistic $\bar{x}_t$ evolving in time. 
-If at each period $t$ we compute the average of the $n$ samples of the period. We denote $$\bar{x}_t:=\frac 1n \sum_{i=1}^n x_{i,t}.$$
+If at each period $t$ we compute the average of the $n$ samples of the period. We denote $$\bar{x}_t:=\frac 1n \sum_{i=1}^n x_{it}.$$
 
 \begin{figure}[ht]
 \centering
@@ -200,7 +200,7 @@ If normality cannot be assumed, there are many ways to go about. Here are some o
 \begin{enumerate}
 \item If some other distribution can be assumed then problem solved.
 We may compute the false alarm rate of particular limits either analytically, or computationally (by simulation).
-\item Increase $n$: even if $\x_{i,t}$ is non normal, for large enough $n$, then $\bar{x}_t$ will be via the central limit theorem (CLT).
+\item Increase $n$: even if $\x_{it}$ is non normal, for large enough $n$, then $\bar{x}_t$ will be via the central limit theorem (CLT).
 \item Use empirical quantiles: If phase I has returned enough data, then we may estimate 
 $\x_{\alpha/2}$ and $\x_{1-\alpha/2}$ using the empirical quantiles of phase I. 
 The false alarm rate will be $\alpha$ since $P(\x \not \in [\hat{\x}_{\alpha/2},\hat{\x}_{1-\alpha/2}]) \approx \alpha$.
@@ -288,7 +288,7 @@ The reader is referred to \cite{montgomery_introduction_2007} for the details.
 
 \label{sec:other_control_charts}
 \subsection{$R$ Chart}
-Where $\bar{x}$ is replaced by the range, $\max_i\set{x_{i,t}}-\min_i\set{x_{i,t}}$.
+Where $\bar{x}$ is replaced by the range, $\max_i\set{x_{it}}-\min_i\set{x_{it}}$.
 This chart is sensitive to many changes in the distribution of the CTQ; the variance in particular. 
 \subsection{$s$ Chart}
 Where $\bar{x}$ is replaced by $s$. 
@@ -350,7 +350,7 @@ The \emph{moving average} (MA) in a window of $w$ periods ending at period $t$, 
 	M_t:= \frac{\bar{x}_t+\dots+\bar{x}_{t-w+1}}{w}.
 \end{align}
 \end{definition}
-Assuming $x_{i,t} \sim \gauss{\mu, \sigma_x^2}$ then clearly 
+Assuming $\bar{x}_t \sim \gauss{\mu, \sigmabar^2}$ then clearly 
 \begin{align}
 	M_t \sim \gauss{\mu, \sigma^2_{M_t}=\frac{\sigmabar^2}{w}}.
 \end{align}
@@ -398,14 +398,14 @@ The \emph{Exponentially Weighted Moving Average} (EWMA), \aka the \emph{geometri
 \begin{definition}[EWMA]
 For a fixed $\lambda \in [0,1]$, the \emph{exponentially weighted moving average} (EWMA) is defined as 
 \begin{align}
-	z_t &:= \lambda x_t + (1-\lambda) z_{t-1}.
+	z_t &:= \lambda \bar{x}_t + (1-\lambda) z_{t-1}.
 \end{align}
 \end{definition}
 By recursive substitution, we have 
 \begin{align}
-	z_t &= \lambda \sum_{j=0}^{t-1} (1-\lambda)^j x_{t-j} + (1-\lambda)^t z_0.
+	z_t &= \lambda \sum_{j=0}^{t-1} (1-\lambda)^j \, \bar{x}_{t-j} + (1-\lambda)^t z_0.
 \end{align}
-Assuming $x_t \sim \gauss{\mu, \sigma_x^2}$ then  
+Assuming $\bar{x}_{t} \sim \gauss{\mu, \sigmabar^2}$ then  
 \begin{align}
 \label{eq:ewma_variance}
 	z_t &\sim \gauss{\mu_0,	\sigma^2_{z_t} }, \\
@@ -416,8 +416,8 @@ It is however, more economic to observe that for large $t$ then  $(1-(1-\lambda)
 \begin{align}
 \begin{split}
 \label{eq:ewma_variance_approximate}
-	UCL &:= \mu_0 + \arm \sigma_{z_t} \approx \mu_0 + \arm \, \sqrt{\sigma^2_x\left( \frac{\lambda}{2-\lambda} \right)},  \\
-	LCL &:= \mu_0 - \arm \sigma_{z_t} \approx \mu_0 - \arm \, \sqrt{\sigma^2_x\left( \frac{\lambda}{2-\lambda} \right)},
+	UCL &:= \mu_0 + \arm \sigma_{z_t} \approx \mu_0 + \arm \, \sqrt{\sigmabar^2\left( \frac{\lambda}{2-\lambda} \right)},  \\
+	LCL &:= \mu_0 - \arm \sigma_{z_t} \approx \mu_0 - \arm \, \sqrt{\sigmabar^2\left( \frac{\lambda}{2-\lambda} \right)},
 \end{split}
 \end{align}
 with $\arm=3$ being the typical choice.
@@ -445,7 +445,7 @@ If the process is in control, deviation will cancel each other, and their sum wi
 If the process is out of control, a drift will appear. 
 The statistic to be plotted is 
 \begin{align}
-	C_t:= \sum_{j=0}^{t}(x_j-\mu_0) = C_{t-1}+ (x_t-\mu_0).
+	C_t:= \sum_{j=0}^{t}(\bar{x}_j-\mu_0) = (\bar{x}_t-\mu_0) + C_{t-1}.
 \end{align} 
 Assuming $x_t \sim \gauss{\mu, \sigmabar^2}$ then if under control then $C_t \sim \gauss{\mu_0, t \sigmabar^2}$, we could thus set 
 \begin{align}
@@ -662,7 +662,7 @@ where $\lambda_{max}$ is the maximal eigen-value, and $\sigma_{max}$ is the maxi
 \begin{definition}[Frobenius (matrix) norm]
 The \emph{Frobenius norm}, \aka the \emph{Hilbert-Schmidt norm}, or \emph{Schur norm}, views the matrix as a square of numbers and is defined as follows:
 \begin{align}
-	\normF{A}:= \sqrt{\sum_{i,j} a_{i,j}^2} = \sqrt{\Tr(A'A)} = \sqrt{\sum \sigma_{j}(A)}
+	\normF{A}:= \sqrt{\sum_{ij} a_{ij}^2} = \sqrt{\Tr(A'A)} = \sqrt{\sum \sigma_{j}(A)}
 \end{align}
 As such, it can be seen as a \emph{vector} $2$-norm, that stacks the matrix into a single vector, thus ignoring the fact that a matrix actually represents a linear function. 
 \end{definition}
