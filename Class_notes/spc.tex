@@ -545,10 +545,10 @@ For exact result \cite[Ch.7]{qiu_introduction_2013} should be consulted.
 
 
 \subsection{Drill Down}
-Your control chart just went outside the control limits and an alarm has been rung.
+Your control chart just went outside the control limits and an alarm has rung.
 The next natural question- what made the process go out of control?
 In the univariate case, you should call your specialists team. 
-In the multivariate case, there is another analysis stage you can/should do: drill down.
+In the multivariate case, there is another analysis stage you can/should do: \emph{drill down}.
 By this we mean that we look an each of the $p$ processes separately to see which processes triggered the alarm.
 
 The most natural way to drill-down, is to look at the raw univariate processes and see if any is out of the control limits.
@@ -556,12 +556,18 @@ Is it possible that a Hotelling alarm was sounded, but no single process seems o
 Absolutely! 
 This was the whole point for which we used a multivariate control: because the signal is so mild that any single process had no power.
 
-\begin{extra}
+\begin{extra}[Many name to the drill-down]
 In the electrical engineering literature, the ``drill down'' is also known as \emph{signal identification} that follows the initial \emph{signal detection}. 
 In the analysis of variance literature (ANOVA) this is a \emph{post-hoc} test that follows an \emph{omnibus test}.
 In the multiple testing literature, this is simply a multiple test. 
 \end{extra}
 
+\begin{extra}[Consonant tests]
+As previously stated, it is possible that a multivariate alarm went off but no single variable seems out of control. 
+This should not surprise you, since the whole motivation for doing the multivariate analysis was to draw power from several processes at the same time. 
+The statistical literature does provide sets of multivariate and univariate tests that have to agree, meaning that it is impossible for the multivariate test to be rejected, without at least one univariate test to be rejected. 
+This is known as \emph{consonant} tests. For more on that, the reader is referred to \cite{goeman_multiple_2011}.
+\end{extra}
 
 
 
