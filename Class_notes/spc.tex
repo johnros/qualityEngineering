@@ -575,7 +575,7 @@ This is known as \emph{consonant} tests. For more on that, the reader is referre
 \section[Multivariate extensions]{Multivariate Control- Extensions}
 
 Hotelling's \tsq is perhaps the first and most used multivariate test statistic.
-There are, however, circumstances where we can choose a better statistic.
+There are, however, circumstances where we should choose a different statistic.
 
 
 \begin{example}[Cyber Monitoring System]
@@ -600,12 +600,12 @@ We would like a multivariate version of the $s$ chart to monitor the health of o
 
 Based on these examples, we list cases where \tsq is a \textbf{bad} choice. 
 Appropriate test statistics for these cases are discussed in the following sections.
-As we will see, the way to deal with many of the problem that arise with multivariate data, is to construct $p$ \textbf{univariate} tests, and them combine them; even at the cost of ignoring the correlations between coordinates, which originally motivated the design of \tsq. 
+As we will see, the way to deal with many of the problem that arise with multivariate data, is to construct $p$ \textbf{univariate} tests, and them combine them; even at the cost of ignoring the correlations between coordinates, even if that was the original motivation for the \tsq. 
 \begin{description}
 
-\item [Multivariate $s$ chart] The signal we seek is not in the mean of the CTQ but rather in its variance, such as Example~\ref{eg:irrigation}. Put differently, we actually want a multivariate version of the $s$ chart and not the \barxChart. 
+\item [Multivariate $s$ chart] The signal we seek is not in the \textbf{mean} of the CTQ but rather in its \textbf{variance}, such as Example~\ref{eg:irrigation}. Put differently, we actually want a multivariate version of the $s$ chart and not the \barxChart. 
 
-\item [High dimension] \tsq is simply incomputable. From Eq.(\ref{eq:hotteling}) we see that computing \tsq required the inversion of the covariance matrix. Often this is an impossible task. We call this a \emph{high-dimensional problem}.
+\item [High dimension] \tsq is simply \textbf{incomputable}. From Eq.(\ref{eq:hotteling}) we see that computing \tsq required the inversion of the covariance matrix. In the case that $p>\tau$ it will be impossible to invert $\Sigma$.
 
 \item [Sparse signal] The signal we seek is expected to exist in a small subset of the $p$ coordinates, like in the cyber-security of Example~\ref{eg:cyber}. This is known as a \emph{sparse signal}, unlike the \emph{dense signal} targeted by the \tsq. \marginnote{Sparse Signal}
 
@@ -618,26 +618,25 @@ As we will see, the way to deal with many of the problem that arise with multiva
 \label{sec:multivarite_s}
 
 As discussed in the vine health example (Example \ref{eg:irrigation}), there are cases where the out-of-control behaviour is manifested in the covariance between CTQs, and not in their mean.
-Recalling the Exploratory Data Analysis Section (\ref{sec:exploratory}), the most popular measure of multivariate relation is the covariance matrix (Definition~\ref{def:covariance}).
+Recalling the Exploratory Data Analysis Section (\ref{sec:exploratory}), the most popular measure of multivariate relation is the \emph{covariance matrix} (Definition~\ref{def:covariance}).
 While we already know how to plot a matrix, plotting the evolution of a matrix in time, as is required for a control chart, is no simple task\footnote{Think about it. If a matrix is an image, then the evolution of a matrix in time is, well, simply a movie.}. 
 Without going into the details of multivariate statistics, the fundamental idea is to summarize the matrix by a single number, so that it may be easily plotted. 
-To do so, we recall that in vector spaces, \emph{norm functions} measure distances from the origin.
+To do so, we recall that in vector spaces, \emph{norm functions} measure distance of a vector  to the origin (the $0$ vector).
 This idea may be generalized to matrix spaces. By using \emph{matrix norms} each matrix is summarized into a single number which can be interpreted as its distance from the origin (a matrix of zeroes).
 
 \begin{definition}[Operator $p$-norm]
 Operator $p$-norms are a class of norms that view the matrix as the linear function it represents, so that the distance of a matrix from the origin is captured by the displacement this linear function causes upon its (normalized) inputs.
 Because it is induced by a vector norm, it is also known as an \emph{induced norm}.\marginnote{Induced norm}
 This also implies that there are as many matrix $p$-norms as there are vector $p$-norms. 
-To define the \emph{matrix} $p$-norm, we recall the $p$-norm of a \emph{vector} $a$:
+To define the \emph{matrix} $p$-norm, we need to recall the $p$-norm of a \emph{vector} $a$, which generalizes the idea of Euclidean distances:
 \begin{align}
-	\norm{a}_p:= (\sum_j |a_j|^p)^{1/p}
+	\norm{a}_p:= \left( \sum_j |a_j|^p \right)^{1/p}
 \end{align}
 You may verify that the standard Euclidean norm is given by the vector $2$-norm.
-Using vector $p$-norms, then the general form of the matrix $p$-norm is thus
+Using vector $p$-norms, then a matrix $p$-norm is defined as 
 \begin{align}
 	\norm{A}_p:= \sup_x \set{\norm{Ax}_p; \norm{x}_p=1}.
 \end{align}
-Figure~\ref{fig:operator_norm} depicts the operator norm of a matrix operating on $\reals^3$. 
 \end{definition}
 
 
@@ -654,13 +653,14 @@ On the right: the ellipse is the image of the unit circle after transformed by m
 
 The various matrix operator norms, differ in the vector norm inducing them.
 The most popular, is by far the matrix $2$-norm, \aka the \emph{spectral norm}.
+Figure~\ref{fig:operator_norm} depicts the spectral norm of a matrix operating on $\reals^3$. 
 
 \begin{definition}[Spectral norm]
 The matrix $2$-norm, more commonly known as the \emph{spectral norm}, is merely the operator norm induced by the Euclidean vector norm, i.e., when $p=2$ . \marginnote{Spectral Norm}
 \begin{align}
 	\norm{A}_2:= \sup_x \set{\norm{Ax}_2; \norm{x}_2=1}	= \sqrt{\lambda_{max}(A'A)} = \sigma_{max}(A)
 \end{align}
-where $\lambda_{max}$ is the maximal eigen-value, and $\sigma_{max}$ is the maximal singular value. 
+where $\lambda_{max}$ is the maximal eigenvalue, and $\sigma_{max}$ is the maximal singular value. 
 \end{definition}
 
 
@@ -673,7 +673,8 @@ The \emph{Frobenius norm}, \aka the \emph{Hilbert-Schmidt norm}, or \emph{Schur 
 As such, it can be seen as a \emph{vector} $2$-norm, that stacks the matrix into a single vector, thus ignoring the fact that a matrix actually represents a linear function. 
 \end{definition}
 
-
+Equipped with any matrix norm, we may now generalize the $s$-chart by plotting the evolution of the (norm of the) covariance matrix and inspecting it for anomalies. 
+We will not discuss the theory required for setting the control limits, but we do remind the reader that given a long enough Phase I, we can always look at the history for choosing the control limits. 
 
 
 
