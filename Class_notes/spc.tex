@@ -541,11 +541,14 @@ Think of a two-sided t-test \dots
 
 Since the above limits have an (approximate) type-I error rate of $\alpha$, and the periods are independent, then we can readily apply Eq.(\ref{eq:arl_0}) to compute $ARL_0$.
 
-\begin{extra}
-We may consider the exact distribution of \tsq under many configurations. 
-We opted the $\chi^2_p$ approximation for ease of exposition. 
-For exact result \cite[Ch.7]{qiu_introduction_2013} should be consulted. 
-\end{extra}
+
+\begin{remark}[Multivariate t or Multivariate Z?]
+For simplicity, I do not distinguish between a t statistic and a Z statistic.
+Since it is implied that variances are estimated in Phase I, then all t-statistics are actually Z statistics.
+If variance were to be estimated in each period, then obviously my t-statistics would be proper t-statistics, and the reader should really consult  \cite[Ch.7]{qiu_introduction_2013} for details. 
+\end{remark}
+
+
 
 
 \subsection{Drill Down}
@@ -608,9 +611,9 @@ Appropriate test statistics for these cases are discussed in the following secti
 
 \item [Multivariate $s$ chart] The signal we seek is not in the \textbf{mean} of the CTQ but rather in its \textbf{variance}, such as Example~\ref{eg:irrigation}. Put differently, we actually want a multivariate version of the $s$ chart and not the \barxChart. 
 
-\item [High dimension] \tsq is simply \textbf{incomputable}. From Eq.(\ref{eq:hotteling}) we see that computing \tsq required the inversion of the covariance matrix. In the case that the number of CTQs is greater than the sample size with which the covariance was estimated ($p>\tau$) it will be impossible to invert $\Sigma$.
+\item [High dimension] \tsq is simply algebraically incomputable. From Eq.(\ref{eq:hotteling}) we see that computing \tsq required the inversion of the covariance matrix. In the case that the number of CTQs is greater than the sample size with which the covariance was estimated ($p>\tau$) it will be impossible to invert $\Sigma$.
 
-\item [Sparse signal] The signal we seek is expected to exist in a small subset of the $p$ coordinates, like in the cyber-security of Example~\ref{eg:cyber}. This is known as a \emph{sparse signal}, unlike the \emph{dense signal} targeted by the \tsq. \marginnote{Sparse Signal}
+\item [Sparse signal] The signal we seek is expected to exist in a small subset of the $p$ coordinates, like in the cyber-security of Example~\ref{eg:cyber}. This is known as a \emph{sparse signal}, unlike the \emph{dense signal} targeted by \tsq. 
 
 \end{description}
 
@@ -623,20 +626,21 @@ Appropriate test statistics for these cases are discussed in the following secti
 As discussed in the vine health example (Example \ref{eg:irrigation}), there are cases where the out-of-control behaviour is manifested in the covariance between CTQs, and not in their mean.
 Recalling the Exploratory Data Analysis Section (\ref{sec:exploratory}), the most popular measure of multivariate relation is the \emph{covariance matrix} (Definition~\ref{def:covariance}).
 While we already know how to plot a matrix, plotting the evolution of a matrix in time, as is required for a control chart, is no simple task\footnote{Think about it. If a matrix is an image, then the evolution of a matrix in time is, well, simply a movie.}. 
-Without going into the details of multivariate statistics, the fundamental idea is to summarize the matrix by a single number, so that it may be easily plotted. 
-To do so, we recall that in vector spaces, \emph{norm functions} measure distance of a vector  to the origin (the $0$ vector).
-This idea may be generalized to matrix spaces. By using \emph{matrix norms} each matrix is summarized into a single number which can be interpreted as its distance from the origin (a matrix of zeroes).
+Without going into the details of multivariate statistics, the fundamental idea is to summarize the matrix by a single number, so that it may be easily plotted, and control limits computed. 
+To do so, we recall that in vector spaces, a function measuring the distance of a vector from the origin is named a \emph{norm function}.
+This idea may be generalized to matrix spaces. 
+By using the distance of a covariance matrix from a zero matrix (the origin), the covariance can be summarized into a single number. This distance function, is known as a \emph{matrix norm}.
 
 \begin{definition}[Operator $p$-norm]
-Operator $p$-norms are a class of norms that view the matrix as the linear function it represents, so that the distance of a matrix from the origin is captured by the displacement this linear function causes upon its (normalized) inputs.
+Operator $p$-norms are a class of matrix norms that view the matrix as the linear function it represents, so that the distance of a matrix from the origin is captured by the displacement this linear function causes upon its (normalized) inputs.
 Because it is induced by a vector norm, it is also known as an \emph{induced norm}.\marginnote{Induced norm}
 This also implies that there are as many matrix $p$-norms as there are vector $p$-norms. 
-To define the \emph{matrix} $p$-norm, we need to recall the $p$-norm of a \emph{vector} $a$, which generalizes the idea of Euclidean distances:
+To define the \emph{matrix} $p$-norm, we need to recall the $p$-norm of a vector $a$, which generalizes the idea of Euclidean distances:
 \begin{align}
 	\norm{a}_p:= \left( \sum_j |a_j|^p \right)^{1/p}
 \end{align}
-You may verify that the standard Euclidean norm is given by the vector $2$-norm.
-Using vector $p$-norms, then a matrix $p$-norm is defined as 
+You may verify that setting $p=2$, you recover the standard Euclidean norm.
+Using vector $p$-norms, we can define the matrix $p$-norm 
 \begin{align}
 	\norm{A}_p:= \sup_x \set{\norm{Ax}_p; \norm{x}_p=1}.
 \end{align}
@@ -681,18 +685,6 @@ We will not discuss the theory required for setting the control limits, but we d
 
 
 
-\begin{extra}[Inverting the covariance]
-Why do we need more observations than coordinates to invert $\Sigma$? 
-This is actually not a statistical matter but rather a linear algebra matter.
-If $dim(X)=n \times p$, and $n<p$, then rows of $X$ span a $n$ dimensional subspace of $\reals^p$. 
-With no loss of generality assume that $X$ is centred so that it has zero means. 
-In which case $\hat{Sigma}=X'X$, which is simply the Gram matrix. 
-Using the properties of Gram matrices, it follows that $\hat{Sigma}$ will not be invertible. 
-This ends the linear algebra. A more troubling fact is that even if algebraically possible to compute \tsq, it requires estimating so many parameters, that it will have poor statistical performance \citep{bai_effect_1996} which is exactly the high-dimension problem. 
-\end{extra}
-
-
-
 \begin{extra}[Matrices and graphs]
 Since a matrix defines a \emph{weighted graph} (and vise-versa), \aka a \emph{network}, any network similarity measure can be used to measure the distances between matrices, and can thus be used to summarize the covariance matrix and plot in a control chart.
 \end{extra}
@@ -710,13 +702,12 @@ To fix ideas, imagine that in the intensive care unit of Example~\ref{eg:intensi
 
 
 The problem in high-dimension is that we cannot properly estimate the covariance. 
-For reasons we will not elaborate on, the most common manifestation is that the covariance matrix $\hat{\Sigma}$ in Eq.(\ref{eq:hotteling}) is not invertible so that \tsq is not only inefficient, but cannot even be computed!
-The fundamental idea to deal with the high-dimension is, well, to \textbf{ignore the covariance} \dots
+The fundamental idea to deal with the high-dimension is, well, to ignore the covariance when computing the statistic (but certainly not when computing the control limits!). 
 
 Two matters need to be considered when doing so:
 Is the type I error rate conserved?
 Is power lost?
-The answer to the first is- yes.
+The answer to the first is- yes, if properly adjusting the control limits. 
 The answer to the second is- yes, but hopefully not too much.
 
 \begin{think}
@@ -726,7 +717,7 @@ How many observations we would thus need to estimate this covariance?
 
 
 
-An example of a ``covariance ignoring'' signal detector, adapted from \cite{srivastava_test_2008}, is the following \footnote{I have simplified the actual statistic, so the reader is enouraged to read the reference before using the statistic.}:
+An example of a ``covariance ignoring'' test statistic, adapted from \cite{srivastava_test_2008}, is the following \footnote{I have simplified the actual statistic, so the reader is enouraged to read the reference before using the statistic.}:
 \begin{definition}[Simplified Srivastava-Du Statistic]
 \begin{align}
 \label{eq:srivastava_du}
@@ -740,20 +731,21 @@ Changing from matrix notation to sum notation, we see that
 	 	T^{SD}(x) = n \sum_{j=1}^p (\bar{x}_j - \mu_{0,j})^2 D^{-1}_{jj} .
 \end{align}
 But wait! 
-$D^{-1}_{jj}=(\Sigma_{jj})^{-1}$ is just the inverse variance of the $j$'th coordinate: $\frac{1}{Var(x_{1,j},\dots,x_{n,j})}$.
+$D^{-1}_{jj}=(\Sigma_{jj})^{-1}$ is just the inverse variance of the $j$'th coordinate: $\frac{1}{Var(x_{1j},\dots,x_{nj})}$.
 This is rather good news, since it means that Eq.(\ref{eq:srivastava_du}) is nothing but the sum of the squared \textbf{univariate} t-statistics over the $p$ coordinates:
 \begin{align}
 	 	T^{SD}(x) =  \sum_{j=1}^p \frac{(\bar{x}_j - \mu_{0,j})^2}{\var{\bar{x}_j}}  .
 \end{align}
 
 We now see that a way to deal with the high-dimension, is to pool together $p$ univariate tests.
-Denoting the z-statistic of the $j$'th coordinate by $z_j:= \frac{(\bar{x}_j - \mu_{0,j})^2}{\var{\bar{x}_j}}$ we can now easily design many high dimensional signal detectors in the form of
+Denoting the z-statistic of the $j$'th coordinate by $z_j:= \frac{(\bar{x}_j - \mu_{0,j})^2}{\var{\bar{x}_j}}$ we see that 
+$T^{SD}(x)= \normII{z_1,\dots,z_p}^2$, and that we can easily design new high dimensional test statistics in the form of
 \begin{align}
 \label{eq:marginal_test}
 	 	T(x) :=  f(z_1,\dots,z_p) .
 \end{align}
 where $f$ is some function measuring distance from the $\mu_0$ vector.
-Clearly, for $T^{SD}$ we need to set $f(z_1,\dots,z_p) = \normII{(z_1,\dots,z_p)}^2$.
+
 
 \begin{think}
 Can you sugges other $f(z_1,\dots,z_p)$ functions that can make good signal detectors?
@@ -761,10 +753,22 @@ Can you sugges other $f(z_1,\dots,z_p)$ functions that can make good signal dete
 
 
 
+\begin{extra}[Inverting the covariance]
+Why do we need more observations than coordinates to invert $\Sigma$? 
+This is actually not a statistical matter but rather a linear algebra matter.
+If $dim(X)=n \times p$, and $n<p$, then rows of $X$ span a $n$ dimensional subspace of $\reals^p$. 
+With no loss of generality assume that $X$ is centred so that it has zero means. 
+In which case $\hat{Sigma}=X'X$, which is simply the Gram matrix. 
+Using the properties of Gram matrices, it follows that $\hat{Sigma}$ will not be invertible. 
+This ends the linear algebra. A more troubling fact is that even if algebraically possible to compute \tsq, it requires estimating so many parameters, that it will have poor statistical performance \citep{bai_effect_1996} which is exactly the high-dimension problem. 
+\end{extra}
+
+
+
 \subsection{Sparse Signals}
 
 We have already claimed that if signal exists only in a small subset of coordinates, i.e., it is \emph{sparse}, we can do better than \tsq, at least in the sense of power.
-The way to design detectors for sparse signals, relies on the idea of computing coordinate-wise tests, and pooling them together, as in Eq.(\ref{eq:marginal_test}). 
+The way to design test statistics for sparse signals, relies on the idea of computing coordinate-wise tests, and pooling them together, as in Eq.(\ref{eq:marginal_test}). 
 The mass-univariate test and chart (Section~\ref{sec:mass_univariate}) is an example of an alternative to \tsq if the signal is sparse. 
 It is constructed using 
 $f(z_1,\dots,z_p)=\max\set{z_1,\dots,z_p}$.
@@ -795,6 +799,7 @@ The \emph{Moving Sum Hotelling} chart in a window of $w$ periods ending at $t$, 
 \end{align}
 where \tsq is Hotelling's test statistic $X_t$ is the matrix of $n$ samples on $p$ measurements at period $t$. 
 \end{definition}
+As before, we will typically, but not necessarily, use $\hat{\Sigma}$ from period I in \tsq. 
 
 Since $T^2(X_t)$ is approximately $\chi^2_p$ distributed, periods are independent, and sums of Chi-square distributions are still Chi-square with the summed degrees of freedom\footnote{Trust me on this one.}, we have that for a process in control
 \begin{align}
@@ -870,10 +875,10 @@ $n$ is the number of samples per period;
 $\arm$ governs the control limits via $UCL:= \mu_0+ \arm \sigma_{\bar{x}}= \mu_0+ \arm \sigma_x / \sqrt{n}$;
 $h$ is the hours between sample periods. 
 
-Denoting by IC and OC the system In Control and Out of Control, respectively, then the parameters governing the solution are:
+The parameters governing the solution are:
 \begin{description}
-\item[Income IC] Net income per production cycle when IC. Denoted $V_0$.
-\item[Income OC] Net income per production cycle when OC, after accounting for recall, legal damages, etc. Denoted $V_1$.
+\item[Income$_0$ ] Net income per production cycle when in control. Denoted $V_0$.
+\item[Income$_1$] Net income per production cycle when out of control, after accounting for recall, legal damages, etc. Denoted $V_1$.
 \item[Fixed sample cost] Fixed cost of sampling. Denoted $a_1$. 
 \item[Variable sample cost] Variable cost sampling. Denoted $a_2$.
 \item[Cost of True Positive] The cost to investigate and find an assignable cause; $a_3$.
