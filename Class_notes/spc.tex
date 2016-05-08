@@ -585,13 +585,13 @@ Hotelling's \tsq is perhaps the first and most used multivariate test statistic.
 Just like the univariate t-test, however, it is hardly the only multivariate test \dots
 
 
-\begin{example}[Cyber Monitoring System]
-\label{eg:cyber}
-Consider a server farm. 
-All servers dump their status into logs. These include CPU loads, temperature, network I/O, etc.
-The administrator is worried about an imminent attack, and is thus parsing the logs, and inspecting the on-line status on his dashboard.
-He knows that the cyber-attacker is no amateur, so that if any fingerprint is left in the logs, it will be very subtle and manifested in very few CTQs\footnote{Clearly, these are not called CTQs, in this context. We are simply adhering to quality engineering terminology.}.
-\end{example}
+%\begin{example}[Cyber Monitoring System]
+%\label{eg:cyber}
+%Consider a server farm. 
+%All servers dump their status into logs. These include CPU loads, temperature, network I/O, etc.
+%The administrator is worried about an imminent attack, and is thus parsing the logs, and inspecting the on-line status on his dashboard.
+%He knows that the cyber-attacker is no amateur, so that if any fingerprint is left in the logs, it will be very subtle and manifested in very few CTQs\footnote{Clearly, these are not called CTQs, in this context. We are simply adhering to quality engineering terminology.}.
+%\end{example}
 
 
 \begin{example}[Vine Health]
@@ -605,19 +605,6 @@ We would like a multivariate version of the $s$ chart to monitor the health of o
 \end{example}
 
 
-Based on these examples, we list cases where \tsq is a \textbf{bad} choice. 
-Appropriate test statistics for these cases are discussed in the following sections.
-\begin{description}
-
-\item [Multivariate $s$ chart] The signal we seek is not in the \textbf{mean} of the CTQ but rather in its \textbf{variance}, such as Example~\ref{eg:irrigation}. Put differently, we actually want a multivariate version of the $s$ chart and not the \barxChart. 
-
-\item [High dimension] \tsq is simply algebraically incomputable. From Eq.(\ref{eq:hotteling}) we see that computing \tsq required the inversion of the covariance matrix. In the case that the number of CTQs is greater than the sample size with which the covariance was estimated ($p>\tau$) it will be impossible to invert $\Sigma$.
-
-\item [Sparse signal] The signal we seek is expected to exist in a small subset of the $p$ coordinates, like in the cyber-security of Example~\ref{eg:cyber}. This is known as a \emph{sparse signal}, unlike the \emph{dense signal} targeted by \tsq. 
-
-\end{description}
-
-
 
 
 \subsection[Mutivariate s chart]{Mutivariate $s$ chart}
@@ -627,25 +614,31 @@ As discussed in the vine health example (Example \ref{eg:irrigation}), there are
 Recalling the Exploratory Data Analysis Section (\ref{sec:exploratory}), the most popular measure of multivariate relation is the \emph{covariance matrix} (Definition~\ref{def:covariance}).
 While we already know how to plot a matrix, plotting the evolution of a matrix in time, as is required for a control chart, is no simple task\footnote{Think about it. If a matrix is an image, then the evolution of a matrix in time is, well, simply a movie.}. 
 Without going into the details of multivariate statistics, the fundamental idea is to summarize the matrix by a single number, so that it may be easily plotted, and control limits computed. 
-To do so, we recall that in vector spaces, a function measuring the distance of a vector from the origin is named a \emph{norm function}.
-This idea may be generalized to matrix spaces. 
-By using the distance of a covariance matrix from a zero matrix (the origin), the covariance can be summarized into a single number. This distance function, is known as a \emph{matrix norm}.
+We now provide several functions which can be thought of as \emph{norm} functions, which is a name for functions that can be thought of as the distance from zero. 
 
-\begin{definition}[Operator $p$-norm]
-Operator $p$-norms are a class of matrix norms that view the matrix as the linear function it represents, so that the distance of a matrix from the origin is captured by the displacement this linear function causes upon its (normalized) inputs.
-Because it is induced by a vector norm, it is also known as an \emph{induced norm}.\marginnote{Induced norm}
-This also implies that there are as many matrix $p$-norms as there are vector $p$-norms. 
-To define the \emph{matrix} $p$-norm, we need to recall the $p$-norm of a vector $a$, which generalizes the idea of Euclidean distances:
+
+
+
+\begin{definition}[Frobenius norm]
+The \emph{Frobenius norm} of matrix $A$, \aka the \emph{Hilbert-Schmidt norm}, or \emph{Schur norm} is defined as:
 \begin{align}
-	\norm{a}_p:= \left( \sum_j |a_j|^p \right)^{1/p}
+	\normF{A}:= \sqrt{\sum_{ij} A_{ij}^2} 
 \end{align}
-You may verify that setting $p=2$, you recover the standard Euclidean norm.
-Using vector $p$-norms, we can define the matrix $p$-norm 
+As such, it merely treats the matrix as a stacked vector, and computes the Euclidean distance of the vector from zero.
+\end{definition}
+
+
+
+
+
+\begin{definition}[Spectral norm]
+Denoting the Euclidean distance of a vector $x$ from zero by $\norm{x}_{Euc}$, we can denote a matrix's \emph{spectral norm}, \aka \emph{operator norm}, or \emph{induced norm}, by: 
 \begin{align}
-	\norm{A}_p:= \sup_x \set{\norm{Ax}_p; \norm{x}_p=1}.
+	\norm{A}_{Spec} := \max_x \set{\norm{Ax}_{Euc}; \norm{x}_{Euc}=1}.
 \end{align}
 \end{definition}
 
+The geometry of this definition is depicted in Figure~\ref{fig:operator_norm}.
 
 \begin{figure}
 \centering
@@ -658,30 +651,78 @@ On the right: the ellipse is the image of the unit circle after transformed by m
 \label{fig:operator_norm}
 \end{figure}
 
-The various matrix operator norms, differ in the vector norm inducing them.
-The most popular, is by far the matrix $2$-norm, \aka the \emph{spectral norm}.
-Figure~\ref{fig:operator_norm} depicts the spectral norm of a matrix operating on $\reals^3$. 
 
-\begin{definition}[Spectral norm]
-The matrix $2$-norm, more commonly known as the \emph{spectral norm}, is merely the operator norm induced by the Euclidean vector norm, i.e., when $p=2$ . \marginnote{Spectral Norm}
-\begin{align}
-	\norm{A}_2:= \sup_x \set{\norm{Ax}_2; \norm{x}_2=1}	= \sqrt{\lambda_{max}(A'A)} = \sigma_{max}(A)
-\end{align}
-where $\lambda_{max}$ is the maximal eigenvalue, and $\sigma_{max}$ is the maximal singular value. 
-\end{definition}
-
-
-
-\begin{definition}[Frobenius (matrix) norm]
-The \emph{Frobenius norm}, \aka the \emph{Hilbert-Schmidt norm}, or \emph{Schur norm}, views the matrix as a square of numbers and is defined as follows:
-\begin{align}
-	\normF{A}:= \sqrt{\sum_{ij} a_{ij}^2} = \sqrt{\Tr(A'A)} = \sqrt{\sum \sigma_{j}(A)}
-\end{align}
-As such, it can be seen as a \emph{vector} $2$-norm, that stacks the matrix into a single vector, thus ignoring the fact that a matrix actually represents a linear function. 
-\end{definition}
 
 Equipped with any matrix norm, we may now generalize the $s$-chart by plotting the evolution of the (norm of the) covariance matrix and inspecting it for anomalies. 
-We will not discuss the theory required for setting the control limits, but we do remind the reader that given a long enough Phase I, we can always look at the history for choosing the control limits. 
+We also note that the \emph{determinant} function may also serve for the above purpose of mapping a matrix into a number. The determinant cannot be thought of as a distance function, but it may still provide a good alternative to visualize the evolution of a matrix over time. 
+ 
+We will not control limits for the generalized $s$ charts, but we do remind the reader that given a long enough Phase I, we can always look at the history for choosing the control limits. 
+
+
+
+
+%\subsection[Mutivariate s chart]{Mutivariate $s$ chart}
+%\label{sec:multivarite_s}
+%
+%As discussed in the vine health example (Example \ref{eg:irrigation}), there are cases where the out-of-control behaviour is manifested in the covariance between CTQs, and not in their mean.
+%Recalling the Exploratory Data Analysis Section (\ref{sec:exploratory}), the most popular measure of multivariate relation is the \emph{covariance matrix} (Definition~\ref{def:covariance}).
+%While we already know how to plot a matrix, plotting the evolution of a matrix in time, as is required for a control chart, is no simple task\footnote{Think about it. If a matrix is an image, then the evolution of a matrix in time is, well, simply a movie.}. 
+%Without going into the details of multivariate statistics, the fundamental idea is to summarize the matrix by a single number, so that it may be easily plotted, and control limits computed. 
+%To do so, we recall that in vector spaces, a function measuring the distance of a vector from the origin is named a \emph{norm function}.
+%This idea may be generalized to matrix spaces. 
+%By using the distance of a covariance matrix from a zero matrix (the origin), the covariance can be summarized into a single number. This distance function, is known as a \emph{matrix norm}.
+%
+%\begin{definition}[Operator $p$-norm]
+%Operator $p$-norms are a class of matrix norms that view the matrix as the linear function it represents, so that the distance of a matrix from the origin is captured by the displacement this linear function causes upon its (normalized) inputs.
+%Because it is induced by a vector norm, it is also known as an \emph{induced norm}.\marginnote{Induced norm}
+%This also implies that there are as many matrix $p$-norms as there are vector $p$-norms. 
+%To define the \emph{matrix} $p$-norm, we need to recall the $p$-norm of a vector $a$, which generalizes the idea of Euclidean distances:
+%\begin{align}
+%	\norm{a}_p:= \left( \sum_j |a_j|^p \right)^{1/p}
+%\end{align}
+%You may verify that setting $p=2$, you recover the standard Euclidean norm.
+%Using vector $p$-norms, we can define the matrix $p$-norm 
+%\begin{align}
+%	\norm{A}_p:= \sup_x \set{\norm{Ax}_p; \norm{x}_p=1}.
+%\end{align}
+%\end{definition}
+%
+%
+%\begin{figure}
+%\centering
+%\includegraphics[width=0.7\linewidth]{art/operator_norm}
+%\caption{
+%\footnotesize
+%On the left: the unit circle in $\reals^3$. 
+%On the right: the ellipse is the image of the unit circle after transformed by matrix $A$. The operator norm is the distance between the origin and the furthest point on the ellipse. 
+%\newline Source: \cite{meyer_matrix_2001}.}
+%\label{fig:operator_norm}
+%\end{figure}
+%
+%The various matrix operator norms, differ in the vector norm inducing them.
+%The most popular, is by far the matrix $2$-norm, \aka the \emph{spectral norm}.
+%Figure~\ref{fig:operator_norm} depicts the spectral norm of a matrix operating on $\reals^3$. 
+%
+%\begin{definition}[Spectral norm]
+%The matrix $2$-norm, more commonly known as the \emph{spectral norm}, is merely the operator norm induced by the Euclidean vector norm, i.e., when $p=2$ . \marginnote{Spectral Norm}
+%\begin{align}
+%	\norm{A}_2:= \sup_x \set{\norm{Ax}_2; \norm{x}_2=1}	= \sqrt{\lambda_{max}(A'A)} = \sigma_{max}(A)
+%\end{align}
+%where $\lambda_{max}$ is the maximal eigenvalue, and $\sigma_{max}$ is the maximal singular value. 
+%\end{definition}
+%
+%
+%
+%\begin{definition}[Frobenius (matrix) norm]
+%The \emph{Frobenius norm}, \aka the \emph{Hilbert-Schmidt norm}, or \emph{Schur norm}, views the matrix as a square of numbers and is defined as follows:
+%\begin{align}
+%	\normF{A}:= \sqrt{\sum_{ij} a_{ij}^2} = \sqrt{\Tr(A'A)} = \sqrt{\sum \sigma_{j}(A)}
+%\end{align}
+%As such, it can be seen as a \emph{vector} $2$-norm, that stacks the matrix into a single vector, thus ignoring the fact that a matrix actually represents a linear function. 
+%\end{definition}
+%
+%Equipped with any matrix norm, we may now generalize the $s$-chart by plotting the evolution of the (norm of the) covariance matrix and inspecting it for anomalies. 
+%We will not discuss the theory required for setting the control limits, but we do remind the reader that given a long enough Phase I, we can always look at the history for choosing the control limits. 
 
 
 
@@ -695,88 +736,88 @@ Since a matrix defines a \emph{weighted graph} (and vise-versa), \aka a \emph{ne
 
 
 
-\subsection{High-Dimensional Control Charts}
-
-\emph{High dimension} does not mean that $p$ is very large but rather the it is larger then $n$, or $\tau$. 
-To fix ideas, imagine that in the intensive care unit of Example~\ref{eg:intensive}, in each of $n=10$ measurements per day, we take $p=100$ different measurements such as pulse, temperature, etc.
-
-
-The problem in high-dimension is that we cannot properly estimate the covariance. 
-The fundamental idea to deal with the high-dimension is, well, to ignore the covariance when computing the statistic (but certainly not when computing the control limits!). 
-
-Two matters need to be considered when doing so:
-Is the type I error rate conserved?
-Is power lost?
-The answer to the first is- yes, if properly adjusting the control limits. 
-The answer to the second is- yes, but hopefully not too much.
-
-\begin{think}
-How many free parameters are in the covariance matrix of $p$ measurements?
-How many observations we would thus need to estimate this covariance?
-\end{think} 
-
-
-
-An example of a ``covariance ignoring'' test statistic, adapted from \cite{srivastava_test_2008}, is the following \footnote{I have simplified the actual statistic, so the reader is enouraged to read the reference before using the statistic.}:
-\begin{definition}[Simplified Srivastava-Du Statistic]
-\begin{align}
-\label{eq:srivastava_du}
-	 	T^{SD}(x) := n (\bar{x}-\mu_0)' D^{-1} (\bar{x}-\mu_0),
-\end{align}
-where $D$ is $\hat{\Sigma}$ with zeroes in all off-diagonal entries. 
-\end{definition}
-From Eq.(\ref{eq:srivastava_du}) we see that $T^{SD}$ is the same as Hotellig's \tsq in Eq.(\ref{eq:hotteling}) after forcing independence between coordinates.
-Changing from matrix notation to sum notation, we see that 
-\begin{align}
-	 	T^{SD}(x) = n \sum_{j=1}^p (\bar{x}_j - \mu_{0,j})^2 D^{-1}_{jj} .
-\end{align}
-But wait! 
-$D^{-1}_{jj}=(\Sigma_{jj})^{-1}$ is just the inverse variance of the $j$'th coordinate: $\frac{1}{Var(x_{1j},\dots,x_{nj})}$.
-This is rather good news, since it means that Eq.(\ref{eq:srivastava_du}) is nothing but the sum of the squared \textbf{univariate} t-statistics over the $p$ coordinates:
-\begin{align}
-	 	T^{SD}(x) =  \sum_{j=1}^p \frac{(\bar{x}_j - \mu_{0,j})^2}{\var{\bar{x}_j}}  .
-\end{align}
-
-We now see that a way to deal with the high-dimension, is to pool together $p$ univariate tests.
-Denoting the z-statistic of the $j$'th coordinate by $z_j:= \frac{(\bar{x}_j - \mu_{0,j})^2}{\var{\bar{x}_j}}$ we see that 
-$T^{SD}(x)= \normII{z_1,\dots,z_p}^2$, and that we can easily design new high dimensional test statistics in the form of
-\begin{align}
-\label{eq:marginal_test}
-	 	T(x) :=  f(z_1,\dots,z_p) .
-\end{align}
-where $f$ is some function measuring distance from the $\mu_0$ vector.
-
-
-\begin{think}
-Can you sugges other $f(z_1,\dots,z_p)$ functions that can make good signal detectors?
-\end{think}
-
-
-
-\begin{extra}[Inverting the covariance]
-Why do we need more observations than coordinates to invert $\Sigma$? 
-This is actually not a statistical matter but rather a linear algebra matter.
-If $dim(X)=n \times p$, and $n<p$, then rows of $X$ span a $n$ dimensional subspace of $\reals^p$. 
-With no loss of generality assume that $X$ is centred so that it has zero means. 
-In which case $\hat{Sigma}=X'X$, which is simply the Gram matrix. 
-Using the properties of Gram matrices, it follows that $\hat{Sigma}$ will not be invertible. 
-This ends the linear algebra. A more troubling fact is that even if algebraically possible to compute \tsq, it requires estimating so many parameters, that it will have poor statistical performance \citep{bai_effect_1996} which is exactly the high-dimension problem. 
-\end{extra}
-
-
-
-\subsection{Sparse Signals}
-
-We have already claimed that if signal exists only in a small subset of coordinates, i.e., it is \emph{sparse}, we can do better than \tsq, at least in the sense of power.
-The way to design test statistics for sparse signals, relies on the idea of computing coordinate-wise tests, and pooling them together, as in Eq.(\ref{eq:marginal_test}). 
-The mass-univariate test and chart (Section~\ref{sec:mass_univariate}) is an example of an alternative to \tsq if the signal is sparse. 
-It is constructed using 
-$f(z_1,\dots,z_p)=\max\set{z_1,\dots,z_p}$.
+%\subsection{High-Dimensional Control Charts}
+%
+%\emph{High dimension} does not mean that $p$ is very large but rather the it is larger then $n$, or $\tau$. 
+%To fix ideas, imagine that in the intensive care unit of Example~\ref{eg:intensive}, in each of $n=10$ measurements per day, we take $p=100$ different measurements such as pulse, temperature, etc.
+%
+%
+%The problem in high-dimension is that we cannot properly estimate the covariance. 
+%The fundamental idea to deal with the high-dimension is, well, to ignore the covariance when computing the statistic (but certainly not when computing the control limits!). 
+%
+%Two matters need to be considered when doing so:
+%Is the type I error rate conserved?
+%Is power lost?
+%The answer to the first is- yes, if properly adjusting the control limits. 
+%The answer to the second is- yes, but hopefully not too much.
+%
+%\begin{think}
+%How many free parameters are in the covariance matrix of $p$ measurements?
+%How many observations we would thus need to estimate this covariance?
+%\end{think} 
+%
+%
+%
+%An example of a ``covariance ignoring'' test statistic, adapted from \cite{srivastava_test_2008}, is the following \footnote{I have simplified the actual statistic, so the reader is enouraged to read the reference before using the statistic.}:
+%\begin{definition}[Simplified Srivastava-Du Statistic]
+%\begin{align}
+%\label{eq:srivastava_du}
+%	 	T^{SD}(x) := n (\bar{x}-\mu_0)' D^{-1} (\bar{x}-\mu_0),
+%\end{align}
+%where $D$ is $\hat{\Sigma}$ with zeroes in all off-diagonal entries. 
+%\end{definition}
+%From Eq.(\ref{eq:srivastava_du}) we see that $T^{SD}$ is the same as Hotellig's \tsq in Eq.(\ref{eq:hotteling}) after forcing independence between coordinates.
+%Changing from matrix notation to sum notation, we see that 
+%\begin{align}
+%	 	T^{SD}(x) = n \sum_{j=1}^p (\bar{x}_j - \mu_{0,j})^2 D^{-1}_{jj} .
+%\end{align}
+%But wait! 
+%$D^{-1}_{jj}=(\Sigma_{jj})^{-1}$ is just the inverse variance of the $j$'th coordinate: $\frac{1}{Var(x_{1j},\dots,x_{nj})}$.
+%This is rather good news, since it means that Eq.(\ref{eq:srivastava_du}) is nothing but the sum of the squared \textbf{univariate} t-statistics over the $p$ coordinates:
+%\begin{align}
+%	 	T^{SD}(x) =  \sum_{j=1}^p \frac{(\bar{x}_j - \mu_{0,j})^2}{\var{\bar{x}_j}}  .
+%\end{align}
+%
+%We now see that a way to deal with the high-dimension, is to pool together $p$ univariate tests.
+%Denoting the z-statistic of the $j$'th coordinate by $z_j:= \frac{(\bar{x}_j - \mu_{0,j})^2}{\var{\bar{x}_j}}$ we see that 
+%$T^{SD}(x)= \normII{z_1,\dots,z_p}^2$, and that we can easily design new high dimensional test statistics in the form of
+%\begin{align}
+%\label{eq:marginal_test}
+%	 	T(x) :=  f(z_1,\dots,z_p) .
+%\end{align}
+%where $f$ is some function measuring distance from the $\mu_0$ vector.
+%
+%
+%\begin{think}
+%Can you sugges other $f(z_1,\dots,z_p)$ functions that can make good signal detectors?
+%\end{think}
+%
+%
+%
+%\begin{extra}[Inverting the covariance]
+%Why do we need more observations than coordinates to invert $\Sigma$? 
+%This is actually not a statistical matter but rather a linear algebra matter.
+%If $dim(X)=n \times p$, and $n<p$, then rows of $X$ span a $n$ dimensional subspace of $\reals^p$. 
+%With no loss of generality assume that $X$ is centred so that it has zero means. 
+%In which case $\hat{Sigma}=X'X$, which is simply the Gram matrix. 
+%Using the properties of Gram matrices, it follows that $\hat{Sigma}$ will not be invertible. 
+%This ends the linear algebra. A more troubling fact is that even if algebraically possible to compute \tsq, it requires estimating so many parameters, that it will have poor statistical performance \citep{bai_effect_1996} which is exactly the high-dimension problem. 
+%\end{extra}
 
 
-\begin{think}
-Can you suggest other $f(z_1,\dots,z_p)$ functions that can make good signal detectors, if you assume the signal is ``hiding'' only in a small subset of coordinates?
-\end{think}
+%
+%\subsection{Sparse Signals}
+%
+%We have already claimed that if signal exists only in a small subset of coordinates, i.e., it is \emph{sparse}, we can do better than \tsq, at least in the sense of power.
+%The way to design test statistics for sparse signals, relies on the idea of computing coordinate-wise tests, and pooling them together, as in Eq.(\ref{eq:marginal_test}). 
+%The mass-univariate test and chart (Section~\ref{sec:mass_univariate}) is an example of an alternative to \tsq if the signal is sparse. 
+%It is constructed using 
+%$f(z_1,\dots,z_p)=\max\set{z_1,\dots,z_p}$.
+%
+%
+%\begin{think}
+%Can you suggest other $f(z_1,\dots,z_p)$ functions that can make good signal detectors, if you assume the signal is ``hiding'' only in a small subset of coordinates?
+%\end{think}
 
 
 
@@ -818,6 +859,7 @@ Can you derive their control limits?
 
 
 \section{The p-value chart}
+
 The basic construction of the previous control charts was to choose some test statistic that is sensitive to the signal  we seek. We then derive its sampling distribution, and plot it against some control limits. 
 From the hypothesis testing literature we know that we can convert the test statistic to a p-value and make the exact same inference. 
 This idea can carry to control charts.
