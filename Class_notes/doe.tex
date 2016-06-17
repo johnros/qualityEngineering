@@ -228,7 +228,7 @@ A good blocking strategy is such where blocks are very homogenous within themsel
 \begin{think}
 With twins, you can have a complete block design comparing only two treatments. 
 How would you go about to compare $3$ treatments?
-And treatments?
+And $k>2$ treatments?
 \end{think}
 
 
@@ -240,7 +240,7 @@ And treatments?
 \label{sec:crossover}
 
 Return to the diet comparison of Example~\ref{eg:diets}. 
-Now assume that $5$ diets are being compared so the twins trick will no longer work.
+Now assume that $5$ diets are being compared, and requiring quintuplets\footnote{Five identical siblings.} will severely limit the available sample size. 
 If the response of different people to the diets is strongly affected by genetics \andor lifestyle, it may be the case that by (randomly) assigning diets to individuals the diets effect will be completely masked by the variability between subjects. 
 To solve this, we could give each subject all $5$ diets. 
 Each subject would act as his own block.
@@ -281,47 +281,31 @@ Table~\ref{tab:crossover} demonstrates the $3!=6$ sequences for a $3$ treatment 
 \section{Factorial Designs}
 \label{sec:factorial_design}
 
+In the previous section we discussed methods of reducing the variability in the response to each treatment, so that we can better reveal differences between treatments. 
+In the current section we will break treatments into smaller building blocks; \emph{factors}.
+By doing so we will be able to extrapolate from observed treatments, to unobserved treatments. This, in turn, will allow us to reduce the costs of experiments.
+
 
 \begin{example}[Web design revisited]
 \label{eg:web_design_II}
 Back to the web-design from Example~\ref{eg:web_design}, assume now that treatments, i.e. layouts, differ in the location of a button, the colour of the heading and the size of the logo. 
-If each has two possible levels, we deal with $8$ different layouts. 
+If each has two possible levels, we deal with $3$ factors with $2$ levels each, totalling in $8$ different layouts. 
+Instead of estimating the effect of the $8$ layouts, we estimate the effect of each of the $3$ factors. 
+Given a budget of, say, $n=8$ observations, we would have one observation per treatment. 
+The magic of a factorial design is that we have $4$ observations for each factor level.
+If we treat a web-design as the sum of its factor effects, we have gained accuracy 
 \end{example}
 
-
-\begin{example}[Diets revisited]
-\label{eg:diets_II}
-Back to the diets from Example~\ref{eg:diets}, assume now that treatments, i.e. diet, differ in the type of bread, the type of drink, and the amount of condiment. 
-If each has two possible levels, we deal with $8$ different layouts. 
-\end{example}
-
-
-
-The previous section has dealt with the removal of unwanted variability that masked treatment effects.
-We now shift our focus to treatments that are defined as combinations of a small number of \emph{factors} with a small number of \emph{levels} each.
-This means that we may decompose a treatment effect into the effects of underlying factors, which would make both the design more economical, and the analysis easier to interpret.
-
-Demonstrating the idea on Example~\ref{eg:web_design_II}, it means that instead of estimating the effect of the $8$ layouts, we estimate the effect of each of the $3$ factors. 
-This is useful because given a budget, say, $64$ observations, without the factor decomposition, we would have $8$ observations for each layout. 
-Using the factor decomposition, and an appropriate design, we may have $32$ observation for each factor level.
-Clearly, this is more economical.
+\begin{think}
+Is the magic of the factorial design a free lunch? 
+No. The lunch has a price.
+The price is that we have assumed that a site is the sum of its components, without interactions. 
+Without this assumption, there is nothing to gain from a factorial design.
+\end{think}
 
 
-Importantly, a factorial design is better than $k$ experiments with one factor at a time. This is because:
-\begin{enumerate}
-\item Factorial experiments make better (statistical) use of each sample unit for estimating main effects.
-\item Factorial experiments allow the estimation of interactions between factors. 
-\end{enumerate}
-A classical illustration of the second point, is given in Figure~\ref{fig:one_factor_at_a_time}.
-The figure depicts a one-factor-at-a-time optimization sequence (from A to H). Since the factors are not varied simultaneously, the experiments is unable to identify that the response is not a linear surface. 
-Put differently, he is unable to estimate an interaction.
 
-\begin{figure}[ht]
-\centering
-\includegraphics[height=0.3\textheight]{art/optimization-without-statistical-doe-2015-03-23-7-638}
-\caption[One-at-a-time optimization]{Optimizing factors, one at a time.\newline \url{http://www.slideshare.net/PaulFishbein/optimization-without-statistical-doe-2015-03-23-46817073}}
-\label{fig:one_factor_at_a_time}
-\end{figure}
+
 
 
 
@@ -402,6 +386,26 @@ The name $3^k$ design is rather self explanatory.
 If a continuous variable is discretized to $3$ levels, one may actually estimate and check for non-linear main-effects, which is impossible with $2^k$ designs. 
 Then again, more than $2$ levels are rarely treated as full factorial experiments. 
 This is because $3$ level factors typically appear when aiming at optimizing the factor level combination, for which the \emph{response surface} methodology of Section~\ref{sec:response_surface} is more economical.
+
+
+
+\subsubsection{Full Factorial vs. One-Factor-at-a-Time}
+Importantly, a factorial design is better than $k$ experiments with one factor at a time. This is because:
+\begin{enumerate}
+\item Factorial experiments make better (statistical) use of each sample unit for estimating main effects.
+\item Factorial experiments allow the estimation of interactions between factors. 
+\end{enumerate}
+A classical illustration of the second point, is given in Figure~\ref{fig:one_factor_at_a_time}.
+The figure depicts a one-factor-at-a-time optimization sequence (from A to H). Since the factors are not varied simultaneously, the experiments is unable to identify that the response is not a linear surface. 
+Put differently, he is unable to estimate an interaction.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[height=0.3\textheight]{art/optimization-without-statistical-doe-2015-03-23-7-638}
+\caption[One-at-a-time optimization]{Optimizing factors, one at a time.\newline \url{http://www.slideshare.net/PaulFishbein/optimization-without-statistical-doe-2015-03-23-46817073}}
+\label{fig:one_factor_at_a_time}
+\end{figure}
+
 
 
 
@@ -575,23 +579,18 @@ A possible reference on the matter is \cite{hill_first_1986}, or \cite{hedayat_o
 
 
 
-\subsection{Plackett-Burman design}
-\label{sec:plackett_burman}
-
-A \emph{Plackett-Burman Design} is a design optimized for \textbf{screening} factors. 
-To do so, the number of treatments per replication is set at a power of $4$ (unlike a power of $2$ for full factorial and fractional factorial), so that each combination of each \textbf{pair} of factors appears twice, in each replication.
-It is a very economical design when studying the main effects of many factors. 
-
-
-
-
 
 
 
 
 \section{Continuous Factors}
+
+If aiming at screening factors, the fact that a factor is continuous is immaterial. 
+One may sample a continuous factor at two points, and treat it as a $2$ level factor.
+This is not the case, however, if aiming at characterizing the full response surface, for which the factorial designs are no longer appropriate. 
+
 When dealing with \emph{continuous factors}, or \emph{quantitative factors}, we have many more analysis strategies than when dealing with qualitative factors.
-No matter the analysis strategy, it is still important of choosing the right factor level combinations to study.
+
 
 \subsection{Central Composite Design}
 \label{sec:central_composite}
@@ -612,6 +611,21 @@ For more details see \cite[Sec.6.6]{cox_theory_2000}
 As the name suggests, \emph{response surface methdology} deals with the estimation of the response surface to the levels of continuous factors.
 The response surface methodology is similar to the Central Composite Design of Section~\ref{sec:central_composite}, except that it is aimed at finding an optimal combination of factor level, instead of estimating their effects. 
 
+
+
+
+
+
+
+
+\section{The Industrial Emphasis}
+The following approaches are particularly popular in industrial settings.
+
+\subsection{Plackett-Burman design}
+\label{sec:plackett_burman}
+
+A \emph{Plackett-Burman Design} is a fractional factorial design optimized for \textbf{screening}. 
+It is a very economical design when studying the \textbf{main effects} of a \textbf{large number} of factors. 
 
 
 

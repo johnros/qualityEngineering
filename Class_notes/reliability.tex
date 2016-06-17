@@ -193,7 +193,7 @@ In order to identify the weakest link we require some measure of reliability imp
 
 \begin{definition}[Improvement potential]
 The \emph{improvement potential} is defined as the change in a system's reliability, if we could force a component to function indefinitely.
-Formally, we denote $\Phi^{(j)}$ to be a system where component $j$ cannot fail. 
+Formally, we denote $\Phi^{(j)}$ to be a system where component $j$ cannot fail: $\Phi^{(j)}:=\Phi_{(p_j=1)}$.
 We then define the improvement potential with respect to component $j$ to be 
 \begin{align}
 	I_j :=S_{\Phi^{(j)}}-S_{\Phi}.
@@ -245,7 +245,7 @@ The survival function of a random variable $\T$ at a point $t$ is given by
 	\survive{\T}{t}:= P(\T>t)=1-\cdf{\T}{t}.
 \end{align}
 \end{definition}
-By definition, it follows that if $\T_j$ is the time to failure of component $j$, then $p_j(t)=\survive{\T_j}{t}$.
+By definition, it follows that if $\T_j$ is the time to failure of component $j$, then $$p_j(t)=\survive{\T_j}{t}.$$
 If $\T_\struct$ is the time to failure of a system $\Phi$, then we may write $S_\struct(t)=\survive{\T_\struct}{t}$.
 
 
