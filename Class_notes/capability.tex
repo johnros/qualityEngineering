@@ -196,7 +196,7 @@ where $\cpu:= \frac{USL- \ctqExpect}{3 \sigma}$ and $\cpl:= \frac{\ctqExpect-LSL
 For a non-centred process, this definition is more informative on the probability of non-compliance.
 Indeed, Eq.(\ref{eq:pc_and_pnc}) will not hold, but we can derive an updated version:
 \begin{align}
-	 \pnc \approx \Phi(-3 \cpk).
+	 \Phi(-3 \cpk) \leq \pnc \leq 2\Phi(-3 \cpk).
 \end{align}
 Generally, $\cpk \leq \cp$, with equality holding for centred processes ($\ctqExpect=\targetValue$).
 An illustration is given in Figure~\ref{fig:cpk}.
@@ -216,8 +216,8 @@ The $\cpk$ index is motivated by conserving the relation between the index and t
 Indeed if $\cp$ can be interpreted as ``accuracy compared to a (centred) 3-sigma process'', then $\cpk$ can be interpreted as ``accuracy compared to a (non-centred) 3-sigma process''.
 
 The 3-sigma process is used as a benchmark for historical reasons. 
-In practice, it is actually very common to report the sigma-level as a capability index: $\min\set{\frac{USL-\mu}{\sigma},\frac{\mu-LSL}{\sigma}}$, which can be seen as PCR with respect to a 1-sigma process.
-Three-sigma would thus be reported as $3$, 6-sigma as $6$, etc.
+In practice, it is actually very common to report the sigma-level itself as a capability index: $\min\set{\frac{USL-\mu}{\sigma},\frac{\mu-LSL}{\sigma}}$, which can be seen as capability index with respect to a 1-sigma process.
+Three-$\sigma$ would thus simply be reported as $3$, 6-$\sigma$ as $6$, etc.
 
 
 Another index, known as $\cpm$, or the \emph{Taguchi capability index}, also deals with the non centring but slightly differently. \marginnote{Taguchi Index}
@@ -304,6 +304,11 @@ Now for the more general tests:
 \begin{think}
 Look at the relation between the hypotheses tested and the direction of the rejection region.
 Do you see why the confidence interval corresponds (only) to the two-directional hypothesis test?
+\end{think}
+
+\begin{think}
+	If $\sigma$ is estimated from a very large sample I can trust it without bothering with hypothesis testing. 
+	Try to show this formally using what you know of the distribution of $\cpHat$.
 \end{think}
 
 

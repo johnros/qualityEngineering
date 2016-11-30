@@ -579,19 +579,49 @@ This is known as \emph{consonant} tests. For more on that, the reader is referre
 
 
 
+
+
+
 \section[Multivariate extensions]{Multivariate Control- Extensions}
 
 Hotelling's \tsq is perhaps the first and most used multivariate test statistic.
 Just like the univariate t-test, however, it is hardly the only multivariate test \dots
 
 
-%\begin{example}[Cyber Monitoring System]
-%\label{eg:cyber}
-%Consider a server farm. 
-%All servers dump their status into logs. These include CPU loads, temperature, network I/O, etc.
-%The administrator is worried about an imminent attack, and is thus parsing the logs, and inspecting the on-line status on his dashboard.
-%He knows that the cyber-attacker is no amateur, so that if any fingerprint is left in the logs, it will be very subtle and manifested in very few CTQs\footnote{Clearly, these are not called CTQs, in this context. We are simply adhering to quality engineering terminology.}.
-%\end{example}
+
+
+
+\subsection{Temporal Pooling of Multivariate Charts}
+The basic problem: can we gain power by pooling multivariate data over several periods?
+Sure!
+
+\begin{definition}[Moving Sum Hotelling]
+	The \emph{Moving Sum Hotelling} chart in a window of $w$ periods ending at $t$, is defined as
+	\begin{align}
+	M_t:= T^2(X_t)+\dots+T^2(X_{t-w+1})
+	\end{align}
+	where \tsq is Hotelling's test statistic $X_t$ is the matrix of $n$ samples on $p$ measurements at period $t$. 
+\end{definition}
+As before, we will typically, but not necessarily, use $\hat{\Sigma}$ from period I in \tsq. 
+
+Since $T^2(X_t)$ is approximately $\chi^2_p$ distributed, periods are independent, and sums of Chi-square distributions are still Chi-square with the summed degrees of freedom\footnote{Trust me on this one.}, we have that for a process in control
+\begin{align}
+M_t \sim \chi^2_{wp}.
+\end{align}
+This readily suggests that the UCL for this chart is $\chi^2_{1-\alpha,wp}$. 
+
+\begin{think}
+	Is the moving sum Hotelling a Shewhart chart? 
+	Can you design more multivariate charts with period pooling? 
+	Can you derive their control limits?
+\end{think}
+
+
+
+
+
+
+
 
 
 \begin{example}[Vine Health]
@@ -607,14 +637,16 @@ We would like a multivariate version of the $s$ chart to monitor the health of o
 
 
 
-\subsection[Mutivariate s chart]{Mutivariate $s$ chart}
+\subsection[Multivariate s chart]{Multivariate $s^2$ Chart}
 \label{sec:multivarite_s}
 
 As discussed in the vine health example (Example \ref{eg:irrigation}), there are cases where the out-of-control behaviour is manifested in the covariance between CTQs, and not in their mean.
-Recalling the Exploratory Data Analysis Section (\ref{sec:exploratory}), the most popular measure of multivariate relation is the \emph{covariance matrix} (Definition~\ref{def:covariance}).
+Recalling the Exploratory Data Analysis Section (\ref{sec:exploratory}), the most popular measure of multivariate relation is the \emph{covariance matrix}, $\hat{\Sigma}$ (Definition~\ref{def:covariance}).
+To monitor changes in the correlations, we would like to compare the current covariance to its historic values, $\Sigma_0$. 
+We would thus like to monitor $\hat{\Sigma}_t-\Sigma_0$, which is a $p\times p$ matrix. 
 While we already know how to plot a matrix, plotting the evolution of a matrix in time, as is required for a control chart, is no simple task\footnote{Think about it. If a matrix is an image, then the evolution of a matrix in time is, well, simply a movie.}. 
 Without going into the details of multivariate statistics, the fundamental idea is to summarize the matrix by a single number, so that it may be easily plotted, and control limits computed. 
-We now provide several functions which can be thought of as \emph{norm} functions, which is a name for functions that can be thought of as the distance from zero. 
+We now provide several functions which can be thought of as \emph{norm} functions, i.e., functions that measure the ``distance'' from $\hat{\Sigma}_t$ to $\Sigma_0$. 
 
 
 
@@ -626,9 +658,7 @@ The \emph{Frobenius norm} of matrix $A$, \aka the \emph{Hilbert-Schmidt norm}, o
 \end{align}
 As such, it merely treats the matrix as a stacked vector, and computes the Euclidean distance of the vector from zero.
 \end{definition}
-
-
-
+Using the Frobenius (matrix) norm for the process control, we would be plotting the time evolution of $\normF{\hat{\Sigma}_t-\Sigma_0}$.
 
 
 \begin{definition}[Spectral norm]
@@ -637,7 +667,6 @@ Denoting the Euclidean distance of a vector $x$ from zero by $\norm{x}_{Euc}$, w
 	\norm{A}_{Spec} := \max_x \set{\norm{Ax}_{Euc}; \norm{x}_{Euc}=1}.
 \end{align}
 \end{definition}
-
 The geometry of this definition is depicted in Figure~\ref{fig:operator_norm}.
 
 \begin{figure}
@@ -651,12 +680,11 @@ On the right: the ellipse is the image of the unit circle after transformed by m
 \label{fig:operator_norm}
 \end{figure}
 
+Using the Spectral (matrix) norm for the process control, we would be plotting the time evolution of $\norm{\hat{\Sigma}_t-\Sigma_0}_{Spec}$.
 
 
-Equipped with any matrix norm, we may now generalize the $s$-chart by plotting the evolution of the (norm of the) covariance matrix and inspecting it for anomalies. 
-We also note that the \emph{determinant} function may also serve for the above purpose of mapping a matrix into a number. The determinant cannot be thought of as a distance function, but it may still provide a good alternative to visualize the evolution of a matrix over time. 
  
-We will not control limits for the generalized $s$ charts, but we do remind the reader that given a long enough Phase I, we can always look at the history for choosing the control limits. 
+We will not present control limits for the generalized $s$ charts, but we do remind the reader that given a long enough Phase I, we can always look at the past values of the statistic for choosing the control limits. 
 
 
 
@@ -824,35 +852,6 @@ Since a matrix defines a \emph{weighted graph} (and vise-versa), \aka a \emph{ne
 
 
 
-
-
-
-
-
-\subsection{Temporal Pooling of Multivariate Charts}
-The basic problem: can we gain power by pooling multivariate data over several periods?
-Sure!
-
-\begin{definition}[Moving Sum Hotelling]
-The \emph{Moving Sum Hotelling} chart in a window of $w$ periods ending at $t$, is defined as
-\begin{align}
-	M_t:= T^2(X_t)+\dots+T^2(X_{t-w+1})
-\end{align}
-where \tsq is Hotelling's test statistic $X_t$ is the matrix of $n$ samples on $p$ measurements at period $t$. 
-\end{definition}
-As before, we will typically, but not necessarily, use $\hat{\Sigma}$ from period I in \tsq. 
-
-Since $T^2(X_t)$ is approximately $\chi^2_p$ distributed, periods are independent, and sums of Chi-square distributions are still Chi-square with the summed degrees of freedom\footnote{Trust me on this one.}, we have that for a process in control
-\begin{align}
-	M_t \sim \chi^2_{wp}.
-\end{align}
-This readily suggests that the UCL for this chart is $\chi^2_{1-\alpha,wp}$. 
-
-\begin{think}
-Is the moving sum Hotelling a Shewhart chart? 
-Can you design more multivariate charts with period pooling? 
-Can you derive their control limits?
-\end{think}
 
 
 
