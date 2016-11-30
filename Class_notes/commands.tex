@@ -15,11 +15,16 @@
 \newtheorem{extra}{Extra Info}
 %\newtheorem{think}{Gedankenexperiment}
 %\newtheorem*{think}{Think about it \faLightbulbO}
-\newtheorem*{think}{Think about it}
 
 \newtheorem{example}{Example}
 
-
+\newenvironment{think}
+	{
+		\begin{tcolorbox}
+		\paragraph{Think about it.}
+	}{
+		\end{tcolorbox}
+}
 
 
 
