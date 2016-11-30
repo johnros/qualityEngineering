@@ -652,7 +652,7 @@ We now provide several functions which can be thought of as \emph{norm} function
 
 
 \begin{definition}[Frobenius norm]
-The \emph{Frobenius norm} of matrix $A$, \aka the \emph{Hilbert-Schmidt norm}, or \emph{Schur norm} is defined as:
+The \emph{Frobenius norm} of matrix $A$, \aka the \emph{Hilbert-Schmidt norm}, or \emph{Schur norm} is defined as:\marginnote{Hilbert-Schmidt norm,\\ Schur norm}
 \begin{align}
 	\normF{A}:= \sqrt{\sum_{ij} A_{ij}^2} 
 \end{align}
@@ -662,7 +662,7 @@ Using the Frobenius (matrix) norm for the process control, we would be plotting 
 
 
 \begin{definition}[Spectral norm]
-Denoting the Euclidean distance of a vector $x$ from zero by $\norm{x}_{Euc}$, we can denote a matrix's \emph{spectral norm}, \aka \emph{operator norm}, or \emph{induced norm}, by: 
+Denoting the Euclidean distance of a vector $x$ from zero by $\norm{x}_{Euc}$, we can denote a matrix's \emph{spectral norm}, \aka \emph{operator norm}, or \emph{induced norm}, by:\marginnote{Operator norm, \\ Induced norm}
 \begin{align}
 	\norm{A}_{Spec} := \max_x \set{\norm{Ax}_{Euc}; \norm{x}_{Euc}=1}.
 \end{align}
@@ -689,6 +689,13 @@ We will not present control limits for the generalized $s$ charts, but we do rem
 
 \begin{think}
 	The drill-down after a multivariate $s^2$-chart went out of control is more complicated than the drill-down after a multivariate \barxChart went out of control. 
+	Why is that?
+\end{think}
+
+
+\begin{think}
+	Like the Hotelling chart, there is no LCL, for these charts, only UCL. 
+	I.e., we only reject for large values of the matrix norms. 
 	Why is that?
 \end{think}
 
