@@ -5,27 +5,22 @@
 
 This chapter is devoted to the matter of designing studies, and follows the lines of \cite{cox_theory_2000} and \cite{cox_principles_2011}.
 As we will see, empirical studies come in many forms and shapes. 
-The most fundamental distinction is between \emph{observational studies} and \emph{designed experiments}.
+The most fundamental distinction is between \emph{observational studies} and \emph{designed experiments}.\marginnote{Observational Studies}
 This distinction is performed along our ability to control the studied effects, and will have crucial implications on the interpretation of results, and in particular, on causality claims. 
 
 
 
-\section{Types of studies}
 
-A control chart may be seen as an on-line experiment alerting us when the milk goes sour, but it will not tell us why. 
-When designing a product (remember DFSS \ref{sec:dfss}), or once a control chart has signaled an alert, we will want to know what \emph{controllable inputs} influenced our process, and how to reduce its variability.
-In our SPC terminology, we will want to know what are the \emph{causal effects} of our controllable inputs (\emph{factors}), on our \emph{CTQ} (\emph{response}). 
-The theory of discovering these effects is the theory of \emph{design of experiments} (DOE).
-Its goal is to \emph{screen} factors with no effect, 
-to estimate effect sizes, 
-find optimal factor-level combinations, 
-and remove assignable variability; 
-all these as efficiently as possibly.
+\section{Challenges in Empirical Studies}
 
-
-
-\subsection{Types of Studies}
-
+The challenges in all empirical studies, be it designed experiments, or observational are:
+\begin{description}
+	\item [Systematic errors] 
+	\item [Non-systematics errors]
+	\item [Uncertainty in conclusions]
+	\item [Efficiency]
+	\item [Range of validity]
+\end{description}
 
 \subsection{Dealing with Systematic Errors}
 
@@ -73,6 +68,15 @@ You may verify that the Horowitz-Thompson estimator in Definition~\ref{def:horow
 
 \section{DOE Preliminaries}
 \label{sec:DOE_preliminaries}
+
+When designing a product (remember DFSS \ref{sec:dfss}), or once a control chart has signaled an alert, we will want to know what \emph{controllable inputs} influenced our process, and how to reduce its variability.
+In our SPC terminology, we will want to know what are the \emph{causal effects} of our controllable inputs (\emph{factors}), on our \emph{CTQ} (\emph{response}). 
+The theory of discovering these effects is the theory of \emph{design of experiments} (DOE).
+Its goal is to \emph{screen} factors with no effect, 
+to estimate effect sizes, 
+find optimal factor-level combinations, 
+and remove assignable variability; 
+all these as efficiently as possibly.
 
 
 
