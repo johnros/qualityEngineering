@@ -58,16 +58,15 @@ Informally speaking, non-systematic errors are avoided by:
 
 
 \subsection{Sampling}
+
 The literature of sampling is divided between method for sampling in designed experiments, and sampling in observational studies. 
 In both cases, we will typically want sampling schemes that reduce the 
 
 
-\subsubsection{Improving precision}
-
 
 \subsubsection{Non-simple sampling}
 Throughout this chapter we will be considering simple random samples, where all the population units have the same probability of being sampled. 
-This is not always the case as illustrated in the next example.
+For completeness, we will emphasize that this is not always the case as illustrated in the next example.
 
 \begin{example}[Respondent Driven Sampling]
 	\label{ex:RDS}
@@ -90,8 +89,7 @@ To deal with over-representation we will want to weight each sample by its proba
 	where $i \in S$ means that $i$ has actually been sampled. 
 \end{definition}
 You may verify that the Horowitz-Thompson estimator in Definition~\ref{def:horowitz-thompson} return the usual sample mean, if the sampling is simple, thus all $\pi_i$ are equal. 
-
-
+From this point on, we ignore special sampling schemes and return to simple random sampling. 
 
 
 
@@ -100,16 +98,17 @@ You may verify that the Horowitz-Thompson estimator in Definition~\ref{def:horow
 \section{DOE Preliminaries}
 \label{sec:DOE_preliminaries}
 
+We will now discuss \emph{designed experiments}. 
+Observational studies are briefly discussed in Section~\ref{sec:observational}.
+
 When designing a product (remember DFSS \ref{sec:dfss}), or once a control chart has signaled an alert, we will want to know what \emph{controllable inputs} influenced our process, and how to reduce its variability.
 In our SPC terminology, we will want to know what are the \emph{causal effects} of our controllable inputs (\emph{factors}), on our \emph{CTQ} (\emph{response}). 
 The theory of discovering these effects is the theory of \emph{design of experiments} (DOE).
-Its goal is to \emph{screen} factors with no effect, 
-to estimate effect sizes, 
-find optimal factor-level combinations, 
+Its goal is to compare the response under various conditions in order to \emph{screen} factors with no effect, 
+to \emph{estimate} effect sizes, 
+find \emph{optimal} factor-level combinations, 
 and remove assignable variability; 
-all these as efficiently as possibly.
-
-
+all these as \emph{efficiently} as possibly.
 
 
 Several matters should be emphasized:
@@ -145,31 +144,10 @@ If asked, this author may recommend \cite{hocking_analysis_1985}, which presents
 \end{description}
 
 
-
-Roughly speaking, the challenges in designing good experiment are:
-\begin{enumerate}
-\item Avoid systematic errors: 
-correctly quantify the (causal) effect of each factor, without them ``absorbing'' other effects. 
-Put differently: avoid bias. 
-\item Reduce non systematic errors: 
-reduce variability to reveal factor effects.
-Put differently: improve signal-to-noise.
-\item Efficiency: 
-keep the scale of effort cost efficient, or even optimal in some sense. 
-\item Quantify Uncertainty:
-Quantify the uncertainty in reported effect magnitudes, alongside these magnitudes. 
-\end{enumerate}
+We start by establishing DOE terminology. 
 
 
-After establishing the required terminology, we will discuss design methods that deal with reduction of the noise, so that factor effects can be better detected and estimated (Section~\ref{sec:variance_components}).
-We will then discuss the efficiency of designs. 
-In particular, how to represent different treatments in a way that allows a single experimental condition, to be informative not only on itself, but also on other experimental conditions (Section~\ref{sec:factorial_design}).
-
-
-
-
-
-\section{Terminology}
+\subsection{Terminology}
 Many, if not most of the following terms, originate in R.A. Fisher's seminal book ``The Design of Experiments'' \citep{fisher_design_1960}. 
 As such, the DOE literature is rich in agricultural terms, due to its historical origins.
 When old ideas get new names, we try to emphasize this in the text.
@@ -250,7 +228,7 @@ The blocking in the design needs to be accounted at the time of the data analysi
 
 
 
-\section{Dealing with Systematic Errors}
+\section{Systematic Errors in Designed Experiments}
 
 Dealing with systematic errors is possibly the greatest concern in causal inference. 
 Be it a medical intervention, an industrial production process, an economic policy, or a social welfare plan- all of these critically rely on a fair assessment of the magnitude of the effect of the intervention. Bias is disastrous. 
@@ -290,7 +268,7 @@ Two ways to deal with such bias:
 
 
 
-\section{Dealing with Non Systematic Errors}
+\subsection{Non Systematic Errors in DOE}
 \label{sec:variance_components}
 %TODO: relate to imptoving precision in sampling. 
 
@@ -333,8 +311,9 @@ That is why \textbf{twins} are so popular when designing experiments!
 %TODO: update guage R&R experiments from Cox.
 \subsection{Gage R\&R Studies}
 R\&R stands for \emph{repeatability} and \emph{reproducibility}.
-In the context of quality control\footnote{Beware that these words are used with different meanings by different communities.} repeatability is the variability under \emph{test repeats}, and reproducibility is the variability when the same experiment is performed elsewhere (different lab, technician, etc.).
-Gage R\&R experiments are aimed at measuring the precision of an experiment, i.e. its repeatability and reproducibility, by collecting data from different test repeats performed at different labs. 
+These experiments are aimed at assessing the irreducible non-systematic errors in measurement and \emph{range of validity} of conclusions.
+As such, in a typical gauge R\&R experiment, measurement will be made under the same conditions in different labs, by different technicians, etc. 
+
 
 
 
