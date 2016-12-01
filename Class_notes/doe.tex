@@ -1,7 +1,7 @@
 \chapter{Design of Experiments}
 \chaptermark{DOE}
 
-This chapter is devoted to the matter of designing experiments, and follows the lines of \cite{cox_theory_2000} and \cite{cox_principles_2011}.
+This chapter is devoted to the matter of designing studies, and follows the lines of \cite{cox_theory_2000} and \cite{cox_principles_2011}.
 A control chart may be seen as an on-line experiment alerting us when the milk goes sour, but it will not tell us why. 
 When designing a product (remember DFSS \ref{sec:dfss}), or once a control chart has signaled an alert, we will want to know what \emph{controllable inputs} influenced our process, and how to reduce its variability.
 In our SPC terminology, we will want to know what are the \emph{causal effects} of our controllable inputs (\emph{factors}), on our \emph{CTQ} (\emph{response}). 
@@ -145,6 +145,39 @@ The blocking in the design needs to be accounted at the time of the data analysi
 
 
 
+
+
+
+
+
+\section{Sampling}
+
+Throughout this chapter we will be considering simple random samples, where all the population units have the same probability of being sampled. 
+This is not always the case as illustrated in the next example.
+
+\begin{example}[Respondent Driven Sampling]
+	\label{ex:RDS}
+	Consider the following chain-referral sampling scheme. 
+	A Facebook questionnaire is passed by rewarding respondents some credit if they name other respondents.
+	The probability of being sampled is thus not fixed for everyone, but rather a function of the number of your facebook friends.  
+	Now imagine the questionnaire is meant to estimate the market share of product Y.
+	It seems reasonable to assume that the more friends you have, the more likely you are to be sampled, and also, the more likely to be familiar with Y. 
+	This sampling scheme will thus lead to an upward biased estimate of Y's popularity.
+\end{example}
+
+If the non-simple sampling scheme in Example~\ref{ex:RDS} is not accounted for at the analysis stage, we will clearly have biased popularity estimates. 
+To deal with over-representation we will want to weight each sample by its probability of being sampled.
+\begin{definition}[Horowitz Thompson Estimator]
+	\label{def:horowitz-thompson}
+	If each unit $i$ has probability $\pi_i$ of being sampled and measured response $y_i$, then an unbiased estimate of the population mean of $y$ is given by 
+	\begin{align}
+	\frac{\sum_{i \in S} y_i/\pi_i}{\sum_{i \in S} 1/\pi_i},
+	\end{align}
+	where $i \in S$ means that $i$ has actually been sampled. 
+\end{definition}
+You may verify that the Horowitz-Thompson estimator in Definition~\ref{def:horowitz-thompson} return the usual sample mean, if the sampling is simple, thus all $\pi_i$ are equal. 
+
+
 \section{Dealing with Systematic Errors}
 
 Dealing with systematic errors is possibly the greatest concern in causal inference. 
@@ -187,6 +220,8 @@ Two ways to deal with such bias:
 
 \section{Dealing with Non Systematic Errors}
 \label{sec:variance_components}
+%TODO: groupings, and covariates. 
+
 
 The idea that random samples come with (common causes of) variability, i.e. noise, should not be new to the reader.
 In this section, we will try to decompose variability into it sources, and learn several techniques to reduce them. 
@@ -219,11 +254,17 @@ That is why \textbf{twins} are so popular when designing experiments!
 
 
 
+
+
+
+
 %TODO: update guage R&R experiments from Cox.
 \subsection{Gage R\&R Studies}
 R\&R stands for \emph{repeatability} and \emph{reproducibility}.
 In the context of quality control\footnote{Beware that these words are used with different meanings by different communities.} repeatability is the variability under \emph{test repeats}, and reproducibility is the variability when the same experiment is performed elsewhere (different lab, technician, etc.).
 Gage R\&R experiments are aimed at measuring the precision of an experiment, i.e. its repeatability and reproducibility, by collecting data from different test repeats performed at different labs. 
+
+
 
 
 
@@ -262,7 +303,8 @@ Another idea is to use each user as his own block, by introducing a temporal dim
 We could show all layouts to the same person. 
 This particular type of blocking is known as a \emph{crossover} design, discussed in Section~\ref{sec:crossover}.
 
-In summary, blocking is done in order to create homogenous groups.  
+In summary, blocking is done in order to create homogeneous groups. 
+Put differently: compare like-with-like. 
 One can block in along factors, covariates, or non-specific factors. 
 One can then compare treatments only within blocks (e.g. the paired sample t-test), thus gaining accuracy by avoiding the variability between blocks. 
 A good blocking strategy is such where blocks are very homogenous within themselves, but very different between themselves, at least with respect to the response being studied. 
@@ -893,6 +935,7 @@ See \cite{sacks_design_1989} or \cite{santner_design_2013} for further details.
 For an overview of DOE see \cite{cox_theory_2000}, \cite{mason_statistical_2003}, \cite{everitt_cambridge_2010}. 
 Another nice and freely available resource is a Penn State course on the topic\footnote{\url{https://onlinecourses.science.psu.edu/stat503/node/1}}. 
 Some seminal references in the field include \cite{fisher_design_1960} and \cite{box_statistics_1978}.
+For respondent driven sampling see \cite{berchenko_modeling_2013}.
 For causal inference in non-designed experiments see \cite{rosenbaum_observational_2002}. 
 For optimal designs see \cite{pukelsheim_optimal_1993}.
 For analysis of data: linear models, ANOVA, etc.\ there are endlessly many books. This author's recommendations include \cite{hocking_analysis_1985}, \cite{greene_econometric_2003}. 
