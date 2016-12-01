@@ -1,5 +1,8 @@
 \chapter{Design of Experiments}
 \chaptermark{DOE}
+\label{ch:doe}
+
+
 
 This chapter is devoted to the matter of designing studies, and follows the lines of \cite{cox_theory_2000} and \cite{cox_principles_2011}.
 A control chart may be seen as an on-line experiment alerting us when the milk goes sour, but it will not tell us why. 
@@ -150,33 +153,6 @@ The blocking in the design needs to be accounted at the time of the data analysi
 
 
 
-\section{Sampling}
-
-Throughout this chapter we will be considering simple random samples, where all the population units have the same probability of being sampled. 
-This is not always the case as illustrated in the next example.
-
-\begin{example}[Respondent Driven Sampling]
-	\label{ex:RDS}
-	Consider the following chain-referral sampling scheme. 
-	A Facebook questionnaire is passed by rewarding respondents some credit if they name other respondents.
-	The probability of being sampled is thus not fixed for everyone, but rather a function of the number of your facebook friends.  
-	Now imagine the questionnaire is meant to estimate the market share of product Y.
-	It seems reasonable to assume that the more friends you have, the more likely you are to be sampled, and also, the more likely to be familiar with Y. 
-	This sampling scheme will thus lead to an upward biased estimate of Y's popularity.
-\end{example}
-
-If the non-simple sampling scheme in Example~\ref{ex:RDS} is not accounted for at the analysis stage, we will clearly have biased popularity estimates. 
-To deal with over-representation we will want to weight each sample by its probability of being sampled.
-\begin{definition}[Horowitz Thompson Estimator]
-	\label{def:horowitz-thompson}
-	If each unit $i$ has probability $\pi_i$ of being sampled and measured response $y_i$, then an unbiased estimate of the population mean of $y$ is given by 
-	\begin{align}
-	\frac{\sum_{i \in S} y_i/\pi_i}{\sum_{i \in S} 1/\pi_i},
-	\end{align}
-	where $i \in S$ means that $i$ has actually been sampled. 
-\end{definition}
-You may verify that the Horowitz-Thompson estimator in Definition~\ref{def:horowitz-thompson} return the usual sample mean, if the sampling is simple, thus all $\pi_i$ are equal. 
-
 
 \section{Dealing with Systematic Errors}
 
@@ -220,7 +196,7 @@ Two ways to deal with such bias:
 
 \section{Dealing with Non Systematic Errors}
 \label{sec:variance_components}
-%TODO: groupings, and covariates. 
+%TODO: relate to imptoving precision in sampling. 
 
 
 The idea that random samples come with (common causes of) variability, i.e. noise, should not be new to the reader.

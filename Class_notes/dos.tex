@@ -1,10 +1,12 @@
 \chapter{Design of Studies}
 \chaptermark{DOS}
-
+\label{ch:DOS}
 
 \section{Types of Studies}
 
+
 \section{Dealing with Systematic Errors}
+
 
 \section{Dealing with Non-Systematic Errors}
 
@@ -12,14 +14,37 @@
 
 
 
+\section{Sampling}
+\subsection{Improving precision}
+%TODO: stratification + covaraites. 
+\subsection{Non-simple sampling}
+Throughout this chapter we will be considering simple random samples, where all the population units have the same probability of being sampled. 
+This is not always the case as illustrated in the next example.
+
+\begin{example}[Respondent Driven Sampling]
+	\label{ex:RDS}
+	Consider the following chain-referral sampling scheme. 
+	A Facebook questionnaire is passed by rewarding respondents some credit if they name other respondents.
+	The probability of being sampled is thus not fixed for everyone, but rather a function of the number of your facebook friends.  
+	Now imagine the questionnaire is meant to estimate the market share of product Y.
+	It seems reasonable to assume that the more friends you have, the more likely you are to be sampled, and also, the more likely to be familiar with Y. 
+	This sampling scheme will thus lead to an upward biased estimate of Y's popularity.
+\end{example}
+
+If the non-simple sampling scheme in Example~\ref{ex:RDS} is not accounted for at the analysis stage, we will clearly have biased popularity estimates. 
+To deal with over-representation we will want to weight each sample by its probability of being sampled.
+\begin{definition}[Horowitz Thompson Estimator]
+	\label{def:horowitz-thompson}
+	If each unit $i$ has probability $\pi_i$ of being sampled and measured response $y_i$, then an unbiased estimate of the population mean of $y$ is given by 
+	\begin{align}
+	\frac{\sum_{i \in S} y_i/\pi_i}{\sum_{i \in S} 1/\pi_i},
+	\end{align}
+	where $i \in S$ means that $i$ has actually been sampled. 
+\end{definition}
+You may verify that the Horowitz-Thompson estimator in Definition~\ref{def:horowitz-thompson} return the usual sample mean, if the sampling is simple, thus all $\pi_i$ are equal. 
+
+
+
+
 
 \section{Bibliographic Notes}
-For an overview of DOE see \cite{cox_theory_2000}, \cite{mason_statistical_2003}, \cite{everitt_cambridge_2010}. 
-Another nice and freely available resource is a Penn State course on the topic\footnote{\url{https://onlinecourses.science.psu.edu/stat503/node/1}}. 
-Some seminal references in the field include \cite{fisher_design_1960} and \cite{box_statistics_1978}.
-For respondent driven sampling see \cite{berchenko_modeling_2013}.
-For causal inference in non-designed experiments see \cite{rosenbaum_observational_2002}. 
-For optimal designs see \cite{pukelsheim_optimal_1993}.
-For analysis of data: linear models, ANOVA, etc.\ there are endlessly many books. This author's recommendations include \cite{hocking_analysis_1985}, \cite{greene_econometric_2003}. 
-For the relation between factorial designs and coding theory in computer science, see \cite{hill_first_1986}. 
-For design and analysis of computer experiments, see \cite{sacks_design_1989} or \cite{santner_design_2013}.
