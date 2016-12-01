@@ -422,7 +422,9 @@ Table~\ref{tab:crossover} demonstrates the $3!=6$ sequences for a $3$ treatment 
 
 In the previous section we discussed methods of reducing the variability in the response to each treatment, so that we can better reveal differences between treatments. 
 In the current section we will break treatments into smaller building blocks; \emph{factors}.
-By doing so we will be able to extrapolate from observed treatments, to unobserved treatments. This, in turn, will allow us to reduce the costs of experiments.
+By doing so we will gain efficiency. 
+Each sample will give us information on the effect of various \emph{factors}.
+We will also be able to learn if the effect of factors are additive, or non additive, and we will be able to extrapolate from observed treatments, to unobserved treatments. 
 
 
 \begin{example}[Web design revisited]
@@ -757,7 +759,7 @@ The response surface methodology is similar to the Central Composite Design of S
 
 
 
-\section{The Industrial Emphasis}
+\section{An Industrial Emphasis}
 The following approaches are particularly popular in industrial settings.
 
 \subsection{Plackett-Burman design}
@@ -988,20 +990,36 @@ See \cite{sacks_design_1989} or \cite{santner_design_2013} for further details.
 \section{Observational Studies}
 \label{sec:observational}
 
+In this section we abandon controlled experiments, in which we were able to randomize, and choose the factors levels to be measured.
+In observational studies, we have no such controls. 
+As such, there are no \emph{factors}, but rather, only covariates. 
+
+Observational studies classify into:
+\begin{description}
+	\item[Cross Sectional] Where each sample unit, i.e. individual, is observed in a single point in time. 
+	\item[Prospective] Where each sample unit is observed on various occasions in the future. 
+	\item[Retrospective] Where measurements are recovered on sample units from the past, based on some outcome. 
+\end{description}
+
 
 \subsection{Cross Sectional}
 \label{sec:cross_section}
 
+In \emph{cross-sectional} studies, each sample unit, or individual, is observed in a single point in time. 
 
 \subsection{Prospective}
 \label{sec:prospective}
-
+TODO
 
 \subsection{Retrospective}
 \label{sec:restospective}
+TODO
+
 
 \subsection{Causal Inference}
 \label{sec:causal}
+TODO
+
 
 
 
