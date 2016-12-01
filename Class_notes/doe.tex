@@ -145,6 +145,44 @@ The blocking in the design needs to be accounted at the time of the data analysi
 
 
 
+\section{Dealing with Systematic Errors}
+
+Dealing with systematic errors is possibly the greatest concern in causal inference. 
+Be it a medical intervention, an industrial production process, an economic policy, or a social welfare plan- all of these critically rely on a fair assessment of the magnitude of the effect of the intervention. Bias is disastrous. 
+
+Bias originates from two sources.
+The first is some unwelcome property of the data collecting process. 
+The second is by the leakage of some personal judgment into the measuring or analysis. 
+
+\begin{example}[Judgment leaking into measurements]
+	Consider cancer patients assigning themselves to the treatment or placebo groups. 
+	This \emph{self selection} will clearly bias the reported effect of the new drug (who would willingly choose the placebo?!?). \marginnote{Self Selection}
+\end{example}
+
+
+\begin{example}[Judgment leaking into analysis]
+	Return to the new-drug experiment. 
+	This time, imagine the data analysis, an employee of the pharmaceutical company, known that ``Drug A'' is the new drug his company has been working on, which will grant him a considerable bonus if marketed. 
+	Can he be expected to perform a fair analysis?
+\end{example}
+
+Two ways to deal with such bias:
+\begin{description}
+	\item [Balanced Design]
+	In the simplest interpretation of ``balance'' we mean a design where an equal number of units is assigned to each treatment.
+	More generally, we will keep ``balance'' by \emph{randomization}, and implying some symmetry in the combinatorial design of the experiment. 
+	
+	\item [Bliding]
+	By blinding we mean that personnel is unaware of the factors being studied. 
+	In regular blinding, subject are unaware of the treatment they are being administered. 
+	In \emph{double blinding}, the experimenters and analysis are unaware of the treatments they are studying. 	 
+	
+\end{description}
+
+
+
+
+
 
 
 \section{Dealing with Non Systematic Errors}
@@ -283,43 +321,6 @@ Table~\ref{tab:crossover} demonstrates the $3!=6$ sequences for a $3$ treatment 
 
 
 
-\section{Dealing with Systematic Errors}
-
-Dealing with systematic errors is possibly the greatest concern in causal inference. 
-Be it a medical intervention, an industrial production process, an economic policy, or a social welfare plan- all of these critically rely on a fair assessment of the magnitude of the effect of the intervention. Bias is disastrous. 
-
-Bias originates from two sources.
-The first is some unwelcome property of the data collecting process. 
-The second is by the leakage of some personal judgment into the measuring or analysis. 
-
-\begin{example}[Judgment leaking into measurements]
-Consider cancer patients assigning themselves to the treatment or placebo groups. 
-This \emph{self selection} will clearly bias the reported effect of the new drug (who would willingly choose the placebo?!?). \marginnote{Self Selection}
-\end{example}
-
-
-\begin{example}[Judgment leaking into analysis]
-Return to the new-drug experiment. 
-This time, imagine the data analysis, an employee of the pharmaceutical company, known that ``Drug A'' is the new drug his company has been working on, which will grant him a considerable bonus if marketed. 
-Can he be expected to perform a fair analysis?
-\end{example}
-
-Two ways to deal with such bias:
-\begin{description}
-	\item [Balanced Design]
-	In the simplest interpretation of ``balance'' we mean a design where an equal number of units is assigned to each treatment.
-	More generally, we will keep ``balance'' by \emph{randomization}, and implying some symmetry in the combinatorial design of the experiment. 
-	
-	\item [Bliding]
-	By blinding we mean that personnel is unaware of the factors being studied. 
-	In regular blinding, subject are unaware of the treatment they are being administered. 
-	In \emph{double blinding}, the experimenters and analysis are unaware of the treatments they are studying. 	 
-
-\end{description}
-
-This type of bias is dealt with by 
-
-A second example of leakage of judgment is demonstrated by a 
 
 
 
