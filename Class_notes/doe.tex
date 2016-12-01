@@ -3,8 +3,15 @@
 \label{ch:doe}
 
 
-
 This chapter is devoted to the matter of designing studies, and follows the lines of \cite{cox_theory_2000} and \cite{cox_principles_2011}.
+As we will see, empirical studies come in many forms and shapes. 
+The most fundamental distinction is between \emph{observational studies} and \emph{designed experiments}.
+This distinction is performed along our ability to control the studied effects, and will have crucial implications on the interpretation of results, and in particular, on causality claims. 
+
+
+
+\section{Types of studies}
+
 A control chart may be seen as an on-line experiment alerting us when the milk goes sour, but it will not tell us why. 
 When designing a product (remember DFSS \ref{sec:dfss}), or once a control chart has signaled an alert, we will want to know what \emph{controllable inputs} influenced our process, and how to reduce its variability.
 In our SPC terminology, we will want to know what are the \emph{causal effects} of our controllable inputs (\emph{factors}), on our \emph{CTQ} (\emph{response}). 
@@ -14,6 +21,60 @@ to estimate effect sizes,
 find optimal factor-level combinations, 
 and remove assignable variability; 
 all these as efficiently as possibly.
+
+
+
+\subsection{Types of Studies}
+
+
+\subsection{Dealing with Systematic Errors}
+
+
+\subsection{Dealing with Non-Systematic Errors}
+
+
+
+
+
+\subsection{Sampling}
+\subsubsection{Improving precision}
+%TODO: stratification + covaraites. 
+\subsubsection{Non-simple sampling}
+Throughout this chapter we will be considering simple random samples, where all the population units have the same probability of being sampled. 
+This is not always the case as illustrated in the next example.
+
+\begin{example}[Respondent Driven Sampling]
+	\label{ex:RDS}
+	Consider the following chain-referral sampling scheme. 
+	A Facebook questionnaire is passed by rewarding respondents some credit if they name other respondents.
+	The probability of being sampled is thus not fixed for everyone, but rather a function of the number of your facebook friends.  
+	Now imagine the questionnaire is meant to estimate the market share of product Y.
+	It seems reasonable to assume that the more friends you have, the more likely you are to be sampled, and also, the more likely to be familiar with Y. 
+	This sampling scheme will thus lead to an upward biased estimate of Y's popularity.
+\end{example}
+
+If the non-simple sampling scheme in Example~\ref{ex:RDS} is not accounted for at the analysis stage, we will clearly have biased popularity estimates. 
+To deal with over-representation we will want to weight each sample by its probability of being sampled.
+\begin{definition}[Horowitz Thompson Estimator]
+	\label{def:horowitz-thompson}
+	If each unit $i$ has probability $\pi_i$ of being sampled and measured response $y_i$, then an unbiased estimate of the population mean of $y$ is given by 
+	\begin{align}
+	\frac{\sum_{i \in S} y_i/\pi_i}{\sum_{i \in S} 1/\pi_i},
+	\end{align}
+	where $i \in S$ means that $i$ has actually been sampled. 
+\end{definition}
+You may verify that the Horowitz-Thompson estimator in Definition~\ref{def:horowitz-thompson} return the usual sample mean, if the sampling is simple, thus all $\pi_i$ are equal. 
+
+
+
+
+
+
+
+\section{DOE Preliminaries}
+\label{sec:DOE_preliminaries}
+
+
 
 
 Several matters should be emphasized:
@@ -904,6 +965,32 @@ The wind design example (\ref{eg:wings}) demonstrates the following points:
 It is thus not uncommon to call upon DOE theory for choosing the factor combinations to be experimented with. Space filling designs (Sec.~\ref{sec:space_filling}) being a particularly prevalent choice. 
 The analysis of computer experiment is very different than real-life experiment since we have no noise component. 
 See \cite{sacks_design_1989} or \cite{santner_design_2013} for further details. 
+
+
+
+
+
+
+\section{Observational Studies}
+\label{sec:observational}
+
+
+\subsection{Cross Sectional}
+\label{sec:cross_section}
+
+
+\subsection{Prospective}
+\label{sec:prospective}
+
+
+\subsection{Retrospective}
+\label{sec:restospective}
+
+\subsection{Causal Inference}
+\label{sec:causal}
+
+
+
 
 
 
