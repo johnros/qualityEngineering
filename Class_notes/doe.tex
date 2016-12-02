@@ -984,15 +984,24 @@ See \cite{sacks_design_1989} or \cite{santner_design_2013} for further details.
 
 
 
-
-
-
 \section{Observational Studies}
 \label{sec:observational}
 
 In this section we abandon controlled experiments, in which we were able to randomize, and choose the factors levels to be measured.
 In observational studies, we have no such controls. 
 As such, there are no \emph{factors}, but rather, only covariates. 
+
+
+\begin{example}[Post-sale testing]
+	\label{ex:post-sale}
+	Consider the notorious Galaxy Note7, or any car, plane, smartphone, or software. 
+	Bug malfunctions will always be found after launch.
+	One way to discover what triggers the malfunction is to replicate it under a designed experiment. 
+	A possibly better way is to collect failure data post-sale.
+	This is why your software asks you to send crash reports. 
+	This is why plane and engine manufacturers equip top engines with sensors and communications, to be transmitted constantly. 	
+\end{example}
+
 
 Observational studies classify into:
 \begin{description}
@@ -1004,15 +1013,51 @@ Observational studies classify into:
 
 Being the simplest type of observational study, there really not much to say about \emph{cross sectional} studies, except a vivid warning against causal inference from such studies (see \ref{sec:causal}).
 
-In \emph{prospective studies}, \aka \emph{longitudinal data}, or \emph{event-history profile} sampling units are selected and then measured over time alongside covariates. \marginnote{``Longitudinal Data''\\``Event-History Profile''}
+In \emph{prospective studies}, \aka \emph{longitudinal data}, or \emph{event-history profile} sampling units are selected and then measured over time alongside covariates. \marginnote{Longitudinal Data}
 
 For the study of rare outcomes, prospective studies may be very wasteful. 
-Retrospective studies remedy this by collecting units with the desired outcome, and only then matching them with controls and recovering their event history. 
+Retrospective studies, \aka \emph{case-control studies} remedy this by collecting units with the desired outcome, and only then matching them with controls and recovering their event history. In the words of \cite{cox_principles_2011}: {\em \dots a prospective study looks for the effects of causes whereas a retrospective study examines the causes of effects}.\marginnote{Case-Control Study}
 This is clearly not a random sample in the population, so it is unclear that inference in retrospective studies is valid. 
 
-\begin{example}[Valid retrospective inference]
-	
-\end{example}
+To demonstrate the difference between the sampling schemes consider a binary outcome $Y\in\set{0,1}$ and a binary covariate $X\in\set{0,1}$. 
+In terms of the post-sale problem in Example~\ref{ex:post-sale}, $X$ can stand a version indicator, and $Y$ a failure indicator. 
+The effect of $X$ on $Y$, i.e., the difference in failure probabilities, is given by
+\begin{align}
+	\theta:= P(Y=1|X=1)-P(Y=1|X=0).
+\end{align}
+You may immediately verify that $\theta=0$ if $Y$ is independent of $X$. 
+How can it be estimated from the various studies?
+In our example-- how can we recover the difference between the failure rates of the different versions, under the various sampling schemes?
+
+A prospective study means that we decide how many samples of each version to take and wait until some fail, and then compare the failure probabilities. 
+Formally this means we can estimate $P(Y=1|X=1)$ and $P(Y=1|X=0)$.
+Estimating $\theta$ is trivial. 
+
+A cross section study means we sample randomly in ``pile'' of devices of all versions and states. 
+We thus get an estimate of the proportion of each $X,Y$ combination, and need to relate it to the difference in failure probabilities. 
+Formally, we estimate all $P(Y,X)$'s, which for brevity we denote $\pi_{yx}$.
+For example $\pi_{00}$ for $P(Y=0,X=0)$ etc. 
+Via Bayes' Theorem we then have 
+\begin{align*}
+	\theta 
+	&= \frac{P(Y=1,X=1)}{P(X=1)}-\frac{P(Y=1,X=0)}{P(X=0)} \\
+	&= \frac{\pi_{11}}{\pi_{01}+\pi_{11}}-\frac{\pi_{10}}{\pi_{00}+\pi_{10}},
+\end{align*}
+which we can use to estimate $\theta$. 
+
+A retrospective study means that we sample a fixed number of working and broken devices. 
+Formally, this means we estimate $P(X|Y)$. 
+Via Bayes' Theorem we then have 
+####
+\begin{align*}
+	\theta
+	&= \frac{P(Y=1,X=1)}{P(X=1)}-\frac{P(Y=1,X=0)}{P(X=0)} \\
+	&= \frac{\pi_{11}}{\pi_{01}+\pi_{11}}-\frac{\pi_{10}}{\pi_{00}+\pi_{10}},
+	\end{align*}
+which we can use to estimate $\theta$. 
+
+
+
 
 
 
