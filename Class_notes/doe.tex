@@ -1013,7 +1013,7 @@ Observational studies classify into:
 
 Being the simplest type of observational study, there really not much to say about \emph{cross sectional} studies, except a vivid warning against causal inference from such studies (see \ref{sec:causal}).
 
-In \emph{prospective studies}, \aka \emph{longitudinal data}, or \emph{event-history profile} sampling units are selected and then measured over time alongside covariates. \marginnote{Longitudinal Data}
+In \emph{prospective studies}, \aka \emph{longitudinal data}, or \emph{cohort study}, sampling units are selected and then measured over time alongside covariates. \marginnote{Longitudinal Data}
 
 For the study of rare outcomes, prospective studies may be very wasteful. 
 Retrospective studies, \aka \emph{case-control studies} remedy this by collecting units with the desired outcome, and only then matching them with controls and recovering their event history. In the words of \cite{cox_principles_2011}: {\em \dots a prospective study looks for the effects of causes whereas a retrospective study examines the causes of effects}.\marginnote{Case-Control Study}
@@ -1040,19 +1040,20 @@ For example $\pi_{00}$ for $P(Y=0,X=0)$ etc.
 Via Bayes' Theorem we then have 
 \begin{align*}
 	\theta 
-	&= \frac{P(Y=1,X=1)}{P(X=1)}-\frac{P(Y=1,X=0)}{P(X=0)} \\
+	&= P(Y=1|X=1) - P(Y=1|X=0) \\
+	&= \frac{P(Y=1,X=1)}{P(X=1)} - \frac{P(Y=1,X=0)}{P(X=0)} \\
 	&= \frac{\pi_{11}}{\pi_{01}+\pi_{11}}-\frac{\pi_{10}}{\pi_{00}+\pi_{10}},
 \end{align*}
 which we can use to estimate $\theta$. 
 
-A retrospective study means that we sample a fixed number of working and broken devices. 
-Formally, this means we estimate $P(X|Y)$. 
-Via Bayes' Theorem we then have 
-####
+A retrospective study means that we sample a fixed number of working or broken devices. 
+We can thus estimate the frequency of each version given the outcome: $P(X|Y)$, which we denote by $\pi_{x|y}$ for brevity.
+We use Bayes' Theorem to relate to $\theta$:
 \begin{align*}
 	\theta
-	&= \frac{P(Y=1,X=1)}{P(X=1)}-\frac{P(Y=1,X=0)}{P(X=0)} \\
-	&= \frac{\pi_{11}}{\pi_{01}+\pi_{11}}-\frac{\pi_{10}}{\pi_{00}+\pi_{10}},
+	&= P(Y=1|X=1) - P(Y=1|X=0) \\
+	&= \frac{P(X=1|Y=1)P(Y=1)}{P(X=1)} - \frac{P(Y=1,X=0)}{P(X=0)} \\
+	&= \frac{\pi_{1|1}(\pi_{1|1})}{\pi_{01}+\pi_{11}}-\frac{\pi_{10}}{\pi_{00}+\pi_{10}},
 	\end{align*}
 which we can use to estimate $\theta$. 
 
