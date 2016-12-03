@@ -1049,41 +1049,54 @@ Just in order to emphasize what the OR is \textbf{not}, we also define the \emph
 	RR := \frac{P(Y=1|X=1)}{P(Y=1|X=0)}.
 	\end{align}
 \end{definition}
-
 You may not verify that if $X$ has not effect on $Y$, then both $OR=1$ and $RR=1$. 
-
 We now show how the $OR$ can be estimated from the various studies designs. 
 
 
+\paragraph{Prospective Study} 
 A prospective study means that we decide how many samples of each version to take and wait until some fail, and then compare the failure probabilities. 
 Formally this means we can estimate $P(Y=1|X=1)$ and $P(Y=1|X=0)$.
-Estimating $\theta$ is trivial. 
+Estimating $OR$ is trivial is thus trivial.
 
-In this example, a cross section study implies the unprovable scenario where we sample randomly in a ``pile'' of devices of all versions and states. 
+
+\paragraph{Retrospective Study}
+A retrospective study means that we sample a fixed number of working or broken devices. 
+We can thus estimate the frequency of each version given the outcome: $P(X|Y)$.
+To relate it to the $OR$, we will need to relate the estimable $P(X|Y)$, to the desired $P(Y|X)$ via Bayes' Theorem: 
+\begin{align}
+\label{eq:bayes}
+	P(Y|X)=P(X|Y)P(Y)/P(X)
+\end{align}
+
+Several applications of Eq.(~\ref{eq:bayes}) yields that 
+\begin{align}
+\label{eq:retrospective_OR}
+	OR 	&= \frac{P(X=1|Y=1)/P(X=1|Y=0)}{P(X=0|Y=1)/P(X=0|Y=0)}.
+\end{align}
+Eq.(\ref{eq:retrospective_OR}) is very good news. 
+It means that we even if we sample retrospectively, we can estimate the OR as if we sampled prospectively. 
+
+\begin{think}
+	Can we estimate other effect measures such as the RR from a retrospective study?
+\end{think}
+
+
+
+\paragraph{Cross-Section}
+A cross-section study is not a probable sampling scheme for our post-purchase analysis. 
+It implies that we sample randomly in a ``pile'' of devices of all versions and states. 
 We thus get an estimate of the proportion of each $X,Y$ combination, and need to relate it to the difference in failure probabilities. 
 Formally, we estimate all $P(Y,X)$'s, which for brevity we denote $\pi_{yx}$.
 For example $\pi_{00}$ for $P(Y=0,X=0)$ etc. 
 Via Bayes' Theorem we then have 
 \begin{align*}
-	\theta 
-	&= P(Y=1|X=1) / P(Y=1|X=0) \\
-	&= \frac{P(Y=1,X=1)}{P(X=1)} / \frac{P(Y=1,X=0)}{P(X=0)} \\
-	&= \frac{\pi_{11}}{\pi_{01}+\pi_{11}} / \frac{\pi_{10}}{\pi_{00}+\pi_{10}},
+	OR = \frac{\pi_{11}\pi_{00}}{\pi_{10}\pi_{01}},
 \end{align*}
-which we can use to estimate $\theta$. 
+we shows that the OR can also be estimated from a cross-section study.
 
-A retrospective study means that we sample a fixed number of working or broken devices. 
-We can thus estimate the frequency of each version given the outcome: $P(X|Y)$, which we denote by $\pi_{x|y}$ for brevity.
-We use Bayes' Theorem to relate to $\theta$:
-\begin{align*}
-	\theta
-	&= P(Y=1|X=1) / P(Y=1|X=0) \\
-	&= \frac{P(X=1|Y=1)P(Y=1)}{P(X=1)} / \frac{P(X=0|Y=1)P(Y=1)}{P(X=0)} \\
-	&= \frac{P(X=1|Y=1)}{P(X=1)} / \frac{P(X=0|Y=1)}{P(X=0)} \\
-	\end{align*}
-which we can use to estimate $\theta$. 
-
-
+\begin{think}
+	Can you estimate the RR from a cross section study?
+\end{think}
 
 
 \begin{think}
@@ -1091,6 +1104,10 @@ which we can use to estimate $\theta$.
 	Is such a practice consistent with the designed experiment or the observational view of a study?
 	If observational, is it cross sectional? Prospective? Retrospective? 
 \end{think}
+
+
+
+
 
 \subsection{Causal Inference}
 \label{sec:causal}
