@@ -1,8 +1,9 @@
 \addvspace {10\p@ }
+\contentsline {extra}{\numberline {1}Extra Info\thmtformatoptarg {Smoking and Cancer}}{12}{extra.1}
 \contentsline {remark}{\numberline {1}Remark\thmtformatoptarg {PPM of Six-Sigma}}{16}{remark.1}
-\contentsline {extra}{\numberline {1}Extra Info}{17}{extra.1}
+\contentsline {extra}{\numberline {2}Extra Info}{17}{extra.2}
 \addvspace {10\p@ }
-\contentsline {extra}{\numberline {2}Extra Info}{19}{extra.2}
+\contentsline {extra}{\numberline {3}Extra Info}{19}{extra.3}
 \contentsline {definition}{\numberline {1}Definition\thmtformatoptarg {The Mean}}{19}{definition.1}
 \contentsline {definition}{\numberline {2}Definition\thmtformatoptarg {The Median}}{20}{definition.2}
 \contentsline {definition}{\numberline {3}Definition\thmtformatoptarg {$\alpha $-Trimmed Mean}}{20}{definition.3}
@@ -16,15 +17,15 @@
 \contentsline {definition}{\numberline {11}Definition\thmtformatoptarg {Pearson's Correlation Coefficient}}{21}{definition.11}
 \contentsline {definition}{\numberline {12}Definition\thmtformatoptarg {Spearman's Correlation Coefficient}}{21}{definition.12}
 \contentsline {definition}{\numberline {13}Definition\thmtformatoptarg {Covariance Matrix}}{21}{definition.13}
-\contentsline {extra}{\numberline {3}Extra Info\thmtformatoptarg {Sample Covariance Matrix}}{21}{extra.3}
+\contentsline {extra}{\numberline {4}Extra Info\thmtformatoptarg {Sample Covariance Matrix}}{21}{extra.4}
 \contentsline {definition}{\numberline {14}Definition\thmtformatoptarg {Correlation Matrix}}{21}{definition.14}
-\contentsline {extra}{\numberline {4}Extra Info\thmtformatoptarg {Multivariate Data Analysis}}{21}{extra.4}
+\contentsline {extra}{\numberline {5}Extra Info\thmtformatoptarg {Multivariate Data Analysis}}{21}{extra.5}
 \contentsline {remark}{\numberline {2}Remark\thmtformatoptarg {Pie Chart}}{22}{remark.2}
 \addvspace {10\p@ }
-\contentsline {extra}{\numberline {5}Extra Info\thmtformatoptarg {ROC termininology}}{30}{extra.5}
+\contentsline {extra}{\numberline {6}Extra Info\thmtformatoptarg {ROC termininology}}{30}{extra.6}
 \contentsline {definition}{\numberline {15}Definition\thmtformatoptarg {Chi-Square GOF Test}}{31}{definition.15}
 \contentsline {definition}{\numberline {16}Definition\thmtformatoptarg {Kolmogorov\IeC {\textendash }Smirnov GOF Test}}{32}{definition.16}
-\contentsline {extra}{\numberline {6}Extra Info\thmtformatoptarg {GOF tests}}{32}{extra.6}
+\contentsline {extra}{\numberline {7}Extra Info\thmtformatoptarg {GOF tests}}{32}{extra.7}
 \addvspace {10\p@ }
 \contentsline {definition}{\numberline {17}Definition\thmtformatoptarg {$C_p$}}{33}{definition.17}
 \contentsline {definition}{\numberline {18}Definition\thmtformatoptarg {$\mathaccentV {hat}05E{C}_p$}}{33}{definition.18}
@@ -38,27 +39,27 @@
 \contentsline {remark}{\numberline {4}Remark\thmtformatoptarg {Control Charts and Capability Analysis}}{39}{remark.4}
 \contentsline {remark}{\numberline {5}Remark\thmtformatoptarg {3-Sigma rule}}{41}{remark.5}
 \contentsline {remark}{\numberline {6}Remark\thmtformatoptarg {3-Sigma Control Limits vs. 3-Sigma Capability}}{41}{remark.6}
-\contentsline {extra}{\numberline {7}Extra Info\thmtformatoptarg {Operator Characteristics}}{41}{extra.7}
+\contentsline {extra}{\numberline {8}Extra Info\thmtformatoptarg {Operator Characteristics}}{41}{extra.8}
 \contentsline {remark}{\numberline {7}Remark\thmtformatoptarg {ARL more important than type-I error}}{42}{remark.7}
-\contentsline {extra}{\numberline {8}Extra Info\thmtformatoptarg {Non Normal CTQ}}{43}{extra.8}
-\contentsline {extra}{\numberline {9}Extra Info\thmtformatoptarg {Stopping Rules}}{44}{extra.9}
+\contentsline {extra}{\numberline {9}Extra Info\thmtformatoptarg {Non Normal CTQ}}{43}{extra.9}
+\contentsline {extra}{\numberline {10}Extra Info\thmtformatoptarg {Stopping Rules}}{44}{extra.10}
 \contentsline {remark}{\numberline {8}Remark\thmtformatoptarg {No longer Shewhart}}{45}{remark.8}
 \contentsline {remark}{\numberline {9}Remark\thmtformatoptarg {One observation at a time}}{45}{remark.9}
 \contentsline {definition}{\numberline {22}Definition\thmtformatoptarg {MA}}{46}{definition.22}
 \contentsline {definition}{\numberline {23}Definition\thmtformatoptarg {EWMA}}{46}{definition.23}
-\contentsline {extra}{\numberline {10}Extra Info}{48}{extra.10}
+\contentsline {extra}{\numberline {11}Extra Info}{48}{extra.11}
 \contentsline {example}{\numberline {2}Example\thmtformatoptarg {Intensive Care Unit}}{48}{example.2}
 \contentsline {definition}{\numberline {24}Definition\thmtformatoptarg {Hotteling's $T^2$ statistic}}{48}{definition.24}
 \contentsline {remark}{\numberline {10}Remark\thmtformatoptarg {Multivariate t or Multivariate Z?}}{49}{remark.10}
-\contentsline {extra}{\numberline {11}Extra Info\thmtformatoptarg {Many name to the drill-down}}{49}{extra.11}
-\contentsline {extra}{\numberline {12}Extra Info\thmtformatoptarg {Consonant tests}}{49}{extra.12}
+\contentsline {extra}{\numberline {12}Extra Info\thmtformatoptarg {Many name to the drill-down}}{49}{extra.12}
+\contentsline {extra}{\numberline {13}Extra Info\thmtformatoptarg {Consonant tests}}{49}{extra.13}
 \contentsline {definition}{\numberline {25}Definition\thmtformatoptarg {Moving Sum Hotelling}}{50}{definition.25}
 \contentsline {example}{\numberline {3}Example\thmtformatoptarg {Vine Health}}{50}{example.3}
 \contentsline {definition}{\numberline {26}Definition\thmtformatoptarg {Frobenius norm}}{50}{definition.26}
 \contentsline {definition}{\numberline {27}Definition\thmtformatoptarg {Spectral norm}}{51}{definition.27}
-\contentsline {extra}{\numberline {13}Extra Info\thmtformatoptarg {Matrices and graphs}}{51}{extra.13}
+\contentsline {extra}{\numberline {14}Extra Info\thmtformatoptarg {Matrices and graphs}}{51}{extra.14}
 \contentsline {remark}{\numberline {11}Remark\thmtformatoptarg {Economical Design of Control Charts}}{51}{remark.11}
-\contentsline {extra}{\numberline {14}Extra Info}{52}{extra.14}
+\contentsline {extra}{\numberline {15}Extra Info}{52}{extra.15}
 \addvspace {10\p@ }
 \contentsline {example}{\numberline {4}Example\thmtformatoptarg {Respondent Driven Sampling}}{55}{example.4}
 \contentsline {definition}{\numberline {28}Definition\thmtformatoptarg {Horowitz Thompson Estimator}}{55}{definition.28}
@@ -71,15 +72,15 @@
 \contentsline {remark}{\numberline {13}Remark\thmtformatoptarg {Popularity of $2^k$}}{61}{remark.13}
 \contentsline {remark}{\numberline {14}Remark\thmtformatoptarg {Intermediate Factor Levels}}{62}{remark.14}
 \contentsline {example}{\numberline {10}Example\thmtformatoptarg {From $2^2$ to $2^{2-1}$}}{62}{example.10}
-\contentsline {extra}{\numberline {15}Extra Info\thmtformatoptarg {Coding Theory}}{63}{extra.15}
+\contentsline {extra}{\numberline {16}Extra Info\thmtformatoptarg {Coding Theory}}{63}{extra.16}
 \contentsline {example}{\numberline {11}Example\thmtformatoptarg {Design for linear regression}}{65}{example.11}
 \contentsline {example}{\numberline {12}Example\thmtformatoptarg {Design for non linear regression}}{65}{example.12}
-\contentsline {extra}{\numberline {16}Extra Info\thmtformatoptarg {Space Filling and Hashing}}{66}{extra.16}
+\contentsline {extra}{\numberline {17}Extra Info\thmtformatoptarg {Space Filling and Hashing}}{66}{extra.17}
 \contentsline {definition}{\numberline {29}Definition\thmtformatoptarg {A-Optimality}}{67}{definition.29}
 \contentsline {definition}{\numberline {30}Definition\thmtformatoptarg {D-Optimality}}{67}{definition.30}
-\contentsline {extra}{\numberline {17}Extra Info\thmtformatoptarg {Other Optimality Criteria}}{67}{extra.17}
-\contentsline {extra}{\numberline {18}Extra Info\thmtformatoptarg {Active Learning}}{67}{extra.18}
-\contentsline {extra}{\numberline {19}Extra Info\thmtformatoptarg {Bloom filters}}{68}{extra.19}
+\contentsline {extra}{\numberline {18}Extra Info\thmtformatoptarg {Other Optimality Criteria}}{67}{extra.18}
+\contentsline {extra}{\numberline {19}Extra Info\thmtformatoptarg {Active Learning}}{67}{extra.19}
+\contentsline {extra}{\numberline {20}Extra Info\thmtformatoptarg {Bloom filters}}{68}{extra.20}
 \contentsline {example}{\numberline {13}Example\thmtformatoptarg {Designing Wings}}{68}{example.13}
 \contentsline {example}{\numberline {14}Example\thmtformatoptarg {Post-sale testing}}{69}{example.14}
 \contentsline {definition}{\numberline {31}Definition\thmtformatoptarg {Odds}}{69}{definition.31}
@@ -102,7 +103,7 @@
 \contentsline {example}{\numberline {17}Example\thmtformatoptarg {Reliability of a k-out-of-p system}}{77}{example.17}
 \contentsline {example}{\numberline {18}Example\thmtformatoptarg {Bridge Structure}}{77}{example.18}
 \contentsline {theorem}{\numberline {8.1.1}Theorem\thmtformatoptarg {Component-wise redundancy}}{78}{theorem.8.1.1}
-\contentsline {extra}{\numberline {20}Extra Info\thmtformatoptarg {Reliability analysis of complex systems}}{78}{extra.20}
+\contentsline {extra}{\numberline {21}Extra Info\thmtformatoptarg {Reliability analysis of complex systems}}{78}{extra.21}
 \contentsline {definition}{\numberline {40}Definition\thmtformatoptarg {Improvement potential}}{78}{definition.40}
 \contentsline {definition}{\numberline {41}Definition\thmtformatoptarg {Birenbaum's measure}}{78}{definition.41}
 \contentsline {definition}{\numberline {42}Definition\thmtformatoptarg {CDF}}{79}{definition.42}
@@ -126,22 +127,22 @@
 \contentsline {theorem}{\numberline {8.1.4}Theorem\thmtformatoptarg {IFRA closure theorem}}{82}{theorem.8.1.4}
 \contentsline {cor}{\numberline {8.1.1}Corollary\thmtformatoptarg {IFR closure for series systems}}{82}{cor.8.1.1}
 \contentsline {theorem}{\numberline {8.1.5}Theorem\thmtformatoptarg {Convolution of IFR}}{83}{theorem.8.1.5}
-\contentsline {extra}{\numberline {21}Extra Info\thmtformatoptarg {IFR and log-concave}}{83}{extra.21}
+\contentsline {extra}{\numberline {22}Extra Info\thmtformatoptarg {IFR and log-concave}}{83}{extra.22}
 \contentsline {example}{\numberline {26}Example\thmtformatoptarg {IFR of Gamma}}{83}{example.26}
 \contentsline {example}{\numberline {27}Example\thmtformatoptarg {Series system of offline backups}}{83}{example.27}
 \contentsline {example}{\numberline {28}Example\thmtformatoptarg {Likelihood estimation of a series system}}{83}{example.28}
 \contentsline {example}{\numberline {29}Example\thmtformatoptarg {Censored exponential lifetimes}}{85}{example.29}
-\contentsline {extra}{\numberline {22}Extra Info}{85}{extra.22}
+\contentsline {extra}{\numberline {23}Extra Info}{85}{extra.23}
 \contentsline {example}{\numberline {30}Example\thmtformatoptarg {Two group accelerated life}}{85}{example.30}
 \contentsline {example}{\numberline {31}Example\thmtformatoptarg {Accelerated life with Gaussian noise}}{86}{example.31}
-\contentsline {extra}{\numberline {23}Extra Info\thmtformatoptarg {Tobit regression}}{86}{extra.23}
-\contentsline {extra}{\numberline {24}Extra Info\thmtformatoptarg {Accelerated life with extreme value noise}}{86}{extra.24}
-\contentsline {extra}{\numberline {25}Extra Info}{86}{extra.25}
+\contentsline {extra}{\numberline {24}Extra Info\thmtformatoptarg {Tobit regression}}{86}{extra.24}
+\contentsline {extra}{\numberline {25}Extra Info\thmtformatoptarg {Accelerated life with extreme value noise}}{86}{extra.25}
+\contentsline {extra}{\numberline {26}Extra Info}{86}{extra.26}
 \contentsline {example}{\numberline {32}Example\thmtformatoptarg {Proportional hazards in a two group model}}{86}{example.32}
 \contentsline {example}{\numberline {33}Example\thmtformatoptarg {Comparing survival rates in the two group model}}{87}{example.33}
 \contentsline {example}{\numberline {34}Example\thmtformatoptarg {Accelerated life and proportional hazard for exponential failure times}}{87}{example.34}
 \contentsline {example}{\numberline {35}Example\thmtformatoptarg {Two groups with exponential baseline}}{88}{example.35}
-\contentsline {extra}{\numberline {26}Extra Info\thmtformatoptarg {General Hazard Rate Model}}{88}{extra.26}
+\contentsline {extra}{\numberline {27}Extra Info\thmtformatoptarg {General Hazard Rate Model}}{88}{extra.27}
 \contentsline {remark}{\numberline {19}Remark\thmtformatoptarg {Interplay between probability and statistics}}{89}{remark.19}
 \contentsline {remark}{\numberline {20}Remark\thmtformatoptarg {What is a component?}}{89}{remark.20}
 \contentsline {definition}{\numberline {51}Definition\thmtformatoptarg {Point availability}}{90}{definition.51}
