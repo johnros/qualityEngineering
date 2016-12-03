@@ -84,43 +84,44 @@
 \contentsline {example}{\numberline {14}Example\thmtformatoptarg {Post-sale testing}}{68}{example.14}
 \contentsline {definition}{\numberline {31}Definition\thmtformatoptarg {Odds}}{68}{definition.31}
 \contentsline {definition}{\numberline {32}Definition\thmtformatoptarg {Odds Ratio}}{69}{definition.32}
+\contentsline {definition}{\numberline {33}Definition\thmtformatoptarg {Relative Risk}}{69}{definition.33}
 \addvspace {10\p@ }
 \contentsline {remark}{\numberline {15}Remark\thmtformatoptarg {Approximate Power Calculations}}{72}{remark.15}
 \contentsline {remark}{\numberline {16}Remark\thmtformatoptarg {Redundancy}}{73}{remark.16}
 \contentsline {remark}{\numberline {17}Remark\thmtformatoptarg {No Free Lunch}}{73}{remark.17}
 \addvspace {10\p@ }
-\contentsline {definition}{\numberline {33}Definition\thmtformatoptarg {Structure Function}}{74}{definition.33}
+\contentsline {definition}{\numberline {34}Definition\thmtformatoptarg {Structure Function}}{74}{definition.34}
 \contentsline {remark}{\numberline {18}Remark\thmtformatoptarg {$\Phi $}}{74}{remark.18}
-\contentsline {definition}{\numberline {34}Definition\thmtformatoptarg {Series System}}{74}{definition.34}
-\contentsline {definition}{\numberline {35}Definition\thmtformatoptarg {Parallel System}}{74}{definition.35}
-\contentsline {definition}{\numberline {36}Definition\thmtformatoptarg {k-out-of-p System}}{75}{definition.36}
-\contentsline {definition}{\numberline {37}Definition\thmtformatoptarg {Monotone System}}{75}{definition.37}
-\contentsline {definition}{\numberline {38}Definition\thmtformatoptarg {Reliability}}{75}{definition.38}
+\contentsline {definition}{\numberline {35}Definition\thmtformatoptarg {Series System}}{74}{definition.35}
+\contentsline {definition}{\numberline {36}Definition\thmtformatoptarg {Parallel System}}{74}{definition.36}
+\contentsline {definition}{\numberline {37}Definition\thmtformatoptarg {k-out-of-p System}}{75}{definition.37}
+\contentsline {definition}{\numberline {38}Definition\thmtformatoptarg {Monotone System}}{75}{definition.38}
+\contentsline {definition}{\numberline {39}Definition\thmtformatoptarg {Reliability}}{75}{definition.39}
 \contentsline {example}{\numberline {15}Example\thmtformatoptarg {Reliability of a series system}}{75}{example.15}
 \contentsline {example}{\numberline {16}Example\thmtformatoptarg {Reliability of a parallel system}}{76}{example.16}
 \contentsline {example}{\numberline {17}Example\thmtformatoptarg {Reliability of a k-out-of-p system}}{76}{example.17}
 \contentsline {example}{\numberline {18}Example\thmtformatoptarg {Bridge Structure}}{76}{example.18}
 \contentsline {theorem}{\numberline {8.1.1}Theorem\thmtformatoptarg {Component-wise redundancy}}{77}{theorem.8.1.1}
 \contentsline {extra}{\numberline {20}Extra Info\thmtformatoptarg {Reliability analysis of complex systems}}{77}{extra.20}
-\contentsline {definition}{\numberline {39}Definition\thmtformatoptarg {Improvement potential}}{77}{definition.39}
-\contentsline {definition}{\numberline {40}Definition\thmtformatoptarg {Birenbaum's measure}}{77}{definition.40}
-\contentsline {definition}{\numberline {41}Definition\thmtformatoptarg {CDF}}{78}{definition.41}
-\contentsline {definition}{\numberline {42}Definition\thmtformatoptarg {PDF}}{78}{definition.42}
-\contentsline {definition}{\numberline {43}Definition\thmtformatoptarg {Survival Function}}{78}{definition.43}
+\contentsline {definition}{\numberline {40}Definition\thmtformatoptarg {Improvement potential}}{77}{definition.40}
+\contentsline {definition}{\numberline {41}Definition\thmtformatoptarg {Birenbaum's measure}}{77}{definition.41}
+\contentsline {definition}{\numberline {42}Definition\thmtformatoptarg {CDF}}{78}{definition.42}
+\contentsline {definition}{\numberline {43}Definition\thmtformatoptarg {PDF}}{78}{definition.43}
+\contentsline {definition}{\numberline {44}Definition\thmtformatoptarg {Survival Function}}{78}{definition.44}
 \contentsline {example}{\numberline {19}Example\thmtformatoptarg {Survival of a series system}}{78}{example.19}
 \contentsline {example}{\numberline {20}Example\thmtformatoptarg {Survival of a parallel system}}{78}{example.20}
-\contentsline {definition}{\numberline {44}Definition\thmtformatoptarg {Failure Rate}}{78}{definition.44}
-\contentsline {definition}{\numberline {45}Definition\thmtformatoptarg {Cumulative Risk}}{78}{definition.45}
+\contentsline {definition}{\numberline {45}Definition\thmtformatoptarg {Failure Rate}}{78}{definition.45}
+\contentsline {definition}{\numberline {46}Definition\thmtformatoptarg {Cumulative Risk}}{78}{definition.46}
 \contentsline {theorem}{\numberline {8.1.2}Theorem\thmtformatoptarg {Failure rate of a series system}}{79}{theorem.8.1.2}
 \contentsline {example}{\numberline {21}Example\thmtformatoptarg {Exponential Hazard}}{79}{example.21}
 \contentsline {example}{\numberline {22}Example\thmtformatoptarg {Failure rate of a series of exponential components}}{79}{example.22}
 \contentsline {example}{\numberline {23}Example\thmtformatoptarg {Failure rate of a two exponential-component parallel-system}}{79}{example.23}
 \contentsline {example}{\numberline {24}Example\thmtformatoptarg {Weibull Hazard}}{80}{example.24}
 \contentsline {example}{\numberline {25}Example\thmtformatoptarg {Empirical risk rates}}{80}{example.25}
-\contentsline {definition}{\numberline {46}Definition\thmtformatoptarg {IFR}}{81}{definition.46}
-\contentsline {definition}{\numberline {47}Definition\thmtformatoptarg {IFRA}}{81}{definition.47}
-\contentsline {definition}{\numberline {48}Definition\thmtformatoptarg {NBU}}{81}{definition.48}
-\contentsline {definition}{\numberline {49}Definition\thmtformatoptarg {NBUE}}{81}{definition.49}
+\contentsline {definition}{\numberline {47}Definition\thmtformatoptarg {IFR}}{81}{definition.47}
+\contentsline {definition}{\numberline {48}Definition\thmtformatoptarg {IFRA}}{81}{definition.48}
+\contentsline {definition}{\numberline {49}Definition\thmtformatoptarg {NBU}}{81}{definition.49}
+\contentsline {definition}{\numberline {50}Definition\thmtformatoptarg {NBUE}}{81}{definition.50}
 \contentsline {theorem}{\numberline {8.1.3}Theorem}{81}{theorem.8.1.3}
 \contentsline {theorem}{\numberline {8.1.4}Theorem\thmtformatoptarg {IFRA closure theorem}}{81}{theorem.8.1.4}
 \contentsline {cor}{\numberline {8.1.1}Corollary\thmtformatoptarg {IFR closure for series systems}}{81}{cor.8.1.1}
@@ -143,11 +144,11 @@
 \contentsline {extra}{\numberline {26}Extra Info\thmtformatoptarg {General Hazard Rate Model}}{87}{extra.26}
 \contentsline {remark}{\numberline {19}Remark\thmtformatoptarg {Interplay between probability and statistics}}{88}{remark.19}
 \contentsline {remark}{\numberline {20}Remark\thmtformatoptarg {What is a component?}}{88}{remark.20}
-\contentsline {definition}{\numberline {50}Definition\thmtformatoptarg {Point availability}}{89}{definition.50}
-\contentsline {definition}{\numberline {51}Definition\thmtformatoptarg {Interval reliability}}{89}{definition.51}
-\contentsline {definition}{\numberline {52}Definition\thmtformatoptarg {Interval downtime}}{89}{definition.52}
-\contentsline {definition}{\numberline {53}Definition\thmtformatoptarg {MTTF}}{89}{definition.53}
-\contentsline {definition}{\numberline {54}Definition\thmtformatoptarg {MTTR}}{89}{definition.54}
+\contentsline {definition}{\numberline {51}Definition\thmtformatoptarg {Point availability}}{89}{definition.51}
+\contentsline {definition}{\numberline {52}Definition\thmtformatoptarg {Interval reliability}}{89}{definition.52}
+\contentsline {definition}{\numberline {53}Definition\thmtformatoptarg {Interval downtime}}{89}{definition.53}
+\contentsline {definition}{\numberline {54}Definition\thmtformatoptarg {MTTF}}{89}{definition.54}
+\contentsline {definition}{\numberline {55}Definition\thmtformatoptarg {MTTR}}{89}{definition.55}
 \contentsline {theorem}{\numberline {8.4.1}Theorem\thmtformatoptarg {Stable point availability}}{89}{theorem.8.4.1}
 \contentsline {theorem}{\numberline {8.4.2}Theorem\thmtformatoptarg {Stable failures per unit of time}}{89}{theorem.8.4.2}
 \contentsline {theorem}{\numberline {8.4.3}Theorem\thmtformatoptarg {Stable unavailability}}{89}{theorem.8.4.3}

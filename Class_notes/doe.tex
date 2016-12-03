@@ -1032,7 +1032,10 @@ To define the odds ratio, we first define the \emph{odds}.
 \end{definition}
 The \emph{odds}, just like \emph{probabilities} is an uncertainty measure. 
 It quantifies the ratio of ``successes'' per ``fail''. 
-In some communities, it is more popular than probabilities (think horse racing). 
+In some communities, the odds are actually more popular than probabilities (think horse racing).
+In our post-sale example, the odds measures the ratio of working devices per faulty device (not per \emph{produced} device like the probability measure). 
+
+
 
 The odds ratio is the ratio of odds under two conditions: 
 \begin{definition}[Odds Ratio]
@@ -1040,9 +1043,17 @@ The odds ratio is the ratio of odds under two conditions:
 	OR := \frac{P(Y=1|X=1) / P(Y=0|X=1)}{P(Y=1|X=0) / P(Y=0|X=0)}.
 	\end{align}
 \end{definition}
-You may immediately verify that $\theta=0$ if $Y$ is independent of $X$. 
-How can it be estimated from the various studies?
-In our example-- how can we recover the difference between the failure rates of the different versions, under the various sampling schemes?
+Just in order to emphasize what the OR is \textbf{not}, we also define the \emph{relative risk}, which is perhaps a more natural effect measure:
+\begin{definition}[Relative Risk]
+	\begin{align}
+	RR := \frac{P(Y=1|X=1)}{P(Y=1|X=0)}.
+	\end{align}
+\end{definition}
+
+You may not verify that if $X$ has not effect on $Y$, then both $OR=1$ and $RR=1$. 
+
+We now show how the $OR$ can be estimated from the various studies designs. 
+
 
 A prospective study means that we decide how many samples of each version to take and wait until some fail, and then compare the failure probabilities. 
 Formally this means we can estimate $P(Y=1|X=1)$ and $P(Y=1|X=0)$.
