@@ -1021,10 +1021,25 @@ This is clearly not a random sample in the population, so it is unclear that inf
 
 To demonstrate the difference between the sampling schemes consider a binary outcome $Y\in\set{0,1}$ and a binary covariate $X\in\set{0,1}$. 
 In terms of the post-sale problem in Example~\ref{ex:post-sale}, $X$ can stand a version indicator, and $Y$ a failure indicator. 
-The effect of $X$ on $Y$, i.e., the difference in failure probabilities, is given by
-\begin{align}
-	\theta:= P(Y=1|X=1)-P(Y=1|X=0).
-\end{align}
+The effect of $X$ on $Y$, can be quantified by the \emph{odds ratio}. 
+To define the odds ratio, we first define the \emph{odds}.
+
+\begin{definition}[Odds]
+	The odds of two events, $Y=1$, and $Y=0$, is defined as 
+	\begin{align}
+	Odds:= P(Y=1)/P(Y=0).
+	\end{align}
+\end{definition}
+The \emph{odds}, just like \emph{probabilities} is an uncertainty measure. 
+It quantifies the ratio of ``successes'' per ``fail''. 
+In some communities, it is more popular than probabilities (think horse racing). 
+
+The odds ratio is the ratio of odds under two conditions: 
+\begin{definition}[Odds Ratio]
+	\begin{align}
+	OR := \frac{P(Y=1|X=1) / P(Y=0|X=1)}{P(Y=1|X=0) / P(Y=0|X=0)}.
+	\end{align}
+\end{definition}
 You may immediately verify that $\theta=0$ if $Y$ is independent of $X$. 
 How can it be estimated from the various studies?
 In our example-- how can we recover the difference between the failure rates of the different versions, under the various sampling schemes?
@@ -1033,16 +1048,16 @@ A prospective study means that we decide how many samples of each version to tak
 Formally this means we can estimate $P(Y=1|X=1)$ and $P(Y=1|X=0)$.
 Estimating $\theta$ is trivial. 
 
-A cross section study means we sample randomly in ``pile'' of devices of all versions and states. 
+In this example, a cross section study implies the unprovable scenario where we sample randomly in a ``pile'' of devices of all versions and states. 
 We thus get an estimate of the proportion of each $X,Y$ combination, and need to relate it to the difference in failure probabilities. 
 Formally, we estimate all $P(Y,X)$'s, which for brevity we denote $\pi_{yx}$.
 For example $\pi_{00}$ for $P(Y=0,X=0)$ etc. 
 Via Bayes' Theorem we then have 
 \begin{align*}
 	\theta 
-	&= P(Y=1|X=1) - P(Y=1|X=0) \\
-	&= \frac{P(Y=1,X=1)}{P(X=1)} - \frac{P(Y=1,X=0)}{P(X=0)} \\
-	&= \frac{\pi_{11}}{\pi_{01}+\pi_{11}}-\frac{\pi_{10}}{\pi_{00}+\pi_{10}},
+	&= P(Y=1|X=1) / P(Y=1|X=0) \\
+	&= \frac{P(Y=1,X=1)}{P(X=1)} / \frac{P(Y=1,X=0)}{P(X=0)} \\
+	&= \frac{\pi_{11}}{\pi_{01}+\pi_{11}} / \frac{\pi_{10}}{\pi_{00}+\pi_{10}},
 \end{align*}
 which we can use to estimate $\theta$. 
 
@@ -1051,25 +1066,20 @@ We can thus estimate the frequency of each version given the outcome: $P(X|Y)$, 
 We use Bayes' Theorem to relate to $\theta$:
 \begin{align*}
 	\theta
-	&= P(Y=1|X=1) - P(Y=1|X=0) \\
-	&= \frac{P(X=1|Y=1)P(Y=1)}{P(X=1)} - \frac{P(Y=1,X=0)}{P(X=0)} \\
-	&= \frac{\pi_{1|1}(\pi_{1|1})}{\pi_{01}+\pi_{11}}-\frac{\pi_{10}}{\pi_{00}+\pi_{10}},
+	&= P(Y=1|X=1) / P(Y=1|X=0) \\
+	&= \frac{P(X=1|Y=1)P(Y=1)}{P(X=1)} / \frac{P(X=0|Y=1)P(Y=1)}{P(X=0)} \\
+	&= \frac{P(X=1|Y=1)}{P(X=1)} / \frac{P(X=0|Y=1)}{P(X=0)} \\
 	\end{align*}
 which we can use to estimate $\theta$. 
 
 
 
 
-
-
-\subsection{Prospective}
-\label{sec:prospective}
-TODO
-
-\subsection{Retrospective}
-\label{sec:restospective}
-TODO
-
+\begin{think}
+	In regression analysis we typically analyze bias and variance while conditioning on the design matrix, $X$. 
+	Is such a practice consistent with the designed experiment or the observational view of a study?
+	If observational, is it cross sectional? Prospective? Retrospective? 
+\end{think}
 
 \subsection{Causal Inference}
 \label{sec:causal}
