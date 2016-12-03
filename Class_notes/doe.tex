@@ -1116,7 +1116,17 @@ Causal inference is typically the Holy-Grail of empirical research.
 Causality may be inferred from a designed experiment, or from an observational study. 
 As already stated on several occasions, inferring causality from observational studies is much riskier than from designed experiments. 
 This is because in observational studies we have two sources of uncertainty, that are canceled by the randomization mechanism of designed experiments. 
-This first is the existence of non-controlled variables, that affect both ####
+This first is the existence of non-controlled variables, that affect both the covariates and the outcome (think of stress in the smoking example in Extra Info~\ref{ex:smoking}).
+Another is \emph{reverse causality}: if a correlation is found between A and B, does A cause B, or B cause A? \marginnote{Reverse Causality}
+
+It is not impossible to infer causality from observational studies. 
+The key ingredient is that causality is always assumed to advance in time. 
+For this reason a prospective study is a good way to go. 
+Retrospective studies also allow causal inference, but with some more assumptions.
+Even cross-section studies allow causal inference, but many assumptions will be required.
+See the Bibliographic notes section for some references on causal inference from observational studies. 
+
+
 
 
 
