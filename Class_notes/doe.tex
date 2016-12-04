@@ -1011,21 +1011,22 @@ As such, in observational studies there are no \emph{factors}, but rather, only 
 Observational studies classify into:
 \begin{description}
 	\item[Cross Sectional] Where each sample unit, i.e. individual, is observed in a single point in time. 
-	\item[Prospective] Where each sample unit is observed on various occasions in the future. 
-	\item[Retrospective] Where measurements are recovered on sample units from the past, based on some outcome. 
+	\item[Prospective] Where each sample unit is observed on various occasions in the future, until some outcome occurs. 
+	\item[Retrospective] Where measurements are recovered on sample units from the past, only if some outcome has occurred. 
 \end{description}
 
 
-Being the simplest type of observational study, there really not much to say about \emph{cross sectional} studies, except a vivid warning against causal inference from such studies (see \ref{sec:causal}).
+\emph{Cross sectional} studies are the simplest type of observational study, \aka a \emph{simple random sample}. 
+There really isn't much to say about them, except a vivid warning against causal inference from such studies (see \ref{sec:causal}).\marginnote{[Simple Random Sample]}
 
-In \emph{prospective studies}, \aka \emph{longitudinal data}, or \emph{cohort study}, sampling units are selected and then measured over time alongside covariates. \marginnote{Longitudinal Data}
+In \emph{prospective studies}, \aka \emph{longitudinal data}, or \emph{cohort study}, sampling units are selected and then measured over time alongside covariates. \marginnote{[Longitudinal Data]}
 
 For the study of rare outcomes, prospective studies may be very wasteful. 
-Retrospective studies, \aka \emph{case-control studies} remedy this by collecting units with the desired outcome, and only then matching them with controls and recovering their event history. In the words of \cite{cox_principles_2011}: {\em \dots a prospective study looks for the effects of causes whereas a retrospective study examines the causes of effects}.\marginnote{Case-Control Study}
+\emph{Retrospective studies}, \aka \emph{case-control studies} remedy this by collecting units with the desired outcome, and only then matching them with controls and recovering their event history. In the words of \cite{cox_principles_2011}: {\em ``\dots a prospective study looks for the effects of causes whereas a retrospective study examines the causes of effects``}.\marginnote{Case-Control Study}
 This is clearly not a random sample in the population, so it is unclear that inference in retrospective studies is valid. 
 
-To demonstrate the difference between the sampling schemes consider a binary outcome $Y\in\set{0,1}$ and a binary covariate $X\in\set{0,1}$. 
-In terms of the post-sale problem in Example~\ref{ex:post-sale}, $X$ can stand a version indicator, and $Y$ a failure indicator. 
+To demonstrate the difference in inference between the sampling schemes consider a binary outcome $Y\in\set{0,1}$ and a binary covariate $X\in\set{0,1}$. 
+In terms of the post-sale problem in Example~\ref{ex:post-sale}, $X$ can stand for a device's version indicator, and $Y$ a failure indicator. 
 The effect of $X$ on $Y$, can be quantified by the \emph{odds ratio}. 
 To define the odds ratio, we first define the \emph{odds}.
 
@@ -1054,8 +1055,8 @@ Just in order to emphasize what the OR is \textbf{not}, we also define the \emph
 	RR := \frac{P(Y=1|X=1)}{P(Y=1|X=0)}.
 	\end{align}
 \end{definition}
-You may not verify that if $X$ has not effect on $Y$, then both $OR=1$ and $RR=1$. 
-We now show how the $OR$ can be estimated from the various studies designs. 
+You may verify that if $X$ has not effect on $Y$, i.e. $P(Y|X)=P(Y)$, for all $X$, then both $OR=1$ and $RR=1$. 
+We now show how the $OR$ can be estimated from the various designs. 
 
 
 \paragraph{Prospective Study} 
