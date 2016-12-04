@@ -183,7 +183,7 @@ Several matters should be emphasized before we dive in.
 
 
 
-\subsection{Systematic Errors in DOE}
+\section{Systematic Errors in DOE}
 
 Dealing with systematic errors is possibly the greatest concern in causal inference. 
 Be it a medical intervention, an industrial production process, an economic policy, or a social welfare plan- all of these critically rely on a fair assessment of the magnitude of the effect of the intervention. Bias is disastrous. 
@@ -223,7 +223,7 @@ Two ways to deal with such bias:
 
 
 
-\subsection{Non Systematic Errors in DOE}
+\section{Non Systematic Errors in DOE}
 \label{sec:variance_components}
 %TODO: relate to imptoving precision in sampling. 
 
@@ -263,7 +263,7 @@ That is why \textbf{twins} are so popular when designing experiments!
 
 
 
-\subsubsection{Gage R\&R Studies}
+\subsection{Gage R\&R Studies}
 R\&R stands for \emph{repeatability} and \emph{reproducibility}.
 These experiments are aimed at assessing the irreducible non-systematic errors in measurement and \emph{range of validity} of conclusions.
 As such, in a typical gauge R\&R experiment, measurement will be made under the same conditions in different labs, by different technicians, etc. 
@@ -273,7 +273,7 @@ As such, in a typical gauge R\&R experiment, measurement will be made under the 
 
 
 
-\subsubsection{Completely Randomized Designs}
+\subsection{Completely Randomized Designs}
 In the simplest of designs, all experimental units are randomly assigned to treatments. 
 This is typically easy to implement.
 In Example~\ref{eg:web_design} this would imply randomly assigning users to interfaces.
@@ -285,7 +285,7 @@ If you suspect, as you should, that in both examples we may reduce variability b
 
 
 
-\subsubsection{Randomized Block Designs}
+\subsection{Randomized Block Designs}
 The idea of \emph{blocking} is to replace the complete randomization scheme by a restricted randomization scheme so that variability can be reduced without introducing bias. 
 The restricted randomization is created by \emph{grouping}, or \emph{blocking} groups of experimental units, and randomizing allocation within the group. 
 
@@ -329,7 +329,7 @@ Is there any downside to blocking? Not statistically, maybe economically.
 
 
 
-\subsubsection{Crossover Design}
+\subsection{Crossover Design}
 \label{sec:crossover}
 
 Return to the diet comparison of Example~\ref{eg:diets}. 
@@ -380,7 +380,7 @@ Table~\ref{tab:crossover} demonstrates the $3!=6$ sequences for a $3$ treatment 
 In the previous section we discussed methods of reducing the non-systematic errors in the response to each treatment, so that we can better reveal differences between treatments. 
 In the current section we try to break treatments to their building blocks; \emph{factors}.
 By doing so we will gain both economical and statistical efficiency. 
-Each sample will give us information on the effect of various \emph{factors}.
+Each sample will give us information on the effect of not one, but several \emph{factors}.
 We will also be able to learn if the effect of factors are additive, or non additive, and we will be able to extrapolate from observed treatments, to unobserved treatments. 
 
 
@@ -398,7 +398,8 @@ If we treat a web-design as the sum of its factor effects, we have gained accura
 Is the magic of the factorial design a free lunch? 
 No. The lunch has a price.
 The price is that we have assumed that a site is the sum of its components, without interactions. 
-Without this assumption, there is nothing to gain from a factorial design.
+Without this assumption, there is no statistical accuracy gained from a factorial design.
+There is however, the benefit that we can actually verify the validity of the additivity assumption.
 \end{think}
 
 
