@@ -808,7 +808,7 @@ Now recall that in a multivariate linear regression problem with an $n \times p$
 	Var[\hat{\beta}] &= \sigma^2_\varepsilon (X'X)^{-1}.
 \end{align}
 In this multivariate case, there may be several notions of ``maximal spread''. 
-Denoting $M:= (X'X)^{-1}$, we can define:
+Denoting $$M:= (X'X)^{-1},$$ we can define:
 \begin{definition}[A-Optimality]
 	A design is said to be \emph{A-optimal} if it minimizes the average univariate variance.
 	Formally: $\min \set{\Tr(M)}$.
@@ -827,7 +827,9 @@ For non-linear designs, one may opt for space filing designs (\ref{sec:space_fil
 
 
 \begin{extra}[Other Optimality Criteria]
-There are as many optimality criteria as there are matrix norms. For a more detailed review, see \cite{wikipedia_optimal_2015}.
+There are as many optimality criteria as there are matrix norms. 
+For instance, recall why not optimize the Spectral-Norm or the Frobenius-Norm of $M$, which we defined for the multivariate $s^2$ chart (Section~\ref{sec:multivarite_s}). 
+For a more detailed review, see \cite{wikipedia_optimal_2015}.
 For a mathematical rigorous, and through treatment, see \cite{pukelsheim_optimal_1993}.
 \end{extra}
 
@@ -847,17 +849,19 @@ Do we really need to keep administering placebos to the control group, just beca
 This is where sequential designs come in.
 Interestingly, the initial application of a sequential design was not in drug testing, but rather in a military context \citep{wald_sequential_1945}.
 
-The problem with sequential testing, is the \emph{type-I error inflation}, which is simply a \emph{multiplicity problem}. \marginnote{Multiplicity}
-To see this, think about an endless sequential experiment. Also assume the null hypothesis is true. 
-Because of consistency, then a regular (non sequential) experiment will not reject $H_0$?
-But if the test is sequential, the type-I error of endlessly many tests at level $\alpha$ each, will certainly be making more than $\alpha$ mistakes (unless dependence is perfect).
+The problem with sequential testing, is the \emph{type-I error inflation}, which is simply a \emph{multiplicity problem}.
+To see this, assume the null hypothesis is true and tested with the (ridiculous) test, where each observation is tested as it comes. 
+We will be making $n$ tests, each at level $\alpha$.
+If observations independent, the probability of a type $I$ error is the familiar $1-(1-\alpha)^n > \alpha$.
+
+We remind the reader that we already met sequential designs:
+These are the Central Composite Design, Bayesian Optimization and Response Surface Methodology, from the Continuous Factor section (\ref{sec:continouos_factors}).
 
 In it simplest version, a sequential design allows early stopping for rejection of the null, or for futility (non-rejection). 
 In more elaborate schemes then not only is early stopping allowed, but also the redesign of the experiment. 
-This is known as \emph{adaptive design}. The crux, as usual, is not inflating the type-I error, or introducing bias, by redesigning.\marginnote{Adaptive Design}
+This is known as \emph{adaptive design}. 
+The crux, as usual, is not inflating the type-I error, or introducing bias, by redesigning.\marginnote{Adaptive Design}
 
-We also remind the reader that we already met two sequential designs, aimed at estimating factor effects, and optimizing factor-level combinations.
-These were the Central Composite Design (Section~\ref{sec:central_composite}) and Response Surface Methdology (Section~\ref{sec:response_surface}).
 
 \begin{extra}[Active Learning]
 In the machine learning literature, the idea of adaptive design of experiments is known as \emph{active learning}, where the emphasis is less on adaptive-testing, but rather on adaptive-estimation.
