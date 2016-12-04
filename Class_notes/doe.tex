@@ -1084,7 +1084,7 @@ which shows that the OR can indeed be estimated from a cross-section study.
 
 
 \subsection{Special Sampling Schemes}
-Cross Sectional studies can satisfy the popular i.i.d. assumption from introductory courses. 
+Cross Sectional studies can satisfy the popular i.i.d.\ assumption from introductory statistics courses. 
 Prospective and retrospective studies no longer satisfy this assumption, because samples within subject are dependent. 
 These are still fairly simple sampling schemes. 
 Here is a more complicated example. 
@@ -1095,9 +1095,9 @@ Here is a more complicated example.
 	Consider the following chain-referral sampling scheme. 
 	A Facebook questionnaire is passed by rewarding respondents some credit if they name other respondents.
 	The probability of being sampled is thus not fixed for everyone, but rather a function of the number of your facebook friends.  
-	Now imagine the questionnaire is meant to estimate the market share of product Y.
-	It seems reasonable to assume that the more friends you have, the more likely you are to be sampled, and also, the more likely to be familiar with Y. 
-	This sampling scheme will thus lead to an upward biased estimate of Y's popularity.
+	Now imagine the questionnaire is meant to estimate the awareness to product ZZZ.
+	It seems reasonable to assume that the more friends you have, the more likely you are to be sampled, and also, the more likely to be familiar with ZZZ. 
+	This sampling scheme will thus lead to an upward biased estimate of ZZZ's popularity.
 \end{example}
 
 If the non-simple sampling scheme in Example~\ref{ex:RDS} is not accounted for at the analysis stage, we will clearly have biased popularity estimates. 
@@ -1111,7 +1111,6 @@ To deal with over-representation we will want to weight each sample by its proba
 	where $i \in S$ means that $i$ has actually been sampled. 
 \end{definition}
 You may verify that the Horowitz-Thompson estimator in Definition~\ref{def:horowitz-thompson} return the usual sample mean, if the sampling is simple, thus all $\pi_i$ are equal. 
-From this point on, we ignore special sampling schemes and return to simple random sampling. 
 
 
 
