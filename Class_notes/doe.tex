@@ -66,49 +66,8 @@ We will now discuss \emph{designed experiments}.
 Observational studies are briefly discussed in Section~\ref{sec:observational}.
 
 When designing a product (remember DFSS \ref{sec:dfss}), or once a control chart has signaled an alert, we will want to know what \emph{controllable inputs} influenced our process, and how to reduce its variability.
-In our SPC terminology, we will want to know what are the \emph{causal effects} of our controllable inputs (\emph{factors}), on our \emph{CTQ} (\emph{response}). 
-The theory of discovering these effects is the theory of \emph{design of experiments} (DOE).
-Its goal is to compare the response under various conditions in order to \emph{screen} factors with no effect, 
-to \emph{estimate} effect sizes, 
-find \emph{optimal} factor-level combinations, 
-and remove assignable variability; 
-all these as \emph{efficiently} as possibly.
-
-
-Several matters should be emphasized:
-\begin{description}
-
-\item [Randomization] is the random assignment of units to treatments. 
-It is fundamental to our purpose because the idea of an \emph{effect} implies \emph{causality}. 
-Since we seek to intervene in the production to reduce variability, we only care about causal effects. 
-It is the mechanism of \emph{randomization}, that allows us to conclude that the correlations we find are indeed causal, and not merely statistical.
-For a treatment of causal inference in non-randomized experiments, i.e. in \emph{observational data}, see for example \cite{rosenbaum_observational_2002}.
-
-\item [Pre-experiment] In this text we take it for granted that the purpose of the experiment is well known, and the candidate factors defined. 
-We are fully aware, as should be the reader, that in application this is a non-trivial luxury. 
-Indeed, a lot of meetings, planning, and expertise go into the selection of factors, their candidate levels, etc.
-
-\item [Power Analysis] Part of the pre-experiment may include a power analysis. 
-The pre-experiment power analysis will typically be very approximate, and rely on many assumptions. 
-It is still important, as it gives an idea of the feasibility of an experiment, and avoids wasting resources.
-
-\item [No Textbook Solution] We will present many design ideas and principles, yet in real life problems rarely obey text-books.
-You should thus feel free, and even obliged, to think about your particular problem and adapt the experiment as you best see fit. 
-
-\item[Data Analysis]
-In this text, we only discuss the \textbf{design} of the experiment, and not the \textbf{analysis} of the data.
-This is a non-standard choice as DOE is typically presented alongside the \emph{analysis of variance} (ANOVA) framework. \marginnote{ANOVA}
-We decouple the two for several reasons. 
-First, because \cite{cox_theory_2000} do so. 
-Second, because these are two different thing.
-The ANOVA framework may be replaced by the framework of \emph{linear models}, \emph{mixed models}, \emph{variance components}, and possibly others analysis frameworks. 
-There is a vast literature focusing on the analysis.
-If asked, this author may recommend \cite{hocking_analysis_1985}, which presents both the ANOVA terminology, and the linear models terminology.
-
-\end{description}
-
-
-We start by establishing DOE terminology. 
+In our SPC terminology, we will want to know what are the \emph{causal effects} of our controllable inputs, on our \emph{CTQ}. 
+The theory of discovering these effects is the theory of \emph{design of experiments} (DOE), which uses a a slightly different terminology which we will define in the next section.
 
 
 \subsection{Terminology}
@@ -183,6 +142,38 @@ The blocking in the design needs to be accounted at the time of the data analysi
 \end{tcolorbox}
 
 
+
+Several matters should be emphasized before we dive in.
+\begin{description}
+	
+	\item [Randomization] is the random assignment of units to treatments. 
+	It is fundamental to our purpose because the idea of an \emph{effect} implies \emph{causality}. 
+	Since we seek to intervene in the production to reduce variability, we only care about causal effects. 
+	It is the mechanism of \emph{randomization}, that allows us to conclude that the correlations we find are indeed causal, and not merely statistical.
+	For a treatment of causal inference in non-randomized experiments, see the Bibliographic Notes section.
+	
+	\item [Pre-experiment] In this text we take it for granted that the purpose of the experiment is well known, and the candidate factors defined. 
+	We are fully aware, as should be the reader, that in application this is a non-trivial luxury. 
+	Indeed, a lot of meetings, planning, and expertise go into the selection of factors, their candidate levels, etc.
+	
+	\item [Power Analysis] Part of the pre-experiment may include a power analysis. 
+	The pre-experiment power analysis will typically be very approximate, and rely on many assumptions. 
+	It is still important, as it gives an idea of the feasibility of an experiment, and avoids wasting resources.
+	
+	\item [No Textbook Solution] We will present many design ideas and principles, yet in real life problems rarely obey text-books.
+	You should thus feel free, and even obliged, to think about your particular problem and adapt the experiment as you best see fit. 
+	
+	\item[Data Analysis]
+	In this text, we only discuss the \textbf{design} of the experiment, and not the \textbf{analysis} of the data.
+	This is a non-standard choice as DOE is typically presented alongside the \emph{analysis of variance} (ANOVA) framework. \marginnote{ANOVA}
+	We decouple the two for several reasons. 
+	First, because \cite{cox_theory_2000} do so. 
+	Second, because these are two different thing.
+	The ANOVA framework may be replaced by the framework of \emph{linear models}, \emph{mixed models}, \emph{variance components}, and possibly others analysis frameworks. 
+	There is a vast literature focusing on the analysis.
+	If asked, this author may recommend \cite{hocking_analysis_1985}, which presents both the ANOVA terminology, and the linear models terminology.
+	
+\end{description}
 
 
 
