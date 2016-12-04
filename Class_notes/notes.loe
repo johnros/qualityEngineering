@@ -86,6 +86,7 @@
 \contentsline {definition}{\numberline {31}Definition\thmtformatoptarg {Odds}}{70}{definition.31}
 \contentsline {definition}{\numberline {32}Definition\thmtformatoptarg {Odds Ratio}}{70}{definition.32}
 \contentsline {definition}{\numberline {33}Definition\thmtformatoptarg {Relative Risk}}{70}{definition.33}
+\contentsline {extra}{\numberline {21}Extra Info\thmtformatoptarg {Effect parameters as distances}}{70}{extra.21}
 \addvspace {10\p@ }
 \contentsline {remark}{\numberline {15}Remark\thmtformatoptarg {Approximate Power Calculations}}{73}{remark.15}
 \contentsline {remark}{\numberline {16}Remark\thmtformatoptarg {Redundancy}}{74}{remark.16}
@@ -103,7 +104,7 @@
 \contentsline {example}{\numberline {17}Example\thmtformatoptarg {Reliability of a k-out-of-p system}}{77}{example.17}
 \contentsline {example}{\numberline {18}Example\thmtformatoptarg {Bridge Structure}}{77}{example.18}
 \contentsline {theorem}{\numberline {8.1.1}Theorem\thmtformatoptarg {Component-wise redundancy}}{78}{theorem.8.1.1}
-\contentsline {extra}{\numberline {21}Extra Info\thmtformatoptarg {Reliability analysis of complex systems}}{78}{extra.21}
+\contentsline {extra}{\numberline {22}Extra Info\thmtformatoptarg {Reliability analysis of complex systems}}{78}{extra.22}
 \contentsline {definition}{\numberline {40}Definition\thmtformatoptarg {Improvement potential}}{78}{definition.40}
 \contentsline {definition}{\numberline {41}Definition\thmtformatoptarg {Birenbaum's measure}}{78}{definition.41}
 \contentsline {definition}{\numberline {42}Definition\thmtformatoptarg {CDF}}{79}{definition.42}
@@ -127,22 +128,22 @@
 \contentsline {theorem}{\numberline {8.1.4}Theorem\thmtformatoptarg {IFRA closure theorem}}{82}{theorem.8.1.4}
 \contentsline {cor}{\numberline {8.1.1}Corollary\thmtformatoptarg {IFR closure for series systems}}{82}{cor.8.1.1}
 \contentsline {theorem}{\numberline {8.1.5}Theorem\thmtformatoptarg {Convolution of IFR}}{83}{theorem.8.1.5}
-\contentsline {extra}{\numberline {22}Extra Info\thmtformatoptarg {IFR and log-concave}}{83}{extra.22}
+\contentsline {extra}{\numberline {23}Extra Info\thmtformatoptarg {IFR and log-concave}}{83}{extra.23}
 \contentsline {example}{\numberline {26}Example\thmtformatoptarg {IFR of Gamma}}{83}{example.26}
 \contentsline {example}{\numberline {27}Example\thmtformatoptarg {Series system of offline backups}}{83}{example.27}
 \contentsline {example}{\numberline {28}Example\thmtformatoptarg {Likelihood estimation of a series system}}{83}{example.28}
 \contentsline {example}{\numberline {29}Example\thmtformatoptarg {Censored exponential lifetimes}}{85}{example.29}
-\contentsline {extra}{\numberline {23}Extra Info}{85}{extra.23}
+\contentsline {extra}{\numberline {24}Extra Info}{85}{extra.24}
 \contentsline {example}{\numberline {30}Example\thmtformatoptarg {Two group accelerated life}}{85}{example.30}
 \contentsline {example}{\numberline {31}Example\thmtformatoptarg {Accelerated life with Gaussian noise}}{86}{example.31}
-\contentsline {extra}{\numberline {24}Extra Info\thmtformatoptarg {Tobit regression}}{86}{extra.24}
-\contentsline {extra}{\numberline {25}Extra Info\thmtformatoptarg {Accelerated life with extreme value noise}}{86}{extra.25}
-\contentsline {extra}{\numberline {26}Extra Info}{86}{extra.26}
+\contentsline {extra}{\numberline {25}Extra Info\thmtformatoptarg {Tobit regression}}{86}{extra.25}
+\contentsline {extra}{\numberline {26}Extra Info\thmtformatoptarg {Accelerated life with extreme value noise}}{86}{extra.26}
+\contentsline {extra}{\numberline {27}Extra Info}{86}{extra.27}
 \contentsline {example}{\numberline {32}Example\thmtformatoptarg {Proportional hazards in a two group model}}{86}{example.32}
 \contentsline {example}{\numberline {33}Example\thmtformatoptarg {Comparing survival rates in the two group model}}{87}{example.33}
 \contentsline {example}{\numberline {34}Example\thmtformatoptarg {Accelerated life and proportional hazard for exponential failure times}}{87}{example.34}
 \contentsline {example}{\numberline {35}Example\thmtformatoptarg {Two groups with exponential baseline}}{88}{example.35}
-\contentsline {extra}{\numberline {27}Extra Info\thmtformatoptarg {General Hazard Rate Model}}{88}{extra.27}
+\contentsline {extra}{\numberline {28}Extra Info\thmtformatoptarg {General Hazard Rate Model}}{88}{extra.28}
 \contentsline {remark}{\numberline {19}Remark\thmtformatoptarg {Interplay between probability and statistics}}{89}{remark.19}
 \contentsline {remark}{\numberline {20}Remark\thmtformatoptarg {What is a component?}}{89}{remark.20}
 \contentsline {definition}{\numberline {51}Definition\thmtformatoptarg {Point availability}}{90}{definition.51}
