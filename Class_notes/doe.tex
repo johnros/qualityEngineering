@@ -46,50 +46,14 @@ Later in this chapter, we will discuss in detail the means to avoid systematic e
 
 \subsection{Dealing with Non-Systematic Errors}
 
-Informally speaking, non-systematic errors are avoided by:
+Informally speaking, non-systematic errors, i.e. noise, is reduced by:
 \begin{description}
-	\item [Compare like with like] Comparing similar units. Put differently, we aim to compare like with like. 
-	This is done by the sampling scheme. 
+	\item [Compare like with like] Comparing similar units. This is done by the sampling scheme. 
 	\item [Replications] 
-	Repeat a measurement enough times, and the non-systematic error will cancel out. 
+	Repeat a measurement enough times, and the non-systematic error will average out. 
 \end{description} 
 
 
-
-
-\subsection{Sampling}
-
-The literature of sampling is divided between method for sampling in designed experiments, and sampling in observational studies. 
-In both cases, we will typically want sampling schemes that reduce the 
-
-
-
-\subsubsection{Non-simple sampling}
-Throughout this chapter we will be considering simple random samples, where all the population units have the same probability of being sampled. 
-For completeness, we will emphasize that this is not always the case as illustrated in the next example.
-
-\begin{example}[Respondent Driven Sampling]
-	\label{ex:RDS}
-	Consider the following chain-referral sampling scheme. 
-	A Facebook questionnaire is passed by rewarding respondents some credit if they name other respondents.
-	The probability of being sampled is thus not fixed for everyone, but rather a function of the number of your facebook friends.  
-	Now imagine the questionnaire is meant to estimate the market share of product Y.
-	It seems reasonable to assume that the more friends you have, the more likely you are to be sampled, and also, the more likely to be familiar with Y. 
-	This sampling scheme will thus lead to an upward biased estimate of Y's popularity.
-\end{example}
-
-If the non-simple sampling scheme in Example~\ref{ex:RDS} is not accounted for at the analysis stage, we will clearly have biased popularity estimates. 
-To deal with over-representation we will want to weight each sample by its probability of being sampled.
-\begin{definition}[Horowitz Thompson Estimator]
-	\label{def:horowitz-thompson}
-	If each unit $i$ has probability $\pi_i$ of being sampled and measured response $y_i$, then an unbiased estimate of the population mean of $y$ is given by 
-	\begin{align}
-	\frac{\sum_{i \in S} y_i/\pi_i}{\sum_{i \in S} 1/\pi_i},
-	\end{align}
-	where $i \in S$ means that $i$ has actually been sampled. 
-\end{definition}
-You may verify that the Horowitz-Thompson estimator in Definition~\ref{def:horowitz-thompson} return the usual sample mean, if the sampling is simple, thus all $\pi_i$ are equal. 
-From this point on, we ignore special sampling schemes and return to simple random sampling. 
 
 
 
@@ -1059,13 +1023,13 @@ You may verify that if $X$ has not effect on $Y$, i.e. $P(Y|X)=P(Y)$, for all $X
 We now show how the $OR$ can be estimated from the various designs. 
 
 
-\paragraph{Prospective Study} 
+\subsection{Prospective Study} 
 A prospective study means that we decide how many samples of each version to take and wait until some fail, and then compare the failure probabilities. 
 Formally this means we directly estimate $P(Y=1|X=1)$ and $P(Y=1|X=0)$.
 Estimating $OR$ is thus trivial.
 
 
-\paragraph{Retrospective Study}
+\subsection{Retrospective Study}
 A retrospective study means that we sample a fixed number of working and broken devices. 
 We can thus estimate the frequency of each version given the outcome: $P(X|Y)$.
 To relate it to the $OR$, we will need to relate the estimable $P(X|Y)$, to the desired $P(Y|X)$ via Bayes' Theorem: 
@@ -1093,7 +1057,7 @@ It means that we even if we sample retrospectively, we can estimate the OR as if
 \end{extra}
 
 
-\paragraph{Cross-Section}
+\subsection{Cross-Section}
 A cross-section study is \textbf{not} a probable sampling scheme for our post-purchase example. 
 It implies that we sample randomly in a ``pile'' of devices of all versions and states. 
 We thus get an estimate of the proportion of each $X,Y$ combination, and need to relate it to the difference in failure probabilities. 
@@ -1114,6 +1078,43 @@ which shows that the OR can indeed be estimated from a cross-section study.
 	Is such a practice consistent with the designed experiment or the observational view of a study?
 	If observational, is it cross sectional? Prospective? Retrospective? 
 \end{think}
+
+
+
+
+
+\subsection{Special Sampling Schemes}
+Cross Sectional studies can satisfy the popular i.i.d. assumption from introductory courses. 
+Prospective and retrospective studies no longer satisfy this assumption, because samples within subject are dependent. 
+These are still fairly simple sampling schemes. 
+Here is a more complicated example. 
+
+
+\begin{example}[Respondent Driven Sampling]
+	\label{ex:RDS}
+	Consider the following chain-referral sampling scheme. 
+	A Facebook questionnaire is passed by rewarding respondents some credit if they name other respondents.
+	The probability of being sampled is thus not fixed for everyone, but rather a function of the number of your facebook friends.  
+	Now imagine the questionnaire is meant to estimate the market share of product Y.
+	It seems reasonable to assume that the more friends you have, the more likely you are to be sampled, and also, the more likely to be familiar with Y. 
+	This sampling scheme will thus lead to an upward biased estimate of Y's popularity.
+\end{example}
+
+If the non-simple sampling scheme in Example~\ref{ex:RDS} is not accounted for at the analysis stage, we will clearly have biased popularity estimates. 
+To deal with over-representation we will want to weight each sample by its probability of being sampled.
+\begin{definition}[Horowitz Thompson Estimator]
+	\label{def:horowitz-thompson}
+	If each unit $i$ has probability $\pi_i$ of being sampled and measured response $y_i$, then an unbiased estimate of the population mean of $y$ is given by 
+	\begin{align}
+	\frac{\sum_{i \in S} y_i/\pi_i}{\sum_{i \in S} 1/\pi_i},
+	\end{align}
+	where $i \in S$ means that $i$ has actually been sampled. 
+\end{definition}
+You may verify that the Horowitz-Thompson estimator in Definition~\ref{def:horowitz-thompson} return the usual sample mean, if the sampling is simple, thus all $\pi_i$ are equal. 
+From this point on, we ignore special sampling schemes and return to simple random sampling. 
+
+
+
 
 
 
