@@ -899,9 +899,9 @@ For historical reasons, the experimentation with several web-site layouts is not
 
 Some particular characteristics of $A\backslash B$ testing include:
 \begin{enumerate}
-\item Users come by the millions. Sample size is rarely an issue, so that avoiding bias is more important than avoiding variability.
+\item Users come by the millions. Sample size is rarely an issue, so that avoiding systematic errors is more important than avoiding non-systematic errors which can be averaged out.
 \item Browser cookies, or login details define blocks. Technology permits to optimize the size for each block separately. If blocking is to very specific subgroups (female users, running Linux, that purchased on Amazon, etc.), then sample size, and thus variability, may become an issue again.
-\item Sites have many layout parameters (locations, colours, sizes,...). Studying all these combinations may result on a formidable task (full factorial?!?).
+\item Sites have many layout parameters (locations, colours, sizes,...). Studying all these combinations may result on a formidable task. Bayesian Optimization and Central Composite designs will be preferred over full factorials. 
 \end{enumerate}
 
 
@@ -928,8 +928,8 @@ The wind design example (\ref{eg:wings}) demonstrates the following points:
 \item The ``response'' to each treatment, is deterministic. 
 \item The problem of interest is in reconstructing the response at non measured factor levels, so that optimal values may be identified. 
 \end{enumerate}
-It is thus not uncommon to call upon DOE theory for choosing the factor combinations to be experimented with. Space filling designs (Sec.~\ref{sec:space_filling}) being a particularly prevalent choice. 
-The analysis of computer experiment is very different than real-life experiment since we have no noise component. 
+It is thus not uncommon to call upon DOE theory for choosing the factor combinations to be experimented with. The analysis of computer experiment is very different than real-life experiment since we have no non-systematic errors. 
+Space filling designs (Sec.~\ref{sec:space_filling}), and Bayesian Optimization (\ref{sec:continouos_factors}) being a particularly prevalent choices. 
 See \cite{sacks_design_1989} or \cite{santner_design_2013} for further details. 
 
 
