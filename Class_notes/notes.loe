@@ -67,89 +67,89 @@
 \contentsline {example}{\numberline {7}Example\thmtformatoptarg {Two Competing Diets}}{58}{example.7}
 \contentsline {example}{\numberline {8}Example\thmtformatoptarg {Web design revisited}}{59}{example.8}
 \contentsline {remark}{\numberline {12}Remark\thmtformatoptarg {Popularity of $2^k$}}{61}{remark.12}
-\contentsline {remark}{\numberline {13}Remark\thmtformatoptarg {Intermediate Factor Levels}}{61}{remark.13}
+\contentsline {extra}{\numberline {16}Extra Info\thmtformatoptarg {Intermediate Factor Levels}}{61}{extra.16}
 \contentsline {example}{\numberline {9}Example\thmtformatoptarg {From $2^2$ to $2^{2-1}$}}{62}{example.9}
-\contentsline {extra}{\numberline {16}Extra Info\thmtformatoptarg {Coding Theory}}{63}{extra.16}
+\contentsline {extra}{\numberline {17}Extra Info\thmtformatoptarg {Coding Theory}}{63}{extra.17}
 \contentsline {example}{\numberline {10}Example\thmtformatoptarg {Design for linear regression}}{64}{example.10}
-\contentsline {example}{\numberline {11}Example\thmtformatoptarg {Design for non linear regression}}{64}{example.11}
-\contentsline {extra}{\numberline {17}Extra Info\thmtformatoptarg {Space Filling and Hashing}}{65}{extra.17}
-\contentsline {definition}{\numberline {28}Definition\thmtformatoptarg {A-Optimality}}{65}{definition.28}
+\contentsline {example}{\numberline {11}Example\thmtformatoptarg {Design for non linear regression}}{65}{example.11}
+\contentsline {extra}{\numberline {18}Extra Info\thmtformatoptarg {Space Filling and Hashing}}{66}{extra.18}
+\contentsline {definition}{\numberline {28}Definition\thmtformatoptarg {A-Optimality}}{66}{definition.28}
 \contentsline {definition}{\numberline {29}Definition\thmtformatoptarg {D-Optimality}}{66}{definition.29}
-\contentsline {extra}{\numberline {18}Extra Info\thmtformatoptarg {Other Optimality Criteria}}{66}{extra.18}
-\contentsline {extra}{\numberline {19}Extra Info\thmtformatoptarg {Active Learning}}{67}{extra.19}
-\contentsline {extra}{\numberline {20}Extra Info\thmtformatoptarg {Bloom filters}}{67}{extra.20}
+\contentsline {extra}{\numberline {19}Extra Info\thmtformatoptarg {Other Optimality Criteria}}{66}{extra.19}
+\contentsline {extra}{\numberline {20}Extra Info\thmtformatoptarg {Active Learning}}{67}{extra.20}
+\contentsline {extra}{\numberline {21}Extra Info\thmtformatoptarg {Bloom filters}}{67}{extra.21}
 \contentsline {example}{\numberline {12}Example\thmtformatoptarg {Designing Wings}}{68}{example.12}
 \contentsline {example}{\numberline {13}Example\thmtformatoptarg {Post-sale testing}}{68}{example.13}
 \contentsline {definition}{\numberline {30}Definition\thmtformatoptarg {Odds}}{69}{definition.30}
 \contentsline {definition}{\numberline {31}Definition\thmtformatoptarg {Odds Ratio}}{69}{definition.31}
 \contentsline {definition}{\numberline {32}Definition\thmtformatoptarg {Relative Risk}}{69}{definition.32}
-\contentsline {extra}{\numberline {21}Extra Info\thmtformatoptarg {Effect parameters as distances}}{70}{extra.21}
-\contentsline {example}{\numberline {14}Example\thmtformatoptarg {Respondent Driven Sampling}}{70}{example.14}
+\contentsline {extra}{\numberline {22}Extra Info\thmtformatoptarg {Effect parameters as distances}}{70}{extra.22}
+\contentsline {example}{\numberline {14}Example\thmtformatoptarg {Respondent Driven Sampling}}{71}{example.14}
 \contentsline {definition}{\numberline {33}Definition\thmtformatoptarg {Horowitz Thompson Estimator}}{71}{definition.33}
 \addvspace {10\p@ }
-\contentsline {remark}{\numberline {14}Remark\thmtformatoptarg {Approximate Power Calculations}}{73}{remark.14}
-\contentsline {remark}{\numberline {15}Remark\thmtformatoptarg {Redundancy}}{74}{remark.15}
-\contentsline {remark}{\numberline {16}Remark\thmtformatoptarg {No Free Lunch}}{74}{remark.16}
+\contentsline {remark}{\numberline {13}Remark\thmtformatoptarg {Approximate Power Calculations}}{74}{remark.13}
+\contentsline {remark}{\numberline {14}Remark\thmtformatoptarg {Redundancy}}{75}{remark.14}
+\contentsline {remark}{\numberline {15}Remark\thmtformatoptarg {No Free Lunch}}{75}{remark.15}
 \addvspace {10\p@ }
-\contentsline {definition}{\numberline {34}Definition\thmtformatoptarg {Structure Function}}{75}{definition.34}
-\contentsline {remark}{\numberline {17}Remark\thmtformatoptarg {$\Phi $}}{75}{remark.17}
-\contentsline {definition}{\numberline {35}Definition\thmtformatoptarg {Series System}}{75}{definition.35}
-\contentsline {definition}{\numberline {36}Definition\thmtformatoptarg {Parallel System}}{75}{definition.36}
-\contentsline {definition}{\numberline {37}Definition\thmtformatoptarg {k-out-of-p System}}{76}{definition.37}
-\contentsline {definition}{\numberline {38}Definition\thmtformatoptarg {Monotone System}}{76}{definition.38}
-\contentsline {definition}{\numberline {39}Definition\thmtformatoptarg {Reliability}}{76}{definition.39}
-\contentsline {example}{\numberline {15}Example\thmtformatoptarg {Reliability of a series system}}{76}{example.15}
-\contentsline {example}{\numberline {16}Example\thmtformatoptarg {Reliability of a parallel system}}{77}{example.16}
-\contentsline {example}{\numberline {17}Example\thmtformatoptarg {Reliability of a k-out-of-p system}}{77}{example.17}
-\contentsline {example}{\numberline {18}Example\thmtformatoptarg {Bridge Structure}}{77}{example.18}
-\contentsline {theorem}{\numberline {8.1.1}Theorem\thmtformatoptarg {Component-wise redundancy}}{78}{theorem.8.1.1}
-\contentsline {extra}{\numberline {22}Extra Info\thmtformatoptarg {Reliability analysis of complex systems}}{78}{extra.22}
-\contentsline {definition}{\numberline {40}Definition\thmtformatoptarg {Improvement potential}}{78}{definition.40}
-\contentsline {definition}{\numberline {41}Definition\thmtformatoptarg {Birenbaum's measure}}{78}{definition.41}
-\contentsline {definition}{\numberline {42}Definition\thmtformatoptarg {CDF}}{79}{definition.42}
-\contentsline {definition}{\numberline {43}Definition\thmtformatoptarg {PDF}}{79}{definition.43}
-\contentsline {definition}{\numberline {44}Definition\thmtformatoptarg {Survival Function}}{79}{definition.44}
-\contentsline {example}{\numberline {19}Example\thmtformatoptarg {Survival of a series system}}{79}{example.19}
-\contentsline {example}{\numberline {20}Example\thmtformatoptarg {Survival of a parallel system}}{79}{example.20}
-\contentsline {definition}{\numberline {45}Definition\thmtformatoptarg {Failure Rate}}{79}{definition.45}
-\contentsline {definition}{\numberline {46}Definition\thmtformatoptarg {Cumulative Risk}}{79}{definition.46}
-\contentsline {theorem}{\numberline {8.1.2}Theorem\thmtformatoptarg {Failure rate of a series system}}{80}{theorem.8.1.2}
-\contentsline {example}{\numberline {21}Example\thmtformatoptarg {Exponential Hazard}}{80}{example.21}
-\contentsline {example}{\numberline {22}Example\thmtformatoptarg {Failure rate of a series of exponential components}}{80}{example.22}
-\contentsline {example}{\numberline {23}Example\thmtformatoptarg {Failure rate of a two exponential-component parallel-system}}{80}{example.23}
-\contentsline {example}{\numberline {24}Example\thmtformatoptarg {Weibull Hazard}}{81}{example.24}
-\contentsline {example}{\numberline {25}Example\thmtformatoptarg {Empirical risk rates}}{81}{example.25}
-\contentsline {definition}{\numberline {47}Definition\thmtformatoptarg {IFR}}{82}{definition.47}
-\contentsline {definition}{\numberline {48}Definition\thmtformatoptarg {IFRA}}{82}{definition.48}
-\contentsline {definition}{\numberline {49}Definition\thmtformatoptarg {NBU}}{82}{definition.49}
-\contentsline {definition}{\numberline {50}Definition\thmtformatoptarg {NBUE}}{82}{definition.50}
-\contentsline {theorem}{\numberline {8.1.3}Theorem}{82}{theorem.8.1.3}
-\contentsline {theorem}{\numberline {8.1.4}Theorem\thmtformatoptarg {IFRA closure theorem}}{82}{theorem.8.1.4}
-\contentsline {cor}{\numberline {8.1.1}Corollary\thmtformatoptarg {IFR closure for series systems}}{82}{cor.8.1.1}
-\contentsline {theorem}{\numberline {8.1.5}Theorem\thmtformatoptarg {Convolution of IFR}}{83}{theorem.8.1.5}
-\contentsline {extra}{\numberline {23}Extra Info\thmtformatoptarg {IFR and log-concave}}{83}{extra.23}
-\contentsline {example}{\numberline {26}Example\thmtformatoptarg {IFR of Gamma}}{83}{example.26}
-\contentsline {example}{\numberline {27}Example\thmtformatoptarg {Series system of offline backups}}{83}{example.27}
-\contentsline {example}{\numberline {28}Example\thmtformatoptarg {Likelihood estimation of a series system}}{83}{example.28}
-\contentsline {example}{\numberline {29}Example\thmtformatoptarg {Censored exponential lifetimes}}{85}{example.29}
-\contentsline {extra}{\numberline {24}Extra Info}{85}{extra.24}
-\contentsline {example}{\numberline {30}Example\thmtformatoptarg {Two group accelerated life}}{85}{example.30}
-\contentsline {example}{\numberline {31}Example\thmtformatoptarg {Accelerated life with Gaussian noise}}{86}{example.31}
-\contentsline {extra}{\numberline {25}Extra Info\thmtformatoptarg {Tobit regression}}{86}{extra.25}
-\contentsline {extra}{\numberline {26}Extra Info\thmtformatoptarg {Accelerated life with extreme value noise}}{86}{extra.26}
-\contentsline {extra}{\numberline {27}Extra Info}{86}{extra.27}
-\contentsline {example}{\numberline {32}Example\thmtformatoptarg {Proportional hazards in a two group model}}{86}{example.32}
-\contentsline {example}{\numberline {33}Example\thmtformatoptarg {Comparing survival rates in the two group model}}{87}{example.33}
-\contentsline {example}{\numberline {34}Example\thmtformatoptarg {Accelerated life and proportional hazard for exponential failure times}}{87}{example.34}
-\contentsline {example}{\numberline {35}Example\thmtformatoptarg {Two groups with exponential baseline}}{88}{example.35}
-\contentsline {extra}{\numberline {28}Extra Info\thmtformatoptarg {General Hazard Rate Model}}{88}{extra.28}
-\contentsline {remark}{\numberline {18}Remark\thmtformatoptarg {Interplay between probability and statistics}}{89}{remark.18}
-\contentsline {remark}{\numberline {19}Remark\thmtformatoptarg {What is a component?}}{89}{remark.19}
-\contentsline {definition}{\numberline {51}Definition\thmtformatoptarg {Point availability}}{90}{definition.51}
-\contentsline {definition}{\numberline {52}Definition\thmtformatoptarg {Interval reliability}}{90}{definition.52}
-\contentsline {definition}{\numberline {53}Definition\thmtformatoptarg {Interval downtime}}{90}{definition.53}
-\contentsline {definition}{\numberline {54}Definition\thmtformatoptarg {MTTF}}{90}{definition.54}
-\contentsline {definition}{\numberline {55}Definition\thmtformatoptarg {MTTR}}{90}{definition.55}
-\contentsline {theorem}{\numberline {8.4.1}Theorem\thmtformatoptarg {Stable point availability}}{90}{theorem.8.4.1}
-\contentsline {theorem}{\numberline {8.4.2}Theorem\thmtformatoptarg {Stable failures per unit of time}}{90}{theorem.8.4.2}
-\contentsline {theorem}{\numberline {8.4.3}Theorem\thmtformatoptarg {Stable unavailability}}{90}{theorem.8.4.3}
+\contentsline {definition}{\numberline {34}Definition\thmtformatoptarg {Structure Function}}{76}{definition.34}
+\contentsline {remark}{\numberline {16}Remark\thmtformatoptarg {$\Phi $}}{76}{remark.16}
+\contentsline {definition}{\numberline {35}Definition\thmtformatoptarg {Series System}}{76}{definition.35}
+\contentsline {definition}{\numberline {36}Definition\thmtformatoptarg {Parallel System}}{76}{definition.36}
+\contentsline {definition}{\numberline {37}Definition\thmtformatoptarg {k-out-of-p System}}{77}{definition.37}
+\contentsline {definition}{\numberline {38}Definition\thmtformatoptarg {Monotone System}}{77}{definition.38}
+\contentsline {definition}{\numberline {39}Definition\thmtformatoptarg {Reliability}}{77}{definition.39}
+\contentsline {example}{\numberline {15}Example\thmtformatoptarg {Reliability of a series system}}{77}{example.15}
+\contentsline {example}{\numberline {16}Example\thmtformatoptarg {Reliability of a parallel system}}{78}{example.16}
+\contentsline {example}{\numberline {17}Example\thmtformatoptarg {Reliability of a k-out-of-p system}}{78}{example.17}
+\contentsline {example}{\numberline {18}Example\thmtformatoptarg {Bridge Structure}}{78}{example.18}
+\contentsline {theorem}{\numberline {8.1.1}Theorem\thmtformatoptarg {Component-wise redundancy}}{79}{theorem.8.1.1}
+\contentsline {extra}{\numberline {23}Extra Info\thmtformatoptarg {Reliability analysis of complex systems}}{79}{extra.23}
+\contentsline {definition}{\numberline {40}Definition\thmtformatoptarg {Improvement potential}}{79}{definition.40}
+\contentsline {definition}{\numberline {41}Definition\thmtformatoptarg {Birenbaum's measure}}{79}{definition.41}
+\contentsline {definition}{\numberline {42}Definition\thmtformatoptarg {CDF}}{80}{definition.42}
+\contentsline {definition}{\numberline {43}Definition\thmtformatoptarg {PDF}}{80}{definition.43}
+\contentsline {definition}{\numberline {44}Definition\thmtformatoptarg {Survival Function}}{80}{definition.44}
+\contentsline {example}{\numberline {19}Example\thmtformatoptarg {Survival of a series system}}{80}{example.19}
+\contentsline {example}{\numberline {20}Example\thmtformatoptarg {Survival of a parallel system}}{80}{example.20}
+\contentsline {definition}{\numberline {45}Definition\thmtformatoptarg {Failure Rate}}{80}{definition.45}
+\contentsline {definition}{\numberline {46}Definition\thmtformatoptarg {Cumulative Risk}}{80}{definition.46}
+\contentsline {theorem}{\numberline {8.1.2}Theorem\thmtformatoptarg {Failure rate of a series system}}{81}{theorem.8.1.2}
+\contentsline {example}{\numberline {21}Example\thmtformatoptarg {Exponential Hazard}}{81}{example.21}
+\contentsline {example}{\numberline {22}Example\thmtformatoptarg {Failure rate of a series of exponential components}}{81}{example.22}
+\contentsline {example}{\numberline {23}Example\thmtformatoptarg {Failure rate of a two exponential-component parallel-system}}{81}{example.23}
+\contentsline {example}{\numberline {24}Example\thmtformatoptarg {Weibull Hazard}}{82}{example.24}
+\contentsline {example}{\numberline {25}Example\thmtformatoptarg {Empirical risk rates}}{82}{example.25}
+\contentsline {definition}{\numberline {47}Definition\thmtformatoptarg {IFR}}{83}{definition.47}
+\contentsline {definition}{\numberline {48}Definition\thmtformatoptarg {IFRA}}{83}{definition.48}
+\contentsline {definition}{\numberline {49}Definition\thmtformatoptarg {NBU}}{83}{definition.49}
+\contentsline {definition}{\numberline {50}Definition\thmtformatoptarg {NBUE}}{83}{definition.50}
+\contentsline {theorem}{\numberline {8.1.3}Theorem}{83}{theorem.8.1.3}
+\contentsline {theorem}{\numberline {8.1.4}Theorem\thmtformatoptarg {IFRA closure theorem}}{83}{theorem.8.1.4}
+\contentsline {cor}{\numberline {8.1.1}Corollary\thmtformatoptarg {IFR closure for series systems}}{83}{cor.8.1.1}
+\contentsline {theorem}{\numberline {8.1.5}Theorem\thmtformatoptarg {Convolution of IFR}}{84}{theorem.8.1.5}
+\contentsline {extra}{\numberline {24}Extra Info\thmtformatoptarg {IFR and log-concave}}{84}{extra.24}
+\contentsline {example}{\numberline {26}Example\thmtformatoptarg {IFR of Gamma}}{84}{example.26}
+\contentsline {example}{\numberline {27}Example\thmtformatoptarg {Series system of offline backups}}{84}{example.27}
+\contentsline {example}{\numberline {28}Example\thmtformatoptarg {Likelihood estimation of a series system}}{84}{example.28}
+\contentsline {example}{\numberline {29}Example\thmtformatoptarg {Censored exponential lifetimes}}{86}{example.29}
+\contentsline {extra}{\numberline {25}Extra Info}{86}{extra.25}
+\contentsline {example}{\numberline {30}Example\thmtformatoptarg {Two group accelerated life}}{86}{example.30}
+\contentsline {example}{\numberline {31}Example\thmtformatoptarg {Accelerated life with Gaussian noise}}{87}{example.31}
+\contentsline {extra}{\numberline {26}Extra Info\thmtformatoptarg {Tobit regression}}{87}{extra.26}
+\contentsline {extra}{\numberline {27}Extra Info\thmtformatoptarg {Accelerated life with extreme value noise}}{87}{extra.27}
+\contentsline {extra}{\numberline {28}Extra Info}{87}{extra.28}
+\contentsline {example}{\numberline {32}Example\thmtformatoptarg {Proportional hazards in a two group model}}{87}{example.32}
+\contentsline {example}{\numberline {33}Example\thmtformatoptarg {Comparing survival rates in the two group model}}{88}{example.33}
+\contentsline {example}{\numberline {34}Example\thmtformatoptarg {Accelerated life and proportional hazard for exponential failure times}}{88}{example.34}
+\contentsline {example}{\numberline {35}Example\thmtformatoptarg {Two groups with exponential baseline}}{89}{example.35}
+\contentsline {extra}{\numberline {29}Extra Info\thmtformatoptarg {General Hazard Rate Model}}{89}{extra.29}
+\contentsline {remark}{\numberline {17}Remark\thmtformatoptarg {Interplay between probability and statistics}}{90}{remark.17}
+\contentsline {remark}{\numberline {18}Remark\thmtformatoptarg {What is a component?}}{90}{remark.18}
+\contentsline {definition}{\numberline {51}Definition\thmtformatoptarg {Point availability}}{91}{definition.51}
+\contentsline {definition}{\numberline {52}Definition\thmtformatoptarg {Interval reliability}}{91}{definition.52}
+\contentsline {definition}{\numberline {53}Definition\thmtformatoptarg {Interval downtime}}{91}{definition.53}
+\contentsline {definition}{\numberline {54}Definition\thmtformatoptarg {MTTF}}{91}{definition.54}
+\contentsline {definition}{\numberline {55}Definition\thmtformatoptarg {MTTR}}{91}{definition.55}
+\contentsline {theorem}{\numberline {8.4.1}Theorem\thmtformatoptarg {Stable point availability}}{91}{theorem.8.4.1}
+\contentsline {theorem}{\numberline {8.4.2}Theorem\thmtformatoptarg {Stable failures per unit of time}}{91}{theorem.8.4.2}
+\contentsline {theorem}{\numberline {8.4.3}Theorem\thmtformatoptarg {Stable unavailability}}{91}{theorem.8.4.3}

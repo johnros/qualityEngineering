@@ -411,7 +411,9 @@ There is however, the benefit that we can actually verify the validity of the ad
 
 \subsection{Full Factorial Designs}
 A \emph{full factorial}, or \emph{complete factorial} design, is one where all factor-level combinations are replicated the same number of times.
-The most common of the full-factorial designs is the $2^k$-design where all combinations of $k$ factors with two levels each are tested in each replication.
+The factors $A,B,C,...$ each with numbers of levels $l_A,l_B,l_C,\dots$, define $l_A\times l_B \times l_C \times \dots$ treatments. 
+By far, the most common of the full-factorial designs is where all factors have two levels: $l_A=2, l_B=2, \dots$.
+These is known as $2^k$-design, where all combinations of the $k$ factors is measured in each replication.
 
 
 
@@ -469,12 +471,12 @@ Once non related factors have been screened, the experimenter may proceed from t
 
 
 
-\begin{remark}[Intermediate Factor Levels]
+\begin{extra}[Intermediate Factor Levels]
 In a $2^k$ design, a factor may actually be a \textbf{continuous} controllable input which was restricted to two values for convenience. 
 After estimating the effect of the factor, we may want to know what the effect would have been, had we set it on some intermediate level.
 It is customary to assume that a main effect acts linearly in-between experimental conditions, yet you should remember that there is nothing in the data to support this.
 For a more rigorous approach, see the Response Surface Methodology Section (\ref{sec:response_surface}).
-\end{remark}
+\end{extra}
 
 
 
@@ -513,7 +515,8 @@ Put differently, he is unable to estimate an interaction.
 Full factorial designs are the simplest designs to setup and interpret. 
 A major drawback, are the resources required when $k$ is large. 
 This is where the \emph{fractional factorial}, or \emph{partial factorial} designs kick in.
-The fundamental idea is to design a full factorial, but skip a couple experimental conditions. If conditions to skip are wisely selected, only information on higher order interactions will be compromised.
+The fundamental idea is to design a full factorial, but skip a couple experimental conditions. 
+If conditions to skip are wisely selected, the information we give up is the least interesting. 
 
 
 \begin{example}[From $2^2$ to $2^{2-1}$]
@@ -541,7 +544,7 @@ There are thus $\binom{4}{2}=6$ possible eliminations, which are enumerated in T
 The lesson from Example~\ref{eg:fractional_factorial} is that in a fractional factorial our savings in time and money, come at the cost of the information that can be drawn from the experiment.
 The idea behind partial factorial experiments, is that by an informed choice of the conditions skipped, we can choose what information to give up. The information lost, is known as the \emph{alias structure}.\marginnote{Alias Structure}
 
-In practice, we will rarely go over all the $\binom{2^k}{2^k-2^{k-p}}$ possible eliminations of conditions, but rather revert to pre-selected designs. 
+In practice, we will rarely design the experiment by going over all the $\binom{2^k}{2^k-2^{k-p}}$ possible eliminations like in Example~\ref{eg:fractional_factorial}, but rather choose from pre-selected designs. 
 Table~\ref{tab:partial_factorial_ii}, generated with the \rcode{FrF2()} in the \rcode{FrF2} \R package, is an optimal $2^{5-2}$ design.
 Using the \rcode{design.info()} function of that same package, we know that the aliasing structure of this design is
 $a=bd=ce, b=ad, c=ae, d=ab, e=ac$.
@@ -689,7 +692,17 @@ One may sample a continuous factor at two points, and treat it as a $2$ level fa
 This is not the case, however, if aiming at characterizing the full response surface, for which the factorial designs are no longer appropriate. 
 
 When dealing with \emph{continuous factors}, or \emph{quantitative factors}, we have many more analysis strategies than when dealing with qualitative factors.
+All the following designs are more efficient than non-linear factorial designs such as $3^k$. 
+They gain efficiency by being \emph{sequential} and not ``one-shot''.
 
+\begin{description}
+	\item[Central Composite Design] 
+	Aimed at finding optimal factor combinations. 
+	At each stage we decide which factors have a non-linear effect and add levels to these factors. 
+	Chooses the level do be added using a quadratic surface assumption.
+	\item[Bayesian Optimization] Like the Central Composite design, but replaces the quadratic surface assumption with a more general functional form\footnote{A Gaussian process prior, i.e., a function which's gradients are assumed to havea Gaussian distribution.}. 
+	\item[Response Surface Methdology] As the name suggests, 
+\end{description}
 
 \subsection{Central Composite Design}
 \label{sec:central_composite}
@@ -699,7 +712,7 @@ We may thus opt for a full $3^k$ factorial design to fit a non-linear surface to
 The factor encoding would typically be $\{-1,0,1\}$,
 A full $3^k$ factorial design may however be needlessly expensive, if many factor actually have linear effects.
 A more common approach in industrial application is the \emph{central composite design}, where a $2^k$ design is augmented with well chosen sampling points. 
-Unlike the previous factorial designs, this design is sequential: 
+Unlike the previous factorial designs, this design is \emph{sequential}: 
 first screen the non-interacting factors, then augment the design for better estimation of the interactions and non-linearities. 
 For more details see \cite[Sec.6.6]{cox_theory_2000}
 
