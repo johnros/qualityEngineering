@@ -65,10 +65,9 @@
 \contentsline {example}{\numberline {5}Example\thmtformatoptarg {Judgment leaking into analysis}}{57}{example.5}
 \contentsline {example}{\numberline {6}Example\thmtformatoptarg {Web Design}}{57}{example.6}
 \contentsline {example}{\numberline {7}Example\thmtformatoptarg {Two Competing Diets}}{58}{example.7}
-\contentsline {remark}{\numberline {12}Remark\thmtformatoptarg {Paired sample}}{58}{remark.12}
 \contentsline {example}{\numberline {8}Example\thmtformatoptarg {Web design revisited}}{59}{example.8}
-\contentsline {remark}{\numberline {13}Remark\thmtformatoptarg {Popularity of $2^k$}}{61}{remark.13}
-\contentsline {remark}{\numberline {14}Remark\thmtformatoptarg {Intermediate Factor Levels}}{61}{remark.14}
+\contentsline {remark}{\numberline {12}Remark\thmtformatoptarg {Popularity of $2^k$}}{61}{remark.12}
+\contentsline {remark}{\numberline {13}Remark\thmtformatoptarg {Intermediate Factor Levels}}{61}{remark.13}
 \contentsline {example}{\numberline {9}Example\thmtformatoptarg {From $2^2$ to $2^{2-1}$}}{62}{example.9}
 \contentsline {extra}{\numberline {16}Extra Info\thmtformatoptarg {Coding Theory}}{63}{extra.16}
 \contentsline {example}{\numberline {10}Example\thmtformatoptarg {Design for linear regression}}{64}{example.10}
@@ -88,12 +87,12 @@
 \contentsline {example}{\numberline {14}Example\thmtformatoptarg {Respondent Driven Sampling}}{70}{example.14}
 \contentsline {definition}{\numberline {33}Definition\thmtformatoptarg {Horowitz Thompson Estimator}}{71}{definition.33}
 \addvspace {10\p@ }
-\contentsline {remark}{\numberline {15}Remark\thmtformatoptarg {Approximate Power Calculations}}{73}{remark.15}
-\contentsline {remark}{\numberline {16}Remark\thmtformatoptarg {Redundancy}}{74}{remark.16}
-\contentsline {remark}{\numberline {17}Remark\thmtformatoptarg {No Free Lunch}}{74}{remark.17}
+\contentsline {remark}{\numberline {14}Remark\thmtformatoptarg {Approximate Power Calculations}}{73}{remark.14}
+\contentsline {remark}{\numberline {15}Remark\thmtformatoptarg {Redundancy}}{74}{remark.15}
+\contentsline {remark}{\numberline {16}Remark\thmtformatoptarg {No Free Lunch}}{74}{remark.16}
 \addvspace {10\p@ }
 \contentsline {definition}{\numberline {34}Definition\thmtformatoptarg {Structure Function}}{75}{definition.34}
-\contentsline {remark}{\numberline {18}Remark\thmtformatoptarg {$\Phi $}}{75}{remark.18}
+\contentsline {remark}{\numberline {17}Remark\thmtformatoptarg {$\Phi $}}{75}{remark.17}
 \contentsline {definition}{\numberline {35}Definition\thmtformatoptarg {Series System}}{75}{definition.35}
 \contentsline {definition}{\numberline {36}Definition\thmtformatoptarg {Parallel System}}{75}{definition.36}
 \contentsline {definition}{\numberline {37}Definition\thmtformatoptarg {k-out-of-p System}}{76}{definition.37}
@@ -144,8 +143,8 @@
 \contentsline {example}{\numberline {34}Example\thmtformatoptarg {Accelerated life and proportional hazard for exponential failure times}}{87}{example.34}
 \contentsline {example}{\numberline {35}Example\thmtformatoptarg {Two groups with exponential baseline}}{88}{example.35}
 \contentsline {extra}{\numberline {28}Extra Info\thmtformatoptarg {General Hazard Rate Model}}{88}{extra.28}
-\contentsline {remark}{\numberline {19}Remark\thmtformatoptarg {Interplay between probability and statistics}}{89}{remark.19}
-\contentsline {remark}{\numberline {20}Remark\thmtformatoptarg {What is a component?}}{89}{remark.20}
+\contentsline {remark}{\numberline {18}Remark\thmtformatoptarg {Interplay between probability and statistics}}{89}{remark.18}
+\contentsline {remark}{\numberline {19}Remark\thmtformatoptarg {What is a component?}}{89}{remark.19}
 \contentsline {definition}{\numberline {51}Definition\thmtformatoptarg {Point availability}}{90}{definition.51}
 \contentsline {definition}{\numberline {52}Definition\thmtformatoptarg {Interval reliability}}{90}{definition.52}
 \contentsline {definition}{\numberline {53}Definition\thmtformatoptarg {Interval downtime}}{90}{definition.53}
