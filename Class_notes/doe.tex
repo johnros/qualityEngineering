@@ -183,7 +183,7 @@ Several matters should be emphasized before we dive in.
 
 
 
-\section{Systematic Errors in Designed Experiments}
+\subsection{Systematic Errors in DOE}
 
 Dealing with systematic errors is possibly the greatest concern in causal inference. 
 Be it a medical intervention, an industrial production process, an economic policy, or a social welfare plan- all of these critically rely on a fair assessment of the magnitude of the effect of the intervention. Bias is disastrous. 
@@ -200,7 +200,7 @@ The second is by the leakage of some personal judgment into the measuring or ana
 
 \begin{example}[Judgment leaking into analysis]
 	Return to the new-drug experiment. 
-	This time, imagine the data analysis, an employee of the pharmaceutical company, known that ``Drug A'' is the new drug his company has been working on, which will grant him a considerable bonus if marketed. 
+	This time, imagine the data analysis is done by an employee of the pharmaceutical company, knowing that ``Drug A'' is the new drug his company has been working on, which will grant him a considerable bonus if shown efficient. 
 	Can he be expected to perform a fair analysis?
 \end{example}
 
@@ -230,7 +230,7 @@ Two ways to deal with such bias:
 
 The idea that random samples come with (common causes of) variability, i.e. noise, should not be new to the reader.
 In this section, we will try to decompose variability into it sources, and learn several techniques to reduce them. 
-Starting with a motivating example, which you should use to fix ideas as you progress along this chapter. 
+Starting with a motivating example, which you should use to fix ideas as you progress along this section. 
 
 
 
@@ -263,8 +263,7 @@ That is why \textbf{twins} are so popular when designing experiments!
 
 
 
-%TODO: update guage R&R experiments from Cox.
-\subsection{Gage R\&R Studies}
+\subsubsection{Gage R\&R Studies}
 R\&R stands for \emph{repeatability} and \emph{reproducibility}.
 These experiments are aimed at assessing the irreducible non-systematic errors in measurement and \emph{range of validity} of conclusions.
 As such, in a typical gauge R\&R experiment, measurement will be made under the same conditions in different labs, by different technicians, etc. 
@@ -274,7 +273,7 @@ As such, in a typical gauge R\&R experiment, measurement will be made under the 
 
 
 
-\subsection{Completely Randomized Designs}
+\subsubsection{Completely Randomized Designs}
 In the simplest of designs, all experimental units are randomly assigned to treatments. 
 This is typically easy to implement.
 In Example~\ref{eg:web_design} this would imply randomly assigning users to interfaces.
@@ -286,7 +285,7 @@ If you suspect, as you should, that in both examples we may reduce variability b
 
 
 
-\subsection{Randomized Block Designs}
+\subsubsection{Randomized Block Designs}
 The idea of \emph{blocking} is to replace the complete randomization scheme by a restricted randomization scheme so that variability can be reduced without introducing bias. 
 The restricted randomization is created by \emph{grouping}, or \emph{blocking} groups of experimental units, and randomizing allocation within the group. 
 
