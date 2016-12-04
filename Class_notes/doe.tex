@@ -475,7 +475,7 @@ Once non related factors have been screened, the experimenter may proceed from t
 In a $2^k$ design, a factor may actually be a \textbf{continuous} controllable input which was restricted to two values for convenience. 
 After estimating the effect of the factor, we may want to know what the effect would have been, had we set it on some intermediate level.
 It is customary to assume that a main effect acts linearly in-between experimental conditions, yet you should remember that there is nothing in the data to support this.
-For a more rigorous approach, see the Response Surface Methodology Section (\ref{sec:response_surface}).
+For a more rigorous approach, see the Continuous Factors Section~\ref{sec:continouos_factors}.
 \end{extra}
 
 
@@ -686,6 +686,7 @@ A possible reference on the matter is \cite{hill_first_1986}, or \cite{hedayat_o
 
 
 \section{Continuous Factors}
+\label{sec:continouos_factors}
 
 If aiming at screening factors, the fact that a factor is continuous is immaterial. 
 One may sample a continuous factor at two points, and treat it as a $2$ level factor.
@@ -706,7 +707,7 @@ They gain efficiency by being \emph{sequential} and not ``one-shot'' like the fa
 
 
 
-\section{Taguchi methods}
+\section{Taguchi Methods}
 
 \emph{Taguchi methods} is a collective name for the philosophy, design, and analysis methods in industrial production applications promoted by Genichi Taguchi in 1970's Japan.
 Focusing on the design principles, we summarize Taguchi's emphasis:
@@ -774,8 +775,8 @@ It may seems that unlike the linear case (Example~\ref{eg:design_linear}) optima
 Now for some facts, supported by the previous examples:
 \begin{enumerate}
 \item The idea of ``balancing'' as a design criterion is very useful with discrete factors, but limited with continuous factors. 
-\item For continuous factors with linear effects, the optimal design implies spreading the sampled factors levels as much as possible. 
-\item For non-linear models, the optimal design may depend on the unknown true effects. 
+\item For continuous factors with \textbf{linear} effects, the optimal design implies spreading the sampled factors levels as much as possible. 
+This is no longer true for \textbf{non-linear} effects where the optimal design may depend on the unknown true effects. 
 \end{enumerate}
 
 
