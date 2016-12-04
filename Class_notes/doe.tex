@@ -693,7 +693,7 @@ This is not the case, however, if aiming at characterizing the full response sur
 
 When dealing with \emph{continuous factors}, or \emph{quantitative factors}, we have many more analysis strategies than when dealing with qualitative factors.
 All the following designs are more efficient than non-linear factorial designs such as $3^k$. 
-They gain efficiency by being \emph{sequential} and not ``one-shot''.
+They gain efficiency by being \emph{sequential} and not ``one-shot'' like the factorial designs.
 
 \begin{description}
 	\item[Central Composite Design] 
@@ -701,48 +701,14 @@ They gain efficiency by being \emph{sequential} and not ``one-shot''.
 	At each stage we decide which factors have a non-linear effect and add levels to these factors. 
 	Chooses the level do be added using a quadratic surface assumption.
 	\item[Bayesian Optimization] Like the Central Composite design, but replaces the quadratic surface assumption with a more general functional form\footnote{A Gaussian process prior, i.e., a function which's gradients are assumed to havea Gaussian distribution.}. 
-	\item[Response Surface Methdology] As the name suggests, 
+	\item[Response Surface Methdology] As the name suggests, aimed at recovering the response surface, and not only optimal combinations. 
 \end{description}
 
-\subsection{Central Composite Design}
-\label{sec:central_composite}
-
-Clearly, we cannot identify non-linear factor effects when sampling a factor only at two levels.
-We may thus opt for a full $3^k$ factorial design to fit a non-linear surface to the data.
-The factor encoding would typically be $\{-1,0,1\}$,
-A full $3^k$ factorial design may however be needlessly expensive, if many factor actually have linear effects.
-A more common approach in industrial application is the \emph{central composite design}, where a $2^k$ design is augmented with well chosen sampling points. 
-Unlike the previous factorial designs, this design is \emph{sequential}: 
-first screen the non-interacting factors, then augment the design for better estimation of the interactions and non-linearities. 
-For more details see \cite[Sec.6.6]{cox_theory_2000}
 
 
-\subsection{Response Surface Methodology}
-\label{sec:response_surface}
+\section{Taguchi methods}
 
-As the name suggests, \emph{response surface methdology} deals with the estimation of the response surface to the levels of continuous factors.
-The response surface methodology is similar to the Central Composite Design of Section~\ref{sec:central_composite}, except that it is aimed at finding an optimal combination of factor level, instead of estimating their effects. 
-
-
-
-
-
-
-
-
-\section{An Industrial Emphasis}
-The following approaches are particularly popular in industrial settings.
-
-\subsection{Plackett-Burman design}
-\label{sec:plackett_burman}
-
-A \emph{Plackett-Burman Design} is a fractional factorial design optimized for \textbf{screening}. 
-It is a very economical design when studying the \textbf{main effects} of a \textbf{large number} of factors. 
-
-
-
-\subsection{Taguchi Methods}
-\emph{Taguchi methods} is a collective name for the philosophy, design, and analysis methods in industrial applications promoted by Genichi Taguchi in 1970's Japan.
+\emph{Taguchi methods} is a collective name for the philosophy, design, and analysis methods in industrial production applications promoted by Genichi Taguchi in 1970's Japan.
 Focusing on the design principles, we summarize Taguchi's emphasis:
 
 \begin{enumerate}
@@ -753,7 +719,10 @@ Log variability ($\log s$) is thus often used as the response.
 \item Factors which can be controlled only in a lab, but not in production, are deliberately varied in the lab. 
 %Typically with split plot designs (\ref{sec:split_plot}).
 
-\item An ample use of Plackett–Burman designs (Section~\ref{sec:plackett_burman}), and its extensions, to screen large numbers of factors. 
+\item An ample use of Plackett–Burman designs, and its extensions, to screen large numbers of factors. \marginnote{Plackett Burman}
+A \emph{Plackett-Burman Design} is a fractional factorial design optimized for \textbf{screening}. 
+It is a very economical design when studying the \textbf{main effects} of a \textbf{large number} of factors. 
+
 
 \end{enumerate}
 
