@@ -436,7 +436,9 @@ With this $2^2$ design, we may recover several effects:
 \item [Main effects with interaction] The effect of varying both $A$ and $B$ from $AB=(--)$ to $AB=(++)$.
 \end{description}
 
-
+\begin{think}
+	How would look the design matrix, $X$, of a $2^2$ experiment with $3$ replications, and effect coding?
+\end{think}
 
 We typically denote the (mean) response for each treatment by the $\mu_{\smiley}$ notation, where $\smiley$ encodes the applied treatment by stating the conditions that were at their $+$ state:
 \begin{table}[H]
@@ -684,53 +686,6 @@ A possible reference on the matter is \cite{hill_first_1986}, or \cite{hedayat_o
 
 
 
-
-\section{Continuous Factors}
-\label{sec:continouos_factors}
-
-If aiming at screening factors, the fact that a factor is continuous is immaterial. 
-One may sample a continuous factor at two points, and treat it as a $2$ level factor.
-This is not the case, however, if aiming at characterizing the full response surface, for which the factorial designs are no longer appropriate. 
-
-When dealing with \emph{continuous factors}, or \emph{quantitative factors}, we have many more analysis strategies than when dealing with qualitative factors.
-All the following designs are more efficient than non-linear factorial designs such as $3^k$. 
-They gain efficiency by being \emph{sequential} and not ``one-shot'' like the factorial designs.
-
-\begin{description}
-	\item[Central Composite Design] 
-	Aimed at finding optimal factor combinations. 
-	At each stage we decide which factors have a non-linear effect and add levels to these factors. 
-	Chooses the level do be added using a quadratic surface assumption.
-	\item[Bayesian Optimization] Like the Central Composite design, but replaces the quadratic surface assumption with a more general functional form\footnote{A Gaussian process prior, i.e., a function which's gradients are assumed to havea Gaussian distribution.}. 
-	\item[Response Surface Methdology] As the name suggests, aimed at recovering the response surface, and not only optimal combinations. 
-\end{description}
-
-
-
-\section{Taguchi Methods}
-
-\emph{Taguchi methods} is a collective name for the philosophy, design, and analysis methods in industrial production applications promoted by Genichi Taguchi in 1970's Japan.
-Focusing on the design principles, we summarize Taguchi's emphasis:
-
-\begin{enumerate}
-
-\item Achieving low variability is no-less important, and more challenging then achieving a target value. 
-Log variability ($\log s$) is thus often used as the response.
-
-\item Factors which can be controlled only in a lab, but not in production, are deliberately varied in the lab. 
-%Typically with split plot designs (\ref{sec:split_plot}).
-
-\item An ample use of Plackett–Burman designs, and its extensions, to screen large numbers of factors. \marginnote{Plackett Burman}
-A \emph{Plackett-Burman Design} is a fractional factorial design optimized for \textbf{screening}. 
-It is a very economical design when studying the \textbf{main effects} of a \textbf{large number} of factors. 
-
-
-\end{enumerate}
-
-
-
-
-
 \section{Optimal Designs}
 
 Our discussion until now has been informal with respect to the desirable qualities of a design. 
@@ -740,16 +695,16 @@ We start with some motivating examples.
 
 
 \begin{example}[Design for linear regression]
-\label{eg:design_linear}
-Figure~\ref{fig:design_linear} demonstrates the effect of the different location of the sampling points ($x$) on the quality of the estimated regression line.
-In a \textbf{linear} model, the figure depict and intuition suggests, that it is preferable to spread the sampling points as far as possible.
-\begin{figure}[h]
-\centering
-\includegraphics[height=0.3\textheight]{art/linear}
-\caption[Design for Linear Models]{
-Design for linear regression. Different panels show different designs. True function as a dashed line. Estimated function as a full line.}
-\label{fig:design_linear}
-\end{figure}
+	\label{eg:design_linear}
+	Figure~\ref{fig:design_linear} demonstrates the effect of the different location of the sampling points ($x$) on the quality of the estimated regression line.
+	In a \textbf{linear} model, the figure depict and intuition suggests, that it is preferable to spread the sampling points as far as possible.
+	\begin{figure}[h]
+		\centering
+		\includegraphics[height=0.3\textheight]{art/linear}
+		\caption[Design for Linear Models]{
+			Design for linear regression. Different panels show different designs. True function as a dashed line. Estimated function as a full line.}
+		\label{fig:design_linear}
+	\end{figure}
 \end{example}
 
 
@@ -757,15 +712,15 @@ Design for linear regression. Different panels show different designs. True func
 
 
 \begin{example}[Design for non linear regression]
-\label{eg:design_non_linear}
-Figure~\ref{fig:design_nonlinear} demonstrates the effect of the different location of the sampling points ($x$) on the quality of the estimated regression line, in a \textbf{nonlinear} model.
-It may seems that unlike the linear case (Example~\ref{eg:design_linear}) optimality is achieved in some intermediate spread of the $x$s.
-\begin{figure}[h]
-\centering
-\includegraphics[height=0.3\textheight]{art/nonlinear}
-\caption[Design for Non Linear Models]{Design for non linear regression. Different panels show different designs. True function as a dashed line. Estimated function as a full line.}
-\label{fig:design_nonlinear}
-\end{figure}
+	\label{eg:design_non_linear}
+	Figure~\ref{fig:design_nonlinear} demonstrates the effect of the different location of the sampling points ($x$) on the quality of the estimated regression line, in a \textbf{nonlinear} model.
+	It may seems that unlike the linear case (Example~\ref{eg:design_linear}) optimality is achieved in some intermediate spread of the $x$s.
+	\begin{figure}[h]
+		\centering
+		\includegraphics[height=0.3\textheight]{art/nonlinear}
+		\caption[Design for Non Linear Models]{Design for non linear regression. Different panels show different designs. True function as a dashed line. Estimated function as a full line.}
+		\label{fig:design_nonlinear}
+	\end{figure}
 \end{example}
 
 
@@ -774,9 +729,9 @@ It may seems that unlike the linear case (Example~\ref{eg:design_linear}) optima
 
 Now for some facts, supported by the previous examples:
 \begin{enumerate}
-\item The idea of ``balancing'' as a design criterion is very useful with discrete factors, but limited with continuous factors. 
-\item For continuous factors with \textbf{linear} effects, the optimal design implies spreading the sampled factors levels as much as possible. 
-This is no longer true for \textbf{non-linear} effects where the optimal design may depend on the unknown true effects. 
+	\item The idea of ``balancing'' as a design criterion is very useful with discrete factors, but limited with continuous factors. 
+	\item For continuous factors with \textbf{linear} effects, the optimal design implies spreading the sampled factors levels as much as possible. 
+	This is no longer true for \textbf{non-linear} effects where the optimal design may depend on the unknown true effects. 
 \end{enumerate}
 
 
@@ -789,8 +744,8 @@ We note however, that once information on $f(x)$ is made available, then a space
 
 
 \begin{extra}[Space Filling and Hashing]
-If you are familiar with the idea of \emph{hashing functions}, then you may see the similarity between space filling and the \emph{uniformity} property of hash functions. 
-For a more rigorous discussion, see \cite{hill_first_1986}.
+	If you are familiar with the idea of \emph{hashing functions}, then you may see the similarity between space filling and the \emph{uniformity} property of hash functions. 
+	For a more rigorous discussion, see \cite{hill_first_1986}.
 \end{extra}
 
 
@@ -800,12 +755,12 @@ When estimating the effect of a single continuous factor, we would like a design
 This is the same as minimizing the variance of the estimator, $\min \{Var[\hat{\beta}]\}$, with respect to the design.
 In the case of linear regression with a single coefficient we know that 
 \begin{align}
-	Var[\hat{\beta}] &= \frac{\sigma^2_\varepsilon}{\sum_{i=1}^{n}(x_i-\bar{x})^2}.
+Var[\hat{\beta}] &= \frac{\sigma^2_\varepsilon}{\sum_{i=1}^{n}(x_i-\bar{x})^2}.
 \end{align}
 Minimizing $Var[\hat{\beta}]$ is thus the same as spreading the $x$'s as far as possible, in accordance with the intuition from Example~\ref{eg:design_linear}.
 Now recall that in a multivariate linear regression problem with an $n \times p$ design matrix, then 
 \begin{align}
-	Var[\hat{\beta}] &= \sigma^2_\varepsilon (X'X)^{-1}.
+Var[\hat{\beta}] &= \sigma^2_\varepsilon (X'X)^{-1}.
 \end{align}
 In this multivariate case, there may be several notions of ``maximal spread''. 
 Denoting $$M:= (X'X)^{-1},$$ we can define:
@@ -827,11 +782,30 @@ For non-linear designs, one may opt for space filing designs (\ref{sec:space_fil
 
 
 \begin{extra}[Other Optimality Criteria]
-There are as many optimality criteria as there are matrix norms. 
-For instance, recall why not optimize the Spectral-Norm or the Frobenius-Norm of $M$, which we defined for the multivariate $s^2$ chart (Section~\ref{sec:multivarite_s}). 
-For a more detailed review, see \cite{wikipedia_optimal_2015}.
-For a mathematical rigorous, and through treatment, see \cite{pukelsheim_optimal_1993}.
+	There are as many optimality criteria as there are matrix norms. 
+	For instance, recall why not optimize the Spectral-Norm or the Frobenius-Norm of $M$, which we defined for the multivariate $s^2$ chart (Section~\ref{sec:multivarite_s}). 
+	For a more detailed review, see \cite{wikipedia_optimal_2015}.
+	For a mathematical rigorous, and through treatment, see \cite{pukelsheim_optimal_1993}.
 \end{extra}
+
+
+
+
+
+
+
+
+\section{Continuous Factors}
+\label{sec:continouos_factors}
+
+If aiming at screening factors, the fact that a factor is continuous is immaterial. 
+One may sample a continuous factor at two points, and treat it as a $2$ level factor.
+This is not the case, however, if aiming at characterizing the full response surface, for which the factorial designs are no longer appropriate. 
+
+When dealing with \emph{continuous factors}, or \emph{quantitative factors}, we have many more analysis strategies than when dealing with qualitative factors.
+
+
+
 
 
 
@@ -842,6 +816,15 @@ For a mathematical rigorous, and through treatment, see \cite{pukelsheim_optimal
 \section{Sequential Designs}
 \label{sec:sequantial}
 % Mark Vandelmeulenbruke
+
+
+Unlike ``one-shot'' experiments, in sequential experiments the next step is determined by the outcome of the previous. 
+
+
+
+
+
+\subsection{Sequential Testing}
 
 Consider a clinical trial with a treatment and control group.
 Now assume the medicine being tested is a miracle cure with immediate improvement. 
@@ -854,32 +837,41 @@ To see this, assume the null hypothesis is true and tested with the (ridiculous)
 We will be making $n$ tests, each at level $\alpha$.
 If observations independent, the probability of a type $I$ error is the familiar $1-(1-\alpha)^n > \alpha$.
 
-We remind the reader that we already met sequential designs:
-These are the Central Composite Design, Bayesian Optimization and Response Surface Methodology, from the Continuous Factor section (\ref{sec:continouos_factors}).
-
-In it simplest version, a sequential design allows early stopping for rejection of the null, or for futility (non-rejection). 
-In more elaborate schemes then not only is early stopping allowed, but also the redesign of the experiment. 
-This is known as \emph{adaptive design}. 
-The crux, as usual, is not inflating the type-I error, or introducing bias, by redesigning.\marginnote{Adaptive Design}
-
-
-\begin{extra}[Active Learning]
-In the machine learning literature, the idea of adaptive design of experiments is known as \emph{active learning}, where the emphasis is less on adaptive-testing, but rather on adaptive-estimation.
-\end{extra}
 
 
 
 
-\subsection{Pooled Designs}
+
+\subsection{Sequential Optimization}
+
+All the following designs aim at finding optimal factor combinations, or recovering the whole response surface. 
+They do so without an explicit assumption on the shape of the response surface (such as linear). 
+By being sequential, they are more efficient than one-shot designs such as $3^k$. 
+
+
+\begin{description}
+	\item[Central Composite Design] 
+	Aimed at finding optimal factor combinations. 
+	At each stage we decide which factors have a non-linear effect and add levels to these factors. 
+	Chooses the level do be added using a quadratic surface assumption.
+	
+	\item[Bayesian Optimization] Like the Central Composite design, but replaces the quadratic surface assumption with a more general functional form\footnote{A Gaussian process prior, i.e., a function which's gradients are assumed to havea Gaussian distribution.}. 
+	
+	\item[Response Surface Methdology] As the name suggests, aimed at recovering the response surface, and not only optimal combinations. 
+\end{description}
+
+
+
+
+
+
+
+
+
+\subsection{Designs}
 \emph{Pooled designs}, \aka as \emph{group testing}, or \emph{hierarchical design}, appears when it is cheaper to measure the response for a group of experimental units simultaneously, rather then for each single one. 
 It originated in the context of identifying soldiers with syphilis in WWII. It was the Harvard Economist Robert Dorfman that suggested that one may mix blood samples from several soldiers and then repeat the same in the subgroups that show the presence of syphilis \citep{dorfman_detection_1943}. 
 The method became immensely popular in the DNA analysis age, where technology allows biologists to test for the presence of particular protein in a sample from a group of cells (e.g. a blood sample). 
-
-Pooled designs broadly classify into two classes: 
-\begin{description}
-\item [Adaptive group testing] Where the groupings, and the groups to be tested depend on the previous results in the same experiment (see also \emph{adaptive designs}).
-\item [Non-adaptive group testing] Where the experiment consists of sequential group tests, but the design is fixed independently of the experimental results. 
-\end{description}
 
 
 \begin{think}
@@ -890,6 +882,40 @@ Pooled designs broadly classify into two classes:
 \begin{extra}[Bloom filters]
 If you are familiar with data structures and particularly \emph{Bloom Filters}, then you will probably note that a Bloom filter is a data structure that groups objects in a way that facilitates lookup using group testing. 
 \end{extra}
+
+
+
+
+
+
+
+
+
+
+
+\section{Taguchi Methods}
+
+\emph{Taguchi methods} is a collective name for the philosophy, design, and analysis methods in industrial production applications promoted by Genichi Taguchi in 1970's Japan.
+Focusing on the design principles, we summarize Taguchi's emphasis. 
+To understand why this emphasis is non trivial, recall that Taguchi was importing DOE from agricultural problems to the newly-born field of industrial-production.
+
+\begin{enumerate}
+	
+	\item Achieving low variability is no-less important, and more challenging then achieving a target value. 
+	Log variability ($\log s$) is thus often used as the response.
+	
+	\item Factors which can be controlled only in a lab, but not in production, are deliberately varied in the lab. 
+	%Typically with split plot designs (\ref{sec:split_plot}).
+	
+	\item An ample use of Plackett–Burman designs, and its extensions, to screen large numbers of factors. \marginnote{Plackett Burman}
+	A \emph{Plackett-Burman Design} is a factorial design optimized for \textbf{screening}. 
+	It is a very economical design when studying the \textbf{main effects} of a \textbf{large number} of factors. 
+	
+	
+\end{enumerate}
+
+
+
 
 
 
@@ -943,8 +969,7 @@ See \cite{sacks_design_1989} or \cite{santner_design_2013} for further details.
 \label{sec:observational}
 
 In this section we abandon designed experiments, in which we were able to randomize and choose the factors levels to be measured.
-In \emph{observational studies}, we have no such controls. 
-As such, in observational studies there are no \emph{factors}, but rather, only \emph{covariates}. 
+In \emph{observational studies} we will typically deal with many more covariate than factors. 
 
 
 \begin{example}[Post-sale testing]
@@ -1015,6 +1040,10 @@ Formally this means we directly estimate $P(Y=1|X=1)$ and $P(Y=1|X=0)$.
 Estimating $OR$ is thus trivial.
 
 
+
+
+
+
 \subsection{Retrospective Study}
 A retrospective study means that we sample a fixed number of working and broken devices. 
 We can thus estimate the frequency of each version given the outcome: $P(X|Y)$.
@@ -1030,7 +1059,7 @@ Several applications of Eq.(\ref{eq:bayes}) yields that
 	OR 	&= \frac{P(X=1|Y=1)/P(X=1|Y=0)}{P(X=0|Y=1)/P(X=0|Y=0)}.
 \end{align}
 Eq.(\ref{eq:retrospective_OR}) is very good news. 
-It means that we even if we sample retrospectively, we can estimate the OR as if we sampled prospectively. 
+It means that even if we sample retrospectively, we can estimate the OR as if we sampled prospectively. 
 
 \begin{think}
 	Can we estimate other effect measures such as the RR from a retrospective study?
@@ -1069,28 +1098,31 @@ which shows that the OR can indeed be estimated from a cross-section study.
 
 
 
-\subsection{Special Sampling Schemes}
-Cross Sectional studies can satisfy the popular i.i.d.\ assumption from introductory statistics courses. 
-Prospective and retrospective studies no longer satisfy this assumption, because samples within subject are dependent. 
-These are still fairly simple sampling schemes. 
-Here is a more complicated example. 
+\subsection{Respondent Driven Sampling}
 
+\emph{Survey samples} are a type of empirical studies. 
+In survey samples, like the ones conducted by the National Bureau of Statistics, the goal of the sample is to use a small sample to estimate some quantity from a larger, but \emph{finite}, population.
+Simple random sampling in a finite population can be seen as an instance of an observational study: a cross-sectional one. 
+Sampling in finite populations, however, is a type of observational study that has its own challenges. In particular, because we would like, if possible, that each and every sample we take is representative of the population (and not only on average, like in infinite populations). 
+
+\emph{Respondent driven sampling} is currently, one of the most advanced sampling schemes in finite populations.
+The next example gives an industrial application of a respondent-driven-sample, and the challenges it introduces. 
 
 \begin{example}[Respondent Driven Sampling]
 	\label{ex:RDS}
 	Consider the following chain-referral sampling scheme. 
 	A Facebook questionnaire is passed by rewarding respondents some credit if they name other respondents.
-	The probability of being sampled is thus not fixed for everyone, but rather a function of the number of your facebook friends.  
-	Now imagine the questionnaire is meant to estimate the awareness to product ZZZ.
+	The probability of being sampled is thus not fixed for everyone, but rather a function of the number of your Facebook friends.  
+	Now imagine the questionnaire is meant to estimate the public awareness to product ZZZ.
 	It seems reasonable to assume that the more friends you have, the more likely you are to be sampled, and also, the more likely to be familiar with ZZZ. 
-	This sampling scheme will thus lead to an upward biased estimate of ZZZ's popularity.
+	This sampling scheme will thus lead to ZZZ being more popular in your sample than in the whole population. 
 \end{example}
 
-If the non-simple sampling scheme in Example~\ref{ex:RDS} is not accounted for at the analysis stage, we will clearly have biased popularity estimates. 
-To deal with over-representation we will want to weight each sample by its probability of being sampled.
+If the sampling scheme in Example~\ref{ex:RDS} is not accounted for at the analysis stage, we will clearly have biased popularity estimates. 
+To deal with the over-representation in our sample we will want to weight each observation by its probability of being sampled. The following estimator does just that, and yields an unbiased estimate of the population's expectation.
 \begin{definition}[Horowitz Thompson Estimator]
 	\label{def:horowitz-thompson}
-	If each unit $i$ has probability $\pi_i$ of being sampled and measured response $y_i$, then an unbiased estimate of the population mean of $y$ is given by 
+	If observation $i$ has probability $\pi_i$ of being sampled and response $y_i$, then an unbiased estimate of the population mean of $y$ is given by 
 	\begin{align}
 	\frac{\sum_{i \in S} y_i/\pi_i}{\sum_{i \in S} 1/\pi_i},
 	\end{align}
@@ -1138,7 +1170,8 @@ Our general discussion of observational studies, designed experiments, causal in
 For an overview of DOE see \cite{cox_theory_2000}, \cite{mason_statistical_2003}, \cite{everitt_cambridge_2010}. 
 Another nice and freely available resource is a Penn State course on the topic\footnote{\url{https://onlinecourses.science.psu.edu/stat503/node/1}}. 
 Some seminal references in the field include \cite{fisher_design_1960} and \cite{box_statistics_1978}.
-For respondent driven sampling see \cite{berchenko_modeling_2013}.
+A good textbook on sampling is \cite{thompson_sampling_2012}. 
+For the respondent driven sampling see \cite{berchenko_modeling_2013}.
 For causal inference in non-designed experiments see \cite{rosenbaum_observational_2002}. 
 For optimal designs see \cite{pukelsheim_optimal_1993}.
 For analysis of data: linear models, ANOVA, etc.\ there are endlessly many books. This author's recommendations include \cite{hocking_analysis_1985}, \cite{greene_econometric_2003}. 
