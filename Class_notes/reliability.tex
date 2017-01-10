@@ -275,7 +275,7 @@ The \emph{hazard function}, or \emph{failure rate}, of a random variable $\T$ at
 \begin{definition}[Cumulative Risk]
 The \emph{cumulative hazard}, \aka the \emph{cumulative risk}, of a random variable $\T$ at a point $t$ is given by \marginnote{Cumulative Hazrd}
 \begin{align}
-	\cuhazard{\T}{t} &:= \int_{0}^{t}\hazard{\T}{t} \\
+	\cuhazard{\T}{t} &:= \int_{0}^{t}\hazard{\T}{s} \dif s \\
 	\Rightarrow \survive{\T}{t} &= \exp(-\cuhazard{\T}{t}). \label{eq:cumhazrd}
 \end{align}
 \end{definition}
@@ -404,8 +404,8 @@ We call a failure time distribution to be in the \emph{increasing failure rate} 
 
 
 \begin{definition}[IFRA]
-We call a failure time distribution to be in the \emph{increasing failure rate average} (IFRA) ageing class, if 
-$\cuhazard{\T}{t}/t$ is non decreasing in $t$.
+We call a failure time distribution to be in the \emph{increasing failure rate average} (IFRA) ageing class, if the average risk is non decreasing in $t$. 
+Formally: $\cuhazard{\T}{t}/t=\int_0^t \hazard{\T}{s}\dif s/t$ is non decreasing in $t$.
 \end{definition}
 The intuition underlying IFRA relies on understanding $\cuhazard{\T}{t}/t$, which can be seen as the average risk from ignition to time $t$. 
 IFRA thus means that even if the risk decreases at some point in time, the average risk still increases. 
