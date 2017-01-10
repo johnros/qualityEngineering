@@ -1,8 +1,7 @@
 \chapter{Reliability Analysis}
 \chaptermark{Reliability}
 
-The attempt to define the difference between \emph{reliability} and \emph{quality} will certainly fail given the intentional ambiguity in our definition of \emph{quality} (Chapter~\ref{sec:introduction}).
-For our purposes, however, this terminological matter will not matter, since we will simply define reliability analysis to be the analysis of the \emph{time} to \emph{failure}.
+We will define reliability analysis to be the analysis of the \emph{time} to \emph{failure}.
 We will also assume that ``time'' and ``failure'' are well defined and agreed upon.
 
 We intuitively understand ``more reliable'' to mean ``lasts longer''. 
@@ -12,7 +11,7 @@ Be it true or not, I hope we can agree that good knowledge of your product's lif
 
 Reliability analysis involves the study of a probabilistic property of our product- its \emph{survival}.
 Any probabilistic model will require calibration to reality via data. 
-This chapter thus introduces both the probability calculus typically used for reliability analysis, and some statistical considerations involved when calibrating these models.
+This chapter thus introduces both the probability calculus typically used for reliability analysis, and then some statistical considerations involved when calibrating these models.
 
 
 
@@ -66,18 +65,12 @@ A reliability diagram of a parallel system is given in Figure~\ref{fig:parallel_
 A \emph{k-out-of-p} system is one where at least $k$ components need to function for the system to function:
 $$\struct(x)=\indicator{\sum_{j=1}^{p} x_j \geq k}.$$
 \end{definition}
-A reliability diagram of a k-out-of-p system is not provided, since it is not very friendly. Try thinking of a 2-out-of-3 system to see why.
 
 
 
-
-\begin{tcolorbox}
-\paragraph{My mistake!}
-The previous definition is different than the one I gave in class. 
-I initially defined it via failing components, while now it is defined via functioning components.
-Please note this when comparing your notes to mine.
-\end{tcolorbox}
-
+\begin{think}
+	A reliability diagram of a k-out-of-p system is not provided, since it is not very friendly. Try thinking of a 2-out-of-3 system to see why.
+\end{think}
 
 
 
@@ -88,6 +81,9 @@ The definition of monotonicity captures the idea that you cannot improve a syste
 This seems rather natural (I am still looking for a counter example).
 
 
+\begin{think}
+	Think how the structure function of a non monotone system would look.
+\end{think}
 
 
 
@@ -263,7 +259,7 @@ For a parallel system $\struct$, the reliability of the system at time $t$ is gi
 
 
 Another way to present a distribution, no less informative than the previous ones, is by the \emph{hazard function}, which is the ``probability of surviving just another instant''.
-\begin{definition}[Failure Rate]
+\begin{definition}[Hazard Function]
 The \emph{hazard function}, or \emph{failure rate}, of a random variable $\T$ at a point $t$ is given by \marginnote{Hazard Function}
 \begin{align}
 	\hazard{\T}{t} &:= \lim_{dt\to 0}\frac{P( \T \in [t,t+dt)|\T \geq t )}{dt} \label{eq:hazard}\\
@@ -495,10 +491,18 @@ Indeed, given any particular probabilistic model, we may write the likelihood pr
 Failure data and models introduces particular statistical challenges:
 \begin{description}
 \item [Identifiability] It is typically hard, if not impossible, to estimate the reliability of particular components, from the reliability of the whole system. 
+
 \item [Censoring] A major concern with reliability data, is that in any finite length experiment, some events will just not have happened yet; their failure time will thus be \emph{censored}. Ironically- the more reliable a component, the less data we will have to estimate its reliability. 
+
 \item [Lab versus real-life conditions] Reliable components take very long time to fail. We will thus extrapolate from harsh lab conditions to real-life operating conditions. This requires the introduction of covariates. 
-\item [Failure Distribution] like any statistical model, we will need to commit to some failure time sampling distribution.
+
+\item [Failure Distribution] like any statistical model, we will need to assume something about distributions of failure times.
+
 \end{description}
+
+
+
+
 
 
 \subsection{Identifiability}
@@ -527,20 +531,11 @@ Example~\ref{eg:likelihood_of_failures} teaches us that unless further assumptio
 \subsection{Censored Events}
 Consider several components being analyze for their reliability. 
 Ironically, we actually want them to fail. If they do not, they do not convey information on their reliability.
-In the event that a component has not failed, we clearly cannot register its failure time. Omitting this component from the sample will upward bias the estimated reliability.
+In the event that a component has not failed, we clearly cannot register its failure time. 
+Omitting this component from the sample will upward bias the estimated reliability.
 These events are called \emph{censored} observations. 
-There are several types of censoring which depend on the design of the study and the type of event recorded. 
-They are all dealt with careful though on the sampling distribution of the data, and the probability of a censoring event. 
 
-Design considerations:
-\begin{description}
-\item [Type I] occurs when the design is such that the sampling time is fixed a-priori. This implies that the number of failures (thus censoring) events is random. 
-\item [Type II] occurs when the design is such that the number of failures (thus censoring) is fixed a-priori. This implies that the sampling duration is random.
-\end{description}
-If all we know on a censored event is that the actual lifetime is larger then the observation period, we call this a \emph{non-informative} censoring. 
-Both designs will then lead to the same modelling of the censoring event, which is now described.
-
-The likelihood function of non-censored events is given by
+Decomposing the likelihood function, $\lik$, to the contributions of each independent event, $\lik=\prod_{i=1}^n \lik_i$, then the likelihood of non-censored events is given by
 \begin{align}
 	\lik_i=\density_\T(t_i)= \survive{\T}{t_i} \hazard{\T}{t_i},
 \end{align}
@@ -550,14 +545,14 @@ and the likelihood of a censored event, under the \emph{non-informative} assumpt
 \end{align}
 Unifying the two cases assuming independent observations, using an indicator for non-censoring, $c_i$, and taking logs we have
 \begin{align}
-	\loglik &=\log \lik\\ 
-	&= \log \prod_{i=1}^{n} \lik_i \\
-	&= \log \prod_{i=1}^{n} \survive{\T}{t_i} \hazard{\T}{t_i}^{c_i} \\
+	\loglik &:=\log \lik\\ 
+	&= \log \left[\prod_{i=1}^{n} \survive{\T}{t_i} \hazard{\T}{t_i}^{c_i}\right] \\
 	&= \sum_{i=1}^{n} [c_i \log \hazard{\T}{t_i} - \cuhazard{\T}{t_i}]. \label{eq:censored_likelihood}
 \end{align}
 
 
 \begin{example}[Censored exponential lifetimes]
+\label{ex:censoring}
 Recalling that the failure rates of exponential lifetimes are fixed, we have that the likelihood of censored exponential lifetimes is given by 
 $$
 	\sum_{i=1}^{n} [c_i \log \lambda - \lambda t_i].
@@ -572,11 +567,21 @@ The denominator is the total \emph{exposure time}.
 The estimated failure rate is thus the number of failures per unit of exposure time. 
 \end{example}
 
+The example also demonstrates that overly reliable components is a problem. 
+If no component fails, i.e., all observations are censored, then $\sum c_i=0$, so that $\estim{\lambda}=0$. 
+This is both mathematically true, and absolutely not interesting; we need events to occur for us to learn from them!
+This motivates the use of covariates such as temperature, pressure, humidity, etc. to force failure events. 
+The problem will then be how to convert failure rates in extreme conditions, to failure rates in regular conditions?
+Sometime we have a physical theory that tells us what is the effects of various factors.
+For instance, the \emph{Arrhenius model}, and the \emph{Eyring model} are physically motivated models that capture the effect of temperature.
+For models for stress, voltage, humidity, and other life accelerating covariates, see for instance \cite[Sec.8.1.5]{natrella_nist/sematech_2010}
+We now introduce two very simple models to demonstrate how we deal with covariates. 
+These are the \emph{accelerated life} model, and \emph{proportional hazard} model. 
 
 
 
 \begin{extra}
-The previous result is obvious is you consider failures as events which come as a Poisson process, which is implied from the exponential times assumption. 
+The results in Example~\ref{ex:censoring} is trivial if you consider failures as events which come as a Poisson process, which is implied from the exponential times assumption. 
 The process is run for $\sum t_i$ time, and the total event count is $\sum c_i$. 
 The trivial estimator for the rate of the process, is $\sum c_i/\sum t_i$.
 \end{extra}
@@ -587,50 +592,35 @@ The trivial estimator for the rate of the process, is $\sum c_i/\sum t_i$.
 
 
 \subsection{Accelerated Life Models}
-An \emph{accelerate life} model assumes that covariates rescale time. 
+An \emph{accelerate life} model assumes that covariates rescale \emph{time}. 
 For instance, the lab may produce conditions where time advances ten times faster than in real-life operating conditions.
-To introduce the model, we start with a simple two group example.
-\begin{example}[Two group accelerated life]
-\label{eg:two_group_accelerated_life}
-Consider two groups indexed by a single dummy variable $x \in \set{0,1}$.
-Assuming an accelerated life effect we have
-$$
-	\survive{\T|x=1}{t} = \survive{\T|x = 0}{t/exp(\beta)} = \survive{\T|x = 0}{t/\gamma}, 
-$$
-where $\gamma$ is simply shorthand notation for $exp(\beta)$. 
-If $\gamma=1/2$, this means that time for group $x=1$ advances twice as fast as for group $x_i=0$.
-\end{example}
-
-We now generalize the idea for multiple covariates.
-If $\T_1$ is the (random) time to failure under conditions $x_1=(x_{1,1},\dots,x_{1,p})$ , and $\T_0$ under conditions $x_0=(x_{0,1},\dots,x_{0,p})$, we have
-\begin{align}
-\label{eq:accelerated_life}
-	\survive{\T_1}{t}=\survive{\T_0}{t/\gamma},
-\end{align}
-where $\gamma= e^{(x_1-x_0)' \beta}$, meaning that the conditions $x_1$ are such that time is accelerated by $1/\gamma$ compared to the base conditions $x_0$.
-Example \ref{eg:two_group_accelerated_life} is recovered by setting $x_1=1$ and $x_0=0$. 
-If $\gamma>1$, time under conditions $x_1$ advances slower than under $x_0$, and the product is expected to live longer. 
-The converse holds if $\gamma<1$.
 
 
-An equivalent formulation of an accelerated life model, which also explains the appearance of the exponent in the time rescaling, is the following 
+The model is best understood as a \emph{log-linear} model, i.e., the effects of the various factors, $x$, are linear in log-of-time scale:
 \begin{align}
 \label{eq:estimating_accelerated_life}
 	\log \T_i = x_i'\beta + \varepsilon_i,
 \end{align}
 for some error term $\varepsilon_i$. 
-For interpretation, we again denote $e^{x_i'\beta}= \gamma_i$, and infer that $x_i$ accelerates time by $1/\gamma_i$ compared to some base rate where $e^{x_i'\beta}= 1$.
-This formulation is more tractable for mathematical manipulation, but conceals the nice interpretation which motivates the model's name.
 
-Eq.(\ref{eq:estimating_accelerated_life}) readily reveals how we can easily estimate the effects ($\beta$) of an accelerate life model.
-We simply take the log of the survival times ($\log t_i$), and assuming the particular distribution of $\varepsilon_i$, we may estimate $\beta$ using maximum likelihood.
+The definition of accelerated life models via Eq.(\ref{eq:estimating_accelerated_life}) is very convenient for practical purposes. 
+It means that after taking the log of failure times, effects ($\beta$'s) can be estimated using any software that can solve a linear model. 
 
-For future use, we also note that the relation between hazed function under the accelerated life assumption is given by
+The accelerated life model, like any other log-linear model, implies that our factors have multiplicative effects.
+To see this, compare the distribution of failure times at some condition $x_0$ versus some other condition $x_1$.
+Taking the exponent of both sides of Eq.(\ref{eq:estimating_accelerated_life}) we have
 \begin{align}
-\label{eq:hazard_accelerated_life}
-		\hazard{\T|x=x_1}{t}=\hazard{\T|x=x_0}{t/\gamma}/ \gamma
+	\T_{x_1} = \T_{x_0} e^{\beta'(x_1-x_0)},
 \end{align}
-where as usual $\gamma=e^{(x_1-x_0)'\beta}$.
+so we see that a change in the conditions from $x_0$ to $x_1$ multiplies failure times. 
+This also explains why the models are called \emph{accelerated time}: this is because we can make time ``move'' multiplicatively faster or slower, by changing the operating conditions. 
+
+
+
+\begin{think}
+	Think of a single two-state factor, $x_i \in\set{0,1}$ to get some intuition to the meaning of the parameter $\beta$. 
+\end{think}
+
 
 
 \begin{example}[Accelerated life with Gaussian noise]
@@ -645,23 +635,6 @@ This approach is known as \emph{Tobit} regression.
 \end{extra}
 
 
-\begin{extra}[Accelerated life with extreme value noise]
-\label{eg:accelerated_exponential}
-\marginnote{Extreme Value Distribution}
-Assuming that the density of $\varepsilon$ is given by 
-$$
-	\density(\varepsilon)=e^{(\varepsilon-e^\varepsilon)}, 
-$$
-which is known as an \emph{extreme value distribution}, then failure times have an exponential distribution, and estimation of $\beta$ collapses to an exponential regression problem.
-\end{extra}
-
-
-
-\begin{extra}
-Popular accelerated time models that capture effects of temperature include the \emph{Arrhenius model}, and the \emph{Eyring model}.\marginnote{Arrhenius \\ Eyring}
-For models for stress, voltage, humidity, and other life accelerating covariates, see \cite[Sec.8.1.5]{natrella_nist/sematech_2010}
-\end{extra}
-
 
 
 
@@ -669,31 +642,24 @@ For models for stress, voltage, humidity, and other life accelerating covariates
 
 \subsection{Proportional Hazard Models}
 The \emph{proportional hazard}, or \emph{proportional risk} class of models, assumes that covariates multiply not time, but rather failure rates. 
-Put differently, accelerated life acts linearly on time, thus non-linearly on hazards. Proportional hazards acts linear on hazards, thus non linearly on time. 
-Qualitatively, both either accelerate (decelerate) time. 
+Put differently, accelerated rescales time linearly, thus hazards are rescaled non-linearly. Proportional hazards rescale hazards linearly, thus time is rescaled non-linearly. 
+Qualitatively, they are the same. 
 Quantitatively, the exact amount of acceleration (deceleration) may differ. 
 The choice between these models typically depends on the underlying physical theory, and on the ease of computation and interpretation.
 
-Starting with a two group example
-\begin{example}[Proportional hazards in a two group model]
-\label{eg:two_group_proportional_hazard}
-Consider two groups indexed by a single dummy variable $x \in \set{0,1}$.
-Assuming proportional hazard effect we have
-$$
-	\hazard{\T|x=1}{t}=\hazard{\T|x=0}{t} e^\beta=\hazard{\T|x=0}{t} \gamma, 
-$$
-where $\gamma$ is again shorthand notation for $e^\beta$.
-If $\gamma=1/2$, this means that at any point in time, group $x=1$ suffers half the risk of group $x=0$.
-\end{example}
 
-
-Now for the general case, which compares the risk function under conditions $x=x_1$ to the risk under some base operating conditions $x=x_0$.
+A proportional hazard model assumes that the risk function when operating under some conditions $x_0$ is related to the risk under conditions $x_1$ via:
 \begin{align}
 \label{eq:proportional_hazard}
-	\hazard{\T|x_1}{t}:=\hazard{\T|x_0}{t} e^{(x_1-x_0)'\beta} = \hazard{\T|x_0}{t} \gamma ,
+	\hazard{\T|x_1}{t}:=\hazard{\T|x_0}{t} e^{\beta'(x_1-x_0)}  ,
 \end{align}
-where $\hazard{\T|x_0}{t}$ is some assumed baseline hazard rate, and $\gamma$ is short notation for $e^{(x_1-x_0)'\beta}$.
-Example \ref{eg:two_group_proportional_hazard} is recovered by setting $x_1=1$ and $x_0=0$.
+
+
+\begin{think}
+	Think of a single two-state factor, $x_i \in\set{0,1}$ to get some intuition to the meaning of the parameter $\beta$. 
+\end{think}
+
+
 
 
 The linear rescaling of the risk in the proportional hazard model, implies the following relation between survival functions
@@ -716,14 +682,13 @@ as required.
 
 \begin{example}[Comparing survival rates in the two group model]
 \label{eg:two_groups_two_time_scalings}
-We now compare the proportional hazard assumption, versus the accelerated time assumption in the simple two group model. 
+We now compare the proportional hazard assumption, versus the accelerated time assumption in the simple two condition model. 
 Under the accelerated time model, we have (by assumption):
 $\survive{\T|x=1}{t} = \survive{\T|x = 0}{t/\gamma}$. 
 Under the proportional hazard model, we have (by Eq.(\ref{eq:survival_proportional_hazard})) 
 $	\survive{\T|x=1}{t}=(\survive{\T|x=0}{t})^{\gamma}$.
 To visualize the difference between the groups we choose some arbitrary distribution (Weibull) and rescale it with $\gamma=2$ under the different models. 
-The result is depicted in Figure~\ref{fig:time_rescaling}, from which we see that the same assumed effect $\gamma=e^\beta=2$, acts in opposite directions under the different models. 
-This is also evident when examining the simple exponential case, using Eq.(\ref{eq:proportional_hazard}) and Eq.(\ref{eq:hazard_accelerated_life}): under the proportional hazard the risk increases, whereas under accelerated time the risk decreases.
+The result is depicted in Figure~\ref{fig:time_rescaling}, from which we see that the same assumed effect $\gamma=e^\beta=2$, acts in opposite directions under the different models.
 
 \begin{figure}[ht]
 \centering
@@ -737,25 +702,25 @@ The example may help you in interpreting the coefficients ($\beta$) of the model
 In particular it means that a factor with a positive effect ($\hat{\beta}>0$) means accelerated ageing under proportional hazard, and decelerated ageing under accelerated time.
 
 
-\begin{example}[Accelerated life and proportional hazard for exponential failure times]
-Recall that the exponential distribution has a fixed failure rate (over time). 
-Using Eq.(\ref{eq:hazard_accelerated_life}) for the accelerated life, and Eq.(\ref{eq:proportional_hazard}) for the proportional hazards, we see that the hazard after any such time rescaling, is still constant in time. 
-The exponential distribution, rescaled under any of these models, will still return an exponential distribution.
-To se why this is not trivial, you can you your favourite (non negative, continuous) distribution, and check if the hazard function remains in the same class of distributions after a proportional hazard or accelerated life rescaling of time.
+
+
+
+\begin{example}[Closure of the exponential failure times]
+The exponential failure times have a nice property:
+if the failure times are exponential under \textbf{some} condition, $x_0$, then they are exponential for \textbf{all} conditions. 
+This holds if we assume that factors have an accelerated-time effect, or a proportional-hazard effect. 
+Put differently: for the exponential distribution (only), a linear rescaling of time is equivalent to a linear rescaling of hazards. 
+Put more differently: if we assume exponential failure times, the proportional-hazard model and the accelerated-life model are the same. \\
+\textbf{Proof:}
+The proportional-hazard case:
+$\T_{x_0}\sim \exp(\lambda)$ by the exponential assumption, so that 
+$\hazard{\T_{x_0}}{t}=\lambda$.
+Now $\hazard{\T_{x_1}}{t}=\hazard{\T_{x_0}}{t} e^{\beta(x_1-x_0)}$ by the proportional hazard assumption, so that $\forall x_1: \hazard{\T_{x_1}}{t}= const$, which completes the proof that failure times are exponential under \textbf{all} conditions. \\
+The accelerated-life case:
+$\T_{x_0}\sim \exp(\lambda)$ by the exponential assumption, so that 
+$e^{\varepsilon_i}$ is exponential.
+Denoting $\gamma:=e^{\beta'(x_1-x_0)}$, then $\T_{x_1} = \gamma \T_{x_0} $ by the accelerated time assumption, so that $\forall x_1: \T_{x_1} \sim \exp(\lambda/\gamma)$, which completes the proof that failure times are exponential under \textbf{all} conditions. 
 \end{example}
-
-
-\begin{example}[Two groups with exponential baseline]
-To demonstrate the previous example, we return to our two group model.
-We assume: 
-(a) a proportional hazard effect.
-(b) an exponential failure time distribution as baseline.
-From (b) we have that $\T_{x=0}\sim exp(\lambda) \Rightarrow \hazard{\T|x=0}{t}=\lambda$. 
-From (a) we have that $\hazard{\T|x=1}{t}=\gamma \hazard{\T|x=0}{t}= \gamma \lambda \Rightarrow \T_{x=1}\sim exp(\gamma \lambda) $.
-We may now collect survival data under the two operating condition, and estimate $(\gamma, \lambda)$, say, with a maximum likelihood estimator. 
-\end{example}
-
-%[HW: prove this for Weibull ]
 
 
 

@@ -109,8 +109,12 @@ We then have
 and the rest follow from the distribution of $\bar{x}_t$ when the process is out of control.
 Since the out-of-control shift is (asumingly) stable, we can again omit the time index and write $\pi=\pi_t$.
 Assuming the out-of-control process is a shift of magnitude $k \sigma$, i.e.: 
-$\x \sim_{H_1} \gauss{\mu_1,\sigma^2}; \mu_1=\mu_0+ k \sigmabar$, we plot in Figure~\ref{fig:power_function}, the detection power of a 3-sigma \barxChart as a function of $k$. 
+$\x \sim_{H_1} \gauss{\mu_1,\sigma^2}; \mu_1=\mu_0+ k \sigma$, we plot in Figure~\ref{fig:power_function}, the detection power of a 3-sigma \barxChart as a function of $k$. 
 This is known in the statistical literature as a \emph{power function}, and in the engineering literature as the \emph{operator characteristic} (OC).\marginnote{Operator Characteristic}
+
+\begin{remark}
+	Note that the signal is measured in standard deviations of the population ($k \sigma$), and not in standard deviations of the mean ($k \sigmabar$).
+\end{remark}
 
 
 \begin{figure}[h]
@@ -604,11 +608,20 @@ Sure!
 \end{definition}
 As before, we will typically, but not necessarily, use $\hat{\Sigma}$ from period I in \tsq. 
 
-Since $T^2(X_t)$ is approximately $\chi^2_p$ distributed, periods are independent, and sums of Chi-square distributions are still Chi-square with the summed degrees of freedom\footnote{Trust me on this one.}, we have that for a process in control
+How to set the control limit? 
+As always, we can go to theory, or to history.
+
+\paragraph{Go to theory}
+since $T^2(X_t)$ is approximately $\chi^2_p$ distributed, periods are independent, and sums of Chi-square distributions are still Chi-square with the summed degrees of freedom\footnote{Trust me on this one.}, we have that for a process in control
 \begin{align}
 M_t \sim \chi^2_{wp}.
 \end{align}
 This readily suggests that the UCL for this chart is $\chi^2_{1-\alpha,wp}$. 
+
+\paragraph{Go to history:}
+If we are uncomfortable with the assumptions required for the theoretical $\chi^2_p$ approximation, we can always look at the distribution of $T^2(X_t)$ from Phase I, and use it's empirical $1-\alpha$ quantile to set control limits with $\alpha$ probability for false alarms.
+
+
 
 \begin{think}
 	Is the moving sum Hotelling a Shewhart chart? 
@@ -664,7 +677,7 @@ Using the Frobenius (matrix) norm for the process control, we would be plotting 
 \begin{definition}[Spectral norm]
 Denoting the Euclidean distance of a vector $x$ from zero by $\norm{x}_{Euc}$, we can denote a matrix's \emph{spectral norm}, \aka \emph{operator norm}, or \emph{induced norm}, by:\marginnote{Operator norm, \\ Induced norm}
 \begin{align}
-	\norm{A}_{Spec} := \max_x \set{\norm{Ax}_{Euc}; \norm{x}_{Euc}=1}.
+	\norm{A}_{Spec} := \max_x \set{\norm{Ax}_{Euc} \text{ such that } \norm{x}_{Euc}=1}.
 \end{align}
 \end{definition}
 The geometry of this definition is depicted in Figure~\ref{fig:operator_norm}.

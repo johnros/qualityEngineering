@@ -61,7 +61,7 @@ From summaries of location, we move to summaries of \emph{scale}. \marginnote{Su
 
 \begin{definition}[The Standard Deviation]
 \begin{align}
-	s(x):= \sqrt{\frac{1}{n-1} \sum_{i=1}^{n} (x_i-\bar{x})^2}
+	s(x):= \sqrt{\frac{1}{n-1} \sum_{i=1}^{n} (x_i-\bar{x})^2}.
 \end{align}
 \end{definition}
 
@@ -76,14 +76,14 @@ The empirical maximum and minimum are then $x_{1.0}$ and $x_{0.0}$, respectively
 \begin{definition}[The Range]
 \label{def:range}
 \begin{align}
-	\range{x}:= \max_i\set{x_i}-\min_i\set{x_i}= x_{1.0}-x_{0.0}
+	\range{x}:= \max_i\set{x_i}-\min_i\set{x_i}= x_{1.0}-x_{0.0}.
 \end{align}
 \end{definition}
 
 \begin{definition}[The Inter Quantile Range- IQR]
 \label{def:iqr}
 \begin{align}
-	IQR(x):= x_{0.75}-x_{0.25}
+	IQR(x):= x_{0.75}-x_{0.25}.
 \end{align}
 \end{definition}
 
@@ -92,7 +92,7 @@ The empirical maximum and minimum are then $x_{1.0}$ and $x_{0.0}$, respectively
 \begin{definition}[The Median Absolute Deviation- MAD]
 \label{def:mad}
 \begin{align}
-	MAD(x):= c \set{|x_i-x_{0.5}|}_{0.5} 
+	MAD(x):= c \set{|x-x_{0.5}|}_{0.5}.
 \end{align}
 where $c$ is some constant.
 In the \R function \rcode{mad()}, $c$ is set at $1.4826$ so that it estimates $\sigma$ in a Gaussian population. 
@@ -181,9 +181,9 @@ For multivariate data consisting of $x_1,\dots,x_j,\dots,x_p$ vectors, each with
 Multivariate analysis is an important, and very actively studied field in statistics and machine learning.
 A non-comprehensive list of methods that belong to this realm include 
 Principal Component Analysis (PCA),\marginnote{PCA, SVD,ICA}
-Singular Value Decomposition (SVD), 
 Factor Analysis (FA), 
 Independent Component Analysis (ICA),
+Graphical Models,
 Dimensionality Reduction, 
 Manifold Learning, 
 Self Organizing Maps, 
