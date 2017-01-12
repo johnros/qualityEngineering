@@ -738,29 +738,6 @@ as required.
 
 
 
-\begin{extra}[Comparing survival rates in the two group model]
-\label{eg:two_groups_two_time_scalings}
-We now compare the proportional hazard assumption, versus the accelerated time assumption in the simple two condition model. 
-Under the accelerated time model, we have (by assumption):
-$\survive{\T|x=1}{t} = \survive{\T|x = 0}{t/\gamma}$. 
-Under the proportional hazard model, we have (by Eq.(\ref{eq:survival_proportional_hazard})) 
-$	\survive{\T|x=1}{t}=(\survive{\T|x=0}{t})^{\gamma}$.
-To visualize the difference between the groups we choose some arbitrary distribution (Weibull) and rescale it with $\gamma=2$ under the different models. 
-The result is depicted in Figure~\ref{fig:time_rescaling}, from which we see that the same assumed effect $\gamma=e^\beta=2$, acts in opposite directions under the different models.
-\end{extra}
-\begin{figure}[ht]
-	\centering
-	\includegraphics[height=0.3\textheight]{art/survivals}
-	\caption{}
-	\label{fig:time_rescaling}
-\end{figure}
-
-Example~\ref{eg:two_groups_two_time_scalings}  demonstrates that the different models rescale time in different ways (and even in opposite directions!). 
-The example may help you in interpreting the coefficients ($\beta$) of the model you chose. 
-In particular it means that a factor with a positive effect ($\hat{\beta}>0$) means accelerated ageing under proportional hazard, and decelerated ageing under accelerated time.
-
-
-
 
 
 \begin{example}[Closure of the exponential failure times]

@@ -111,13 +111,13 @@
 \contentsline {example}{\numberline {30}Example\thmtformatoptarg {Censored exponential lifetimes}}{87}{example.30}
 \contentsline {example}{\numberline {31}Example\thmtformatoptarg {Accelerated life with Gaussian noise}}{88}{example.31}
 \contentsline {example}{\numberline {32}Example\thmtformatoptarg {Closure of the exponential failure times}}{89}{example.32}
-\contentsline {remark}{\numberline {19}Remark\thmtformatoptarg {Interplay between probability and statistics}}{92}{remark.19}
-\contentsline {remark}{\numberline {20}Remark\thmtformatoptarg {What is a component?}}{92}{remark.20}
-\contentsline {definition}{\numberline {50}Definition\thmtformatoptarg {Point availability}}{92}{definition.50}
-\contentsline {definition}{\numberline {51}Definition\thmtformatoptarg {Interval reliability}}{92}{definition.51}
+\contentsline {remark}{\numberline {19}Remark\thmtformatoptarg {Interplay between probability and statistics}}{91}{remark.19}
+\contentsline {remark}{\numberline {20}Remark\thmtformatoptarg {What is a component?}}{91}{remark.20}
+\contentsline {definition}{\numberline {50}Definition\thmtformatoptarg {Point availability}}{91}{definition.50}
+\contentsline {definition}{\numberline {51}Definition\thmtformatoptarg {Interval reliability}}{91}{definition.51}
 \contentsline {definition}{\numberline {52}Definition\thmtformatoptarg {Interval downtime}}{92}{definition.52}
-\contentsline {definition}{\numberline {53}Definition\thmtformatoptarg {MTTF}}{93}{definition.53}
-\contentsline {definition}{\numberline {54}Definition\thmtformatoptarg {MTTR}}{93}{definition.54}
-\contentsline {theorem}{\numberline {8.4.1}Theorem\thmtformatoptarg {Stable point availability}}{93}{theorem.8.4.1}
-\contentsline {theorem}{\numberline {8.4.2}Theorem\thmtformatoptarg {Stable failures per unit of time}}{93}{theorem.8.4.2}
-\contentsline {theorem}{\numberline {8.4.3}Theorem\thmtformatoptarg {Stable unavailability}}{93}{theorem.8.4.3}
+\contentsline {definition}{\numberline {53}Definition\thmtformatoptarg {MTTF}}{92}{definition.53}
+\contentsline {definition}{\numberline {54}Definition\thmtformatoptarg {MTTR}}{92}{definition.54}
+\contentsline {theorem}{\numberline {8.4.1}Theorem\thmtformatoptarg {Stable point availability}}{92}{theorem.8.4.1}
+\contentsline {theorem}{\numberline {8.4.2}Theorem\thmtformatoptarg {Stable failures per unit of time}}{92}{theorem.8.4.2}
+\contentsline {theorem}{\numberline {8.4.3}Theorem\thmtformatoptarg {Stable unavailability}}{92}{theorem.8.4.3}
