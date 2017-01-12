@@ -9,6 +9,16 @@ We should also consider, however, the case of a product that is designed to fail
 Some may say that a major hi-tech company named after a fruit employs this practice. 
 Be it true or not, I hope we can agree that good knowledge of your product's life expectancy is a desirable. 
 
+By ``product'' we clearly imply a production problem, but our methods equally apply to other problems where we analyse the distribution of times-to-events. 
+\begin{description}
+	\item[Services] The analysis of time-to-service in service queues. 
+	\item[Marketing] The analysis of time-to-adoption/abandon in marketing. 
+	\item[Sotware reliability] The analysis of time-to-bug in software reliability.
+	\item[Actuary] The analysis of time-to-death in actuary sciences (insurance).
+	\item[Pharmaceutics] The analysis of time-to-effect in pharmaceutics. 
+	\item[Epidemiology] The analysis of time-to-infection/recovery in epidemiology and biostatistics. 
+\end{description}
+
 Reliability analysis involves the study of a probabilistic property of our product- its \emph{survival}.
 Any probabilistic model will require calibration to reality via data. 
 This chapter thus introduces both the probability calculus typically used for reliability analysis, and then some statistical considerations involved when calibrating these models.
@@ -260,18 +270,16 @@ For a parallel system $\struct$, the reliability of the system at time $t$ is gi
 
 Another way to present a distribution, no less informative than the previous ones, is by the \emph{hazard function}, which is the ``probability of surviving just another instant''.
 \begin{definition}[Hazard Function]
-The \emph{hazard function}, or \emph{failure rate}, of a random variable $\T$ at a point $t$ is given by \marginnote{Hazard Function}
+The \emph{hazard function}, or \emph{failure rate} of a random variable $\T$ at a point $t$ is given by \marginnote{Hazard Function}
 \begin{align}
 	\hazard{\T}{t} &:= \lim_{dt\to 0}\frac{P( \T \in [t,t+dt)|\T \geq t )}{dt} \label{eq:hazard}\\
 	&= \frac{\pdf{\T}{t}}{\survive{\T}{t}} \\
 	&= - \frac{\partial}{\partial t}\log \survive{\T}{t} . \label{eq:survival_to_hazard}
 \end{align}
 \end{definition}
-
-
-
-
-
+The hazard function can be thought of as the expected number of events per unit of time, thus the name failure-rate. 
+If the unit of time is days, and the $\hazard{\T}{t}=2$, then we can expect two failure events in day $t$. 
+This also means that the total number of events expected since $t=0$, is the integral of the hazard, known as the \emph{cummulative risk}.
 \begin{definition}[Cumulative Risk]
 The \emph{cumulative hazard}, \aka the \emph{cumulative risk}, of a random variable $\T$ at a point $t$ is given by \marginnote{Cumulative Hazrd}
 \begin{align}
@@ -360,13 +368,13 @@ It can be constructed by
 $\T := \lambda \U^{1/k}$, where $\U \sim \exp(1)$. 
 This implies that for non negative $t$:
 \begin{align}
-	\pdf{\T}{t} &= \frac{k}{\lambda}\left(\frac{\T}{\lambda} \right)^{k-1} e^{-(\T/\lambda)^k}, \\
-	\cdf{\T}{t} &= 1 - e^{-(\T/\lambda)^k},
+	\pdf{\T}{t} &= \frac{k}{\lambda}\left(\frac{t}{\lambda} \right)^{k-1} e^{-(t/\lambda)^k}, \\
+	\cdf{\T}{t} &= 1 - e^{-(t/\lambda)^k},
 \end{align}
 so that 
 \begin{align}
-	\survive{\T}{t} &= e^ {-(\T/\lambda )^k}, \\
-	\hazard{\T}{t} &= \frac{k}{\lambda} \left(\frac{\T}{\lambda} \right)^{k-1} .
+	\survive{\T}{t} &= e^ {-(t/\lambda )^k}, \\
+	\hazard{\T}{t} &= \frac{k}{\lambda} \left(\frac{t}{\lambda} \right)^{k-1} .
 \end{align}
 \end{example}
 Elementary analysis shows that the hazard function of the Weibull may be increasing or decreasing in time ($\T$), depending on $k$, but it is always monotone.
@@ -374,7 +382,26 @@ Elementary analysis shows that the hazard function of the Weibull may be increas
 
 
 
+\begin{example}[Gompertz Hazard]
+	The Gompertz distribution\footnote{Not to be confused with it's generalization, the \emph{Gompertz-Makeham} distribution.} is another common distribution in reliability analysis. 
+	\begin{align}
+%	\pdf{\T}{t} &= \\
+	\cdf{\T}{t} &= 1- e^\frac{-\lambda (\varphi^t-1)}{\log \varphi},
+	\end{align}
+	so that 
+	\begin{align}
+	\survive{\T}{t} &= e^\frac{-\lambda (\varphi^t-1)}{\log \varphi}, \\
+	\hazard{\T}{t} &= \lambda \varphi^t .
+	\end{align}
+\end{example}
+Elementary analysis shows that the hazard function of the Gompertz may be increasing or decreasing in time ($\T$), depending on $\varphi$, but it is always monotone.
+
+
+
+
+
 \begin{example}[Empirical risk rates]
+	\label{ex:bathtub}
 When examining empirical risk rates of true devices, we almost always notice a \emph{bathtub} structure, such as in Figure~\ref{fig:bathtub}.\marginnote{Bathtub}
 This shape captures the idea that products tend to fail more when they are brand new, or as they are very old, while their failure rates are fairly stable in the ``mid-life''.
 In this text, we will not be providing a particular distribution which has this property. 
@@ -486,19 +513,48 @@ This is immediate from Corollary~\ref{cor:ifr_series} and Theorem~\ref{thm:ifr_c
 \section{Statistical Analysis}
 The probabilistic analysis of the previous section is great fun and all, but like any probabilistic problem, is has to be calibrated to real life. 
 This is where data, and statistics come in.
-Indeed, given any particular probabilistic model, we may write the likelihood problem, and call upon maximum likelihood principles for estimation.
 
-Failure data and models introduces particular statistical challenges:
+The statistical analysis of time-to-event data is very important to many disciplines. 
+It possibly started in the $17$'th century with the \emph{Life Tables} of John Graunt and
+William Petty, used by actuaries to compute life expectancies. 
+These were later reinvented and augmented to the full statistical framework known as \emph{failure-time} analysis in engineering, \emph{survival} analysis in epidemiology and biostatistics, and \emph{event-history} analysis in sociology. \marginnote{Failure-time analysis}
+
+\begin{remark}[Reliability analysis versus failure-time analysis]
+	In this text we use the term \emph{reliability analysis} for the probabilistic analysis above, and \emph{failure-time analysis} for the statistical problem. 
+	We do so to respect the original literature where these originate. 
+\end{remark}
+
+
+The statistical analysis of failure data, is typically concerned with the estimation of the \textbf{hazard} function, or the \textbf{survival} function. 
+To do so, we face the following statistical challenges:
 \begin{description}
+\item [Failure Distribution] like any statistical model, we will need to assume something about distributions of failure times.
+
 \item [Identifiability] It is typically hard, if not impossible, to estimate the reliability of particular components, from the reliability of the whole system. 
 
 \item [Censoring] A major concern with reliability data, is that in any finite length experiment, some events will just not have happened yet; their failure time will thus be \emph{censored}. Ironically- the more reliable a component, the less data we will have to estimate its reliability. 
 
 \item [Lab versus real-life conditions] Reliable components take very long time to fail. We will thus extrapolate from harsh lab conditions to real-life operating conditions. This requires the introduction of covariates. 
 
-\item [Failure Distribution] like any statistical model, we will need to assume something about distributions of failure times.
-
 \end{description}
+
+
+
+\subsection{Failure distribution}
+Assuming the distribution of the failure time is no different than the problem of assuming the sampling distribution in elementary statistical problems (e.g., in a t-test).
+Luckily, there is one very popular estimator of the hazard function, which is \emph{non-parametric}, meaning that it is free of any distribution assumption.
+\begin{definition}[Kaplan-Meier Estimator]
+	The Kaplan-Meier estimator of the survival function $\survive{\T}{t}$ is defined as 
+	\begin{align}
+		\surviven{\T}{t}:=\prod_{t_i \leq t} \frac{n_i-d_i}{n_i},
+	\end{align}
+	where $t_i$ is the period between the $i-1$'th event and the $i$'th event, 
+	$n_i$ is the number of units that did not fail until the end of $t_i$,
+	$d_i$ is the number of units that fail in period $t_i$ (typically $1$, except for ties).
+\end{definition}
+The rational of the estimator is obvious once we realize that $\frac{n_i-d_i}{n_i}$ estimates the probability of \textbf{not} failing during period $t_i$, and that surviving all the way to time $t$ means not failing for all previous periods. 
+
+Given a covariate, $x$, that splits into sub populations, one may estimate and compare the survival separately for each value of the covariate: $\surviven{\T|x}{t}$.
 
 
 
@@ -737,6 +793,7 @@ For a more detailed discussion, see \cite{cox_analysis_1984}.
 
 
 \subsection{Choosing the Base Failure Rate}
+\label{sec:based-failure-rate}
 In all the above models, we are free to choose the base failure rate: 
 $\survive{\T_0}{t}$ in Eq.(\ref{eq:accelerated_life}), or
 $\varepsilon$ in Eq.(\ref{eq:estimating_accelerated_life}), or 
@@ -744,7 +801,7 @@ $\hazard{\T|x_0}{t}$ in Eq.(\ref{eq:proportional_hazard}).
 Three possible approaches include:
 \begin{enumerate}
 \item Assume a \textbf{parametric} model, such as exponential times, Weibull times, etc.
-\item Assume a \textbf{semi-parametric} model, which can be simply seen as a flexible class of distributions, that has no particular parametric representation. In reliability analysis, the \emph{piece-wise constant} hazard is a popular choice.
+\item Assume a \textbf{semi-parametric} model, which can be simply seen as a flexible class of distributions, that has no particular parametric representation. In failure-time analysis, the \emph{piece-wise constant} hazard is a popular choice.
 \item Do not assume anything on the distribution, known as a \textbf{non-parametric} approach. 
 \end{enumerate}
 If we assume a particular parametric model, then we may gather failure time data, write the likelihood function, and return failure rate estimates, and covariate effects.
@@ -930,7 +987,7 @@ An light introductory discussion, may be found in \cite{nahmias_production_2015}
 The probabilistic analysis in this text is adapted from \cite{aven_stochastic_1999}.
 The seminal reference probably being \cite{barlow_mathematical_1965}.
 The statistical analysis is adapted from German Rodriguez's Generalized-Linear-Models class notes\footnote{\url{http://data.princeton.edu/wws509/notes/c7.pdf}.} and \cite[Ch.8]{natrella_nist/sematech_2010}.
-For more on the statistical analysis, see \cite{cox_analysis_1984}, \cite{kalbfleisch_statistical_2002}, or \cite{klein_survival_2005}.
+For more on the statistical analysis, see \cite{cox_analysis_1984}, \cite{kalbfleisch_statistical_2002}, or \cite{klein_survival_2005}, and many others. 
 
 
 % 
