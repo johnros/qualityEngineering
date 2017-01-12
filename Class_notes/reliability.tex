@@ -631,8 +631,7 @@ The problem will then be how to convert failure rates in extreme conditions, to 
 Sometime we have a physical theory that tells us what is the effects of various factors.
 For instance, the \emph{Arrhenius model}, and the \emph{Eyring model} are physically motivated models that capture the effect of temperature.
 For models for stress, voltage, humidity, and other life accelerating covariates, see for instance \cite[Sec.8.1.5]{natrella_nist/sematech_2010}
-We now introduce two very simple models to demonstrate how we deal with covariates. 
-These are the \emph{accelerated life} model, and \emph{proportional hazard} model. 
+In the next section we introduce two very simple models to demonstrate how we deal with covariates. 
 
 
 
@@ -647,7 +646,10 @@ The trivial estimator for the rate of the process, is $\sum c_i/\sum t_i$.
 
 
 
-\subsection{Accelerated Life Models}
+\subsection{From lab to reality: ``Accelerating Life''.}
+
+
+\subsubsection{Accelerated Life model}
 An \emph{accelerate life} model assumes that covariates rescale \emph{time}. 
 For instance, the lab may produce conditions where time advances ten times faster than in real-life operating conditions.
 
@@ -696,7 +698,7 @@ This approach is known as \emph{Tobit} regression.
 
 
 
-\subsection{Proportional Hazard Models}
+\subsubsection{Proportional Hazard Models}
 The \emph{proportional hazard}, or \emph{proportional risk} class of models, assumes that covariates multiply not time, but rather failure rates. 
 Put differently, accelerated rescales time linearly, thus hazards are rescaled non-linearly. Proportional hazards rescale hazards linearly, thus time is rescaled non-linearly. 
 Qualitatively, they are the same. 
@@ -736,7 +738,7 @@ as required.
 
 
 
-\begin{example}[Comparing survival rates in the two group model]
+\begin{extra}[Comparing survival rates in the two group model]
 \label{eg:two_groups_two_time_scalings}
 We now compare the proportional hazard assumption, versus the accelerated time assumption in the simple two condition model. 
 Under the accelerated time model, we have (by assumption):
@@ -745,14 +747,14 @@ Under the proportional hazard model, we have (by Eq.(\ref{eq:survival_proportion
 $	\survive{\T|x=1}{t}=(\survive{\T|x=0}{t})^{\gamma}$.
 To visualize the difference between the groups we choose some arbitrary distribution (Weibull) and rescale it with $\gamma=2$ under the different models. 
 The result is depicted in Figure~\ref{fig:time_rescaling}, from which we see that the same assumed effect $\gamma=e^\beta=2$, acts in opposite directions under the different models.
-
+\end{extra}
 \begin{figure}[ht]
-\centering
-\includegraphics[height=0.3\textheight]{art/survivals}
-\caption{}
-\label{fig:time_rescaling}
+	\centering
+	\includegraphics[height=0.3\textheight]{art/survivals}
+	\caption{}
+	\label{fig:time_rescaling}
 \end{figure}
-\end{example}
+
 Example~\ref{eg:two_groups_two_time_scalings}  demonstrates that the different models rescale time in different ways (and even in opposite directions!). 
 The example may help you in interpreting the coefficients ($\beta$) of the model you chose. 
 In particular it means that a factor with a positive effect ($\hat{\beta}>0$) means accelerated ageing under proportional hazard, and decelerated ageing under accelerated time.
