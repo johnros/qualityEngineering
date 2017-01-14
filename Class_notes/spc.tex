@@ -427,14 +427,13 @@ It is however, more economic to observe that for large $t$ then  $(1-(1-\lambda)
 with $\arm=3$ being the typical choice.
 By now, you should immediately know what is the false alarm rate of these limits.
 By now, you should also know that because of the dependence between $z_t$'s, computing the ARL is not as simple as for Shewhart charts. The \rcode{xewma.arl()} \R function, in package \rcode{spc}, permits doing so easily. 
-Its output for various $\lambda$ and $\arm$ is illustrated in Figure~\ref{fig:arl_0_ewma}.
-
-\begin{figure}[h]
-\centering
-\includegraphics[height=0.3\textheight]{art/fig53}
-\caption[$ARL_0$ for EWMA]{$ARL_0$ for EWMA. \newline Code from \url{http://users.phhp.ufl.edu/pqiu/research/book/spc/r-codes/fig53.r}}
-\label{fig:arl_0_ewma}
-\end{figure}
+%Its output for various $\lambda$ and $\arm$ is illustrated in Figure~\ref{fig:arl_0_ewma}.
+%\begin{figure}[h]
+%\centering
+%\includegraphics[height=0.3\textheight]{art/fig53}
+%\caption[$ARL_0$ for EWMA]{$ARL_0$ for EWMA. \newline Code from \url{http://users.phhp.ufl.edu/pqiu/research/book/spc/r-codes/fig53.r}}
+%\label{fig:arl_0_ewma}
+%\end{figure}
 
 In the MA chart, we used the choice of $w$ to balance between quick response (small $w$) and sensitivity (large $w$).
 EWMA has no window-width parameter, since it looks into all of history. On the other hand, we can control it by choosing $\lambda$. 
