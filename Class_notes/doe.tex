@@ -994,10 +994,16 @@ Observational studies classify into:
 \emph{Cross sectional} studies are the simplest type of observational study, \aka a \emph{simple random sample}. 
 There really isn't much to say about them, except a vivid warning against causal inference from such studies (see \ref{sec:causal}).\marginnote{[Simple Random Sample]}
 
-In \emph{prospective studies}, \aka \emph{longitudinal data}, or \emph{cohort study}, sampling units are selected and then measured over time alongside covariates. \marginnote{[Longitudinal Data]}
+
+When units are followed over time, we call this a \emph{longitudinal study}, or \emph{panel data}, or \emph{repeated measures}.\marginnote{[Longitudinal Data]}
+Units can be followed ``into the future'', or ``into the past''.
+\emph{Prospective studies}, or \emph{cohort study}, sampling units are selected and then measured over time alongside covariates. 
+As such, in prospective studies we follow units into the future. 
 
 For the study of rare outcomes, prospective studies may be very wasteful. 
-\emph{Retrospective studies}, \aka \emph{case-control studies} remedy this by collecting units with the desired outcome, and only then matching them with controls and recovering their event history. In the words of \cite{cox_principles_2011}: {\em ``\dots a prospective study looks for the effects of causes whereas a retrospective study examines the causes of effects``}.\marginnote{Case-Control Study}
+\emph{Retrospective studies}, \aka \emph{case-control studies} remedy this by collecting units with the desired outcome, and only then matching them with controls and recovering their event history. 
+We thus follow units into the past. 
+In the words of \cite{cox_principles_2011}: {\em ``\dots a prospective study looks for the effects of causes whereas a retrospective study examines the causes of effects``}.\marginnote{Case-Control Study}
 This is clearly not a random sample in the population, so it is unclear that inference in retrospective studies is valid. 
 
 To demonstrate the difference in inference between the sampling schemes consider a binary outcome $Y\in\set{0,1}$ and a binary covariate $X\in\set{0,1}$. 
@@ -1172,7 +1178,7 @@ Another nice and freely available resource is a Penn State course on the topic\f
 Some seminal references in the field include \cite{fisher_design_1960} and \cite{box_statistics_1978}.
 A good textbook on sampling is \cite{thompson_sampling_2012}. 
 For the respondent driven sampling see \cite{berchenko_modeling_2013}.
-For causal inference in non-designed experiments see \cite{rosenbaum_observational_2002}. 
+For causal inference in see \cite{rosenbaum_observational_2002}. 
 For optimal designs see \cite{pukelsheim_optimal_1993}.
 For analysis of data: linear models, ANOVA, etc.\ there are endlessly many books. This author's recommendations include \cite{hocking_analysis_1985}, \cite{greene_econometric_2003}. 
 For the relation between factorial designs and coding theory in computer science, see \cite{hill_first_1986}. 
