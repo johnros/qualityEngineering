@@ -996,21 +996,24 @@ There really isn't much to say about them, except a vivid warning against causal
 
 
 When units are followed over time, we call this a \emph{longitudinal study}, or \emph{panel data}, or \emph{repeated measures}.\marginnote{[Longitudinal Study]}
-Because measurements are taken within units, social scientists also call these \emph{multilevel analysis}.
+Because measurements are taken within units, social scientists also call this \emph{multilevel analysis}.
+If the emphasis is on the variability between units, this is also known as \emph{variance componnets analysis}.
+The idea of following units over time has indeed many names. This is because it is such a fundamental practice. 
+An important distinction we make is whether the data is collected forward in time, or backward. 
 
-Units can be followed ``into the future'', or ``into the past''.
 \emph{Prospective studies}, or \emph{cohort study}, sampling units are selected and then measured over time alongside covariates. 
-As such, in prospective studies we follow units into the future. 
+As such, in prospective studies we follow units into the future, i.e., forward in time. 
+
 
 For the study of rare outcomes, prospective studies may be very wasteful. 
 \emph{Retrospective studies}, \aka \emph{case-control studies} remedy this by collecting units with the desired outcome, and only then matching them with controls and recovering their event history. 
-We thus follow units into the past. 
+We thus follow units back in time, thus the name, retrospective study.
 In the words of \cite{cox_principles_2011}: {\em ``\dots a prospective study looks for the effects of causes whereas a retrospective study examines the causes of effects``}.\marginnote{Case-Control Study}
 This is clearly not a random sample in the population, so it is unclear that inference in retrospective studies is valid. 
 
 To demonstrate the difference in inference between the sampling schemes consider a binary outcome $Y\in\set{0,1}$ and a binary covariate $X\in\set{0,1}$. 
 In terms of the post-sale problem in Example~\ref{ex:post-sale}, $X$ can stand for a device's version indicator, and $Y$ a failure indicator. 
-The effect of $X$ on $Y$, can be quantified by the \emph{odds ratio}. 
+The effect of $X$ on $Y$, can be quantified by the \emph{odds ratio}\footnote{We need to define such a measure because simple measures like the correalation coefficient, or the regression coefficient are, inadequate for discrete outcomes such as fail/no-fail.}. 
 To define the odds ratio, we first define the \emph{odds}.
 
 \begin{definition}[Odds]
@@ -1022,7 +1025,7 @@ To define the odds ratio, we first define the \emph{odds}.
 The \emph{odds}, just like \emph{probabilities} is an uncertainty measure. 
 It quantifies the ratio of ``successes'' per ``fail''. 
 In some communities, the odds are actually more popular than probabilities (think horse racing).
-In our post-sale example, the odds measures the ratio of working devices per faulty device (not per \emph{produced} device like the probability measure). 
+In our post-sale example, the odds measures the ratio of working devices per faulty device, and not per \emph{produced} device like the probability measure. 
 
 
 
