@@ -68,7 +68,7 @@ From summaries of location, we move to summaries of \emph{scale}. \marginnote{Su
 For the following, we require the definition of the sample quantiles, themselves \textbf{not} a scale summary.
 
 \begin{definition}[$\alpha$ Quantile]
-The $\alpha$-quantile of the sample is the observation that is larger than $(100\alpha)\%$, and smaller then  $(100(1-\alpha))\%$ of the sample. 
+The $\alpha$-quantile of a sample $x=(x_1,\dots,x_n)$, denoted $x_\alpha$, is the observation that is larger than $(100\alpha)\%$, and smaller then  $(100(1-\alpha))\%$ of the sample. 
 \end{definition}
 The empirical maximum and minimum are then $x_{1.0}$ and $x_{0.0}$, respectively.
 
@@ -92,13 +92,11 @@ The empirical maximum and minimum are then $x_{1.0}$ and $x_{0.0}$, respectively
 \begin{definition}[The Median Absolute Deviation- MAD]
 \label{def:mad}
 \begin{align}
-	MAD(x):= c \set{|x-x_{0.5}|}_{0.5}.
+	MAD(x):= c \: \set{|x-x_{0.5}|}_{0.5}.
 \end{align}
 where $c$ is some constant.
 In the \R function \rcode{mad()}, $c$ is set at $1.4826$ so that it estimates $\sigma$ in a Gaussian population. 
 \end{definition}
-
-
 
 After summaries of scale, we move to summaries of \emph{skewness}, or \emph{asymmetry}.
 
