@@ -454,12 +454,12 @@ The statistic to be plotted is
 \begin{align}
 	C_t:= \sum_{j=0}^{t}(\bar{x}_j-\mu_0) = (\bar{x}_t-\mu_0) + C_{t-1}.
 \end{align} 
-Assuming $x_t \sim \gauss{\mu, \sigmabar^2}$ then if under control then $C_t \sim \gauss{\mu_0, t \sigmabar^2}$, we could thus set 
+Assuming $x_t \sim \gauss{\mu, \sigmabar^2}$ then if under control then $C_t \sim \gauss{0, t \sigmabar^2}$, we could thus set 
 \begin{align}
 \label{eq:cusum_simple_limits}
 \begin{split}
-	UCL &:= \mu_0 + \arm \sigma_{C_t}= \mu_0 + \arm \, \sqrt{t \sigmabar^2},  \\
-	LCL &:= \mu_0 - \arm \sigma_{C_t}= \mu_0 - \arm \, \sqrt{t \sigmabar^2},
+	UCL &:=  \arm \sigma_{C_t}=  \arm \, \sqrt{t \sigmabar^2},  \\
+	LCL &:=  \arm \sigma_{C_t}=  \arm \, \sqrt{t \sigmabar^2},
 \end{split}
 \end{align}
 and $\arm=3$ as usual. 
