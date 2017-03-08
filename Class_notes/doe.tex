@@ -924,12 +924,20 @@ For cutting edge screening designs see \emph{Definite Screening Designs} in \cit
 \section[AB testing]{$A\backslash B$ Testing}
 Our web-site optimization example is interesting not only because it accommodates so many DOE practices, but it is also a practical problem of great interest.
 For historical reasons, the experimentation with several web-site layouts is not called a factorial experiment (which it is), but rather an \emph{$A\backslash B$-test}.
+One may think of a series of naive A\\B tests as a series of ``one-factor-at-a-time'' experiment.
+A less naive approach to A\\B testing would be to see the series of tests as a sequential factorial experiment, and choose the competing layouts using the factorial-design framework.
+
 
 Some particular characteristics of $A\backslash B$ testing include:
 \begin{enumerate}
-\item Users come by the millions. Sample size is rarely an issue, so that avoiding systematic errors is more important than avoiding non-systematic errors which can be averaged out.
-\item Browser cookies, or login details define blocks. Technology permits to optimize the size for each block separately. If blocking is to very specific subgroups (female users, running Linux, that purchased on Amazon, etc.), then sample size, and thus variability, may become an issue again.
-\item Sites have many layout parameters (locations, colours, sizes,...). Studying all these combinations may result on a formidable task. Bayesian Optimization and Central Composite designs will be preferred over full factorials. 
+\item Users come by the millions. 
+Sample size is rarely an issue, so that avoiding systematic errors is more important than avoiding non-systematic errors which can be averaged out.
+\item Browser cookies, or login details define blocks. 
+Technology permits to optimize the size for each block separately. 
+If blocking is to very specific subgroups (female users, running Linux, that purchased on Amazon, etc.), then sample size, and thus variability, may become an issue again.
+\item Sites have many layout parameters (locations, colours, sizes,...). 
+Studying all these combinations may result on a formidable task. 
+Bayesian Optimization and Central Composite designs will be preferred over full factorials. 
 \end{enumerate}
 
 
